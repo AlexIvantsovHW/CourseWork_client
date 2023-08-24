@@ -2,11 +2,20 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Formik, Form} from "formik";
 import { Regform, initialValues} from "./RegForm";
-import "../../style.css";
 
 
 const Registration = (props) => {
-
+const validate=values => {
+  const errors = {};
+  if (!values.email) {
+    errors.email = 'Required';
+  } else if (
+    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+  ) {
+    errors.email = 'Invalid email address';
+  }
+  return errors;
+}
    const submit = (values) => {
     let fData = new FormData();
     fData.append("name", values.name);
@@ -17,33 +26,31 @@ const Registration = (props) => {
     alert('Registration complete')
   };
   return (
-    <div className="main">
-    <h1>REGISTRATION</h1>
+    <div class="col">
+     <div className="row border h-100 d-flex align-items-center text-white bg-success-subtle bg-gradient">
+        <div className="mx-auto w-50 h-auto bg-dark  bg-gradient rounded-3">
+        <div className="mb-2"><h1 className="text-center">REGISTRATION</h1></div>
     <Formik
       initialValues={initialValues}
-      validate={values => {
-        const errors = {};
-        if (!values.email) {
-          errors.email = 'Required';
-        } else if (
-          !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-        ) {
-          errors.email = 'Invalid email address';
-        }
-        return errors;
-      }}
+      validate={validate}
       onSubmit={submit}
     >
       {({ isSubmitting }) => (
-        <Form>
+        <Form className="">
           {Regform('name','Name')}
           {Regform('email','email')}
           {Regform('password','Password')}
-          <button type="submit" disabled={isSubmitting} className="btn btn-success">Submit</button>
+          <div className="d-flex justify-content-ceter align-items-center w-100 mb-3">
+          <button type="submit" disabled={isSubmitting} className="btn btn-success mx-auto ">Submit</button>
+          </div>
         </Form>
       )}
     </Formik>
-  </div>
+        </div>
+      </div>
+</div>
+
+    
   );
 };
 

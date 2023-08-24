@@ -14,10 +14,10 @@ export const validateSchema = Yup.object({
 })
 export function Regform(name,label) {
   return (
-    <div className="col-5 mb-3 ml-5 text-center">
+    <div className="col-5 mb-3 mt-2  text-center mx-auto">
       <label><h5>{label}</h5></label>
       <Field
-      className="form-control form-control-lg ml-10 input-sm" component='input'
+      className="form-control form-control-lg w-100" component='input'
         name={name}
         placeholder={name}
         type={"input"}

@@ -1,14 +1,19 @@
-.mainContainer{
+
+.container{
   width: 100vw;
-  display: flex;
+  margin:0;
+  padding: 0;
+
 
 }
 /* __________________SIDEBAR____________________ */
 /* The side navigation menu */
   .sidebar {
+   /*  top:0;
+    left: 0; */
     margin: 0;
     padding: 0;
-    width: 200px;
+    /* width: 200px; */
     background-color: #f1f1f1;
     position: fixed;
     height: 100%;
@@ -61,8 +66,7 @@
 .main{
   display: flex;
   flex-direction: column;
-  margin:auto;
-  width: 100%;
+  width: 100vw;
   border: solid 0.5px gray;
   justify-content: center;
   align-items: center;
