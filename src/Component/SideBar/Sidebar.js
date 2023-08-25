@@ -18,12 +18,10 @@ const SideBar = () => {
           <span className="fs-5 d-none d-sm-inline">Logotip</span>
         </a>
         <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-          
           {formBar('Home')}
           {formBar('User page')}
           {formBar('Language')}
           {formBar('Theme')}
-          
         </ul>
       </div>
     </div>

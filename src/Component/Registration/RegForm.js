@@ -5,13 +5,8 @@ import moment from"moment";
 
 const date = moment().format('YYYY-MM-DD HH:mm:ss');
 
-
 export function TextError(props) {return <div className="error">{props.children}</div>;}
-export const validateSchema = Yup.object({
-  name: Yup.string().required("Required"),
-  email: Yup.string().required("Required"),
-  password: Yup.string().required("Required"),
-})
+
 export function Regform(name,label) {
   return (
     <div className="col-5 mb-3 mt-2  text-center mx-auto">

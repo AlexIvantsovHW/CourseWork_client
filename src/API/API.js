@@ -10,5 +10,6 @@ const instance = axios.create({
 const API = {
   getDB(){return axios.get(BaseURL+'data');},
   getRegistration(data) {return instance.post('registration',data)},
+  getAuth(data) {return instance.post('login',data)},
 };
 export default API;
