@@ -4,6 +4,7 @@ import "./style.css";
 import RegistrationContainer from "./Component/Registration/RegistrationContainer";
 import { Routes,Route } from "react-router-dom";
 import LoginContainer from "./Component/Login/LoginContainer";
+import UserContainer from "./Component/User/UserContainer";
 
 
 function App() {
@@ -14,8 +15,7 @@ function App() {
       <Routes>
             <Route path="/registration" element={<RegistrationContainer />} />
             <Route path="/" element={<LoginContainer />} />
-        
-        
+            <Route path="/user" element={<UserContainer />} />
         </Routes>
       </div>
     </div>

@@ -14,8 +14,6 @@ const Login = (props) => {
     fData.append("name", values.name);
     fData.append("pass", values.password);
     props.getLoginTC(fData);
-    console.log(values)
-    alert('Registration complete')
   };
   return (
     <div class="col">

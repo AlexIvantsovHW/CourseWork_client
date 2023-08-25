@@ -1,12 +1,13 @@
 import React from "react";
 import './style.css'
-function formBar(name) {
+import { NavLink } from "react-router-dom";
+function formBar(name,link) {
   return (
-    <li className="nav-item">
-    <a href="#" className="nav-link align-middle px-0">
-      <i className="fs-4 bi-house"></i>{" "}
+    <li className="nav-item mt-1">
+    <NavLink to={link} className='mt-1'>
+      <i className="fs-4 bi-house mt-1"></i>{" "}
       <span className="ms-1 d-none d-sm-inline">{name}</span>
-    </a>
+    </NavLink>
   </li>
   );
 }
@@ -18,8 +19,8 @@ const SideBar = () => {
           <span className="fs-5 d-none d-sm-inline">Logotip</span>
         </a>
         <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-          {formBar('Home')}
-          {formBar('User page')}
+          {formBar('Home','/')}
+          {formBar('User page','/user')}
           {formBar('Language')}
           {formBar('Theme')}
         </ul>
