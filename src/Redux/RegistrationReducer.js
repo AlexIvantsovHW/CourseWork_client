@@ -9,17 +9,15 @@ let initialState = {
 }
 const RegistrationReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_REGISTR:debugger;return{...state,state:action.data};
+    case SET_REGISTR:return{...state,state:action.data};
     default:return { ...state };
   }
 };
 export const registerAC=(data)=>{{return{type:SET_REGISTR,data}}}
 
 export const getRegistrationTC=(data)=>{
-  debugger;
   return async (dispatch)=>{
     let Registration=await API.getRegistration(data);
-    debugger;
     dispatch(registerAC(Registration))
   }
 }

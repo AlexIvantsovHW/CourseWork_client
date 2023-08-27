@@ -9,7 +9,9 @@ const instance = axios.create({
 
 const API = {
   getDB(){return axios.get(BaseURL+'data');},
+  getUsers() {return instance.get('users')},
   getRegistration(data) {return instance.post('registration',data)},
   getAuth(data) {return instance.post('login',data)},
+  getRecommendation(data) {debugger; return instance.post('recommendation',data)},
 };
 export default API;

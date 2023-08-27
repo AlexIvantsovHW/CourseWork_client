@@ -97,7 +97,7 @@ export const UserInformation=()=>{
 export const ImgReview=(props)=>{return(
     <>
         <div className="row  mx-auto" style={{ maxHeight: "150px", maxWidth: "150px" }}>{Camera}</div>
-        <div className="row  d-flex justify-content-center align-items-center">Score</div>
-        <div className="row  d-flex justify-content-center align-items-center">Date</div>
+        <div className="row  d-flex justify-content-center align-items-center">{props.score}</div>
+        <div className="row  d-flex justify-content-center align-items-center">{props.date}</div>
     </>
     )}

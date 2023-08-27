@@ -32,7 +32,6 @@ export function nameValidation(name){
 }
 
 export function Logform(name,label,validate) {
-  debugger;
   return (
     <div className="col-5 mb-3 mt-2  text-center mx-auto">
       <label><h5>{label}</h5></label>

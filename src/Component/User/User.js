@@ -1,132 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Formik, Form } from "formik";
-import { Checkbox,Toolbar, ImgReview, UserForm, UserInformation } from "./UserForm";
-import { Correct, Expand, Like } from "../img";
+import { NavLink } from "react-router-dom";
 
-const Catalogues = [
-  { id: "01", name: "Chicken" },
-  { id: "02", name: "Beef" },
-  { id: "03", name: "Lamb" },
-  { id: "04", name: "Pork" },
-  { id: "05", name: "Seafood" },
-];
+
 
 const User = (props) => {
-  const [isCheckAll, setIsCheckAll] = useState(false);
-  const [isCheck, setIsCheck] = useState([]);
-  const [list, setList] = useState([]);
-  useEffect(() => {setList(Catalogues);}, [list]);
-
-  const handleSelectAll = (e) => {
-    setIsCheckAll(!isCheckAll);
-    setIsCheck(list.map((li) => li.id));
-    if (isCheckAll) {
-      setIsCheck([]);
-    }
-  };
-  const handleClick = (e) => {
-    const { id, checked } = e.target;
-    setIsCheck([...isCheck, id]);
-    if (!checked) {
-      setIsCheck(isCheck.filter((item) => item !== id));
-    }
-  };
-  const initialValues = { text: "" };
-  const validate = (values) => {const errors = {};return errors;};
-  const submit = (values) => {
-    let fData = new FormData();
-    fData.append("name", values.name);
-    fData.append("text", values.text);
-    props.getRegistrationTC(fData);
-  };
-
-  const catalog = list.map(({ id, name }) => {
-    return (
-      <div className="row bg-white text-black border-bottom">
-        <div className="col-1 d-flex justify-content-center align-items-center">
-          <Checkbox
-            key={id}
-            type="checkbox"
-            name={name}
-            id={id}
-            handleClick={handleClick}
-            isChecked={isCheck.includes(id)}
-          />
-        </div>
-        <div className="col-1  d-flex justify-content-center align-items-center">{id}</div>
-        <div className="col-3  mx-auto"><ImgReview/>
-        </div>
-        <div className="col   text-black">
-          <div className="row text-center"><h5 className="col">name review</h5><div className="col">{Expand}</div></div>
-          <div className="text-start font-weight-bold"><p>title name/group name</p></div>
-          <div className="text-start">text {Correct}</div>
-          <div className="row"><div className="col-9">Tags:tag</div> <div className="col">{Like}</div></div>
-        </div>
+let UserData=props.Users.users.map((el)=>{
+  return(
+    <div>
+        <div>Id- {el.id}</div>
+        <div>Name- <NavLink to={"/profile/"+el.id}>{el.name}</NavLink></div>
       </div>
-    );
-  });
-
+  )
+})
+/* let UsersArray=UsersData.map((el)=>{<div>id:{el.id_user}</div>}) */
   return (
     <div class="col">
-      <div className="row border h-100 d-flex flex-row align-items-center text-white bg-success-subtle bg-gradient">
-      <div className="col-2 h-75 bg-dark bg-gradient rounded-4 m-1" style={{maxWidth:'100px'}}>
-        <div>TAG LIST</div>
+     <div className="row border h-100 d-flex align-items-center text-white bg-success-subtle bg-gradient">
+        <div className="mx-auto w-50 h-auto bg-dark  bg-gradient rounded-4">
+        <div className="mb-2">
+          <h1 className="text-center">User</h1>
         <div>
-          <div><input type="checkbox"/>Tag1</div>
-          <div><input type="checkbox"/>Tag1</div>
-          <div><input type="checkbox"/>Tag1</div>
-          <div><input type="checkbox"/>Tag1</div>
+          {UserData}
         </div>
-      </div>
-        <div className="col-4 mx-auto w-75 h-auto bg-dark  bg-gradient rounded-4">
-          <UserInformation/>
+        </div>
 
-          <div className="row border mt-2">
-            <div className="text-center mb-2">
-              <h4>User recommendations</h4>
-            </div>
-            <div className="row border w-75 mx-auto" style={{ height: "20px" }}>
-              <div className="col-1">
-              <Checkbox
-        type="checkbox"
-        name="selectAll"
-        id="selectAll"
-        handleClick={handleSelectAll}
-        isChecked={isCheckAll}
-      />
-              </div>
-              <Toolbar/>
-            </div>
-            <div className="border w-75 mx-auto mb-2 overflow-auto" style={{ height: "300px" }}>{catalog}</div>
-            <div className="mx-auto border">
-              <Formik
-                initialValues={initialValues}
-                validate={validate}
-                onSubmit={submit}
-              >
-                {({ isSubmitting }) => (
-                  <Form className="mx-auto">
-                    {UserForm()}
-                    <div className="d-flex justify-content-ceter align-items-center w-100 mb-3">
-                      <button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="btn btn-success mx-auto "
-                      >
-                        Publish
-                      </button>
-                    </div>
-                  </Form>
-                )}
-              </Formik>
-            </div>
-          </div>
         </div>
+        
       </div>
-    </div>
+</div>
+
+    
   );
 };
 
 export default User;
-

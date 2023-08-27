@@ -9,7 +9,6 @@ import { NavLink } from "react-router-dom";
 const Login = (props) => {
 
    const submit = (values) => {
-    debugger;
     let fData = new FormData();
     fData.append("name", values.name);
     fData.append("pass", values.password);
@@ -33,7 +32,7 @@ const Login = (props) => {
           <button type="submit" disabled={isSubmitting} className="btn btn-success mx-auto ">Submit</button>
           </div>
           <div className="row text-center">
-          <p>Don't have an account yet?<NavLink to='/registration'> Registration</NavLink> </p>
+          <p>Don't have an account yet?<NavLink to='/'> Registration</NavLink> </p>
           </div>
           <div className="row text-center"><div className="col"><p>Log in with Facebook</p></div><div  className="col"><p>Log in with Facebook</p></div></div>
         </Form>

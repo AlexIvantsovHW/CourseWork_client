@@ -45,7 +45,7 @@ const validate=values => {
           <button type="submit" disabled={isSubmitting} className="btn btn-success mx-auto ">Submit</button>
           </div>
           <div className="row text-center">
-          <p>Already have an account?<NavLink to='/'> Sign In</NavLink> </p>
+          <p>Already have an account?<NavLink to='/login'> Sign In</NavLink> </p>
           </div>
         </Form>
       )}

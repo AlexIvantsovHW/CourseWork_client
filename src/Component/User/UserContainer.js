@@ -1,13 +1,26 @@
-import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import User from "./User";
-import { connect } from "react-redux";
-import { getLoginTC } from "../../Redux/LoginReducer";
+
+import React  from 'react';
+import { connect } from 'react-redux';
+import User from './User';
+import { compose } from 'redux';
+import { getUserTC } from '../../Redux/UserReducer';
+
+
 
 class UserContainer extends React.Component{
-  
-  render(){return ( <User getLoginTC={this.props.getLoginTC}/>);}
-};
+    componentDidMount(){
+        this.props.getUserTC();
+      }
+      componentDidUpdate(prevProps,prevState){
+        if (this.props.Recommendation!== prevProps.Recommendation) {
+          this.setState(this.props.Recommendation);
+        }
+      }
+    render(){return(<User Users={this.props.Users}/>)}
+}
 
-const mapStateToProps=(state)=>{return{Login:state.Login,}}
-export default connect(mapStateToProps,{getLoginTC})(UserContainer);
+const mapStateToProps=(state)=>{return{Users:state.Users}}
+export default compose (
+  connect(mapStateToProps,{getUserTC}),
+/*   withAuthNavigate */
+  )(UserContainer);
