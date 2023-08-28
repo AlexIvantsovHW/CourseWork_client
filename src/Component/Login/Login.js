@@ -2,17 +2,17 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Formik, Form} from "formik";
 import { Logform, initialValues, nameValidation, passwordValidation} from "./LogForm";
-import { NavLink } from "react-router-dom";
+import { NavLink, Navigate } from "react-router-dom";
 
 
 
 const Login = (props) => {
 
-   const submit = (values) => {
+  async  function onSubmit (values) {
     let fData = new FormData();
     fData.append("name", values.name);
     fData.append("pass", values.password);
-    props.getLoginTC(fData);
+    await props.getLoginTC(fData);
   };
   return (
     <div class="col">
@@ -21,8 +21,10 @@ const Login = (props) => {
         <div className="mb-2"><h1 className="text-center">Login</h1></div>
     <Formik
       initialValues={initialValues}
-     /*  validate={validate} */
-      onSubmit={submit}
+     onSubmit={async (values, { resetForm }) => {
+      await onSubmit(values);
+      resetForm();
+    }}
     >
       {({ isSubmitting }) => (
         <Form className="">

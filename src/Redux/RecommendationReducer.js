@@ -6,12 +6,13 @@ let initialState = {
    recommendation:[{
     id_r:null,
     id_user:null,
-    recommendation:null,
-    group:null,
+    title:null,
     name:null,
+    group:null,
     category:null,
-    score:null,
+    text:null,
     tag:null,
+    score:null,
     date_upload:null
   },]
 }
@@ -29,7 +30,14 @@ export const getRecomendTC=(data)=>{
     let result=await API.getRecommendation(data);
     dispatch(recommendationAC(result.data))
     if(!result.data){alert('Successfully logging')}
-   /*  else{alert('Error')} */
   }
 }
+export const getAddRecomendTC=(data)=>{
+  debugger;
+  return async (dispatch)=>{
+    let result=await API.getAddRecommend(data);
+    dispatch(recommendationAC(result.data))
+  }
+}
+
 export default RecommendationReducer;

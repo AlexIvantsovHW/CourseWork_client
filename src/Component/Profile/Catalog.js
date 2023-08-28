@@ -1,59 +1,33 @@
-
-const Catalogues = [
-    {id: "01",name: "Chicken"},
-    {id: "02",name: "Beef"},
-    {id: "03",name: "Lamb"},
-    {id: "04",name: "Pork"},
-    {id: "05",name: "Seafood"}
-  ];
+import { Correct, Expand, Like } from "../img";
+import { Checkbox, ImgReview } from "./ProfileForm";
 
 
-  const Catalog=(props)=>{
-    const catalog = list.map(({ id, name }) => {
-        return(
-        <div className="row border">
-              <div  className="col-1 border d-flex justify-content-center align-items-center">
-              <Checkbox          
-               key={id}
-                type="checkbox"
-                name={name}
-                id={id}
-                handleClick={handleClick}
-                isChecked={isCheck.includes(id)}/>
-              </div >
-              <div  className="col-1 border d-flex justify-content-center align-items-center">
-                id
-              </div >
-              <div  className="col-3 border mx-auto">
-                <div className="row border mx-auto" style={{maxHeight:'150px',maxWidth:'150px'}}>
-                  {Camera}
-                </div>
-                <div className="row border d-flex justify-content-center align-items-center">
-                  Score
-                </div>
-                <div className="row border d-flex justify-content-center align-items-center">
-                  upload data
-                </div>
-              </div>
-              <div  className="col border">
-                <div>
-                  name review
-                </div>
-                <div>
-                  film name/ group name
-                </div>
-                <div>
-                  text
-                </div>
-                <div>
-                  Tags:tag
-                </div>
-              </div>
-            </div>)
-      })
-    return(
-        <>
-        {catalog}
-        </>
-    )
-  }
+
+export function catalog (array,isCheck,handleClick){
+  debugger;
+   return(
+    array.map(({ id_r,title,name,score,date,group,text,tag}) => {
+  return (
+    <div className="row bg-white text-black border-bottom">
+      <div className="col-1 d-flex justify-content-center align-items-center">
+        <Checkbox
+          key={id_r}
+          type="checkbox"
+          name={name}
+          id={id_r}
+          handleClick={handleClick}
+          isChecked={isCheck.includes(id_r)}
+        />
+      </div>
+      <div className="col-1  d-flex justify-content-center align-items-center">{id_r}</div>
+      <div className="col-3  mx-auto"><ImgReview score={score} date={date}/>
+      </div>
+      <div className="col   text-black">
+        <div className="row text-center"><h5 className="col">{title}</h5><div className="col">{Expand}</div></div>
+        <div className="text-start font-weight-bold"><p>{name}/{group}</p></div>
+        <div className="text-start">{text} {Correct}</div>
+        <div className="row"><div className="col-9">Tags:{tag}</div> <div className="col">{Like}</div></div>
+      </div>
+    </div>
+  );
+}));}

@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Profile from "./Profile";
 import { connect } from "react-redux";
 import { getLoginTC } from "../../Redux/LoginReducer";
-import { getRecomendTC } from "../../Redux/RecommendationReducer";
+import { getAddRecomendTC, getRecomendTC } from "../../Redux/RecommendationReducer";
 import { withAuthNavigate } from "../withAuthNavigate";
 import { compose } from "redux";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
@@ -24,7 +24,8 @@ class ProfileContainer extends React.Component{
   
   render(){return ( 
     <Profile getLoginTC={this.props.getLoginTC} getRecomendTC={this.props.getRecomendTC}
-          Recommendation={this.props.Recommendation} 
+          Recommendation={this.props.Recommendation} id_user={this.props.router.params.id}
+          getAddRecomendTC={this.props.getAddRecomendTC}
   />);}
 };
 
@@ -43,7 +44,7 @@ export var withRouter=function (Component) {
 const mapStateToProps=(state)=>{return{Login:state.Login,Recommendation:state.Recommendation,}}
 export default compose (
   withRouter,
-  connect(mapStateToProps,{getLoginTC,getRecomendTC}),
+  connect(mapStateToProps,{getLoginTC,getRecomendTC,getAddRecomendTC}),
   withAuthNavigate
   )(ProfileContainer);
   

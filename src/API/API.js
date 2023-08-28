@@ -13,5 +13,6 @@ const API = {
   getRegistration(data) {return instance.post('registration',data)},
   getAuth(data) {return instance.post('login',data)},
   getRecommendation(data) {debugger; return instance.post('recommendation',data)},
+  getAddRecommend(data){debugger; return instance.post('addRecommendation',data)}
 };
 export default API;

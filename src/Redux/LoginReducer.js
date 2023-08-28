@@ -17,7 +17,7 @@ export const getLoginTC=(data)=>{
   return async (dispatch)=>{
     let result=await API.getAuth(data);
     dispatch(loginAC(result.data))
-    if(result.data.auth===true){alert('Successfully logging')}
+    if(result.data.auth===true){alert('Successfully logging');}
     /* else{alert('Error')} */
   }
 }
