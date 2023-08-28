@@ -1,7 +1,7 @@
 import API from "../API/API"
 
-const SET_USER_RECOMMENDATIONS='SET_USER_RECOMMENDATIONS'
-
+const SET_USER_RECOMMENDATIONS='SET_USER_RECOMMENDATIONS';
+const SET_STATUS='SET_STATUS';
 let initialState = {
    recommendation:[{
     id_r:null,
@@ -14,16 +14,18 @@ let initialState = {
     tag:null,
     score:null,
     date_upload:null
-  },]
+  },],
+  setPublish:false,
 }
 const RecommendationReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USER_RECOMMENDATIONS:return{...state,recommendation:action.data};
+    case SET_STATUS:return{...state,setPublish:action.status};
     default:return { ...state };
   }
 };
 export const recommendationAC=(data)=>{{return{type:SET_USER_RECOMMENDATIONS,data}}}
-
+export const setPublishAC=(status)=>{{return{type:SET_STATUS,status}}}
 export const getRecomendTC=(data)=>{
   debugger;
   return async (dispatch)=>{

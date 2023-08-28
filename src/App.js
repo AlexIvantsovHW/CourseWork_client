@@ -17,7 +17,7 @@ function App() {
             <Route path="/" element={<RegistrationContainer />} />
             <Route path="/login" element={<LoginContainer />} />
             <Route path="/profile/:id" element={<ProfileContainer />} />
-            <Route path="/users" element={<UserContainer />} />
+            <Route path="/users" element={<UserContainer/>} />
         </Routes>
       </div>
     </div>

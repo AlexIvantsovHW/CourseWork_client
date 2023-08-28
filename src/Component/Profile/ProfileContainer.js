@@ -7,7 +7,7 @@ import { getAddRecomendTC, getRecomendTC } from "../../Redux/RecommendationReduc
 import { withAuthNavigate } from "../withAuthNavigate";
 import { compose } from "redux";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-
+import { setPublishAC } from "../../Redux/RecommendationReducer";
 class ProfileContainer extends React.Component{
   componentDidMount(){
   
@@ -25,7 +25,7 @@ class ProfileContainer extends React.Component{
   render(){return ( 
     <Profile getLoginTC={this.props.getLoginTC} getRecomendTC={this.props.getRecomendTC}
           Recommendation={this.props.Recommendation} id_user={this.props.router.params.id}
-          getAddRecomendTC={this.props.getAddRecomendTC}
+          getAddRecomendTC={this.props.getAddRecomendTC} setPublishAC={this.props.setPublishAC}
   />);}
 };
 
@@ -44,7 +44,7 @@ export var withRouter=function (Component) {
 const mapStateToProps=(state)=>{return{Login:state.Login,Recommendation:state.Recommendation,}}
 export default compose (
   withRouter,
-  connect(mapStateToProps,{getLoginTC,getRecomendTC,getAddRecomendTC}),
+  connect(mapStateToProps,{getLoginTC,getRecomendTC,getAddRecomendTC,setPublishAC}),
   withAuthNavigate
   )(ProfileContainer);
   
