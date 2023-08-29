@@ -48,34 +48,25 @@ const Profile = (props) => {
     fData.append("date_upload",date);
     props.getAddRecomendTC(fData);
   };
-  let x=true;
   const publish=()=>{if(status===false){return(<button onClick={openForm}>Add recommendation</button>)}else{
     return(
-<Formik
-                initialValues={initialValues}
-                validate={validate}
-                onSubmit={async (values, { resetForm }) => {
-                  await onSubmit(values);
-                  resetForm();}}
-              >
+<Formik initialValues={initialValues} validate={validate}
+        onSubmit={async (values, { resetForm }) => {
+          await onSubmit(values);
+          resetForm();}}>
                 {({ isSubmitting }) => (
-                  <Form className="mx-auto">
-                    {UserForm()}
+                  <Form className="mx-auto">{UserForm()}
                     <div className="d-flex justify-content-ceter align-items-center w-100 mb-3">
-                    
-                      <button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="btn btn-success mx-auto "
-                      >
-                        Publish
-                      </button> <button onClick={closeForm}>X</button>
+                      <button type="submit" disabled={isSubmitting}
+                        className="btn btn-success mx-auto ">
+                        Publish</button> 
+                        <button onClick={closeForm}>X</button>
                     </div>
                   </Form>
                 )}
-              </Formik>
-    )
+              </Formik>)
   }};
+
   return (
     <div class="col">
       <div className="row border h-100 d-flex flex-row align-items-center text-white bg-success-subtle bg-gradient">
@@ -83,26 +74,16 @@ const Profile = (props) => {
         <div className="col-4 mx-auto w-75 h-auto bg-dark  bg-gradient rounded-4">
           <UserInformation/>
           <div className="row border mt-2">
-            <div className="text-center mb-2">
-              <h4>User recommendations</h4>
-            </div>
+            <div className="text-center mb-2"><h4>Recommendation list</h4></div>
             <div className="row border w-75 mx-auto" style={{ height: "20px" }}>
               <div className="col-1">
-              <Checkbox
-        type="checkbox"
-        name="selectAll"
-        id="selectAll"
-        handleClick={handleSelectAll}
-        isChecked={isCheckAll}
-      />
+              <Checkbox type="checkbox" name="selectAll" id="selectAll" handleClick={handleSelectAll} isChecked={isCheckAll}/>
               </div>
               <Toolbar/>
             </div>
             <div className="border w-75 mx-auto mb-2 overflow-auto" style={{ height: "300px" }}>
               {catalog(Recommendation,isCheck,handleClick)}</div>
-            <div className="mx-auto border">
-            {publish()}
-            </div>
+            <div className="mx-auto border">{publish()}</div>
           </div>
         </div>
       </div>

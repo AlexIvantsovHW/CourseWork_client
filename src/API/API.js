@@ -8,7 +8,8 @@ const instance = axios.create({
 });
 
 const API = {
-  getDB(){return axios.get(BaseURL+'data');},
+  getSort(sort){return instance.post('sort',sort)},
+  getDB() {return instance.get('db')},
   getUsers() {return instance.get('users')},
   getRegistration(data) {return instance.post('registration',data)},
   getAuth(data) {return instance.post('login',data)},

@@ -21,7 +21,7 @@ const SideBar = (props) => {
           <span className="fs-5 d-none d-sm-inline">Logotip</span>
         </a>
         <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-          {formBar('Home','/')}
+          {formBar('Home','/main')}
           {(!props.Login.auth? formBar('Login','/login'):formBar('Logout','/logout'))}
           {formBar('Profile',`/profile/${id}`)}
           {formBar('Users',`/users`)}
