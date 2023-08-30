@@ -9,6 +9,7 @@ const instance = axios.create({
 
 const API = {
   getSort(sort){return instance.post('sort',sort)},
+  getScore(){return instance.get('/score')},
   getUpdate(data){return instance.post('/update',data)},
   getDB() {return instance.get('db')},
   getUsers() {return instance.get('users')},

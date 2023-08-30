@@ -28,11 +28,8 @@ function postCorrection(){alert('Correct')};
       <div className="col   text-black">
         <div className="row text-center"><h5 className="col">{el.title}</h5><div className="col">
     <NavLink to={"/fullrecommend/"+el.id_r}><button>Expand</button></NavLink>
-  
-    {/* <Modal text={el.text}/> */}
           </div></div>
         <div className="text-start font-weight-bold"><p>{el.name}/{el.group}</p></div>
-        <div className="text-start">{el.text} {Correct(postCorrection)}</div>
         <div className="row"><div className="col-9">Tags:{el.tag}</div> <div className="col">{Like}</div></div>
       </div>
     </div>
