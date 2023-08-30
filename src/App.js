@@ -7,6 +7,7 @@ import ProfileContainer from "./Component/Profile/ProfileContainer";
 import SidebarContainer from "./Component/SideBar/SidebarContainer";
 import UserContainer from "./Component/User/UserContainer";
 import MainContainer from "./Component/Main/MainContainer";
+import FullRecommContainer from "./Component/Profile/FullRecommend/FullRecommContainer";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
             <Route path="/login" element={<LoginContainer />} />
             <Route path="/profile/:id" element={<ProfileContainer />} />
             <Route path="/users" element={<UserContainer/>} />
+            <Route path="/fullrecommend/:id" element={<FullRecommContainer/>} />
 
         </Routes>
       </div>

@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { Correct, Expand, Like } from "../img";
 import { Checkbox, ImgReview } from "./ProfileForm";
-import Modal from "./Modal";
+
 
 
 export function catalog (array,isCheck,handleClick){
@@ -27,9 +27,9 @@ function postCorrection(){alert('Correct')};
       </div>
       <div className="col   text-black">
         <div className="row text-center"><h5 className="col">{el.title}</h5><div className="col">
-
+    <NavLink to={"/fullrecommend/"+el.id_r}><button>Expand</button></NavLink>
   
-    <Modal text={el.text}/>
+    {/* <Modal text={el.text}/> */}
           </div></div>
         <div className="text-start font-weight-bold"><p>{el.name}/{el.group}</p></div>
         <div className="text-start">{el.text} {Correct(postCorrection)}</div>

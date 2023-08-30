@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 
 
 const User = (props) => {
+
 let UserData=props.Users.users.map((el)=>{
   return(
     <div>
@@ -13,6 +14,8 @@ let UserData=props.Users.users.map((el)=>{
       </div>
   )
 })
+
+
 /* let UsersArray=UsersData.map((el)=>{<div>id:{el.id_user}</div>}) */
   return (
     <div class="col">
