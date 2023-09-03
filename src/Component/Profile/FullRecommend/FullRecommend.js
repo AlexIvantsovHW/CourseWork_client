@@ -6,7 +6,7 @@ import { UserForm } from "../ProfileForm";
 const FullRecommend = (props) => {
   let status=props.status;
   const date = moment().format("YYYY-MM-DD HH:mm:ss");
-    debugger;
+    
     const recommendList=props.Recommendation;
     const targetId=+props.id_r;
     const targetRecommendation = recommendList.filter(rec => rec.id_r === targetId);
@@ -14,7 +14,7 @@ const FullRecommend = (props) => {
     const validate = (values) => {const errors = {};return errors;};
   const onSubmit = (values) => {
     let fData = new FormData();
-    debugger;
+    
     fData.append("id_r", props.id_r);
     fData.append("id_user", targetRecommendation[0].id_user);
     fData.append("image", (!values.file?null:values.file));
@@ -48,6 +48,7 @@ const FullRecommend = (props) => {
                   )}
                 </Formik>)
     }};
+    
   return (
 
     <div class="col">
@@ -58,19 +59,13 @@ const FullRecommend = (props) => {
          <div>Img</div>
        <div className="bg-light text-black overflow-auto" style={{ height: "300px" }}>
          <p>{targetRecommendation[0].text}</p>
-       </div>
-       <div className="mx-auto border">{update()}</div>
+       </div><div className="mx-auto border">{update()}</div>
        </div>
 
        </div>
        
      </div>
 </div>
-/*     <div>
-      Full Recommend
-      <h4>Title: {targetRecommendation[0].title}</h4>
-      <p>text:{targetRecommendation[0].text}</p>
-    </div> */
   );
 };
 

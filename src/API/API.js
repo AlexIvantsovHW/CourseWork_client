@@ -8,14 +8,16 @@ const instance = axios.create({
 });
 
 const API = {
+  getLike(data){debugger; return instance.post('/like',data)},
+  getUserLikes(){return instance.get('/score_user')},
   getSort(sort){return instance.post('sort',sort)},
-  getScore(){return instance.get('/score')},
+  getScore(){debugger; return instance.get('/score')},
   getUpdate(data){return instance.post('/update',data)},
   getDB() {return instance.get('db')},
   getUsers() {return instance.get('users')},
   getRegistration(data) {return instance.post('registration',data)},
   getAuth(data) {return instance.post('login',data)},
-  getRecommendation(data) {debugger; return instance.post('recommendation',data)},
-  getAddRecommend(data){debugger; return instance.post('addRecommendation',data)}
+  getRecommendation(data) { return instance.post('recommendation',data)},
+  getAddRecommend(data){ return instance.post('addRecommendation',data)}
 };
 export default API;

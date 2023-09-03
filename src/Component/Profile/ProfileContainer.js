@@ -3,18 +3,20 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Profile from "./Profile";
 import { connect } from "react-redux";
 import { getLoginTC } from "../../Redux/LoginReducer";
-import { getAddRecomendTC, getRecomendTC } from "../../Redux/RecommendationReducer";
+import { getAddRecomendTC, getRecomendTC, getUserLikesTC,getLikeTC } from "../../Redux/RecommendationReducer";
 import { withAuthNavigate } from "../withAuthNavigate";
 import { compose } from "redux";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { setPublishAC } from "../../Redux/RecommendationReducer";
+
 class ProfileContainer extends React.Component{
-  componentDidMount(){
-  
+  componentDidMount(){  
     const fData=new FormData();
     let id=this.props.router.params.id; 
     fData.append("id",id); 
     this.props.getRecomendTC(fData);
+    this.props.getLikeTC();    
+    this.props.getUserLikesTC()
   }
   componentDidUpdate(prevProps,prevState){
     if (this.props.Recommendation!== prevProps.Recommendation) {
@@ -26,7 +28,8 @@ class ProfileContainer extends React.Component{
     <Profile getLoginTC={this.props.getLoginTC} getRecomendTC={this.props.getRecomendTC}
           Recommendation={this.props.Recommendation} id_user={this.props.router.params.id}
           getAddRecomendTC={this.props.getAddRecomendTC} setPublishAC={this.props.setPublishAC}
-  />);}
+          Login={this.props.Login.auth.name}
+          />);}
 };
 
 export var withRouter=function (Component) {
@@ -44,7 +47,7 @@ export var withRouter=function (Component) {
 const mapStateToProps=(state)=>{return{Login:state.Login,Recommendation:state.Recommendation,}}
 export default compose (
   withRouter,
-  connect(mapStateToProps,{getLoginTC,getRecomendTC,getAddRecomendTC,setPublishAC}),
+  connect(mapStateToProps,{getLoginTC,getRecomendTC,getAddRecomendTC,setPublishAC,getUserLikesTC,getLikeTC}),
   withAuthNavigate
   )(ProfileContainer);
   

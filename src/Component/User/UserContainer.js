@@ -19,7 +19,7 @@ class UserContainer extends React.Component{
     render(){return(<User Users={this.props.Users}/>)}
 }
 
-const mapStateToProps=(state)=>{return{Users:state.Users}}
+const mapStateToProps=(state)=>{return{Users:state.Users,Login:state.login}}
 export default compose (
   connect(mapStateToProps,{getUserTC}),
 /*   withAuthNavigate */

@@ -1,5 +1,5 @@
 import { Field } from "formik";
-import { Camera } from "../img";
+import { Camera, img_return } from "../img";
 
 export function UserForm(data) {
   function basicForm(label,name,type){
@@ -24,7 +24,6 @@ export function UserForm(data) {
     <div className="row mb-2 border">
       <div className="col ml-4 border" >
         <div className="row">
-          {basicForm('Image','file','file')}
           {basicForm('Title','title','text')}
           {basicForm('Name','name','text')}
           {basicForm('Group','group','text')}
@@ -43,6 +42,13 @@ export function UserForm(data) {
       </div>
     </div>
   );
+}
+function setUserLike(arr,id_user){
+  debugger;
+  if (arr[0].id_user===null){return 0}
+  let targetObj=arr.find(obj=>obj.id_user===Number(id_user));
+  if (targetObj===undefined){return 0}
+  else{return targetObj.userLikes}
 }
 
 export const Checkbox = ({ id, type, name, handleClick, isChecked }) => {
@@ -108,11 +114,19 @@ export const Toolbar = () => {
   );
 };
 
-export const UserInformation = () => {
+export const UserInformation = (props) => {
   return (
     <div className="row ">
       <div className="col-4 ">User Ava</div>
-      <div className="col ">User info</div>
+      <div className="col ">
+      <div>
+        User name: {props.name} 
+      </div>
+      <div>
+        Total user's like: {setUserLike(props.score,props.id_user)} 
+      </div>
+
+      </div>
     </div>
   );
 };
@@ -123,7 +137,7 @@ export const ImgReview = (props) => {
         className="row  mx-auto"
         style={{ maxHeight: "150px", maxWidth: "150px" }}
       >
-        {Camera}
+        {((props.img===null)||(props.img==='null')?Camera:img_return(props.img))}
       </div>
       <div className="row  d-flex justify-content-center align-items-center">
         {props.score}

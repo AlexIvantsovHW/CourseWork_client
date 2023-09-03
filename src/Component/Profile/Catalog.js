@@ -3,9 +3,7 @@ import { Correct, Expand, Like } from "../img";
 import { Checkbox, ImgReview } from "./ProfileForm";
 
 
-
 export function catalog (array,isCheck,handleClick){
-
 
 function postCorrection(){alert('Correct')};
    return(
@@ -23,11 +21,11 @@ function postCorrection(){alert('Correct')};
         />
       </div>
       <div className="col-1  d-flex justify-content-center align-items-center">{el.id_r}</div>
-      <div className="col-3  mx-auto"><ImgReview score={el.score} date={el.date}/>
+      <div className="col-3  mx-auto"><ImgReview  img={el.image} score={el.score} date={el.date}/>
       </div>
       <div className="col   text-black">
         <div className="row text-center"><h5 className="col">{el.title}</h5><div className="col">
-    <NavLink to={"/fullrecommend/"+el.id_r}><button>Expand</button></NavLink>
+    <NavLink to={"/fullrecommend/"+el.id_r}><button>Read</button></NavLink>
           </div></div>
         <div className="text-start font-weight-bold"><p>{el.name}/{el.group}</p></div>
         <div className="row"><div className="col-9">Tags:{el.tag}</div> <div className="col">{Like}</div></div>

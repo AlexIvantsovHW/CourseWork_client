@@ -1,18 +1,11 @@
 import React from "react";
 import { Field, ErrorMessage } from "formik";
-import * as Yup from 'yup';
 import moment from"moment";
 
 const date = moment().format('YYYY-MM-DD HH:mm:ss');
 
 
 export function TextError(props) {return <div className="error">{props.children}</div>;}
-/* export const validateSchema = Yup.object({
-  name: Yup.string().required("Required"),
-  email: Yup.string().required("Required"),
-  password: Yup.string().required("Required"),
-}) */
-
 export function passwordValidation(password){
   if(!password) {return 'Required'} 
   else if(typeof(password)!='string')

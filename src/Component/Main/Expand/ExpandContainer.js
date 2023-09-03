@@ -1,12 +1,12 @@
 import React from 'react'
-import FullRecommend from './FullRecommend';
+import Expand from './Expand';
 import { connect } from 'react-redux';
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { compose } from 'redux';
-import { setUpdateAC,getUpdateTC } from '../../../Redux/RecommendationReducer';
+import { setUpdateAC,getUpdateTC, getDbTC, getScoreTC } from '../../../Redux/RecommendationReducer';
 import { withAuthNavigate } from '../../withAuthNavigate';
 
-class FullRecommContainer extends React.Component{
+class ExpandContainer extends React.Component{
 
     componentDidUpdate(prevProps,prevState){
         if (this.props.Recommendation!== prevProps.Recommendation) {
@@ -14,8 +14,8 @@ class FullRecommContainer extends React.Component{
         }
       }
 
-    render(){return(<FullRecommend Recommendation={this.props.Recommendation.recommendation} 
-        id_r={this.props.router.params.id} status={this.props.Recommendation.setUpdate} 
+    render(){return(<Expand DB={this.props.DB}
+        id_r={this.props.router.params.id}  
         setUpdateAC={this.props.setUpdateAC}
         getUpdateTC={this.props.getUpdateTC}
         Login={this.props.Login}
@@ -36,9 +36,8 @@ export var withRouter=function (Component) {
   }
   ;
 
-const mapStateToProps=(state)=>{return{Recommendation:state.Recommendation,Login:state.Login}}
+const mapStateToProps=(state)=>{return{DB:state.Recommendation.DB,Login:state.Login}}
 export default compose(
     withRouter,
-    connect (mapStateToProps,{setUpdateAC,getUpdateTC}),
-    withAuthNavigate
-)((FullRecommContainer))
+    connect (mapStateToProps,{setUpdateAC,getUpdateTC,getDbTC,getScoreTC}),
+)((ExpandContainer))

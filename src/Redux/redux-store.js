@@ -5,7 +5,6 @@ import RegistrationReducer from './RegistrationReducer'
 import LoginReducer from "./LoginReducer";
 import RecommendationReducer from "./RecommendationReducer";
 import UserReducer from "./UserReducer";
-import ScoreReducer from "./ScoreReducer";
 
 let reducers=combineReducers({
     form:formReducer,
@@ -13,7 +12,6 @@ let reducers=combineReducers({
     Login:LoginReducer,
     Recommendation:RecommendationReducer,
     Users:UserReducer,
-    Score:ScoreReducer,
 })
 
 const store=createStore(reducers,applyMiddleware(thunk));

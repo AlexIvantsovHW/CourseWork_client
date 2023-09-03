@@ -13,6 +13,7 @@ const Login = (props) => {
     fData.append("name", values.name);
     fData.append("pass", values.password);
     await props.getLoginTC(fData);
+    <NavLink to={'/main'} />
   };
   return (
     <div class="col">

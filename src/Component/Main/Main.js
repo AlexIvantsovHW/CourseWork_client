@@ -1,20 +1,54 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Camera, img_return } from "../img";
+import { NavLink } from "react-router-dom";
+import { blockRender } from "../withAuthNavigate";
+
 
 const Main = (props) => {
+  let DB=props.DB;
+  function replaceAmountValues(DB, totalScore) {
+    return DB.map(item => {
+      const matchingScore = totalScore.find(score => score.id_r === item.id_r);
+      if (matchingScore) {return { ...item, Amount: matchingScore.Amount };} 
+      else {return item;}});
+  }
+  let transformArr=replaceAmountValues(DB,props.totalScore);
+  let id_user=props.id_user
+  
+  function setLike(status,id_r,id_user){
+    let fData=new FormData();
+    fData.append('like',status)
+    fData.append('id_r',id_r)
+    fData.append('id_user',id_user)
+    props.getLikeTC(fData);
+  }
+
   function sort(sort, data) {
     const fData = new FormData();
     fData.append("sort", sort);
     fData.append("field", data);
     props.getSortTC(fData);
   }
-  let DBlist = props.DB.map((el) => {
+  let DBlist=transformArr.map((el) => {
     return (
       <div className="row border">
         <div className="col">
           <div>Title: {el.title}</div>
           <div>Date: {el.date_upload}</div>
-          <div>Score: {el.score}</div>
+          <div>id_r:  {el.id_r}</div>
+          <div>Likes:  {el.Amount}</div>
+        </div>
+        <div className="col">
+        {((el.image===null)||(el.image==='null')?Camera:img_return(el.image))}
+        </div>
+        <div className="col-3 border">
+        <NavLink to={"/expand/"+el.id_r}><button>Read</button></NavLink>
+        {blockRender(props.Login.auth.auth,<div className="row d-flex align-items-end justify-content-end">
+          <div className="col"><button onClick={()=>{setLike(1,el.id_r,id_user)}}>Like</button></div>
+          <div className="col"><button onClick={()=>{setLike(0,el.id_r,id_user)}}>dis</button></div>
+          </div>
+          )}  
         </div>
       </div>
     );

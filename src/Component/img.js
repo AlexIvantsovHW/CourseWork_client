@@ -29,5 +29,10 @@ export const Like=(
         <path d="M9 11L10.8321 8.25192C10.9416 8.08766 11 7.89465 11 7.69722V5C11 4.44772 11.4477 4 12 4H13C14.1046 4 15 4.89543 15 6V11" stroke="#33363F" stroke-width="2" stroke-linecap="round"/>
         <path d="M13 11H17.7655C18.9575 11 19.8849 12.0361 19.7532 13.2209L19.1977 18.2209C19.0851 19.2337 18.229 20 17.2099 20H13.4142C13.149 20 12.8946 19.8946 12.7071 19.7071L12.2929 19.2929C12.1054 19.1054 11.851 19 11.5858 19H9" stroke="#33363F" stroke-width="2" stroke-linecap="round"/>
     </svg>
-
 )
+
+export const img_return=(link,size=80)=>{
+    return(
+        <img src={link} width={size} height={size} />
+    )
+}

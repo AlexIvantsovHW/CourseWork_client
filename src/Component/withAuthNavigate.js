@@ -9,3 +9,13 @@ export const withAuthNavigate =(Component)=>{
     }
     return NavigateComponent;
 }
+export function  blockRender(auth,Component){
+    
+if(auth===false) return null;
+return Component;
+}
+
+
+            
+    
+
