@@ -15,8 +15,6 @@ let UserData=props.Users.users.map((el)=>{
   )
 })
 
-
-/* let UsersArray=UsersData.map((el)=>{<div>id:{el.id_user}</div>}) */
   return (
     <div class="col">
      <div className="row border h-100 d-flex align-items-center text-white bg-success-subtle bg-gradient">

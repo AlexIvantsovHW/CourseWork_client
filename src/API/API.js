@@ -20,6 +20,7 @@ const API = {
   getUsers() {return instance.get('users')},
   getRegistration(data) {return instance.post('registration',data)},
   getRecommendation(data) {return instance.post('recommendation',data)},
-  getAddRecommend(data){return instance.post('addRecommendation',data)}
+  getAddRecommend(data){return instance.post('addRecommendation',data)},
+  postRate(data){return instance.post('rate',data)}
 };
 export default API;

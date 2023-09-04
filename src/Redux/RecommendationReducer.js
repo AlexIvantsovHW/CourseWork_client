@@ -8,6 +8,7 @@ const SET_UPDATE='SET_UPDATE'
 const SET_SCORE='SET_SCORE'
 const SET_USER_SCORE='SET_USER_SCORE'
 const SET_TOTAL_SCORE='SET_TOTAL_SCORE'
+const SET_RATE='SET_RATE'
 
 let initialState = {
    recommendation:[{
@@ -42,7 +43,8 @@ let initialState = {
   setUpdate:false,
   score:[{id_r:null,score:null}],
   userScore:[{id_r:null,score:null}],
-  totalScore:[{id_r:null,Amount:null}]
+  totalScore:[{id_r:null,Amount:null}],
+  rate:[{id_r:null,id_user:null,rate:null}]
 }
 const RecommendationReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -54,7 +56,7 @@ const RecommendationReducer = (state = initialState, action) => {
     case SET_SCORE: return{...state,score:action.score};
     case SET_TOTAL_SCORE:return {...state,totalScore:action.totalScore};
     case SET_USER_SCORE:debugger; return{...state,userScore:action.data};
-    case SET_SCORE:return{...state,score:action.score}
+    case SET_RATE:return{...state,rate:action.rate}
     default:return { ...state };
   }
 };
@@ -67,6 +69,7 @@ export const sortAC=(data)=>{{ return{type:SET_SORT,data}}}
 export const scoreUserAC=(data)=>{{ return{type:SET_USER_SCORE,data}}}
 export const scoreTotalAC=(totalScore)=>{{return{type:SET_TOTAL_SCORE,totalScore}}}
 export const scoreAC=(score)=>{{return{type:SET_SCORE,score}}}
+export const RateAC=(rate)=>{{debugger;return{type:SET_RATE,rate}}}
 //THUNC CREATOR
 export const getRecomendTC=(data)=>{
   return async (dispatch)=>{
@@ -124,6 +127,13 @@ export const getUserLikesTC=()=>{
     let result=await API.getUserLikes();
      dispatch(scoreUserAC(result.data))
   }
+}
+export const setRateTC=(data)=>{
+    return async(dispatch)=>{
+      debugger;
+    let result=await API.postRate(data);
+    debugger;
+    dispatch(RateAC(result.data))}
 }
 export default RecommendationReducer;
 

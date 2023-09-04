@@ -3,12 +3,22 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Camera, img_return } from "../img";
 import { NavLink } from "react-router-dom";
 import { blockRender } from "../withAuthNavigate";
+import { Raiting } from "./Raiting";
 
 
 
 
 const Main = (props) => {
-  debugger;
+let rateBlock=props.Recommendation.rate;
+  const setRate=(id_r,id_user,rate,action)=>{
+    const fData=new FormData();
+    fData.append('id_r',id_r);
+    fData.append('id_user',id_user);
+    fData.append('rate',rate);
+    fData.append('action',action);
+    props.setRateTC(fData);
+  } 
+
   let DB=props.DB;
   function replaceAmountValues(DB, totalScore) {
     return DB.map(item => {
@@ -43,6 +53,14 @@ const Main = (props) => {
           <div>Date: {el.date_upload}</div>
           <div>id_r:  {el.id_r}</div>
           <div>Likes:  {el.Amount}</div>
+          
+        <div>
+          <button onClick={()=>{setRate(el.id_r,props.id_user,1,1)}}>1</button>
+          <button onClick={()=>{setRate(el.id_r,props.id_user,2,1)}}>2</button>
+          <button onClick={()=>{setRate(el.id_r,props.id_user,3,1)}}>3</button>
+          <button onClick={()=>{setRate(el.id_r,props.id_user,4,1)}}>4</button>
+          <button onClick={()=>{setRate(el.id_r,props.id_user,5,1)}}>5</button>
+        </div>
         </div>
         <div className="col">
         {((el.image===null)||(el.image==='null')?Camera:img_return(el.image))}
@@ -53,7 +71,7 @@ const Main = (props) => {
           <div className="col">{
           ((likePresence(props.score, el.id_r, el.id_user)===true)?<button onClick={()=>{setLike(0,el.id_r,id_user)}}>dis</button>:
           <button onClick={()=>{setLike(1,el.id_r,id_user)}}>Like</button>)}</div>
-          </div>
+          </div>          
           )}  
         </div>
       </div>
@@ -80,6 +98,9 @@ const Main = (props) => {
               </div>
             <div className="w-100 mx-auto mb-2 overflow-auto" style={{ height: "500px" }}>
               {DBlist}
+          <div>
+     
+          </div>
             </div>
           </div>
         </div>

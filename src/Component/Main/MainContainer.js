@@ -2,7 +2,7 @@
 import React  from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { getDbTC,getScoreTC,getSortTC,getLikeTC,getLikeListTC } from '../../Redux/RecommendationReducer';
+import { getDbTC,getScoreTC,getSortTC,getLikeTC,getLikeListTC,setRateTC } from '../../Redux/RecommendationReducer';
 import Main from './Main';
 import { withAuthNavigate } from '../withAuthNavigate';
 
@@ -22,13 +22,14 @@ class MainContainer extends React.Component{
     score={this.props.score} getScoreTC={this.props.getScoreTC}
     getLikeTC={this.props.getLikeTC} Login={this.props.Login}
     id_user={this.props.Login.auth.id} totalScore={this.props.Recommendation.totalScore}
-    userScore={this.props.Recommendation.userScore}
+    userScore={this.props.Recommendation.userScore} setRateTC={this.props.setRateTC}
+    Recommendation={this.props.Recommendation}
     />)}
 }
 
 const mapStateToProps=(state)=>{return{DB:state.Recommendation.DB,score:state.Recommendation.score,Login:state.Login,Recommendation:state.Recommendation}}
 export default compose (
-  connect(mapStateToProps,{getDbTC,getSortTC,getScoreTC,getLikeTC,getLikeListTC}),
+  connect(mapStateToProps,{getDbTC,getSortTC,getScoreTC,getLikeTC,getLikeListTC,setRateTC}),
 /*   withAuthNavigate */
   )(MainContainer);
   

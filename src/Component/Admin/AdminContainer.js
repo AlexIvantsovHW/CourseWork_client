@@ -22,5 +22,4 @@ class AdminContainer extends React.Component{
 const mapStateToProps=(state)=>{return{Users:state.Users,Login:state.login}}
 export default compose (
   connect(mapStateToProps,{getUserTC}),
-/*   withAuthNavigate */
   )(AdminContainer);
