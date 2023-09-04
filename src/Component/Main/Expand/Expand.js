@@ -1,7 +1,7 @@
 import { Form, Formik } from "formik";
 import React from "react";
 import moment from "moment";
-import { UserForm } from "../../Profile/ProfileForm";
+import { UserForm } from "../../Profile/Function";
 import { img_return } from './../../img';
 
 const Expand = (props) => {

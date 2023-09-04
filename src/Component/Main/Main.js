@@ -5,7 +5,10 @@ import { NavLink } from "react-router-dom";
 import { blockRender } from "../withAuthNavigate";
 
 
+
+
 const Main = (props) => {
+  debugger;
   let DB=props.DB;
   function replaceAmountValues(DB, totalScore) {
     return DB.map(item => {
@@ -15,7 +18,9 @@ const Main = (props) => {
   }
   let transformArr=replaceAmountValues(DB,props.totalScore);
   let id_user=props.id_user
-  
+  function likePresence(arr2, id_r, id_user) {return arr2.some(element => element.id_r === id_r && element.id_user === id_user);}
+
+
   function setLike(status,id_r,id_user){
     let fData=new FormData();
     fData.append('like',status)
@@ -45,8 +50,9 @@ const Main = (props) => {
         <div className="col-3 border">
         <NavLink to={"/expand/"+el.id_r}><button>Read</button></NavLink>
         {blockRender(props.Login.auth.auth,<div className="row d-flex align-items-end justify-content-end">
-          <div className="col"><button onClick={()=>{setLike(1,el.id_r,id_user)}}>Like</button></div>
-          <div className="col"><button onClick={()=>{setLike(0,el.id_r,id_user)}}>dis</button></div>
+          <div className="col">{
+          ((likePresence(props.score, el.id_r, el.id_user)===true)?<button onClick={()=>{setLike(0,el.id_r,id_user)}}>dis</button>:
+          <button onClick={()=>{setLike(1,el.id_r,id_user)}}>Like</button>)}</div>
           </div>
           )}  
         </div>

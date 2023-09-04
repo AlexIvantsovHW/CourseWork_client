@@ -9,6 +9,7 @@ import UserContainer from "./Component/User/UserContainer";
 import MainContainer from "./Component/Main/MainContainer";
 import FullRecommContainer from "./Component/Profile/FullRecommend/FullRecommContainer";
 import ExpandContainer from "./Component/Main/Expand/ExpandContainer";
+import AdminContainer from "./Component/Admin/AdminContainer";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             <Route path="/users" element={<UserContainer/>} />
             <Route path="/fullrecommend/:id" element={<FullRecommContainer/>} />
             <Route path="/expand/:id" element={<ExpandContainer/>} />
+            <Route path="/admin" element={<AdminContainer/>} />
 
         </Routes>
       </div>

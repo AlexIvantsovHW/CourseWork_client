@@ -1,7 +1,7 @@
 import { Form, Formik } from "formik";
 import React from "react";
 import moment from "moment";
-import { UserForm } from "../ProfileForm";
+import { UserForm } from "../Function";
 
 const FullRecommend = (props) => {
   let status=props.status;
@@ -14,7 +14,6 @@ const FullRecommend = (props) => {
     const validate = (values) => {const errors = {};return errors;};
   const onSubmit = (values) => {
     let fData = new FormData();
-    
     fData.append("id_r", props.id_r);
     fData.append("id_user", targetRecommendation[0].id_user);
     fData.append("image", (!values.file?null:values.file));

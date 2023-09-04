@@ -1,5 +1,7 @@
 import { Field } from "formik";
 import { Camera, img_return } from "../img";
+import React from "react";
+
 
 export function UserForm(data) {
   function basicForm(label,name,type){
@@ -44,7 +46,6 @@ export function UserForm(data) {
   );
 }
 function setUserLike(arr,id_user){
-  debugger;
   if (arr[0].id_user===null){return 0}
   let targetObj=arr.find(obj=>obj.id_user===Number(id_user));
   if (targetObj===undefined){return 0}
@@ -148,3 +149,21 @@ export const ImgReview = (props) => {
     </>
   );
 };
+export const TagList=()=>{
+  return(
+      <div className="col-2 h-75 bg-dark bg-gradient rounded-4 m-1" style={{maxWidth:'100px'}}>
+      <div>TAG LIST</div>
+      <div>
+        <div><input type="checkbox"/>Tag1</div>
+        <div><input type="checkbox"/>Tag1</div>
+        <div><input type="checkbox"/>Tag1</div>
+        <div><input type="checkbox"/>Tag1</div>
+      </div>
+    </div>
+  )
+}
+export function blockUser(ProfileId,id_user,ProfileName,Component){
+  if((ProfileId===(+id_user))||ProfileName==='Admin'){
+    return Component
+  }else {return null}
+}

@@ -1,13 +1,14 @@
 import { NavLink } from "react-router-dom";
 import { Correct, Expand, Like } from "../img";
-import { Checkbox, ImgReview } from "./ProfileForm";
+import { Checkbox, ImgReview } from "./Function";
 
 
 export function catalog (array,isCheck,handleClick){
 
 function postCorrection(){alert('Correct')};
    return(
-    array.map((el) => {
+    <div className="border w-75 mx-auto mb-2 overflow-auto" style={{ height: "300px" }}>
+      {array.map((el) => {
   return (
     <div className="row bg-white text-black border-bottom">
       <div className="col-1 d-flex justify-content-center align-items-center">
@@ -32,4 +33,7 @@ function postCorrection(){alert('Correct')};
       </div>
     </div>
   );
-}));}
+})}
+      </div>
+)
+;}

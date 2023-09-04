@@ -1,13 +1,12 @@
 import React from 'react'
 import FullRecommend from './FullRecommend';
 import { connect } from 'react-redux';
-import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { compose } from 'redux';
 import { setUpdateAC,getUpdateTC } from '../../../Redux/RecommendationReducer';
 import { withAuthNavigate } from '../../withAuthNavigate';
+import { withRouter } from '../../CommonFunc';
 
 class FullRecommContainer extends React.Component{
-
     componentDidUpdate(prevProps,prevState){
         if (this.props.Recommendation!== prevProps.Recommendation) {
           this.setState(this.props.Recommendation);
@@ -24,17 +23,6 @@ class FullRecommContainer extends React.Component{
         )}
 }
 
-
-export var withRouter=function (Component) {
-    function ComponentWithRouterProp(props) {
-      let location = useLocation();
-      let navigate = useNavigate();
-      let params = useParams();
-      return <Component {...props} router={{ location, navigate, params }} />;
-    }
-    return ComponentWithRouterProp;
-  }
-  ;
 
 const mapStateToProps=(state)=>{return{Recommendation:state.Recommendation,Login:state.Login}}
 export default compose(

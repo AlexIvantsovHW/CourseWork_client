@@ -1,7 +1,6 @@
 import API from "../API/API"
 
 const SET_REGISTR='SET_REGISTR'
-
 let initialState = {
     password:null,
   name:null,
@@ -14,7 +13,6 @@ const RegistrationReducer = (state = initialState, action) => {
   }
 };
 export const registerAC=(data)=>{{return{type:SET_REGISTR,data}}}
-
 export const getRegistrationTC=(data)=>{
   return async (dispatch)=>{
     let Registration=await API.getRegistration(data);
