@@ -37,7 +37,8 @@ let initialState = {
     text:null,
     tag:null,
     date_upload:null,
-    Amount:null
+    Amount:null,
+    rate:null
   },],
   setPublish:false,
   setUpdate:false,
@@ -55,7 +56,7 @@ const RecommendationReducer = (state = initialState, action) => {
     case SET_SORT:return{...state,DB:action.data}
     case SET_SCORE: return{...state,score:action.score};
     case SET_TOTAL_SCORE:return {...state,totalScore:action.totalScore};
-    case SET_USER_SCORE:debugger; return{...state,userScore:action.data};
+    case SET_USER_SCORE: return{...state,userScore:action.data};
     case SET_RATE:return{...state,rate:action.rate}
     default:return { ...state };
   }
@@ -69,7 +70,7 @@ export const sortAC=(data)=>{{ return{type:SET_SORT,data}}}
 export const scoreUserAC=(data)=>{{ return{type:SET_USER_SCORE,data}}}
 export const scoreTotalAC=(totalScore)=>{{return{type:SET_TOTAL_SCORE,totalScore}}}
 export const scoreAC=(score)=>{{return{type:SET_SCORE,score}}}
-export const RateAC=(rate)=>{{debugger;return{type:SET_RATE,rate}}}
+export const RateAC=(rate)=>{{return{type:SET_RATE,rate}}}
 //THUNC CREATOR
 export const getRecomendTC=(data)=>{
   return async (dispatch)=>{
@@ -81,7 +82,6 @@ export const getRecomendTC=(data)=>{
 export const getAddRecomendTC=(data)=>{
   return async (dispatch)=>{
     let result=await API.getAddRecommend(data);
-  
     dispatch(recommendationAC(result.data))
   }
 }
@@ -111,7 +111,6 @@ export const getScoreTC=(data)=>{
 }
 export const getLikeTC=(data)=>{
   return async (dispatch)=>{
-    debugger;
     let result=await API.getLike(data);
     dispatch(scoreAC(result.data))
   }
@@ -130,10 +129,14 @@ export const getUserLikesTC=()=>{
 }
 export const setRateTC=(data)=>{
     return async(dispatch)=>{
-      debugger;
     let result=await API.postRate(data);
-    debugger;
     dispatch(RateAC(result.data))}
 }
+export const getRateDataTC=()=>{
+  return async(dispatch)=>{
+  let result=await API.getRate();
+  dispatch(RateAC(result.data))}
+}
+
 export default RecommendationReducer;
 

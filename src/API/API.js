@@ -12,7 +12,7 @@ const API = {
   getDB() {return instance.get('db')},
   getLikeList(){return instance.get('likeList')},
   getAuth(data) {return instance.post('login',data)},
-  getLike(data){debugger; return instance.post('like',data)},
+  getLike(data){return instance.post('like',data)},
   getUserLikes(){return instance.get('score_user')},
   getSort(sort){return instance.post('sort',sort)},
   getScore(){return instance.get('score')},
@@ -21,6 +21,7 @@ const API = {
   getRegistration(data) {return instance.post('registration',data)},
   getRecommendation(data) {return instance.post('recommendation',data)},
   getAddRecommend(data){return instance.post('addRecommendation',data)},
-  postRate(data){return instance.post('rate',data)}
+  postRate(data){debugger; return instance.post('rate',data)},
+  getRate(){return instance.get('ratedb')}
 };
 export default API;

@@ -5,9 +5,7 @@ import { catalog } from "./Catalog";
 import { publish } from "./FormikFunc";
 
 const Profile = (props) => {
-  let pageName= props.Users.filter(function (el) {
-    return el.id ===(+props.id_user);
-  })
+  let pageName= (props.Users[0].name===null?props.Users:props.Users.filter(function (el) {return el.id ===(+props.id_user);}))
   let ProfileName=props.Login.name;
   let ProfileId=props.Login.id;
   let Recommendation = props.Recommendation.recommendation;
@@ -37,7 +35,6 @@ const Profile = (props) => {
   useEffect(() => {
     setList(Recommendation);
   }, [Recommendation]);
-  debugger;
   return (
     <div class="col">
       <div className="row border h-100 d-flex flex-row align-items-center text-white bg-success-subtle bg-gradient">
