@@ -1,5 +1,5 @@
 import axios from "axios";
-/* const BaseURL='https://courseworkserver-e323df5c3fa1.herokuapp.com/'; */
+/* const BaseURL='https://coursework-server.onrender.com/'; */
 const BaseURL='http://localhost:3001/';
 
 const instance = axios.create({
