@@ -149,9 +149,9 @@ export const ImgReview = (props) => {
     </>
   );
 };
-export const TagList=()=>{
+export const TagList=(props)=>{
   return(
-      <div className="col-2 h-75 bg-dark bg-gradient rounded-4 m-1" style={{maxWidth:'100px'}}>
+      <div className={`col-2 h-75 bg-${props.theme} bg-gradient rounded-4 m-1`} style={{maxWidth:'100px'}}>
       <div>TAG LIST</div>
       <div>
         <div><input type="checkbox"/>Tag1</div>

@@ -10,3 +10,4 @@ export var withRouter=function (Component) {
     return ComponentWithRouterProp;
   }
   ;
+export function setTheme(item,AC){AC(item)}  

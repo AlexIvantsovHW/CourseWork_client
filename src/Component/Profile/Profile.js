@@ -5,12 +5,13 @@ import { catalog } from "./Catalog";
 import { publish } from "./FormikFunc";
 
 const Profile = (props) => {
-  let pageName= (props.Users[0].name===null?props.Users:props.Users.filter(function (el) {return el.id ===(+props.id_user);}))
-  let ProfileName=props.Login.name;
-  let ProfileId=props.Login.id;
-  let Recommendation = props.Recommendation.recommendation;
-  let status = props.Recommendation.setPublish;
-  let score = props.Recommendation.userScore;
+  let pageName= (props.Users[0].name===null?props.Users:props.Users.filter(function (el) {return el.id ===(+props.id_user);})),
+     ProfileName=props.Login.name,
+     ProfileId=props.Login.id,
+     Recommendation = props.Recommendation.recommendation,
+     status = props.Recommendation.setPublish,
+     score = props.Recommendation.userScore,
+     theme=props.Theme.theme;
   const [isCheckAll, setIsCheckAll] = useState(false);
   const [isCheck, setIsCheck] = useState([]);
   const [imgLink, setImgLink] = useState([]);
@@ -38,8 +39,8 @@ const Profile = (props) => {
   return (
     <div class="col">
       <div className="row border h-100 d-flex flex-row align-items-center text-white bg-success-subtle bg-gradient">
-        <TagList />
-        <div className="col-4 mx-auto w-75 h-auto bg-dark  bg-gradient rounded-4">
+        <TagList  theme={theme}/>
+        <div className={`col-4 mx-auto w-75 h-auto bg-${theme}  bg-gradient rounded-4`}>
           <UserInformation score={score} id_user={props.id_user} name={pageName[0].name}/>
           <div className="row border mt-2">
             <div className="text-center mb-2">
