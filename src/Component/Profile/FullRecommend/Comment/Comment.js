@@ -10,6 +10,7 @@ const Comments=[
 ]
 
 const Comment = (props) => {
+  debugger;
   let userElement = (name,comment,date) => {
     return (
       <div className="row border bg-white">
@@ -28,6 +29,9 @@ const Comment = (props) => {
   };
   function openForm(AC){return AC(true)}
   function closeForm(AC){debugger;return AC(false)}
+  function filterComments(arr,id_r){return arr.filter(item=>item.id_r===id_r)}
+  let filteredComments=filterComments(props.comments,props.targetId)
+
   if(props.statusView===false){return(
   <a className="text-center fst-italic text-decoration-none" onClick={()=>{openForm(props.setViewAC)}}>View comments</a>)}else{
   return (
@@ -41,10 +45,10 @@ const Comment = (props) => {
         style={{ height: "120px", width: "95%",margin:'1.5%' }}
       >
         
-        {Comments.map((user)=>{return userElement(user.name,user.comment,user.date)})}
+        {filteredComments.map((user)=>{return userElement(user.id_r,user.comment,user.date_upload)})}
       </div>
       {AddComment(
-                props.statusComment, props.getUpdateTC,
+                props.statusComment, props.setCommentsTC,
                 props.id_user,
                 props.targetId,props.setCommentStatusAC,
                 props.setViewAC

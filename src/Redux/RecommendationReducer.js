@@ -11,6 +11,7 @@ const SET_TOTAL_SCORE='SET_TOTAL_SCORE'
 const SET_RATE='SET_RATE'
 const SET_COMMENT_STATUS='SET_COMMENT_STATUS'
 const SET_VIEW_STATUS='SET_VIEW_STATUS'
+const SET_COMMENT='SET_COMMENT'
 
 let initialState = {
    recommendation:[{
@@ -50,6 +51,7 @@ let initialState = {
   rate:[{id_r:null,id_user:null,rate:null}],
   setCommentStatus:false,
   setView:false,
+  comments:[{id_r:null,id_user:null,comment:null,date_upload:null}]
 }
 const RecommendationReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -59,7 +61,7 @@ const RecommendationReducer = (state = initialState, action) => {
     case SET_UPDATE:return{...state,setUpdate:action.status};
     case SET_VIEW_STATUS:return{...state,setView:action.status};
     case SET_COMMENT_STATUS:return{...state,setCommentStatus:action.status};
-
+    case SET_COMMENT:return{...state,comments:action.comment};
     case SET_SORT:return{...state,DB:action.data}
     case SET_SCORE: return{...state,score:action.score};
     case SET_TOTAL_SCORE:return {...state,totalScore:action.totalScore};
@@ -80,6 +82,7 @@ export const scoreTotalAC=(totalScore)=>{{return{type:SET_TOTAL_SCORE,totalScore
 export const scoreAC=(score)=>{{return{type:SET_SCORE,score}}}
 export const RateAC=(rate)=>{{return{type:SET_RATE,rate}}}
 export const setCommentStatusAC=(status)=>{{return{type:SET_COMMENT_STATUS,status}}}
+export const commentsAC=(comment)=>{{return{type:SET_COMMENT,comment}}}
 //THUNC CREATOR
 export const getRecomendTC=(data)=>{
   return async (dispatch)=>{
@@ -146,6 +149,15 @@ export const getRateDataTC=()=>{
   let result=await API.getRate();
   dispatch(RateAC(result.data))}
 }
-
+export const getCommentsTC=()=>{
+  return async(dispatch)=>{
+    let result=await API.getComments();
+    dispatch(commentsAC(result.data))}
+}
+export const setCommentsTC=(data)=>{
+  return async(dispatch)=>{
+    let result=await API.setComments(data);
+    dispatch(commentsAC(result.data))}
+}
 export default RecommendationReducer;
 

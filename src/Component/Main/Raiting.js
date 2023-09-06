@@ -3,10 +3,6 @@ import { deleteRate } from './Expand/Function';
 import './style.css'
 
 export function Raiting(title,date_upload,Amount,id_r,id_user,rate,setRateTC,avRate,rateDB){
-  debugger;
-
-
-
     const setRate=(id_r,id_user,rate,action)=>{
         const fData=new FormData();
         fData.append('id_r',id_r);

@@ -4,10 +4,11 @@ import Comment from "./Comment/Comment";
 import { AddComment } from "./Comment/FormikFunc";
 
 const FullRecommend = (props) => {
+  debugger;
   let status = props.status,
       statusComment=props.statusComment;
 
-  const recommendList = props.Recommendation;
+  const recommendList = props.Recommendation.recommendation;
   const targetId = +props.id_r;
   const targetRecommendation = recommendList.filter((rec) => rec.id_r === targetId);
   return (
@@ -27,6 +28,8 @@ const FullRecommend = (props) => {
                 setCommentStatusAC={props.setCommentStatusAC}
                 setViewAC={props.setViewAC}
                 statusView={props.statusView}
+                comments={props.Recommendation.comments}
+                setCommentsTC={props.setCommentsTC}
               />
             <div className="mx-auto border">
               {update(

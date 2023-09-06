@@ -51,7 +51,7 @@ export function commentForm(data) {
         <Field
           className="form-control form-control-sm mx-0 w-100 h-100 mt-1 mb-1"
           component="input"
-          name={"text"}
+          name={"comment"}
           placeholder={"Type recommendation"}
           type={"input"}
         />

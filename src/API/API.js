@@ -21,7 +21,9 @@ const API = {
   getRegistration(data) {return instance.post('registration',data)},
   getRecommendation(data) {return instance.post('recommendation',data)},
   getAddRecommend(data){return instance.post('addRecommendation',data)},
-  postRate(data){debugger; return instance.post('rate',data)},
-  getRate(){return instance.get('ratedb')}
+  postRate(data){return instance.post('rate',data)},
+  getRate(){return instance.get('ratedb')},
+  getComments(){return instance.get('comment')},
+  setComments(data){debugger;return instance.post('setComment',data)}
 };
 export default API;

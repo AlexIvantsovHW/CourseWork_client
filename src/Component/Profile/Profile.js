@@ -48,7 +48,10 @@ const Profile = (props) => {
             </div>
             <div className="row border w-75 mx-auto" style={{ height: "20px" }}>
               <div className="col-1">
-                <Checkbox type="checkbox" name="selectAll" id="selectAll" handleClick={handleSelectAll} isChecked={isCheckAll}/>
+                <Checkbox 
+                  type="checkbox" name="selectAll" 
+                  id="selectAll" handleClick={handleSelectAll} 
+                  isChecked={isCheckAll}/>
               </div>
               <Toolbar />
             </div>

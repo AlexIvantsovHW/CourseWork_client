@@ -23,7 +23,7 @@ const validate = (values) => {const errors = {};return errors;};
   };
 
   function openForm(AC){return AC(true)}
-  function closeForm(AC){debugger;return AC(false)}
+  function closeForm(AC){return AC(false)}
 export  const update=(status,TC,id_user,id_r,AC)=>{
   if(status===false){
     return(
