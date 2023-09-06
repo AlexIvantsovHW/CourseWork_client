@@ -45,6 +45,19 @@ export function UserForm(data) {
     </div>
   );
 }
+export function commentForm(data) {
+  return (
+       <div className="col mr-4 border">
+        <Field
+          className="form-control form-control-sm mx-0 w-100 h-100 mt-1 mb-1"
+          component="input"
+          name={"text"}
+          placeholder={"Type recommendation"}
+          type={"input"}
+        />
+      </div>
+  );
+}
 function setUserLike(arr,id_user){
   if (arr[0].id_user===null){return 0}
   let targetObj=arr.find(obj=>obj.id_user===Number(id_user));

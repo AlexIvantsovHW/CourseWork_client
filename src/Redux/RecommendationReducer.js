@@ -9,6 +9,8 @@ const SET_SCORE='SET_SCORE'
 const SET_USER_SCORE='SET_USER_SCORE'
 const SET_TOTAL_SCORE='SET_TOTAL_SCORE'
 const SET_RATE='SET_RATE'
+const SET_COMMENT_STATUS='SET_COMMENT_STATUS'
+const SET_VIEW_STATUS='SET_VIEW_STATUS'
 
 let initialState = {
    recommendation:[{
@@ -45,7 +47,9 @@ let initialState = {
   score:[{id_r:null,score:null}],
   userScore:[{id_r:null,score:null}],
   totalScore:[{id_r:null,Amount:null}],
-  rate:[{id_r:null,id_user:null,rate:null}]
+  rate:[{id_r:null,id_user:null,rate:null}],
+  setCommentStatus:false,
+  setView:false,
 }
 const RecommendationReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -53,6 +57,9 @@ const RecommendationReducer = (state = initialState, action) => {
     case SET_DB:return{...state,DB:action.data};
     case SET_STATUS:return{...state,setPublish:action.status};
     case SET_UPDATE:return{...state,setUpdate:action.status};
+    case SET_VIEW_STATUS:return{...state,setView:action.status};
+    case SET_COMMENT_STATUS:return{...state,setCommentStatus:action.status};
+
     case SET_SORT:return{...state,DB:action.data}
     case SET_SCORE: return{...state,score:action.score};
     case SET_TOTAL_SCORE:return {...state,totalScore:action.totalScore};
@@ -66,11 +73,13 @@ export const recommendationAC=(data)=>{{return{type:SET_USER_RECOMMENDATIONS,dat
 export const dbAC=(data)=>{{return{type:SET_DB,data}}}
 export const setPublishAC=(status)=>{{return{type:SET_STATUS,status}}}
 export const setUpdateAC=(status)=>{{return{type:SET_UPDATE,status}}}
+export const setViewAC=(status)=>{{return{type:SET_VIEW_STATUS,status}}}
 export const sortAC=(data)=>{{ return{type:SET_SORT,data}}}
 export const scoreUserAC=(data)=>{{ return{type:SET_USER_SCORE,data}}}
 export const scoreTotalAC=(totalScore)=>{{return{type:SET_TOTAL_SCORE,totalScore}}}
 export const scoreAC=(score)=>{{return{type:SET_SCORE,score}}}
 export const RateAC=(rate)=>{{return{type:SET_RATE,rate}}}
+export const setCommentStatusAC=(status)=>{{return{type:SET_COMMENT_STATUS,status}}}
 //THUNC CREATOR
 export const getRecomendTC=(data)=>{
   return async (dispatch)=>{
