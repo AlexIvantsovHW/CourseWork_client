@@ -1,7 +1,11 @@
 import { React } from "react";
-
-import { AddComment } from "./FormikFunc";
-import { closeForm, filterComments, openForm, userElement } from "../../../CommonFunc";
+import { 
+  addComment, 
+  closeForm, 
+  filterComments, 
+  openForm, 
+  userElement 
+} from "../../../CommonFunc";
 
 
 const Comment = (props) => {
@@ -24,7 +28,7 @@ const Comment = (props) => {
       >
         {filteredComments.map((user)=>{return userElement(user.name,user.comment,user.date_upload)})}
       </div>
-      {AddComment(
+      {addComment(
                 props.statusComment, 
                 props.setCommentsTC,
                 props.id_user,
