@@ -35,7 +35,13 @@ class ProfileContainer extends React.Component{
           />);}
 };
 
-const mapStateToProps=(state)=>{return{Login:state.Login,Recommendation:state.Recommendation,Users:state.Users,Theme:state.Theme}}
+const mapStateToProps=(state)=>{
+  return{
+    Login:state.Login,
+    Recommendation:state.Recommendation,
+    Users:state.Users,
+    Theme:state.Theme
+  }}
 export default compose (
   withRouter,
   connect(mapStateToProps,{

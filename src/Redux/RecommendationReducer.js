@@ -1,17 +1,20 @@
 import API from "../API/API"
 
-const SET_USER_RECOMMENDATIONS='SET_USER_RECOMMENDATIONS';
-const SET_STATUS='SET_STATUS';
-const SET_DB='SET_DB';
-const SET_SORT='SET_SORT';
-const SET_UPDATE='SET_UPDATE'
-const SET_SCORE='SET_SCORE'
-const SET_USER_SCORE='SET_USER_SCORE'
-const SET_TOTAL_SCORE='SET_TOTAL_SCORE'
-const SET_RATE='SET_RATE'
-const SET_COMMENT_STATUS='SET_COMMENT_STATUS'
-const SET_VIEW_STATUS='SET_VIEW_STATUS'
-const SET_COMMENT='SET_COMMENT'
+const SET_USER_RECOMMENDATIONS='SET_USER_RECOMMENDATIONS',
+      SET_STATUS='SET_STATUS',
+      SET_DB='SET_DB',
+      SET_SORT='SET_SORT',
+      SET_UPDATE='SET_UPDATE',
+      SET_SCORE='SET_SCORE',
+      SET_USER_SCORE='SET_USER_SCORE',
+      SET_TOTAL_SCORE='SET_TOTAL_SCORE',
+      SET_RATE='SET_RATE',
+      SET_COMMENT_STATUS='SET_COMMENT_STATUS',
+      SET_VIEW_STATUS='SET_VIEW_STATUS',
+      SET_COMMENT='SET_COMMENT',
+      SET_FILTER='SET_FILTER',
+      SET_INIT_TAGS='SET_INIT_TAGS'
+      ;
 
 let initialState = {
    recommendation:[{
@@ -51,7 +54,9 @@ let initialState = {
   rate:[{id_r:null,id_user:null,rate:null}],
   setCommentStatus:false,
   setView:false,
-  comments:[{id_r:null,id_user:null,comment:null,date_upload:null,name:null}]
+  comments:[{id_r:null,id_user:null,comment:null,date_upload:null,name:null}],
+  initTags:[],
+  Filter:[]
 }
 const RecommendationReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -67,6 +72,8 @@ const RecommendationReducer = (state = initialState, action) => {
     case SET_TOTAL_SCORE:return {...state,totalScore:action.totalScore};
     case SET_USER_SCORE: return{...state,userScore:action.data};
     case SET_RATE:return{...state,rate:action.rate}
+    case SET_FILTER:return { ...state, Filter: [...action.filter] };
+    case SET_INIT_TAGS: return { ...state, initTags:action.tags };
     default:return { ...state };
   }
 };
@@ -83,6 +90,9 @@ export const scoreAC=(score)=>{{return{type:SET_SCORE,score}}}
 export const RateAC=(rate)=>{{return{type:SET_RATE,rate}}}
 export const setCommentStatusAC=(status)=>{{return{type:SET_COMMENT_STATUS,status}}}
 export const commentsAC=(comment)=>{{debugger;return{type:SET_COMMENT,comment}}}
+export const filterAC=(filter)=>{{return{type:SET_FILTER,filter}}}
+export const tagsAC=(tags)=>{{return{type:SET_INIT_TAGS,tags}}}
+
 //THUNC CREATOR
 export const getRecomendTC=(data)=>{
   return async (dispatch)=>{

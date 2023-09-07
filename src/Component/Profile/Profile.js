@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Checkbox, TagList, Toolbar, UserForm, UserInformation, blockUser } from "./Function";
+import { Checkbox, TagList, Toolbar, UserInformation, blockUser } from "./Function";
 import { catalog } from "./Catalog";
 import { publish } from "./FormikFunc";
+import TagContainer from "./Tag/TagContainer";
 
 const Profile = (props) => {
+  debugger;
   let pageName= (props.Users[0].name===null?props.Users:props.Users.filter(function (el) {return el.id ===(+props.id_user);})),
      ProfileName=props.Login.name,
      ProfileId=props.Login.id,
      Recommendation = props.Recommendation.recommendation,
+     Filter=props.Recommendation.Filter,
      status = props.Recommendation.setPublish,
      score = props.Recommendation.userScore,
      theme=props.Theme.theme;
@@ -39,7 +42,7 @@ const Profile = (props) => {
   return (
     <div class="col">
       <div className="row border h-100 d-flex flex-row align-items-center text-white bg-success-subtle bg-gradient">
-        <TagList  theme={theme}/>
+        <TagContainer/>
         <div className={`col-4 mx-auto w-75 h-auto bg-${theme}  bg-gradient rounded-4`}>
           <UserInformation score={score} id_user={props.id_user} name={pageName[0].name}/>
           <div className="row border mt-2">
@@ -55,7 +58,7 @@ const Profile = (props) => {
               </div>
               <Toolbar />
             </div>
-            {catalog(Recommendation, isCheck, handleClick)}
+            {catalog(Recommendation, isCheck, handleClick,Filter)}
             <div className="mx-auto border">
               {blockUser(
                 ProfileId,

@@ -1,5 +1,5 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { UserImg } from "./img";
+import { UserImg, deleteSVG } from "./img";
 import { Form, Formik } from "formik";
 import moment from "moment";
 import { commentForm } from "./Profile/Function";
@@ -35,9 +35,9 @@ export const userElement = (name,comment,date) => {
 export function openForm(AC){return AC(true)}
 export function closeForm(AC){return AC(false)}
 export function filterComments(arr,id_r){return arr.filter(item=>item.id_r===id_r)}
-const date = moment().format("YYYY-MM-DD HH:mm:ss");
-const initialValues = { text: "" };
-const validate = (values) => {const errors = {};return errors;};
+export const date = moment().format("YYYY-MM-DD HH:mm:ss");
+export const initialValues = { text: "" };
+export const validate = (values) => {const errors = {};return errors;};
   const onSubmit = (values,id_user,id_r,TC) => {
     let fData = new FormData();
     fData.append("id_r", id_r);
@@ -83,3 +83,12 @@ export  const addComment=(statusComment,TC,id_user,id_r,AC)=>{
                   )}
                 </Formik>)
     }};
+export function liGenerator(item,items,setItems,id){
+      return(
+            <div className="w-100 mb-2 d-flex align-content-center ">
+              <li className="p-2  list-group-item bg-dark border-dark text-white">
+                <button className="btn btn-danger mx-2" onClick={()=>(setItems(items.filter((item) => item.id !== id)))}>{deleteSVG}</button>{item}
+              </li>
+            </div>
+      )
+    }

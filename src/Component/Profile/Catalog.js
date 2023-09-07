@@ -1,14 +1,25 @@
 import { NavLink } from "react-router-dom";
-import { Correct, Expand, Like } from "../img";
+import {  Like } from "../img";
 import { Checkbox, ImgReview } from "./Function";
 
 
-export function catalog (array,isCheck,handleClick){
+export function getTags(data){
+  let x=[];
+  for (let i=0;i<data.length;i++){x.push(data[i].value)}
+  return Array.from(new Set(x)).filter(Boolean);
+}
+export function catalog (array,isCheck,handleClick,Filter){
 
 function postCorrection(){alert('Correct')};
+debugger;
+let RecommendData = array,
+    tagFilter =getTags(Filter),
+    x=[''].concat(tagFilter),
+    filteredList = RecommendData.filter((o) => x.includes(o.tag)),
+    recommendList =x.length > 1? filteredList: RecommendData;
    return(
     <div className="border w-75 mx-auto mb-2 overflow-auto" style={{ height: "300px" }}>
-      {array.map((el) => {
+      {recommendList.map((el) => {
   return (
     <div className="row bg-white text-black border-bottom">
       <div className="col-1 d-flex justify-content-center align-items-center">

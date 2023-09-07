@@ -2,11 +2,13 @@ import { Form, Formik } from "formik";
 import moment from "moment";
 import DropboxChooser from "../Dropbox-chooser";
 import { UserForm } from "./Function";
+import { closeForm, openForm } from "../CommonFunc";
 const date = moment().format("YYYY-MM-DD HH:mm:ss");
 
 export const initialValues = { text: "" };
 export const validate = (values) => {const errors = {};return errors;};
 export const onSubmit = (values,id_user,imgLink,TC) => {
+let tag='#'+values.tag;
   let fData = new FormData();
   fData.append("id_user", id_user);
   fData.append("image", (!imgLink?null:imgLink));
@@ -15,12 +17,11 @@ export const onSubmit = (values,id_user,imgLink,TC) => {
   fData.append("group", values.group);
   fData.append("category", values.category);
   fData.append("text", values.text);
-  fData.append("tag", values.tag);
+  fData.append("tag", tag);
   fData.append("date_upload",date);
   TC(fData);
 };
-function openForm(AC){return AC(true)}
-function closeForm(AC){return AC(false)}
+
 
 export const publish=(status,AC,id_user,TC,onSuccess,imgLink)=>{
     if(status===false){return(<button onClick={()=>{openForm(AC)}}>Add recommendation</button>)}

@@ -1,13 +1,8 @@
 import { Form, Formik } from "formik";
-import moment from "moment";
 import { UserForm } from "../Function";
-import DropboxChooser from "../../Dropbox-chooser";
+import { closeForm, date, initialValues, openForm, validate } from "../../CommonFunc";
 
-
-const date = moment().format("YYYY-MM-DD HH:mm:ss");
-const initialValues = { text: "" };
-const validate = (values) => {const errors = {};return errors;};
-  const onSubmit = (values,id_user,id_r,TC) => {
+const onSubmit = (values,id_user,id_r,TC) => {
     let fData = new FormData();
     fData.append("id_r", id_r);
     fData.append("id_user", id_user);
@@ -21,18 +16,13 @@ const validate = (values) => {const errors = {};return errors;};
     fData.append("date_upload",date);
     TC(fData);
   };
-
-  function openForm(AC){return AC(true)}
-  function closeForm(AC){return AC(false)}
-export  const update=(status,TC,id_user,id_r,AC)=>{
+export const update=(status,TC,id_user,id_r,AC)=>{
   if(status===false){
     return(
       <div className="d-flex justify-content-center align-items-center w-100 mb-1 mt-1">
         <button className="btn btn-warning mx-auto" onClick={()=>{openForm(AC)}}>Update review</button>
       </div>
     )}else{
-  
- 
   return(
     <Formik initialValues={initialValues} validate={validate}
           onSubmit={async (values, { resetForm }) => {
