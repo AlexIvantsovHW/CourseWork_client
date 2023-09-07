@@ -1,7 +1,6 @@
 import React from "react";
 import { update } from "./FormikFunc";
 import Comment from "./Comment/Comment";
-import { AddComment } from "./Comment/FormikFunc";
 
 const FullRecommend = (props) => {
   debugger;
@@ -33,9 +32,11 @@ const FullRecommend = (props) => {
               />
             <div className="mx-auto border">
               {update(
-                status, props.getUpdateTC,
+                status, 
+                props.getUpdateTC,
                 targetRecommendation[0].id_user,
-                targetId,props.setUpdateAC
+                targetId,
+                props.setUpdateAC
               )}
             </div>
           </div>

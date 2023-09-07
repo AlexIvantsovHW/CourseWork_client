@@ -70,8 +70,9 @@ debugger;
                 {filteredComments.map((user)=>{return userElement(user.name,user.comment,user.date_upload)})}
             </div>
             {addComment(
-                statusComment, props.setCommentsTC,
-                targetRecommendation[0].id_user,
+                statusComment, 
+                props.setCommentsTC,
+                props.Login.auth.id,
                 targetId,props.setCommentStatusAC,
                 props.setViewAC
               )}
