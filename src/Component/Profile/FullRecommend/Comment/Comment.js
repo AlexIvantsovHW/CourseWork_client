@@ -45,7 +45,7 @@ const Comment = (props) => {
         style={{ height: "120px", width: "95%",margin:'1.5%' }}
       >
         
-        {filteredComments.map((user)=>{return userElement(user.id_r,user.comment,user.date_upload)})}
+        {filteredComments.map((user)=>{return userElement(user.name,user.comment,user.date_upload)})}
       </div>
       {AddComment(
                 props.statusComment, props.setCommentsTC,

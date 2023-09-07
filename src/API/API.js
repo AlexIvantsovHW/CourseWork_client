@@ -23,7 +23,7 @@ const API = {
   getAddRecommend(data){return instance.post('addRecommendation',data)},
   postRate(data){return instance.post('rate',data)},
   getRate(){return instance.get('ratedb')},
-  getComments(){return instance.get('comment')},
+  getComments(){debugger; return instance.get('comment')},
   setComments(data){debugger;return instance.post('setComment',data)}
 };
 export default API;
