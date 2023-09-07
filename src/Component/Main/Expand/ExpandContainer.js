@@ -1,13 +1,18 @@
 import React from 'react'
 import Expand from './Expand';
 import { connect } from 'react-redux';
-import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { compose } from 'redux';
-import { setUpdateAC,getUpdateTC, getDbTC, getScoreTC } from '../../../Redux/RecommendationReducer';
-import { withAuthNavigate } from '../../withAuthNavigate';
+import { 
+  setUpdateAC,getUpdateTC,
+  getDbTC, getScoreTC,
+  getCommentsTC, setViewAC,
+  setCommentsTC,setCommentStatusAC } from '../../../Redux/RecommendationReducer';
+import { withRouter } from '../../CommonFunc';
 
 class ExpandContainer extends React.Component{
-
+  componentDidMount(){
+    this.props.getCommentsTC();
+  }
     componentDidUpdate(prevProps,prevState){
         if (this.props.Recommendation!== prevProps.Recommendation) {
           this.setState(this.props.Recommendation);
@@ -19,25 +24,23 @@ class ExpandContainer extends React.Component{
         setUpdateAC={this.props.setUpdateAC}
         getUpdateTC={this.props.getUpdateTC}
         Login={this.props.Login}
+        setViewAC={this.props.setViewAC}
+        statusComment={this.props.DB.setCommentStatus} 
+        setCommentsTC={this.props.setCommentsTC}
+        setCommentStatusAC={this.props.setCommentStatusAC}
         />
         
         )}
 }
 
 
-export var withRouter=function (Component) {
-    function ComponentWithRouterProp(props) {
-      let location = useLocation();
-      let navigate = useNavigate();
-      let params = useParams();
-      return <Component {...props} router={{ location, navigate, params }} />;
-    }
-    return ComponentWithRouterProp;
-  }
-  ;
-
-const mapStateToProps=(state)=>{return{DB:state.Recommendation.DB,Login:state.Login}}
+const mapStateToProps=(state)=>{return{DB:state.Recommendation,Login:state.Login,comment:state.Recommendation.comments}}
 export default compose(
     withRouter,
-    connect (mapStateToProps,{setUpdateAC,getUpdateTC,getDbTC,getScoreTC}),
+    connect (mapStateToProps,
+      {setUpdateAC,getUpdateTC,
+        getDbTC,getScoreTC,
+        getCommentsTC,setViewAC,
+        setCommentsTC,setCommentStatusAC
+      }),
 )((ExpandContainer))
