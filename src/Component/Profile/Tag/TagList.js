@@ -8,8 +8,7 @@ import { Field, Form, Formik } from "formik";
 
   let tagArr=props.DB/* tagArrCreator(props.DB) */;
   function transformData(arr){
-    
-    for(let i=0;i<tagArr.length;i++){
+    for(let i=0;i<arr.length;i++){
       arr[i].id_r=String(arr[i].id_r)
     }
   }
