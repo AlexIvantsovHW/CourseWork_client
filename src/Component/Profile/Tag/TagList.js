@@ -35,30 +35,38 @@ debugger;
       props.filterAC(isCheck)
     }
   };
-  const catalog = list.map(({ id_r, name }) => {
+  const catalog = list.map(({ id_r, tag }) => {
     return (
-      <>
+      <div >
         <Checkbox
           type="checkbox"
-          name={name}
+          name={tag}
           id={id_r}
           handleClick={handleClick}
           isChecked={isCheck.includes(id_r)}
         />
-        {name}
-      </>
+        {tag}
+      </div>
     );
   });
 
-  function toNumber(arr){arr.map((el)=>Number(el))}
   function sendFiltedArray(){
+    
     function filterDBById(DB, check) {return DB.filter(item => check.includes(item.id_r));}
-    const filteredData=filterDBById(tagArr,isCheck);
-    props.filterAC(filteredData.map(item => ({ id: item.id_r, value: item.tag })))
+    let filteredData=filterDBById(tagArr,isCheck),
+        transformArrData=filteredData.map(item => ({ id: item.id_r, value: item.tag }));
+if(transformArrData.length===0){transformArrData=[{id:null,value:null}]}else{
+  transformArrData=filteredData.map(item => ({ id: item.id_r, value: item.tag }));
+}
+    props.filterAC(transformArrData)
   }
   return (
-    <div>
-
+    <div className="col-2 bg-dark">
+      <div className="row">
+        <div>
+          <h4 className="text-center">Tag</h4>
+        </div>
+      <div className="border-bottom">
       <Checkbox
         type="checkbox"
         name="selectAll"
@@ -67,8 +75,14 @@ debugger;
         isChecked={isCheckAll}
       />
       Select All
+      </div>
+            <div className="bg-gradient overflow-auto" style={{ maxHeight: "380px" }}>
       {catalog}
+      </div>
+      
       <button onClick={sendFiltedArray}>Send</button>
+
+      </div>
     </div>
   );
 };

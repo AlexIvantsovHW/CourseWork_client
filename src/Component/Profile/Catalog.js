@@ -4,7 +4,6 @@ import { Checkbox, ImgReview } from "./Function";
 
 
 export function getTags(data){
-  debugger;
   let x=[];
   for (let i=0;i<data.length;i++){x.push(data[i].value)}
   return Array.from(new Set(x)).filter(Boolean);
@@ -12,7 +11,6 @@ export function getTags(data){
 export function catalog (array,isCheck,handleClick,Filter){
 
 function postCorrection(){alert('Correct')};
-debugger;
 let RecommendData = array,
     tagFilter =getTags(Filter),
     x=[''].concat(tagFilter),
