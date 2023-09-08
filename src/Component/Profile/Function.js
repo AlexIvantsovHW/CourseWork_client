@@ -167,3 +167,12 @@ export function blockUser(ProfileId,id_user,ProfileName,Component){
     return Component
   }else {return null}
 }
+
+//__________________ CLOUD OF TAG_________________
+export function tagArrCreator(arr){
+  let tagList=[];
+  for(let i=0;i<arr.length;i++){
+    tagList.push(arr[i].tag)
+  }
+  return tagList;
+} 

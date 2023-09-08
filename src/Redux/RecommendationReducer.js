@@ -66,7 +66,7 @@ const RecommendationReducer = (state = initialState, action) => {
     case SET_UPDATE:return{...state,setUpdate:action.status};
     case SET_VIEW_STATUS:return{...state,setView:action.status};
     case SET_COMMENT_STATUS:return{...state,setCommentStatus:action.status};
-    case SET_COMMENT:debugger;return{...state,comments:action.comment};
+    case SET_COMMENT:return{...state,comments:action.comment};
     case SET_SORT:return{...state,DB:action.data}
     case SET_SCORE: return{...state,score:action.score};
     case SET_TOTAL_SCORE:return {...state,totalScore:action.totalScore};
@@ -89,7 +89,7 @@ export const scoreTotalAC=(totalScore)=>{{return{type:SET_TOTAL_SCORE,totalScore
 export const scoreAC=(score)=>{{return{type:SET_SCORE,score}}}
 export const RateAC=(rate)=>{{return{type:SET_RATE,rate}}}
 export const setCommentStatusAC=(status)=>{{return{type:SET_COMMENT_STATUS,status}}}
-export const commentsAC=(comment)=>{{debugger;return{type:SET_COMMENT,comment}}}
+export const commentsAC=(comment)=>{{return{type:SET_COMMENT,comment}}}
 export const filterAC=(filter)=>{{return{type:SET_FILTER,filter}}}
 export const tagsAC=(tags)=>{{return{type:SET_INIT_TAGS,tags}}}
 

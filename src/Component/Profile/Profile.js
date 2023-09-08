@@ -6,7 +6,6 @@ import { publish } from "./FormikFunc";
 import TagContainer from "./Tag/TagContainer";
 
 const Profile = (props) => {
-  debugger;
   let pageName= (props.Users[0].name===null?props.Users:props.Users.filter(function (el) {return el.id ===(+props.id_user);})),
      ProfileName=props.Login.name,
      ProfileId=props.Login.id,

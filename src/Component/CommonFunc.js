@@ -92,3 +92,14 @@ export function liGenerator(item,items,setItems,id){
             </div>
       )
     }
+export const Checkbox = ({ id, type, name, handleClick, isChecked }) => {
+      return (
+        <input
+          id={id}
+          name={name}
+          type={type}
+          onChange={handleClick}
+          checked={isChecked}
+        />
+      );
+    };

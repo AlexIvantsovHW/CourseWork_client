@@ -11,7 +11,6 @@ export function getTags(data){
 export function catalog (array,isCheck,handleClick,Filter){
 
 function postCorrection(){alert('Correct')};
-debugger;
 let RecommendData = array,
     tagFilter =getTags(Filter),
     x=[''].concat(tagFilter),

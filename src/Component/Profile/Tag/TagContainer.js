@@ -19,6 +19,7 @@ class TagContainer extends React.Component{
                 themeAC={this.props.themeAC}
                 filterAC={this.props.filterAC}
                 tagsAC={this.props.tagsAC}
+                DB={this.props.DB}
             />
         )
     }
@@ -26,7 +27,8 @@ class TagContainer extends React.Component{
 
 const mapStateToProps=(state)=>{
     return{
-        Theme:state.Theme
+        Theme:state.Theme,
+        DB:state.Recommendation.recommendation,
     }
 }
 export default connect(mapStateToProps,{themeAC,filterAC,tagsAC})(TagContainer);
