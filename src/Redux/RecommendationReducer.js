@@ -72,7 +72,7 @@ const RecommendationReducer = (state = initialState, action) => {
     case SET_TOTAL_SCORE:return {...state,totalScore:action.totalScore};
     case SET_USER_SCORE: return{...state,userScore:action.data};
     case SET_RATE:return{...state,rate:action.rate}
-    case SET_FILTER:return { ...state, Filter: [...action.filter] };
+    case SET_FILTER:debugger;return { ...state, Filter: [...action.filter] };
     case SET_INIT_TAGS: return { ...state, initTags:action.tags };
     default:return { ...state };
   }
@@ -90,7 +90,7 @@ export const scoreAC=(score)=>{{return{type:SET_SCORE,score}}}
 export const RateAC=(rate)=>{{return{type:SET_RATE,rate}}}
 export const setCommentStatusAC=(status)=>{{return{type:SET_COMMENT_STATUS,status}}}
 export const commentsAC=(comment)=>{{return{type:SET_COMMENT,comment}}}
-export const filterAC=(filter)=>{{return{type:SET_FILTER,filter}}}
+export const filterAC=(filter)=>{{debugger; return{type:SET_FILTER,filter}}}
 export const tagsAC=(tags)=>{{return{type:SET_INIT_TAGS,tags}}}
 
 //THUNC CREATOR

@@ -6,7 +6,7 @@ import { getLoginTC } from "../../Redux/LoginReducer";
 import { getAddRecomendTC, getRecomendTC, getUserLikesTC,getLikeTC, getCommentsTC } from "../../Redux/RecommendationReducer";
 import { withAuthNavigate } from "../withAuthNavigate";
 import { compose } from "redux";
-import { setPublishAC } from "../../Redux/RecommendationReducer";
+import { setPublishAC,filterAC, tagsAC  } from "../../Redux/RecommendationReducer";
 import { withRouter } from "../CommonFunc";
 import { getUserTC } from "../../Redux/UserReducer";
 import { themeAC } from './../../Redux/ThemeReducer';
@@ -32,6 +32,8 @@ class ProfileContainer extends React.Component{
           getAddRecomendTC={this.props.getAddRecomendTC} setPublishAC={this.props.setPublishAC}
           Login={this.props.Login.auth} DB={this.props.DB}  Users={this.props.Users.users}
           Theme={this.props.Theme} themeAC={this.props.themeAC}
+          filterAC={this.props.filterAC}
+          tagsAC={this.props.tagsAC}
           />);}
 };
 
@@ -47,7 +49,7 @@ export default compose (
   connect(mapStateToProps,{
     getLoginTC,getRecomendTC,getAddRecomendTC,
     setPublishAC,getUserLikesTC,getLikeTC,
-    getUserTC,themeAC}),
+    getUserTC,themeAC,filterAC,tagsAC}),
   withAuthNavigate
   )(ProfileContainer);
   

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Checkbox, TagList, Toolbar, UserInformation, blockUser } from "./Function";
+import { Checkbox, Toolbar, UserInformation, blockUser } from "./Function";
 import { catalog } from "./Catalog";
 import { publish } from "./FormikFunc";
-import TagContainer from "./Tag/TagContainer";
+import TagList from './Tag/TagList';
+
 
 const Profile = (props) => {
+  debugger;
   let pageName= (props.Users[0].name===null?props.Users:props.Users.filter(function (el) {return el.id ===(+props.id_user);})),
      ProfileName=props.Login.name,
      ProfileId=props.Login.id,
@@ -41,7 +43,13 @@ const Profile = (props) => {
   return (
     <div class="col">
       <div className="row border h-100 d-flex flex-row align-items-center text-white bg-success-subtle bg-gradient">
-        <TagContainer/>
+      <TagList
+                Theme={props.Theme.theme} 
+                themeAC={props.themeAC}
+                filterAC={props.filterAC}
+                tagsAC={props.tagsAC}
+                DB={Recommendation}
+            />
         <div className={`col-4 mx-auto w-75 h-auto bg-${theme}  bg-gradient rounded-4`}>
           <UserInformation score={score} id_user={props.id_user} name={pageName[0].name}/>
           <div className="row border mt-2">

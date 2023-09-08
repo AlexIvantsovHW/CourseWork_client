@@ -5,17 +5,14 @@ import { Checkbox, tagArrCreator } from "../Function";
 import { Field, Form, Formik } from "formik";
 
  const TagList=(props)=>{
-
-  let tagArr=props.DB/* tagArrCreator(props.DB) */;
+debugger;
+  let tagArr=props.DB;
   function transformData(arr){
     for(let i=0;i<arr.length;i++){
       arr[i].id_r=String(arr[i].id_r)
     }
   }
   let transfromTagArr=transformData(props.DB)
-  console.log(transfromTagArr)
-  console.log(props.DB)
-
   const [isCheckAll, setIsCheckAll] = useState(false);
   const [isCheck, setIsCheck] = useState([]);
   const [list, setList] = useState([]);
@@ -23,7 +20,6 @@ import { Field, Form, Formik } from "formik";
   useEffect(() => {
     setList(tagArr);
   }, [list]);
-
   const handleSelectAll = e => {
     setIsCheckAll(!isCheckAll);
     setIsCheck(list.map(li => li.id_r));
@@ -31,17 +27,14 @@ import { Field, Form, Formik } from "formik";
       setIsCheck([]);
     }
   };
-
   const handleClick = e => {
     const { id, checked } = e.target;
     setIsCheck([...isCheck, id]);
     if (!checked) {
       setIsCheck(isCheck.filter(item => item !== id));
+      props.filterAC(isCheck)
     }
   };
-
-  console.log(isCheck);
-
   const catalog = list.map(({ id_r, name }) => {
     return (
       <>
@@ -57,8 +50,15 @@ import { Field, Form, Formik } from "formik";
     );
   });
 
+  function toNumber(arr){arr.map((el)=>Number(el))}
+  function sendFiltedArray(){
+    function filterDBById(DB, check) {return DB.filter(item => check.includes(item.id_r));}
+    const filteredData=filterDBById(tagArr,isCheck);
+    props.filterAC(filteredData.map(item => ({ id: item.id_r, value: item.tag })))
+  }
   return (
     <div>
+
       <Checkbox
         type="checkbox"
         name="selectAll"
@@ -68,6 +68,7 @@ import { Field, Form, Formik } from "formik";
       />
       Select All
       {catalog}
+      <button onClick={sendFiltedArray}>Send</button>
     </div>
   );
 };
