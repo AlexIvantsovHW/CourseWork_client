@@ -4,6 +4,7 @@ import { Checkbox, ImgReview } from "./Function";
 
 
 export function getTags(data){
+
   let x=[];
   for (let i=0;i<data.length;i++){x.push(data[i].value)}
   return Array.from(new Set(x)).filter(Boolean);
@@ -16,7 +17,7 @@ let RecommendData = array,
     x=[''].concat(tagFilter),
     filteredList = RecommendData.filter((o) => x.includes(o.tag)),
     recommendList =x.length > 1? filteredList: RecommendData;
-   return(
+    return(
     <div className="border w-75 mx-auto mb-2 overflow-auto" style={{ height: "300px" }}>
       {recommendList.map((el) => {
   return (

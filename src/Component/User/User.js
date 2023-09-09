@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { NavLink } from "react-router-dom";
+import { searchLink } from "../CommonFunc";
 
 
 
 const User = (props) => {
-let theme=props.Theme.theme;
-let UserData=props.Users.users.map((el)=>{
+const [search,setSearch]=useState('');
+let theme=props.Theme.theme,
+    searchUsers=searchLink(search,props.Users.users),
+    UserData=searchUsers.map((el)=>{
   return(
     <div>
         <div>Id- {el.id}</div>
@@ -22,6 +25,9 @@ let UserData=props.Users.users.map((el)=>{
         <div className="mb-2">
           <h1 className="text-center">User</h1>
         <div>
+          <div className="d-flex justify-content-center align-items-center w-100">
+            <input type="text" placeholder="Search..." onChange={(e)=>setSearch(e.target.value)}/> 
+          </div>
           {UserData}
         </div>
         </div>

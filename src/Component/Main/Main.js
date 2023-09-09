@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Camera, img_return } from "../img";
 import { NavLink } from "react-router-dom";
 import { blockRender } from "../withAuthNavigate";
 import { Raiting } from "./Raiting";
 import { calculateAverageRate, likePresence, replaceAmountValues, replaceRateValues, setLike, sort } from "./Expand/Function";
+import { searchLink } from "../CommonFunc";
 
 const Main = (props) => {
+  const [search,setSearch]=useState('');
+  
 let avRate=calculateAverageRate(props.Recommendation.rate),
     id_user=props.id_user,
     theme=props.Theme.theme,
     arrayWithAvRate=replaceRateValues(replaceAmountValues(props.DB,props.totalScore),avRate),
-    DBlist=arrayWithAvRate.map((el) => {
+    filteredData=searchLink(search,arrayWithAvRate),
+    DBlist=filteredData.map((el) => {
     return (
       <div className="row border">
           {Raiting(el.title,el.date_upload,el.Amount,el.id_r,props.id_user,el.rate,props.setRateTC,avRate,props.Recommendation.rate)}
@@ -36,6 +40,9 @@ let avRate=calculateAverageRate(props.Recommendation.rate),
         <div className={`mx-auto w-50 h-auto bg-${theme}  bg-gradient rounded-4`}>
           <div className="mb-2">
             <h1 className="text-center">Recommendation list</h1>
+            <div className="w-100 d-flex justify-content-center align-items-center">
+              <input placeholder="Search..." type="text" onChange={(e)=>setSearch(e.target.value)}/>
+            </div>
             <div className="row w-100 mx-auto" style={{ height: "30px" }}>
                 <div className="col-2">Sort by:</div>
                 <div className="col-4">

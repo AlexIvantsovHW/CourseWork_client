@@ -15,6 +15,17 @@ export var withRouter=function (Component) {
   }
   ;
 export function setTheme(item,AC){AC(item)}  
+export function searchLink(value, arr) {
+  if (!value){return arr}
+  return arr.filter(obj => {
+    for (let key in obj) {
+      if (obj[key] === value) {
+        return true;
+      }
+    }
+    return false;
+  });
+}
 //______________________Comment page____________________
 export const userElement = (name,comment,date) => {
   return (

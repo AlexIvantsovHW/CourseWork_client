@@ -3,11 +3,12 @@ import { update } from "./FormikFunc";
 import Comment from "./Comment/Comment";
 
 const FullRecommend = (props) => {
+  debugger;
   let status = props.status,
       statusComment=props.statusComment;
 
   const recommendList = props.Recommendation.recommendation;
-  const targetId = +props.id_r;
+  const targetId = props.id_r;
   const targetRecommendation = recommendList.filter((rec) => rec.id_r === targetId);
   return (
     <div class="col">

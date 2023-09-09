@@ -80,7 +80,9 @@ if(transformArrData.length===0){transformArrData=[{id:null,value:null}]}else{
       {catalog}
       </div>
       
-      <button onClick={sendFiltedArray}>Send</button>
+      <div className="w-100 d-flex justify-content-center align-items-center">
+        <button className='btn btn-success w-50 h-75' onClick={sendFiltedArray}>Display</button>
+      </div>
 
       </div>
     </div>
