@@ -5,11 +5,10 @@ import Comment from "./Comment/Comment";
 const FullRecommend = (props) => {
   debugger;
   let status = props.status,
-      statusComment=props.statusComment;
-
-  const recommendList = props.Recommendation.recommendation;
-  const targetId = props.id_r;
-  const targetRecommendation = recommendList.filter((rec) => rec.id_r === targetId);
+      statusComment=props.statusComment,
+      recommendList = props.Recommendation.recommendation,
+      targetId = props.id_r,
+      targetRecommendation = recommendList.filter((rec) => rec.id_r === targetId);
   return (
     <div class="col">
       <div className="row border h-100 d-flex align-items-center text-white bg-success-subtle bg-gradient">
