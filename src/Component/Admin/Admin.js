@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { NavLink } from "react-router-dom";
 import { Checkbox, searchLink } from "../CommonFunc";
+import { Form } from "formik";
 
 
 const Admin = (props) => {
@@ -18,9 +19,14 @@ const Admin = (props) => {
   useEffect(() => {
     setList(props.Users.users);
   }, [list]);
-  const handleSelectAll = (e) => {
+  function deleteUser(isCheck){
     debugger;
-    console.log(list)
+    let users=JSON.stringify(isCheck)    
+    console.log(users)
+    props.deleteUserTC(users)
+ debugger;
+  }
+  const handleSelectAll = (e) => {
     setIsCheckAll(!isCheckAll);
     setIsCheck(list.map((li) => li.id));
     if (isCheckAll) {
@@ -70,7 +76,7 @@ let filteredData=searchLink(search,props.Users.users),
             <input type="text" placeholder="Search..." onChange={(e)=>setSearch(e.target.value)}/> 
           </div>
           <div className="w-100">
-            <div><button className="btn btn-danger">del</button></div>
+            <div><button onClick={()=>deleteUser(isCheck)} className="btn btn-danger">del</button></div>
           </div>
         <div className="border w-100 mx-auto mb-2 overflow-auto" style={{ height: "500px" }}>
         <table className="table">

@@ -19,4 +19,13 @@ export const getUserTC=()=>{
     dispatch(userAC(result.data))
   }
 }
+export const deleteUserTC=(data)=>{
+  return async (dispatch)=>{
+    debugger;
+    let result=await API.deleteUsers(data);
+    debugger;
+    dispatch(userAC(result.data))
+  }
+}
+
 export default UserReducer;

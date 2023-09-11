@@ -1,5 +1,7 @@
 import React from "react";
 import "./style.css";
+import "./i18n"
+import { useTranslation } from 'react-i18next';
 import RegistrationContainer from "./Component/Registration/RegistrationContainer";
 import { Routes,Route } from "react-router-dom";
 import LoginContainer from "./Component/Login/LoginContainer";

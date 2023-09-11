@@ -32,7 +32,7 @@ export function Logform(name,label,validate) {
       className="form-control form-control-lg w-100" component='input'
         name={name}
         validate={validate}
-        placeholder={name}
+        placeholder={label}
         type={"input"}
       />
       <ErrorMessage name={name} component={TextError} className="Error" />
