@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { setTheme } from "../CommonFunc";
 import { useTranslation } from 'react-i18next';
 import '../../i18n'
+import { searchLink } from "../CommonFunc";
 
 function formBar(name,link) {
  
@@ -17,6 +18,7 @@ function formBar(name,link) {
   );
 }
 const SideBar = (props) => {
+  const [search,setSearch]=useState('');
 const theme=props.Theme.theme;
 const { t, i18n } = useTranslation()
 
@@ -27,6 +29,9 @@ const { t, i18n } = useTranslation()
         <a href="/" className="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
           <span className="fs-5 d-none d-sm-inline">Logotip</span>
         </a>
+        <div className="d-flex justify-content-center align-items-center w-100">
+            <input type="text" placeholder="Search..." onChange={(e)=>setSearch(e.target.value)}/> 
+          </div>
         <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
           {formBar(t('home'),'/main')}
           {(!props.Login.auth? formBar(t('login'),'/login'):

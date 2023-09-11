@@ -4,15 +4,18 @@ import { Checkbox, Toolbar, UserInformation, blockUser } from "./Function";
 import { catalog } from "./Catalog";
 import { publish } from "./FormikFunc";
 import TagList from './Tag/TagList';
+import { searchLink } from "../CommonFunc";
 
 
 const Profile = (props) => {
-  debugger;
+  const [search,setSearch]=useState('');
+  
   let pageName= (props.Users[0].name===null?props.Users:props.Users.filter(function (el) {return el.id ===(+props.id_user);})),
      ProfileName=props.Login.name,
      ProfileId=props.Login.id,
      Recommendation = props.Recommendation.recommendation,
      Filter=props.Recommendation.Filter,
+     filteredData=searchLink(search,Recommendation),
      status = props.Recommendation.setPublish,
      score = props.Recommendation.userScore,
      theme=props.Theme.theme;
@@ -56,6 +59,9 @@ const Profile = (props) => {
             <div className="text-center mb-2">
               <h4>Recommendation list</h4>
             </div>
+            <div className="w-100 d-flex justify-content-center align-items-center">
+                <input placeholder="Search..." type="text" onChange={(e)=>setSearch(e.target.value)}/>
+           </div>
             <div className="row border w-75 mx-auto" style={{ height: "20px" }}>
               <div className="col-1">
                 <Checkbox 
@@ -65,7 +71,7 @@ const Profile = (props) => {
               </div>
               <Toolbar />
             </div>
-            {catalog(Recommendation, isCheck, handleClick,Filter)}
+            {catalog(filteredData, isCheck, handleClick,Filter)}
             <div className="mx-auto border">
               {blockUser(
                 ProfileId,

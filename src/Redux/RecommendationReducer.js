@@ -1,4 +1,5 @@
 import API from "../API/API"
+import { modifyRecommendation } from "../Component/CommonFunc";
 
 const SET_USER_RECOMMENDATIONS='SET_USER_RECOMMENDATIONS',
       SET_STATUS='SET_STATUS',
@@ -60,7 +61,7 @@ let initialState = {
 }
 const RecommendationReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_USER_RECOMMENDATIONS:return{...state,recommendation:action.data};
+    case SET_USER_RECOMMENDATIONS:debugger; return{...state,recommendation:action.data};
     case SET_DB:return{...state,DB:action.data};
     case SET_STATUS:return{...state,setPublish:action.status};
     case SET_UPDATE:return{...state,setUpdate:action.status};
@@ -72,7 +73,7 @@ const RecommendationReducer = (state = initialState, action) => {
     case SET_TOTAL_SCORE:return {...state,totalScore:action.totalScore};
     case SET_USER_SCORE: return{...state,userScore:action.data};
     case SET_RATE:return{...state,rate:action.rate}
-    case SET_FILTER:debugger;return { ...state, Filter: [...action.filter] };
+    case SET_FILTER:return { ...state, Filter: [...action.filter] };
     case SET_INIT_TAGS: return { ...state, initTags:action.tags };
     default:return { ...state };
   }
@@ -90,15 +91,16 @@ export const scoreAC=(score)=>{{return{type:SET_SCORE,score}}}
 export const RateAC=(rate)=>{{return{type:SET_RATE,rate}}}
 export const setCommentStatusAC=(status)=>{{return{type:SET_COMMENT_STATUS,status}}}
 export const commentsAC=(comment)=>{{return{type:SET_COMMENT,comment}}}
-export const filterAC=(filter)=>{{debugger; return{type:SET_FILTER,filter}}}
+export const filterAC=(filter)=>{{ return{type:SET_FILTER,filter}}}
 export const tagsAC=(tags)=>{{return{type:SET_INIT_TAGS,tags}}}
 
 //THUNC CREATOR
 export const getRecomendTC=(data)=>{
   return async (dispatch)=>{
-    let result=await API.getRecommendation(data);
-    dispatch(recommendationAC(result.data))
-    if(!result.data){alert('Successfully logging')}
+    let req1=await API.getRecommendation(data);
+    let req2=await API.getComments();
+    let result=modifyRecommendation(req1.data,req2.data)
+    dispatch(recommendationAC(result))
   }
 }
 export const getAddRecomendTC=(data)=>{

@@ -41,7 +41,7 @@ let avRate=calculateAverageRate(props.Recommendation.rate),
           <div className="mb-2">
             <h1 className="text-center">Recommendation list</h1>
             <div className="w-100 d-flex justify-content-center align-items-center">
-              <input placeholder="Search..." type="text" onChange={(e)=>setSearch(e.target.value)}/>
+                <input placeholder="Search..." type="text" onChange={(e)=>setSearch(e.target.value)}/>
             </div>
             <div className="row w-100 mx-auto" style={{ height: "30px" }}>
                 <div className="col-2">Sort by:</div>

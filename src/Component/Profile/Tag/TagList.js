@@ -5,7 +5,6 @@ import { Checkbox, tagArrCreator } from "../Function";
 import { Field, Form, Formik } from "formik";
 
  const TagList=(props)=>{
-debugger;
   let tagArr=props.DB;
   function transformData(arr){
     for(let i=0;i<arr.length;i++){

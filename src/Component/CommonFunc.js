@@ -15,16 +15,28 @@ export var withRouter=function (Component) {
   }
   ;
 export function setTheme(item,AC){AC(item)}  
-export function searchLink(value, arr) {
-  if (!value){return arr}
-  return arr.filter(obj => {
-    for (let key in obj) {
-      if (obj[key] === value) {
-        return true;
+export function searchLink(substring, arr) {
+  let matchingObjects = [];
+  for(let i = 0; i < arr.length; i++) {
+    let obj = arr[i];
+    function searchSubstring(obj) {
+      for (let key in obj) {
+        let value = obj[key];
+        if (typeof value === 'string' && value.toLowerCase().includes(substring.toLowerCase())) {
+          return true;
+        }
+        if (typeof value === 'object' && searchSubstring(value)) {
+          return true;
+        }
       }
+      return false;
     }
-    return false;
-  });
+    let containsSubstring = searchSubstring(obj);
+    if (containsSubstring) {
+      matchingObjects.push(obj);
+    }
+  }
+  return matchingObjects;
 }
 //______________________Comment page____________________
 export const userElement = (name,comment,date) => {
@@ -114,3 +126,20 @@ export const Checkbox = ({ id, type, name, handleClick, isChecked }) => {
         />
       );
     };
+export function modifyRecommendation(recommendation, comments) {
+    // Создаем копию массива recommendation
+    const modifiedRecommendation = [...recommendation];
+  
+    // Итерируемся по каждому объекту в массиве recommendation
+    modifiedRecommendation.forEach((rec) => {
+      // Фильтруем массив comments, чтобы оставить только объекты с совпадающим id_r
+      const filteredComments = comments.filter((comment) => comment.id_r === rec.id_r);
+  
+      // Присваиваем свойству comments в объекте recommendation отфильтрованный массив comments
+      rec.comments = filteredComments;
+    });
+  
+    // Возвращаем модифицированный массив recommendation
+    return modifiedRecommendation;
+  }
+

@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Profile from "./Profile";
 import { connect } from "react-redux";
 import { getLoginTC } from "../../Redux/LoginReducer";
-import { getAddRecomendTC, getRecomendTC, getUserLikesTC,getLikeTC, getCommentsTC } from "../../Redux/RecommendationReducer";
+import { getAddRecomendTC, getRecomendTC, getUserLikesTC,getLikeTC, getCommentsTC} from "../../Redux/RecommendationReducer";
 import { withAuthNavigate } from "../withAuthNavigate";
 import { compose } from "redux";
 import { setPublishAC,filterAC, tagsAC  } from "../../Redux/RecommendationReducer";
@@ -18,7 +18,8 @@ class ProfileContainer extends React.Component{
     const fData=new FormData(); 
     fData.append("id",id);
     this.props.getUserTC(); 
-    this.props.getRecomendTC(fData);   
+    this.props.getRecomendTC(fData);
+    this.props.getCommentsTC();   
     this.props.getUserLikesTC();
   }
   componentDidUpdate(prevProps,prevState){
@@ -27,11 +28,18 @@ class ProfileContainer extends React.Component{
     }
   }
   render(){return ( 
-    <Profile getLoginTC={this.props.getLoginTC} getRecomendTC={this.props.getRecomendTC}
-          Recommendation={this.props.Recommendation} id_user={this.props.router.params.id}
-          getAddRecomendTC={this.props.getAddRecomendTC} setPublishAC={this.props.setPublishAC}
-          Login={this.props.Login.auth} DB={this.props.DB}  Users={this.props.Users.users}
-          Theme={this.props.Theme} themeAC={this.props.themeAC}
+    <Profile 
+          getLoginTC={this.props.getLoginTC} 
+          getRecomendTC={this.props.getRecomendTC}
+          Recommendation={this.props.Recommendation} 
+          id_user={this.props.router.params.id}
+          getAddRecomendTC={this.props.getAddRecomendTC} 
+          setPublishAC={this.props.setPublishAC}
+          Login={this.props.Login.auth} 
+          DB={this.props.DB}  
+          Users={this.props.Users.users}
+          Theme={this.props.Theme} 
+          themeAC={this.props.themeAC}
           filterAC={this.props.filterAC}
           tagsAC={this.props.tagsAC}
           />);}
@@ -42,14 +50,14 @@ const mapStateToProps=(state)=>{
     Login:state.Login,
     Recommendation:state.Recommendation,
     Users:state.Users,
-    Theme:state.Theme
+    Theme:state.Theme,
   }}
 export default compose (
   withRouter,
   connect(mapStateToProps,{
     getLoginTC,getRecomendTC,getAddRecomendTC,
     setPublishAC,getUserLikesTC,getLikeTC,
-    getUserTC,themeAC,filterAC,tagsAC}),
+    getUserTC,themeAC,filterAC,tagsAC,getCommentsTC}),
   withAuthNavigate
   )(ProfileContainer);
   

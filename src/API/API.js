@@ -11,7 +11,7 @@ const API = {
   // Common API
   getDB() {return instance.get('db')},
   getLikeList(){return instance.get('likeList')},
-  getAuth(data) {console.log(data);return instance.post('login',data)},
+  getAuth(data) {return instance.post('login',data)},
   getLike(data){return instance.post('like',data)},
   getUserLikes(){return instance.get('score_user')},
   getSort(sort){return instance.post('sort',sort)},
@@ -26,6 +26,6 @@ const API = {
   getComments(){return instance.get('comment')},
   setComments(data){return instance.post('setComment',data)},
   //========================ADMIN PAGE
-  deleteUsers(data){debugger; return instance.post('deleteUser',data)}
+  deleteUsers(data){ return instance.post('deleteUser',data)}
 };
 export default API;

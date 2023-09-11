@@ -20,11 +20,8 @@ const Admin = (props) => {
     setList(props.Users.users);
   }, [list]);
   function deleteUser(isCheck){
-    debugger;
     let users=JSON.stringify(isCheck)    
-    console.log(users)
     props.deleteUserTC(users)
- debugger;
   }
   const handleSelectAll = (e) => {
     setIsCheckAll(!isCheckAll);
