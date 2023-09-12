@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './style.css'
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { setTheme } from "../CommonFunc";
 import { useTranslation } from 'react-i18next';
 import '../../i18n'
@@ -18,10 +18,12 @@ function formBar(name,link) {
   );
 }
 const SideBar = (props) => {
+  debugger;
   const [search,setSearch]=useState('');
-const theme=props.Theme.theme;
-const { t, i18n } = useTranslation()
-
+  const Recommendation=props.Recommendation.recommendation;
+  const theme=props.Theme.theme;
+  const { t, i18n } = useTranslation();
+const filteredData=searchLink(search,Recommendation);
   const id=props.Login.id;
     return (
     <div className={`col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-${theme}  bg-gradient`}>
@@ -29,9 +31,7 @@ const { t, i18n } = useTranslation()
         <a href="/" className="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
           <span className="fs-5 d-none d-sm-inline">Logotip</span>
         </a>
-        <div className="d-flex justify-content-center align-items-center w-100">
-            <input type="text" placeholder="Search..." onChange={(e)=>setSearch(e.target.value)}/> 
-          </div>
+
         <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
           {formBar(t('home'),'/main')}
           {(!props.Login.auth? formBar(t('login'),'/login'):
@@ -56,8 +56,18 @@ const { t, i18n } = useTranslation()
           </div>
           <button onClick={()=>{setTheme(t('dark'),props.themeAC)}} >Dark</button>
           <button onClick={()=>{setTheme(t('light'),props.themeAC)}}>Light</button>
+          <div className="">
+           <div className="d-flex justify-content-center align-items-center w-100"> 
+           <input type="text" placeholder="Search..." onChange={(e)=>setSearch(e.target.value)}/> 
+           </div>
+           <div className="col w-100 border overflow-auto" style={{ height: "100px" }}>
+            {(search?filteredData.map((el)=><div><Link to={"/expand/"+el.id_r}>{el.title}</Link></div>):<div></div>)}
+           </div>
+          </div>
         </ul>
+
       </div>
+
     </div>
   );
 };

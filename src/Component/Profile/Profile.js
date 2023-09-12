@@ -59,9 +59,6 @@ const Profile = (props) => {
             <div className="text-center mb-2">
               <h4>Recommendation list</h4>
             </div>
-            <div className="w-100 d-flex justify-content-center align-items-center">
-                <input placeholder="Search..." type="text" onChange={(e)=>setSearch(e.target.value)}/>
-           </div>
             <div className="row border w-75 mx-auto" style={{ height: "20px" }}>
               <div className="col-1">
                 <Checkbox 

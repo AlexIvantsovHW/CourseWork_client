@@ -61,7 +61,7 @@ let initialState = {
 }
 const RecommendationReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_USER_RECOMMENDATIONS:debugger; return{...state,recommendation:action.data};
+    case SET_USER_RECOMMENDATIONS: return{...state,recommendation:action.data};
     case SET_DB:return{...state,DB:action.data};
     case SET_STATUS:return{...state,setPublish:action.status};
     case SET_UPDATE:return{...state,setUpdate:action.status};
