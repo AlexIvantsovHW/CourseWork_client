@@ -1,6 +1,6 @@
 import axios from "axios";
-/* const BaseURL='https://coursework-server.onrender.com/'; */
-const BaseURL='http://localhost:3001/';
+export  const BaseURL='https://coursework-server.onrender.com/';
+/* export const BaseURL='http://localhost:3001/'; */
 
 const instance = axios.create({
   baseURL: BaseURL,
@@ -10,6 +10,7 @@ const instance = axios.create({
 const API = {
   // Common API
   getDB() {return instance.get('db')},
+  getData(){ return instance.get('data')},
   getLikeList(){return instance.get('likeList')},
   getAuth(data) {return instance.post('login',data)},
   getLike(data){return instance.post('like',data)},

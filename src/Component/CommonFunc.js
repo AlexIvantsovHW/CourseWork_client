@@ -127,19 +127,11 @@ export const Checkbox = ({ id, type, name, handleClick, isChecked }) => {
       );
     };
 export function modifyRecommendation(recommendation, comments) {
-    // Создаем копию массива recommendation
     const modifiedRecommendation = [...recommendation];
-  
-    // Итерируемся по каждому объекту в массиве recommendation
     modifiedRecommendation.forEach((rec) => {
-      // Фильтруем массив comments, чтобы оставить только объекты с совпадающим id_r
       const filteredComments = comments.filter((comment) => comment.id_r === rec.id_r);
-  
-      // Присваиваем свойству comments в объекте recommendation отфильтрованный массив comments
       rec.comments = filteredComments;
     });
-  
-    // Возвращаем модифицированный массив recommendation
     return modifiedRecommendation;
   }
 

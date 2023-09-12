@@ -3,10 +3,13 @@ import { connect } from "react-redux";
 import Sidebar from "./Sidebar";
 import { loginAC } from "../../Redux/LoginReducer";
 import { themeAC } from './../../Redux/ThemeReducer';
-import { getCommentsTC } from "../../Redux/RecommendationReducer";
+import { getCommentsTC,getDataTC } from "../../Redux/RecommendationReducer";
 
 class SidebarContainer extends React.Component{
-  componentDidMount(){this.props.getCommentsTC()}
+  componentDidMount(){
+    this.props.getDataTC();
+  }
+  
   render(){
     return (  
       <Sidebar 
@@ -19,5 +22,5 @@ class SidebarContainer extends React.Component{
   />);}};
 
 const mapStateToProps=(state)=>{return{Login:state.Login,Theme:state.Theme,Recommendation:state.Recommendation,}}
-export default connect(mapStateToProps,{loginAC,themeAC,getCommentsTC})(SidebarContainer);
+export default connect(mapStateToProps,{loginAC,themeAC,getCommentsTC,getDataTC})(SidebarContainer);
   

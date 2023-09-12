@@ -2,7 +2,7 @@
 import React  from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { getDbTC,getScoreTC,getSortTC,getLikeTC,getLikeListTC,setRateTC,getRateDataTC } from '../../Redux/RecommendationReducer';
+import { getDbTC,getScoreTC,getSortTC,getLikeTC,getLikeListTC,setRateTC,getRateDataTC, tagsAC, filterAC } from '../../Redux/RecommendationReducer';
 import Main from './Main';
 import { withAuthNavigate } from '../withAuthNavigate';
 import { themeAC } from './../../Redux/ThemeReducer';
@@ -27,18 +27,23 @@ class MainContainer extends React.Component{
     userScore={this.props.Recommendation.userScore} setRateTC={this.props.setRateTC}
     Recommendation={this.props.Recommendation}
     Theme={this.props.Theme} themeAC={this.props.themeAC}
+    tagsAC={this.props.tagsAC}
+    filterAC={this.props.filterAC}
+
     />)}
 } 
+
 
 const mapStateToProps=(state)=>{return{
   DB:state.Recommendation.DB,
   score:state.Recommendation.score,
   Login:state.Login,
   Recommendation:state.Recommendation,
-  Theme:state.Theme
+  Theme:state.Theme,
+  
 }}
 export default compose (
-  connect(mapStateToProps,{getDbTC,getSortTC,getScoreTC,getLikeTC,getLikeListTC,setRateTC,getRateDataTC,themeAC}),
+  connect(mapStateToProps,{getDbTC,getSortTC,getScoreTC,getLikeTC,getLikeListTC,setRateTC,getRateDataTC,themeAC,tagsAC,filterAC}),
 /*   withAuthNavigate */
   )(MainContainer);
   

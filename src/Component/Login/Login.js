@@ -5,6 +5,7 @@ import { Logform, initialValues, nameValidation, passwordValidation} from "./Log
 import { NavLink, Navigate } from "react-router-dom";
 import '../../i18n'
 import { useTranslation } from 'react-i18next';
+import { BaseURL } from './../../API/API';
 
 const Login = (props) => {
   const { t, i18n } = useTranslation()
@@ -16,6 +17,9 @@ const Login = (props) => {
     await props.getLoginTC(fData);
     <NavLink to={'/main'} />
   };
+  const GoogleAuth=()=>{
+    window.open(BaseURL+'auth/google/callback',"_self")
+  }
   return (
     <div class="col">
      <div className="row border h-100 d-flex align-items-center text-white bg-success-subtle bg-gradient">
@@ -38,7 +42,16 @@ const Login = (props) => {
           <div className="row text-center">
           <p>{t('textReg')}<NavLink to='/'> {t('registration')}</NavLink> </p>
           </div>
-          <div className="row text-center"><div className="col"><p>Log in with Facebook</p></div><div  className="col"><p>Log in with Facebook</p></div></div>
+          <div className="row text-center">
+            <div className="col">
+              <button className="btn btn-success" onClick={GoogleAuth}>Google</button>
+            </div>
+            <div  className="col">
+            <div className="col">
+              <button className="btn btn-success" onClick={()=>{alert('Twitter Sign In')}}>Twitter</button>
+            </div>
+            </div>
+          </div>
         </Form>
       )}
     </Formik>

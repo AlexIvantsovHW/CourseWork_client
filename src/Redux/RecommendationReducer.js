@@ -115,6 +115,14 @@ export const getDbTC=()=>{
     dispatch(dbAC(result.data))
   }
 }
+export const getDataTC=()=>{
+  return async (dispatch)=>{
+    let req1=await API.getDB();
+    let req2=await API.getComments();
+    let result=modifyRecommendation(req1.data,req2.data)
+    dispatch(recommendationAC(result))
+  }
+}
 export const getSortTC=(sort)=>{
   return async (dispatch)=>{
     let result=await API.getSort(sort);

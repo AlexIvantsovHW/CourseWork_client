@@ -18,7 +18,6 @@ function formBar(name,link) {
   );
 }
 const SideBar = (props) => {
-  debugger;
   const [search,setSearch]=useState('');
   const Recommendation=props.Recommendation.recommendation;
   const theme=props.Theme.theme;

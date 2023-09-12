@@ -19,7 +19,8 @@ class ExpandContainer extends React.Component{
         }
       }
 
-    render(){return(<Expand DB={this.props.DB}
+    render(){return(<Expand 
+        DB={this.props.DB} 
         id_r={this.props.router.params.id}  
         setUpdateAC={this.props.setUpdateAC}
         getUpdateTC={this.props.getUpdateTC}

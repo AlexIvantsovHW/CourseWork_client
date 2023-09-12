@@ -9,8 +9,8 @@ import {
 } from "../../CommonFunc";
 
 const Expand = (props) => {
-  const recommendList = props.DB.DB;
-  const targetId = recommendList[0].id_r === null ? 0 : +props.id_r;
+  const recommendList = props.DB.recommendation;
+  const targetId = recommendList[0].id_r === null ? 0 :(typeof(recommendList[0].id_r)==='string'?props.id_r.toString():+props.id_r) ;
   const targetRecommendation = recommendList.filter((rec) => rec.id_r === targetId);
   let filteredComments=filterComments(props.DB.comments,+props.id_r),
       statusComment=props.statusComment;

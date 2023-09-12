@@ -6,16 +6,32 @@ import { blockRender } from "../withAuthNavigate";
 import { Raiting } from "./Raiting";
 import { calculateAverageRate, likePresence, replaceAmountValues, replaceRateValues, setLike, sort } from "./Expand/Function";
 import { searchLink } from "../CommonFunc";
+import MainTagList from './MainTag/MainTagList';
+import { getTags } from "../Profile/Catalog";
 
 const Main = (props) => {
   const [search,setSearch]=useState('');
+  const [category,setCategory]=useState('');
+  function chooseCategory(value){
+    if(value===category){
+       value=null;
+      setCategory(value);
+      }else{
+        setCategory(value);
+    }
+  }
   
 let avRate=calculateAverageRate(props.Recommendation.rate),
     id_user=props.id_user,
     theme=props.Theme.theme,
     arrayWithAvRate=replaceRateValues(replaceAmountValues(props.DB,props.totalScore),avRate),
-    filteredData=searchLink(search,arrayWithAvRate),
-    DBlist=filteredData.map((el) => {
+     categoryFilteredData=(category?arrayWithAvRate.filter((el)=>el.category===category):arrayWithAvRate), 
+     Filter=props.Recommendation.Filter,
+     tagFilter =getTags(Filter),
+    x=[''].concat(tagFilter),
+    filteredList = categoryFilteredData.filter((o) => x.includes(o.tag)),
+    recommendList =x.length > 1? filteredList: categoryFilteredData,     
+     DBlist=recommendList.map((el) => {
     return (
       <div className="row border">
           {Raiting(el.title,el.date_upload,el.Amount,el.id_r,props.id_user,el.rate,props.setRateTC,avRate,props.Recommendation.rate)}
@@ -37,9 +53,21 @@ let avRate=calculateAverageRate(props.Recommendation.rate),
   return (
     <div class="col">
       <div className="row border h-100 d-flex align-items-center text-white bg-success-subtle bg-gradient">
+      <MainTagList
+                Theme={props.Theme.theme} 
+                themeAC={props.themeAC}
+                filterAC={props.filterAC}
+                tagsAC={props.tagsAC}
+                DB={props.Recommendation.recommendation}
+            />
         <div className={`mx-auto w-50 h-auto bg-${theme}  bg-gradient rounded-4`}>
           <div className="mb-2">
             <h1 className="text-center">Recommendation list</h1>
+            <div className="row w-100 mx-auto" style={{ height: "30px" }}>
+              <div className="col"><button onClick={()=>chooseCategory('Book')}>Book</button></div>
+              <div className="col"><button  onClick={()=>chooseCategory('Film')}>Film</button></div>
+              <div className="col"><button  onClick={()=>chooseCategory('Music')}>Music</button></div>
+            </div>
             <div className="row w-100 mx-auto" style={{ height: "30px" }}>
                 <div className="col-2">Sort by:</div>
                 <div className="col-4">
