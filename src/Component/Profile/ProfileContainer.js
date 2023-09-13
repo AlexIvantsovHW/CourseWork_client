@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Profile from "./Profile";
 import { connect } from "react-redux";
 import { getLoginTC } from "../../Redux/LoginReducer";
-import { getAddRecomendTC, getRecomendTC, getUserLikesTC,getLikeTC, getCommentsTC} from "../../Redux/RecommendationReducer";
+import { getAddRecomendTC, getRecomendTC, getUserLikesTC,getLikeTC, getCommentsTC, getRateDataTC} from "../../Redux/RecommendationReducer";
 import { withAuthNavigate } from "../withAuthNavigate";
 import { compose } from "redux";
 import { setPublishAC,filterAC, tagsAC  } from "../../Redux/RecommendationReducer";
@@ -18,6 +18,7 @@ class ProfileContainer extends React.Component{
     const fData=new FormData(); 
     fData.append("id",id);
     this.props.getUserTC(); 
+    this.props.getRateDataTC();
     this.props.getRecomendTC(fData);
     this.props.getCommentsTC();   
     this.props.getUserLikesTC();
@@ -57,7 +58,7 @@ export default compose (
   connect(mapStateToProps,{
     getLoginTC,getRecomendTC,getAddRecomendTC,
     setPublishAC,getUserLikesTC,getLikeTC,
-    getUserTC,themeAC,filterAC,tagsAC,getCommentsTC}),
+    getUserTC,themeAC,filterAC,tagsAC,getCommentsTC,getRateDataTC}),
   withAuthNavigate
   )(ProfileContainer);
   

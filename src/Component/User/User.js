@@ -9,7 +9,8 @@ const User = (props) => {
 const [search,setSearch]=useState('');
 let theme=props.Theme.theme,
     searchUsers=searchLink(search,props.Users.users),
-    UserData=searchUsers.map((el)=>{
+    usersExceptAdmin=searchUsers.filter((el)=>el.name!='Admin'),
+    UserData=usersExceptAdmin.map((el)=>{
   return(
     <div>
         <div>Id- {el.id}</div>

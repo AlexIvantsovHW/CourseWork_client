@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import {  Like } from "../img";
 import { Checkbox, ImgReview } from "./Function";
+import { calculateAverageRate, replaceAmountValues, replaceRateValues } from "../Main/Expand/Function";
 
 
 export function getTags(data){
@@ -9,12 +10,15 @@ export function getTags(data){
   for (let i=0;i<data.length;i++){x.push(data[i].value)}
   return Array.from(new Set(x)).filter(Boolean);
 }
-export function catalog (array,isCheck,handleClick,Filter){
+export function catalog (array,isCheck,handleClick,Filter,rate,totalScore){
 
 function postCorrection(){alert('Correct')};
+debugger;
 let RecommendData = array,
     tagFilter =getTags(Filter),
     x=[''].concat(tagFilter),
+     averageRecommendationRate=calculateAverageRate(rate),
+    arrayWithAvRate=replaceRateValues(replaceAmountValues(RecommendData,totalScore),averageRecommendationRate), 
     filteredList = RecommendData.filter((o) => x.includes(o.tag)),
     recommendList =x.length > 1? filteredList: RecommendData;
     return(
@@ -39,7 +43,7 @@ let RecommendData = array,
         <div className="row text-center"><h5 className="col">{el.title}</h5><div className="col">
     <NavLink to={"/fullrecommend/"+el.id_r}><button>Read</button></NavLink>
           </div></div>
-        <div className="text-start font-weight-bold"><p>{el.name}/{el.group}</p></div>
+        <div className="text-start font-weight-bold"><p>{el.name}/{el.category}/{el.group}</p></div>
         <div className="row"><div className="col-9">Tags:{el.tag}</div> <div className="col">{Like}</div></div>
       </div>
     </div>

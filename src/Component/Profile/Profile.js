@@ -4,7 +4,7 @@ import { Checkbox, Toolbar, UserInformation, blockUser } from "./Function";
 import { catalog } from "./Catalog";
 import { publish } from "./FormikFunc";
 import TagList from './Tag/TagList';
-import { searchLink } from "../CommonFunc";
+import { searchLink, transformData } from "../CommonFunc";
 
 
 const Profile = (props) => {
@@ -15,7 +15,8 @@ const Profile = (props) => {
      ProfileId=props.Login.id,
      Recommendation = props.Recommendation.recommendation,
      Filter=props.Recommendation.Filter,
-     filteredData=searchLink(search,Recommendation),
+     /* filteredData=searchLink(search,Recommendation), */
+     transfromTagArr=transformData(Recommendation),
      status = props.Recommendation.setPublish,
      score = props.Recommendation.userScore,
      theme=props.Theme.theme;
@@ -23,26 +24,27 @@ const Profile = (props) => {
   const [isCheck, setIsCheck] = useState([]);
   const [imgLink, setImgLink] = useState([]);
   const [list, setList] = useState([]);
+  useEffect(() => {
+    setList(Recommendation);
+  }, [list]);
   const handleSelectAll = (e) => {
     setIsCheckAll(!isCheckAll);
-    setIsCheck(Recommendation.map((li) => li.id_r));
+    setIsCheck(list.map((li) => li.id_r));
     if (isCheckAll) {
       setIsCheck([]);
     }
   };
   const handleClick = (e) => {
-    const { id_r, checked } = e.target;
-    setIsCheck([...isCheck, id_r]);
+    const { id, checked } = e.target;
+    setIsCheck([...isCheck, id]);
     if (!checked) {
-      setIsCheck(isCheck.filter((item) => item !== id_r));
+      setIsCheck(isCheck.filter((item) => item !== id));
     }
   };
   function onSuccess(files) {
     setImgLink(files);
   }
-  useEffect(() => {
-    setList(Recommendation);
-  }, [Recommendation]);
+ 
   return (
     <div class="col">
       <div className="row border h-100 d-flex flex-row align-items-center text-white bg-success-subtle bg-gradient">
@@ -68,7 +70,7 @@ const Profile = (props) => {
               </div>
               <Toolbar />
             </div>
-            {catalog(filteredData, isCheck, handleClick,Filter)}
+            {catalog(list, isCheck, handleClick,Filter,props.Recommendation.rate,props.Recommendation.totalScore)}
             <div className="mx-auto border">
               {blockUser(
                 ProfileId,

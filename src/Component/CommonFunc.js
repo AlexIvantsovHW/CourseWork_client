@@ -3,7 +3,7 @@ import { UserImg, deleteSVG } from "./img";
 import { Form, Formik } from "formik";
 import moment from "moment";
 import { commentForm } from "./Profile/Function";
-
+// CONTAINER
 export var withRouter=function (Component) {
     function ComponentWithRouterProp(props) {
       let location = useLocation();
@@ -134,4 +134,9 @@ export function modifyRecommendation(recommendation, comments) {
     });
     return modifiedRecommendation;
   }
-
+// COMMON FUNCTIONS
+export function transformData(arr){
+  for(let i=0;i<arr.length;i++){
+    arr[i].id_r=String(arr[i].id_r)
+  }
+}

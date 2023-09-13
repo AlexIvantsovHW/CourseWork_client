@@ -8,7 +8,7 @@ import { Checkbox } from "../../Profile/Function";
       arr[i].id_r=String(arr[i].id_r)
     }
   }
-
+  let transfromTagArr=transformData(props.DB)
   const [isCheckAll, setIsCheckAll] = useState(false);
   const [isCheck, setIsCheck] = useState([]);
   const [list, setList] = useState([]);
