@@ -13,7 +13,6 @@ class TagContainer extends React.Component{
         
     }
     render(){
-        debugger;
         return(
             <TagList
                 Theme={this.props.Theme.theme} 

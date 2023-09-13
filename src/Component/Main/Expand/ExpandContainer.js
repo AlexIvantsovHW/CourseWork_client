@@ -29,17 +29,23 @@ class ExpandContainer extends React.Component{
         statusComment={this.props.DB.setCommentStatus} 
         setCommentsTC={this.props.setCommentsTC}
         setCommentStatusAC={this.props.setCommentStatusAC}
+        score={this.props.score}
         />
         
         )}
 }
 
 
-const mapStateToProps=(state)=>{return{DB:state.Recommendation,Login:state.Login,comment:state.Recommendation.comments}}
+const mapStateToProps=(state)=>{return{
+  DB:state.Recommendation,
+  Login:state.Login,
+  comment:state.Recommendation.comments,
+  score:state.Recommendation.score
+}}
 export default compose(
     withRouter,
     connect (mapStateToProps,
-      {setUpdateAC,getUpdateTC,
+      { setUpdateAC,getUpdateTC,
         getDbTC,getScoreTC,
         getCommentsTC,setViewAC,
         setCommentsTC,setCommentStatusAC

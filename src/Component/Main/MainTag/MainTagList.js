@@ -5,7 +5,6 @@ import { Checkbox, tagArrCreator } from "../../Profile/Function";
 import { Field, Form, Formik } from "formik";
 
  const MainTagList=(props)=>{
-  debugger;
   let tagArr=props.DB;
   function transformData(arr){
     for(let i=0;i<arr.length;i++){
@@ -32,7 +31,6 @@ import { Field, Form, Formik } from "formik";
     setIsCheck([...isCheck, id]);
     if (!checked) {
       setIsCheck(isCheck.filter(item => item !== id));
-      debugger;
       props.filterAC(isCheck)
     }
   };
@@ -52,7 +50,6 @@ import { Field, Form, Formik } from "formik";
   });
 
   function sendFiltedArray(){    
-    debugger;
     function filterDBById(DB, check) {return DB.filter(item => check.includes(item.id_r));}
     let filteredData=filterDBById(tagArr,isCheck),
         transformArrData=filteredData.map(item => ({ id: item.id_r, value: item.tag }));

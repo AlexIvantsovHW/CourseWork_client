@@ -20,6 +20,12 @@ const Expand = (props) => {
         <div className="row mx-auto w-75 mr-1 h-auto bg-dark  bg-gradient rounded-4">
           <div className="row mb-2">
             <h1 className=" text-center">{targetRecommendation[0].title}</h1>
+            <div className="w-100 text-center">
+              <h4>Score:
+              
+
+              </h4>
+              </div>
             <div className="col-4 h-100">
               {img_return(targetRecommendation[0].image, 250)}
             </div>

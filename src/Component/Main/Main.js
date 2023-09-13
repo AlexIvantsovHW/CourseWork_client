@@ -1,60 +1,26 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Camera, img_return } from "../img";
-import { NavLink } from "react-router-dom";
-import { blockRender } from "../withAuthNavigate";
-import { Raiting } from "./Raiting";
-import { calculateAverageRate, likePresence, replaceAmountValues, replaceRateValues, setLike, sort } from "./Expand/Function";
-import { searchLink } from "../CommonFunc";
+import { calculateAverageRate, replaceAmountValues, replaceRateValues,sort,chooseCategory } from "./Expand/Function";
 import MainTagList from './MainTag/MainTagList';
 import { getTags } from "../Profile/Catalog";
+import { DBlist } from "./DBlist";
 
 const Main = (props) => {
-  const [search,setSearch]=useState('');
-  const [category,setCategory]=useState('');
-  function chooseCategory(value){
-    if(value===category){
-       value=null;
-      setCategory(value);
-      }else{
-        setCategory(value);
-    }
-  }
-  
-let avRate=calculateAverageRate(props.Recommendation.rate),
-    id_user=props.id_user,
-    theme=props.Theme.theme,
-    arrayWithAvRate=replaceRateValues(replaceAmountValues(props.DB,props.totalScore),avRate),
-     categoryFilteredData=(category?arrayWithAvRate.filter((el)=>el.category===category):arrayWithAvRate), 
-     Filter=props.Recommendation.Filter,
-     tagFilter =getTags(Filter),
+  const [category,setCategory]=useState(''),
+         theme=props.Theme.theme;
+  debugger;
+let averageRecommendationRate=calculateAverageRate(props.Recommendation.rate),
+    arrayWithAvRate=replaceRateValues(replaceAmountValues(props.DB,props.totalScore),averageRecommendationRate),
+    categoryFilteredData=(category?arrayWithAvRate.filter((el)=>el.category===category):arrayWithAvRate), 
+    tagFilter =getTags(props.Recommendation.Filter),
     x=[''].concat(tagFilter),
     filteredList = categoryFilteredData.filter((o) => x.includes(o.tag)),
-    recommendList =x.length > 1? filteredList: categoryFilteredData,     
-     DBlist=recommendList.map((el) => {
-    return (
-      <div className="row border">
-          {Raiting(el.title,el.date_upload,el.Amount,el.id_r,props.id_user,el.rate,props.setRateTC,avRate,props.Recommendation.rate)}
-        <div className="col">
-        {((el.image===null)||(el.image==='null')?Camera:img_return(el.image))}
-        </div>
-        <div className="col-3 border">
-        <NavLink to={"/expand/"+el.id_r}><button>Read</button></NavLink>
-        {blockRender(props.Login.auth.auth,<div className="row d-flex align-items-end justify-content-end">
-          <div className="col">{
-          ((likePresence(props.score, el.id_r, el.id_user)===true)?<button onClick={()=>{setLike(0,el.id_r,id_user,props.getLikeTC)}}>dis</button>:
-          <button onClick={()=>{setLike(1,el.id_r,id_user,props.getLikeTC)}}>Like</button>)}</div>
-          </div>          
-          )}  
-        </div>
-      </div>
-    );
-  });
+    recommendList =x.length > 1? filteredList: categoryFilteredData;    
   return (
     <div class="col">
       <div className="row border h-100 d-flex align-items-center text-white bg-success-subtle bg-gradient">
       <MainTagList
-                Theme={props.Theme.theme} 
+                Theme={theme} 
                 themeAC={props.themeAC}
                 filterAC={props.filterAC}
                 tagsAC={props.tagsAC}
@@ -64,9 +30,9 @@ let avRate=calculateAverageRate(props.Recommendation.rate),
           <div className="mb-2">
             <h1 className="text-center">Recommendation list</h1>
             <div className="row w-100 mx-auto" style={{ height: "30px" }}>
-              <div className="col"><button onClick={()=>chooseCategory('Book')}>Book</button></div>
-              <div className="col"><button  onClick={()=>chooseCategory('Film')}>Film</button></div>
-              <div className="col"><button  onClick={()=>chooseCategory('Music')}>Music</button></div>
+              <div className="col"><button onClick={()=>chooseCategory('Book',category,setCategory)}>Book</button></div>
+              <div className="col"><button  onClick={()=>chooseCategory('Film',category,setCategory)}>Film</button></div>
+              <div className="col"><button  onClick={()=>chooseCategory('Music',category,setCategory)}>Music</button></div>
             </div>
             <div className="row w-100 mx-auto" style={{ height: "30px" }}>
                 <div className="col-2">Sort by:</div>
@@ -82,7 +48,14 @@ let avRate=calculateAverageRate(props.Recommendation.rate),
                 </div>
               </div>
             <div className="w-100 mx-auto mb-2 overflow-auto" style={{ height: "500px" }}>
-              {DBlist}
+              {DBlist(
+                recommendList,props.id_user,
+                props.setRateTC,
+                averageRecommendationRate,
+                props.Recommendation.rate,
+                props.Login.auth.auth,props.score,
+                props.getLikeTC,
+      )}
           <div>
           </div>
             </div>

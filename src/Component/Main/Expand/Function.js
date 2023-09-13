@@ -44,3 +44,19 @@ export function setLike(status,id_r,id_user,getLikeTC){
   fData.append('id_user',id_user)
   getLikeTC(fData);
 }
+export function chooseCategory(value,category,setCategory){
+  if(value===category){
+     value=null;
+    setCategory(value);
+    }else{
+      setCategory(value);
+  }
+}
+export function checkMatching(rateDB, id_r, id_user) {
+  for (let i = 0; i < rateDB.length; i++) {
+    if (rateDB[i].id_r === id_r && rateDB[i].id_user === id_user) {
+      return true;
+    }
+  }
+  return false;
+}
