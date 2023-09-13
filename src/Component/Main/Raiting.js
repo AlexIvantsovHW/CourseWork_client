@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { checkMatching, deleteRate } from './Expand/Function';
+import { checkMatching } from './Expand/Function';
 import './style.css'
 import { startImg } from '../img';
 
 const ButtonComponent = (props) => {
   const [activeButton, setActiveButton] = useState(null);
   const handleButtonClick = (value) => {
-    debugger;
     if (activeButton === value) {
       setActiveButton(null);
       props.setRate(props.id_r,props.id_user,value,0)
@@ -15,9 +14,7 @@ const ButtonComponent = (props) => {
       if(checkMatching(props.rateDB, props.id_r, props.id_user, value)){
         props.setRate(props.id_r,props.id_user,value,0)
         setActiveButton(null);
-        console.log(checkMatching(props.rateDB, props.id_r, props.id_user, value))
       }else{
-        console.log(checkMatching(props.rateDB, props.id_r, props.id_user, value))
       props.setRate(props.id_r,props.id_user,value,1)
 }    }
   };
@@ -39,8 +36,7 @@ const ButtonComponent = (props) => {
   );
 };
 
-export function Raiting(title,date_upload,Amount,id_r,id_user,rate,setRateTC,avRate,rateDB){
-  
+export function Raiting(title,category,date_upload,Amount,id_r,id_user,rate,setRateTC,rateDB){
     const setRate=(id_r,id_user,rate,action)=>{
         const fData=new FormData();
         fData.append('id_r',id_r);
@@ -52,13 +48,12 @@ export function Raiting(title,date_upload,Amount,id_r,id_user,rate,setRateTC,avR
     return(
       <div className="col">
         <div>Title: {title}</div>
+        <div>Category: {category}</div>
         <div>Date: {date_upload}</div>
         <div>id_r:  {id_r}</div>
         <div>Likes:  {Amount}</div>
         <div>
-          <ButtonComponent 
-          id_r={id_r} id_user={id_user} rate={rate} setRate={setRate} rateDB={rateDB}
-          />
+          <ButtonComponent id_r={id_r} id_user={id_user} rate={rate} setRate={setRate} rateDB={rateDB}/>
           {`  ${Math.floor(rate * 100) / 100}`}
          </div>
          </div>

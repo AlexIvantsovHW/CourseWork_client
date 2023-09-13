@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { liGenerator } from "../../CommonFunc";
-import { addSVG } from "../../img";
-import { Checkbox, tagArrCreator } from "../../Profile/Function";
-import { Field, Form, Formik } from "formik";
+import { Checkbox } from "../../Profile/Function";
 
  const MainTagList=(props)=>{
   let tagArr=props.DB;
@@ -11,7 +8,7 @@ import { Field, Form, Formik } from "formik";
       arr[i].id_r=String(arr[i].id_r)
     }
   }
-  let transfromTagArr=transformData(props.DB)
+
   const [isCheckAll, setIsCheckAll] = useState(false);
   const [isCheck, setIsCheck] = useState([]);
   const [list, setList] = useState([]);

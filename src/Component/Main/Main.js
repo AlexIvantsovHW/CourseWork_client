@@ -8,7 +8,6 @@ import { DBlist } from "./DBlist";
 const Main = (props) => {
   const [category,setCategory]=useState(''),
          theme=props.Theme.theme;
-  debugger;
 let averageRecommendationRate=calculateAverageRate(props.Recommendation.rate),
     arrayWithAvRate=replaceRateValues(replaceAmountValues(props.DB,props.totalScore),averageRecommendationRate),
     categoryFilteredData=(category?arrayWithAvRate.filter((el)=>el.category===category):arrayWithAvRate), 

@@ -16,8 +16,8 @@ export function DBlist(
             return (
               <div className="row border">
                   {Raiting(
-                    el.title,el.date_upload,el.Amount,el.id_r,
-                    id_user,el.rate,setRateTC,
+                    el.title,el.category,el.date_upload,el.Amount,
+                    el.id_r,id_user,el.rate,setRateTC,
                     averageRecommendationRate,rate)
                     }
                 <div className="col">
