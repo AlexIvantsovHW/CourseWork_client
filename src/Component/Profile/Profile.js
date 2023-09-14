@@ -4,7 +4,7 @@ import { Checkbox, Toolbar, UserInformation, blockUser } from "./Function";
 import { catalog } from "./Catalog";
 import { publish } from "./FormikFunc";
 import TagList from './Tag/TagList';
-import { searchLink, transformData } from "../CommonFunc";
+import { handleSelectAll, searchLink, transformData } from "../CommonFunc";
 
 
 const Profile = (props) => {
@@ -27,13 +27,7 @@ const Profile = (props) => {
   useEffect(() => {
     setList(Recommendation);
   }, [list]);
-  const handleSelectAll = (e) => {
-    setIsCheckAll(!isCheckAll);
-    setIsCheck(list.map((li) => li.id_r));
-    if (isCheckAll) {
-      setIsCheck([]);
-    }
-  };
+
   const handleClick = (e) => {
     const { id, checked } = e.target;
     setIsCheck([...isCheck, id]);
@@ -64,11 +58,16 @@ const Profile = (props) => {
             <div className="row border w-75 mx-auto" style={{ height: "20px" }}>
               <div className="col-1">
                 <Checkbox 
-                  type="checkbox" name="selectAll" 
-                  id="selectAll" handleClick={handleSelectAll} 
+                  type="checkbox" 
+                  name="selectAll" 
+                  id="selectAll" 
+                  handleClick={()=>{handleSelectAll(setIsCheckAll,isCheckAll,setIsCheck,list)}} 
                   isChecked={isCheckAll}/>
               </div>
-              <Toolbar />
+              <Toolbar 
+                isCheck={isCheck}
+                deleteRecommendationTC={props.deleteRecommendationTC}
+                />
             </div>
             {catalog(list, isCheck, handleClick,Filter,props.Recommendation.rate,props.Recommendation.totalScore)}
             <div className="mx-auto border">

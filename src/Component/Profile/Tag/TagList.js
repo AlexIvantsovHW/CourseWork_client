@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { liGenerator } from "../../CommonFunc";
+import { handleSelectAll, liGenerator, transformData } from "../../CommonFunc";
 import { addSVG } from "../../img";
 import { Checkbox, tagArrCreator } from "../Function";
 import { Field, Form, Formik } from "formik";
 
  const TagList=(props)=>{
   let tagArr=props.DB;
-  function transformData(arr){
-    for(let i=0;i<arr.length;i++){
-      arr[i].id_r=String(arr[i].id_r)
-    }
-  }
   let transfromTagArr=transformData(props.DB)
   const [isCheckAll, setIsCheckAll] = useState(false);
   const [isCheck, setIsCheck] = useState([]);
@@ -19,13 +14,7 @@ import { Field, Form, Formik } from "formik";
   useEffect(() => {
     setList(tagArr);
   }, [list]);
-  const handleSelectAll = e => {
-    setIsCheckAll(!isCheckAll);
-    setIsCheck(list.map(li => li.id_r));
-    if (isCheckAll) {
-      setIsCheck([]);
-    }
-  };
+
   const handleClick = e => {
     const { id, checked } = e.target;
     setIsCheck([...isCheck, id]);
@@ -70,7 +59,7 @@ if(transformArrData.length===0){transformArrData=[{id:null,value:null}]}else{
         type="checkbox"
         name="selectAll"
         id="selectAll"
-        handleClick={handleSelectAll}
+        handleClick={()=>{handleSelectAll(setIsCheckAll,isCheckAll,setIsCheck,list)}}
         isChecked={isCheckAll}
       />
       Select All

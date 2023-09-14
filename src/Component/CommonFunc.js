@@ -140,3 +140,10 @@ export function transformData(arr){
     arr[i].id_r=String(arr[i].id_r)
   }
 }
+export const handleSelectAll = (setIsCheckAll,isCheckAll,setIsCheck,list) => {
+  setIsCheckAll(!isCheckAll);
+  setIsCheck(list.map(li => li.id_r));
+  if (isCheckAll) {
+    setIsCheck([]);
+  }
+};

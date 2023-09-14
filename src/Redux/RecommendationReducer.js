@@ -179,5 +179,12 @@ export const setCommentsTC=(data)=>{
     let result=await API.setComments(data);
     dispatch(commentsAC(result.data))}
 }
+export const deleteRecommendationTC=(data)=>{
+  return async(dispatch)=>{
+    let result=await API.deleteRecommends(data);
+    debugger;
+    dispatch(recommendationAC(result.data))}
+  }
+
 export default RecommendationReducer;
 

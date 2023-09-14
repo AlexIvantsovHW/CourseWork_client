@@ -1,6 +1,6 @@
 import axios from "axios";
-export  const BaseURL='https://coursework-server.onrender.com/';
-/* export const BaseURL='http://localhost:3001/'; */
+/* export  const BaseURL='https://coursework-server.onrender.com/'; */
+export const BaseURL='http://localhost:3001/';
 
 const instance = axios.create({
   baseURL: BaseURL,
@@ -26,7 +26,8 @@ const API = {
   getRate(){return instance.get('ratedb')},
   getComments(){return instance.get('comment')},
   setComments(data){return instance.post('setComment',data)},
+  deleteRecommends(data){debugger;return instance.post('deleteRecommend',data)},
   //========================ADMIN PAGE
-  deleteUsers(data){ return instance.post('deleteUser',data)}
+  deleteUsers(data){debugger; return instance.post('deleteUser',data)}
 };
 export default API;

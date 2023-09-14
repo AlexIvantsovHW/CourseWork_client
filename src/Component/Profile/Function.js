@@ -115,11 +115,18 @@ export function Recommendations(id, name, handleClick, isCheck) {
     </div>
   );
 }
-export const Toolbar = () => {
+export const Toolbar = (props) => {
+  const deleteReview=()=>{
+    debugger;
+    const dataToDelete={data: props.isCheck.map((el)=>parseInt(el))}
+   
+    props.deleteRecommendationTC(dataToDelete)
+  }
+  
   return (
     <>
       <div className="col-1">id</div>
-      <div className="col-1">delete</div>
+      <div className="col-1"><button onClick={deleteReview}>delete</button></div>
       <div className="col-1">filter</div>
       <div className="col-1">Sort</div>
       <div className="col-1">date</div>

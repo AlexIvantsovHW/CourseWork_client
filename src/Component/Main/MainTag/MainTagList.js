@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Checkbox } from "../../Profile/Function";
+import { transformData } from "../../CommonFunc";
 
  const MainTagList=(props)=>{
   let tagArr=props.DB;
-  function transformData(arr){
-    for(let i=0;i<arr.length;i++){
-      arr[i].id_r=String(arr[i].id_r)
-    }
-  }
   let transfromTagArr=transformData(props.DB)
   const [isCheckAll, setIsCheckAll] = useState(false);
   const [isCheck, setIsCheck] = useState([]);
