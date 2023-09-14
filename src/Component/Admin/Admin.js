@@ -20,7 +20,8 @@ const Admin = (props) => {
     setList(props.Users.users);
   }, [list]);
   function deleteUser(isCheck){
-    let users=JSON.stringify(isCheck)    
+    debugger;
+    let users={data:isCheck}    
     props.deleteUserTC(users)
   }
   const handleSelectAll = (e) => {

@@ -26,7 +26,7 @@ const API = {
   getRate(){return instance.get('ratedb')},
   getComments(){return instance.get('comment')},
   setComments(data){return instance.post('setComment',data)},
-  deleteRecommends(data){debugger;return instance.post('deleteRecommend',data)},
+  deleteRecommends(data){return instance.post('deleteRecommend',data)},
   //========================ADMIN PAGE
   deleteUsers(data){debugger; return instance.post('deleteUser',data)}
 };

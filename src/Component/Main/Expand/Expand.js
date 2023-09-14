@@ -11,7 +11,6 @@ import { calculateAverageRate, replaceAmountValues, replaceRateValues } from "./
 
 
 const Expand = (props) => {
-  debugger;
   const recommendList = props.DB.recommendation,
         averageRecommendationRate=calculateAverageRate(props.DB.rate),
         arrayWithAvRate=replaceRateValues(replaceAmountValues(props.DB.DB,props.DB.totalScore),averageRecommendationRate),

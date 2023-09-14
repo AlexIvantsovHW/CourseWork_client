@@ -4,7 +4,7 @@ import { Checkbox, Toolbar, UserInformation, blockUser } from "./Function";
 import { catalog } from "./Catalog";
 import { publish } from "./FormikFunc";
 import TagList from './Tag/TagList';
-import { handleSelectAll, searchLink, transformData } from "../CommonFunc";
+import { handleSelectAll, transformData } from "../CommonFunc";
 
 
 const Profile = (props) => {
@@ -15,7 +15,6 @@ const Profile = (props) => {
      ProfileId=props.Login.id,
      Recommendation = props.Recommendation.recommendation,
      Filter=props.Recommendation.Filter,
-     /* filteredData=searchLink(search,Recommendation), */
      transfromTagArr=transformData(Recommendation),
      status = props.Recommendation.setPublish,
      score = props.Recommendation.userScore,
@@ -35,10 +34,7 @@ const Profile = (props) => {
       setIsCheck(isCheck.filter((item) => item !== id));
     }
   };
-  function onSuccess(files) {
-    setImgLink(files);
-  }
- 
+  function onSuccess(files) {setImgLink(files);}
   return (
     <div class="col">
       <div className="row border h-100 d-flex flex-row align-items-center text-white bg-success-subtle bg-gradient">
@@ -67,6 +63,11 @@ const Profile = (props) => {
               <Toolbar 
                 isCheck={isCheck}
                 deleteRecommendationTC={props.deleteRecommendationTC}
+                list={list}
+                setList={setList}
+                sortProfileTC={props.sortProfileTC}
+                
+                
                 />
             </div>
             {catalog(list, isCheck, handleClick,Filter,props.Recommendation.rate,props.Recommendation.totalScore)}

@@ -1,7 +1,7 @@
 import { Field } from "formik";
 import { Camera, img_return } from "../img";
-import React from "react";
-
+import React, { useState } from "react";
+import { sort } from "../Main/Expand/Function";
 
 export function UserForm(data) {
   function basicForm(label,name,type){
@@ -116,25 +116,36 @@ export function Recommendations(id, name, handleClick, isCheck) {
   );
 }
 export const Toolbar = (props) => {
+  const [isASC,setisASC]=useState(true)
   const deleteReview=()=>{
-    debugger;
     const dataToDelete={data: props.isCheck.map((el)=>parseInt(el))}
-   
     props.deleteRecommendationTC(dataToDelete)
+  } 
+  function dateSortedData(){
+    let data=props.list,
+        sortedData=data;
+    if(isASC===true){
+      sortedData=data.sort((x, y) => new Date(x.date_upload) - new Date(y.date_upload))
+      props.setList(sortedData)
+      setisASC(false)
+    }else{
+      sortedData=data.sort((x, y) =>new Date(y.date_upload) - new Date(x.date_upload))
+      props.setList(sortedData)
+      setisASC(true)
+    }
   }
-  
+ 
   return (
     <>
       <div className="col-1">id</div>
       <div className="col-1"><button onClick={deleteReview}>delete</button></div>
-      <div className="col-1">filter</div>
-      <div className="col-1">Sort</div>
-      <div className="col-1">date</div>
-      <div className="col-1">rank</div>
+      <div className="col-1"><button onClick={() => {sort("ASC", "date_upload",props.sortProfileTC);}}>{'<'}</button></div>
+      <div className="col-1">
+      <button onClick={() => {sort("DESC", "date_upload",props.sortProfileTC);}}>{'>'}</button>
+      </div>
     </>
   );
 };
-
 export const UserInformation = (props) => {
   return (
     <div className="row ">
