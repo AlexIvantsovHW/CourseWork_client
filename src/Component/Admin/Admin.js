@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { NavLink } from "react-router-dom";
 import { Checkbox, searchLink } from "../CommonFunc";
-import { Form } from "formik";
+import '../../i18n'
+import { useTranslation } from 'react-i18next';
 
 
 const Admin = (props) => {
+  const { t, i18n } = useTranslation();
   function transformData(arr){
     for(let i=0;i<arr.length;i++){
       arr[i].id=String(arr[i].id)
@@ -69,7 +71,7 @@ let filteredData=searchLink(search,props.Users.users),
      <div className="row border h-100 d-flex align-items-center text-white bg-success-subtle bg-gradient">
         <div className="mx-auto w-75 h-auto bg-dark  bg-gradient rounded-4">
         <div className="mb-2">
-          <h1 className="text-center">Admin page</h1>
+          <h1 className="text-center">{t('Admin')}</h1>
           <div className="d-flex justify-content-center align-items-center w-100">
             <input type="text" placeholder="Search..." onChange={(e)=>setSearch(e.target.value)}/> 
           </div>

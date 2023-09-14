@@ -13,13 +13,14 @@ i18n
             ru: {
                 translation: {
                     // Sidebar
-                    home: "Дома",
+                    home: "Рекомендации",
                     login: "Вход",
                     logout:"Выход",
                     admin:"Страница администратора",
                     profile:"Профиль",
                     users:"Пользователи",
-
+                    Dark:'Темная',
+                    Light:'Светлая',
 
                     // Login Page
                     name:"Имя пользователя",
@@ -29,20 +30,43 @@ i18n
                     textReg:"Нету аккаунта?",
                     email:"почтовый адрес",
                     textLog:"Есть аккаунт?",
-                    signin:"Войти"                    
+                    signin:"Войти",
+                    
+                    // Admin page
+                    Admin:'Страница администратора',
+                    
+                    // Recommendation list
+                    RecommendationHeader:'СПИСОК РЕКОМЕНДАЦИЙ',
+                    Book:'Книги',
+                    Film:'Фильмы',
+                    Music:'Музыка',
+                    Read:'Читать',
+                    RecommendationTitle:'Название рекомендации',
+                    RecName:'Название произведения',
+                    category:'Категория',
+                    Date:'Дата рекомендации',
+                    Sort:'Сортировать',
+                    Score:'Рейтинг',
+                    TagList:'Лист тэгов',
+                    SelectAll:'Выбрать все',
+                    Display:'Отобразить',
 
-
+                    //COMMON
+                    viewComment:'Показать комментарии',
+                    Comments:'Комментарии',
+                    AddComment:'Добавить комментарий',
                 }
             },
             en: {
                 translation: {
-                    home: "Home",
+                    home: "Recommendation list",
                     login: "Login",
                     logout:"Logout",
                     admin:"Admin",
                     profile:"Profile",
                     users:"Users",
-
+                    Dark:'Dark',
+                    Light:'Light',
 
                     // Login and Registration pages
                     name:"Name",
@@ -52,7 +76,32 @@ i18n
                     textReg:"Don't have an account yet?",
                     email:"e-mail",
                     textLog:"Already have an account?",
-                    signin:"Sign In"
+                    signin:"Sign In",
+
+                    // Admin page
+                    Admin:'Admin page',
+
+                    // Recommendation list
+                    RecommendationHeader:'RECOMMENDATION LIST',
+                    Book:'Book',
+                    Film:'Film',
+                    Music:'Music',
+                    Read:'Read',
+                    RecommendationTitle:'Recommendation title',
+                    RecName:'Name',
+                    category:'Category',
+                    Date:'Date',
+                    Sort:'Sort by',
+                    Score:'Score',
+                    TagList:'Tag list',
+                    SelectAll:'Select All',
+                    Display:'Display',
+                    
+
+                    //COMMON
+                    viewComment:'View comments',
+                    Comments:'Comments',
+                    AddComment:'Add comment',
                 }
             }
 

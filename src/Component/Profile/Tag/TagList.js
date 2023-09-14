@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { handleSelectAll, liGenerator, transformData } from "../../CommonFunc";
 import { addSVG } from "../../img";
-import { Checkbox, tagArrCreator } from "../Function";
-import { Field, Form, Formik } from "formik";
+import { Checkbox} from "../Function";
+import { useTranslation } from 'react-i18next';
+import '../../../i18n'
 
  const TagList=(props)=>{
+  const { t, i18n } = useTranslation();
   let tagArr=props.DB;
   let transfromTagArr=transformData(props.DB)
   const [isCheckAll, setIsCheckAll] = useState(false);
@@ -52,7 +54,7 @@ if(transformArrData.length===0){transformArrData=[{id:null,value:null}]}else{
     <div className="col-2 bg-dark">
       <div className="row">
         <div>
-          <h4 className="text-center">Tag</h4>
+          <h4 className="text-center">{t('TagList')}</h4>
         </div>
       <div className="border-bottom">
       <Checkbox
@@ -62,7 +64,7 @@ if(transformArrData.length===0){transformArrData=[{id:null,value:null}]}else{
         handleClick={()=>{handleSelectAll(setIsCheckAll,isCheckAll,setIsCheck,list)}}
         isChecked={isCheckAll}
       />
-      Select All
+      {t('SelectAll')}
       </div>
             <div className="bg-gradient overflow-auto" style={{ maxHeight: "380px" }}>
       {catalog}

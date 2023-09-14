@@ -5,11 +5,12 @@ import { catalog } from "./Catalog";
 import { publish } from "./FormikFunc";
 import TagList from './Tag/TagList';
 import { handleSelectAll, transformData } from "../CommonFunc";
-
+import { useTranslation } from 'react-i18next';
+import '../../i18n'
 
 const Profile = (props) => {
   const [search,setSearch]=useState('');
-  
+  const { t, i18n } = useTranslation();
   let pageName= (props.Users[0].name===null?props.Users:props.Users.filter(function (el) {return el.id ===(+props.id_user);})),
      ProfileName=props.Login.name,
      ProfileId=props.Login.id,
@@ -49,7 +50,7 @@ const Profile = (props) => {
           <UserInformation score={score} id_user={props.id_user} name={pageName[0].name}/>
           <div className="row border mt-2">
             <div className="text-center mb-2">
-              <h4>Recommendation list</h4>
+              <h4>{t('RecommendationTitle')}</h4>
             </div>
             <div className="row border w-75 mx-auto" style={{ height: "20px" }}>
               <div className="col-1">

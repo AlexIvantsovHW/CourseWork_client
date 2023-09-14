@@ -4,8 +4,10 @@ import { calculateAverageRate, replaceAmountValues, replaceRateValues,sort,choos
 import MainTagList from './MainTag/MainTagList';
 import { getTags } from "../Profile/Catalog";
 import { DBlist } from "./DBlist";
-
+import { useTranslation } from 'react-i18next';
+import '../../i18n'
 const Main = (props) => {
+  const { t, i18n } = useTranslation();
   const [category,setCategory]=useState(''),
          theme=props.Theme.theme;
 let averageRecommendationRate=calculateAverageRate(props.Recommendation.rate),
@@ -27,21 +29,21 @@ let averageRecommendationRate=calculateAverageRate(props.Recommendation.rate),
             />
         <div className={`mx-auto w-50 h-auto bg-${theme}  bg-gradient rounded-4`}>
           <div className="mb-2">
-            <h1 className="text-center">Recommendation list</h1>
+            <h1 className="text-center">{t('RecommendationHeader')}</h1>
             <div className="row w-100 mx-auto" style={{ height: "30px" }}>
-              <div className="col"><button onClick={()=>chooseCategory('Book',category,setCategory)}>Book</button></div>
-              <div className="col"><button  onClick={()=>chooseCategory('Film',category,setCategory)}>Film</button></div>
-              <div className="col"><button  onClick={()=>chooseCategory('Music',category,setCategory)}>Music</button></div>
+              <div className="col"><button onClick={()=>chooseCategory('Book',category,setCategory)}>{t('Book')}</button></div>
+              <div className="col"><button  onClick={()=>chooseCategory('Film',category,setCategory)}>{t('Film')}</button></div>
+              <div className="col"><button  onClick={()=>chooseCategory('Music',category,setCategory)}>{t('Music')}</button></div>
             </div>
             <div className="row w-100 mx-auto" style={{ height: "30px" }}>
-                <div className="col-2">Sort by:</div>
+                <div className="col-2">{t('Sort')}:</div>
                 <div className="col-4">
-                  Date
+                  {t('Date')}
                   <button onClick={() => {sort("ASC", "date_upload",props.getSortTC);}}>{'<'}</button>
                   <button onClick={() => {sort("DESC", "date_upload",props.getSortTC);}}>{'>'}</button>
                 </div>
                 <div className="col-4">
-                  Score
+                  {t('Score')}
                   <button onClick={() => {sort("ASC", "score",props.getSortTC);}}>{'<'}</button>
                   <button onClick={() => {sort("DESC", "score",props.getSortTC);}}>{'>'}</button>
                 </div>

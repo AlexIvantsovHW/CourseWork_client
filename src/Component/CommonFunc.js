@@ -69,14 +69,14 @@ export const validate = (values) => {const errors = {};return errors;};
     fData.append("date_upload",date);
     TC(fData);
   };
-export  const addComment=(statusComment,TC,id_user,id_r,AC)=>{
+export  const addComment=(statusComment,TC,id_user,id_r,AC,t)=>{
   if(statusComment===false){
     return(
       <div className="d-flex justify-content-center">
         <button 
         className="btn btn-success w-25" 
         onClick={()=>{openForm(AC)}}>
-          Add comment
+          {t('AddComment')}
         </button>
       </div>
     )}else{

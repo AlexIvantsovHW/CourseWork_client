@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { checkMatching } from './Expand/Function';
 import './style.css'
 import { startImg } from '../img';
+import { useTranslation } from 'react-i18next';
+import '../../i18n'
 
 const ButtonComponent = (props) => {
   const [activeButton, setActiveButton] = useState(null);
@@ -11,7 +13,7 @@ const ButtonComponent = (props) => {
       props.setRate(props.id_r,props.id_user,value,0)
     } else {
       setActiveButton(value);
-      if(checkMatching(props.rateDB, props.id_r, props.id_user, value)){
+      if(checkMatching(props.RateDB, props.id_r, props.id_user, value)){
         props.setRate(props.id_r,props.id_user,value,0)
         setActiveButton(null);
       }else{
@@ -36,27 +38,27 @@ const ButtonComponent = (props) => {
   );
 };
 
-export function Raiting(title,category,date_upload,Amount,id_r,id_user,rate,setRateTC,rateDB){
-    const setRate=(id_r,id_user,rate,action)=>{
+export const Raiting=(/* title,category,date_upload,Amount,id_r,id_user,rate,setRateTC,rateDB,t,i18n */props)=>{
+  const { t, i18n } = useTranslation();
+  function setRate(){
         const fData=new FormData();
-        fData.append('id_r',id_r);
-        fData.append('id_user',id_user);
-        fData.append('rate',rate);
-        fData.append('action',action);
-        setRateTC(fData);
+        fData.append('id_r',props.id_r);
+        fData.append('id_user',props.id_user);
+        fData.append('rate',props.rate);
+        fData.append('action',props.action);
+        props.setRateTC(fData);
       } 
+    const d=new Date((props.date))  
     return(
       <div className="col">
-        <div>Title: {title}</div>
-        <div>Category: {category}</div>
-        <div>Date: {date_upload}</div>
-        <div>id_r:  {id_r}</div>
-        <div>Likes:  {Amount}</div>
+        <div>{t('RecommendationTitle')}: {props.title}</div>
+        <div>{t('category')}: {props.category}</div>
+        <div>{t('Date')}: {d.getDay()}/{d.getMonth()}/{d.getFullYear()}</div>
+        <div>Likes:  {props.Amount}</div>
         <div>
-          <ButtonComponent id_r={id_r} id_user={id_user} rate={rate} setRate={setRate} rateDB={rateDB}/>
-          {`  ${Math.floor(rate * 100) / 100}`}
+          <ButtonComponent id_r={props.id_r} id_user={props.id_user} rate={props.rate} setRate={setRate} RateDB={props.RateDB}/>
+          {`  ${Math.floor(props.rate * 100) / 100}`}
          </div>
          </div>
     )
     }
-      {/*  */}

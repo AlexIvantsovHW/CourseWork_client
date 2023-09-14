@@ -4,6 +4,8 @@ import { blockRender } from '../withAuthNavigate';
 import { Camera, img_return } from './../img';
 import { likePresence, setLike } from './Expand/Function';
 import { Raiting } from './Raiting';
+import { useTranslation } from 'react-i18next';
+import '../../i18n'
 
 export function DBlist(
     arr,id_user,setRateTC,
@@ -11,20 +13,24 @@ export function DBlist(
     rate,auth,score,
     getLikeTC)
     {
+      const { t, i18n } = useTranslation();
     return(
         arr.map((el) => {
             return (
               <div className="row border">
-                  {Raiting(
-                    el.title,el.category,el.date_upload,el.Amount,
-                    el.id_r,id_user,el.rate,setRateTC,
-                    averageRecommendationRate,rate)
-                    }
+                  <Raiting
+                    title={el.title} category={el.category}
+                    date={el.date_upload} Amount={el.Amount}
+                    id_r={el.id_r} id_user={id_user} rate={el.rate}
+                    setRateTC={setRateTC}
+                    averageRecommendationRate={averageRecommendationRate}
+                    RateDB={rate}
+                    />
                 <div className="col">
                 {((el.image===null)||(el.image==='null')?Camera:img_return(el.image))}
                 </div>
                 <div className="col-3 border">
-                <NavLink to={"/expand/"+el.id_r}><button>Read</button></NavLink>
+                <NavLink to={"/expand/"+el.id_r}><button>{t('Read')}</button></NavLink>
                 {blockRender(auth,<div className="row d-flex align-items-end justify-content-end">
                   <div className="col">{
                   ((likePresence(score, el.id_r, el.id_user)===true)?<button onClick={()=>{setLike(0,el.id_r,id_user,getLikeTC)}}>dis</button>:

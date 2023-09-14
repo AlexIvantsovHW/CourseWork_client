@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Checkbox } from "../../Profile/Function";
 import { transformData } from "../../CommonFunc";
+import { useTranslation } from 'react-i18next';
+import '../../../i18n'
 
  const MainTagList=(props)=>{
+  const { t, i18n } = useTranslation();
   let tagArr=props.DB;
   let transfromTagArr=transformData(props.DB)
   const [isCheckAll, setIsCheckAll] = useState(false);
@@ -55,7 +58,7 @@ if(transformArrData.length===0){transformArrData=[{id:null,value:null}]}else{
     <div className="col-2 bg-dark">
       <div className="row">
         <div>
-          <h4 className="text-center">Tag</h4>
+          <h4 className="text-center">{t('TagList')}</h4>
         </div>
       <div className="border-bottom">
       <Checkbox
@@ -65,16 +68,14 @@ if(transformArrData.length===0){transformArrData=[{id:null,value:null}]}else{
         handleClick={handleSelectAll}
         isChecked={isCheckAll}
       />
-      Select All
+      {t('SelectAll')}
       </div>
             <div className="bg-gradient overflow-auto" style={{ maxHeight: "380px" }}>
       {catalog}
       </div>
-      
       <div className="w-100 d-flex justify-content-center align-items-center">
-        <button className='btn btn-success w-50 h-75' onClick={sendFiltedArray}>Display</button>
+        <button className='btn btn-success w-50 h-75' onClick={sendFiltedArray}>{t('Display')}</button>
       </div>
-
       </div>
     </div>
   );

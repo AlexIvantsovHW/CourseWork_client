@@ -8,10 +8,12 @@ import {
   userElement 
 } from "../../CommonFunc";
 import { calculateAverageRate, replaceAmountValues, replaceRateValues } from "./Function";
-
+import '../../../i18n'
+import { useTranslation } from 'react-i18next';
 
 const Expand = (props) => {
   const recommendList = props.DB.recommendation,
+        { t, i18n } = useTranslation(),
         averageRecommendationRate=calculateAverageRate(props.DB.rate),
         arrayWithAvRate=replaceRateValues(replaceAmountValues(props.DB.DB,props.DB.totalScore),averageRecommendationRate),
         targetId = arrayWithAvRate[0].id_r === null ? 0 :(typeof(arrayWithAvRate[0].id_r)==='string'?props.id_r.toString():+props.id_r),
@@ -28,7 +30,7 @@ const Expand = (props) => {
               <h4>
                 {targetRecommendation[0].name} /
                 {targetRecommendation[0].category} / 
-                Score:{targetRecommendation[0].rate}</h4>
+                {t('Score')} : {targetRecommendation[0].rate}</h4>
               </div>
             <div className="col-4 h-100">
               {img_return(targetRecommendation[0].image, 250)}
@@ -40,14 +42,14 @@ const Expand = (props) => {
               <p>{targetRecommendation[0].text}</p>
             </div>
           </div>
-          <div className="row d-flex justify-content-end align-items-center w-100"><p>Publish date: {targetRecommendation[0].date_upload}</p></div>
+          <div className="row d-flex justify-content-end align-items-center w-100"><p>{t('Date')}: {targetRecommendation[0].date_upload}</p></div>
           <div>
           {(props.DB.setView===false?
           <div className="d-flex justify-content-center">
             <a 
             className="text-center fst-italic text-decoration-none" 
             onClick={()=>{openForm(props.setViewAC)}}>
-              View comments
+              {t('viewComment')}
             </a>
           </div>
           :
@@ -59,12 +61,12 @@ const Expand = (props) => {
                 onClick={()=>{closeForm(props.setViewAC)}}>X
               </button>
             </div>
-            <div><h4 className="text-center">Comments</h4></div>
+            <div><h4 className="text-center">{t('Comments')}</h4></div>
            </div>
             <div
                 className="container ml-2 d-grid gap-2  text-black  overflow-auto border"
                 style={{ height: "120px", width: "95%",margin:'1.5%' }}>  
-                {filteredComments.map((user)=>{return userElement(user.name,user.comment,user.date_upload)})}
+                {filteredComments.map((user)=>{return userElement(user.name,user.comment,user.date_upload,t)})}
             </div>
             {addComment(
                 statusComment, 

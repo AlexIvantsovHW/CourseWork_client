@@ -33,7 +33,10 @@ const filteredData=searchLink(search,Recommendation);
 
         <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
           {formBar(t('home'),'/main')}
-          {(!props.Login.auth? formBar(t('login'),'/login'):
+          {(props.Login.auth?formBar(t('profile'),`/profile/${id}`):null)}
+          {(props.Login.auth?formBar(t('users'),`/users`):null)}
+         {((props.Login.auth===true)&&(props.Login.name==='Admin')?formBar(t('admin'),'/admin'):null)}
+         {(!props.Login.auth? formBar(t('login'),'/login'):
           (
             <li className="nav-item mt-1">
             <NavLink to={'/'} className='mt-1'>
@@ -43,18 +46,14 @@ const filteredData=searchLink(search,Recommendation);
             </NavLink>
           </li>
           ))}
-          {(props.Login.auth?formBar(t('profile'),`/profile/${id}`):null)}
-          {(props.Login.auth?formBar(t('users'),`/users`):null)}
-         {((props.Login.auth===true)&&(props.Login.name==='Admin')?formBar(t('admin'),'/admin'):null)}
           <div>
           <select onChange={(e) => i18n.changeLanguage(e.target.value)}>
-          <option>Choose language</option>
           <option value="ru">Russian</option>
           <option value="en">English</option>
         </select>
           </div>
-          <button onClick={()=>{setTheme(t('dark'),props.themeAC)}} >Dark</button>
-          <button onClick={()=>{setTheme(t('light'),props.themeAC)}}>Light</button>
+          <button onClick={()=>{setTheme(t('dark'),props.themeAC)}} >{t('Dark')}</button>
+          <button onClick={()=>{setTheme(t('light'),props.themeAC)}}>{t('Light')}</button>
           <div className="">
            <div className="d-flex justify-content-center align-items-center w-100"> 
            <input type="text" placeholder="Search..." onChange={(e)=>setSearch(e.target.value)}/> 
