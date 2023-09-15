@@ -6,6 +6,7 @@ import { NavLink, Navigate } from "react-router-dom";
 import '../../i18n'
 import { useTranslation } from 'react-i18next';
 import { BaseURL } from './../../API/API';
+import { EnterImg } from "../img";
 
 const Login = (props) => {
   const { t, i18n } = useTranslation()
@@ -37,7 +38,7 @@ const Login = (props) => {
           {Logform('name',t('name'),nameValidation)}
           {Logform('password',t('password'),passwordValidation)}
           <div className="d-flex justify-content-ceter align-items-center w-100 mb-3">
-          <button type="submit" disabled={isSubmitting} className="btn btn-success mx-auto ">{t('submit')}</button>
+          <button type="submit" disabled={isSubmitting} className="btn btn-outline-light border-0 mx-auto ">{EnterImg(40)}</button>
           </div>
           <div className="row text-center">
           <p>{t('textReg')}<NavLink to='/'> {t('registration')}</NavLink> </p>

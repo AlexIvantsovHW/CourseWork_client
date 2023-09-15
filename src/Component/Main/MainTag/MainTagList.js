@@ -3,6 +3,7 @@ import { Checkbox } from "../../Profile/Function";
 import { transformData } from "../../CommonFunc";
 import { useTranslation } from 'react-i18next';
 import '../../../i18n'
+import { DisplayImg } from "../../img";
 
  const MainTagList=(props)=>{
   const { t, i18n } = useTranslation();
@@ -55,12 +56,12 @@ if(transformArrData.length===0){transformArrData=[{id:null,value:null}]}else{
     props.filterAC(transformArrData)
   }
   return (
-    <div className="col-2 bg-dark">
+    <div className="col-2 ms-5 bg-dark">
       <div className="row">
         <div>
           <h4 className="text-center">{t('TagList')}</h4>
         </div>
-      <div className="border-bottom">
+      <div className="border-bottom border-danger border-3">
       <Checkbox
         type="checkbox"
         name="selectAll"
@@ -74,7 +75,7 @@ if(transformArrData.length===0){transformArrData=[{id:null,value:null}]}else{
       {catalog}
       </div>
       <div className="w-100 d-flex justify-content-center align-items-center">
-        <button className='btn btn-success w-50 h-75' onClick={sendFiltedArray}>{t('Display')}</button>
+        <button className='btn btn-dark' onClick={sendFiltedArray}>{DisplayImg(20)}</button>
       </div>
       </div>
     </div>

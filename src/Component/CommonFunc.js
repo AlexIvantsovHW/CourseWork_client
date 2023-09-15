@@ -1,8 +1,9 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { UserImg, deleteSVG } from "./img";
+import { SendImg, UserImg, deleteSVG } from "./img";
 import { Form, Formik } from "formik";
 import moment from "moment";
 import { commentForm } from "./Profile/Function";
+
 // CONTAINER
 export var withRouter=function (Component) {
     function ComponentWithRouterProp(props) {
@@ -55,8 +56,8 @@ export const userElement = (name,comment,date) => {
     </div>
   );
 };
-export function openForm(AC){return AC(true)}
-export function closeForm(AC){return AC(false)}
+export function openForm(AC){debugger;return AC(true)}
+export function closeForm(AC){debugger;return AC(false)}
 export function filterComments(arr,id_r){return arr.filter(item=>item.id_r===id_r)}
 export const date = moment().format("YYYY-MM-DD HH:mm:ss");
 export const initialValues = { text: "" };
@@ -69,14 +70,16 @@ export const validate = (values) => {const errors = {};return errors;};
     fData.append("date_upload",date);
     TC(fData);
   };
-export  const addComment=(statusComment,TC,id_user,id_r,AC,t)=>{
+export  const addComment=(statusComment,TC,id_user,id_r,AC)=>{
+
+  debugger;
   if(statusComment===false){
     return(
       <div className="d-flex justify-content-center">
-        <button 
+        <button className="btn btn-success"
         className="btn btn-success w-25" 
         onClick={()=>{openForm(AC)}}>
-          {t('AddComment')}
+          {SendImg(20)} 
         </button>
       </div>
     )}else{

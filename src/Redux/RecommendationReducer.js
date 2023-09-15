@@ -65,7 +65,7 @@ const RecommendationReducer = (state = initialState, action) => {
     case SET_DB:return{...state,DB:action.data};
     case SET_STATUS:return{...state,setPublish:action.status};
     case SET_UPDATE:return{...state,setUpdate:action.status};
-    case SET_VIEW_STATUS:return{...state,setView:action.status};
+    case SET_VIEW_STATUS:debugger;return{...state,setView:action.status};
     case SET_COMMENT_STATUS:return{...state,setCommentStatus:action.status};
     case SET_COMMENT:return{...state,comments:action.comment};
     case SET_SORT:return{...state,DB:action.data}
@@ -83,7 +83,7 @@ export const recommendationAC=(data)=>{{return{type:SET_USER_RECOMMENDATIONS,dat
 export const dbAC=(data)=>{{return{type:SET_DB,data}}}
 export const setPublishAC=(status)=>{{return{type:SET_STATUS,status}}}
 export const setUpdateAC=(status)=>{{return{type:SET_UPDATE,status}}}
-export const setViewAC=(status)=>{{return{type:SET_VIEW_STATUS,status}}}
+export const setViewAC=(status)=>{{debugger;return{type:SET_VIEW_STATUS,status}}}
 export const sortAC=(data)=>{{ return{type:SET_SORT,data}}}
 export const scoreUserAC=(data)=>{{ return{type:SET_USER_SCORE,data}}}
 export const scoreTotalAC=(totalScore)=>{{return{type:SET_TOTAL_SCORE,totalScore}}}

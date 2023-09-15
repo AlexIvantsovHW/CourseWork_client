@@ -3,6 +3,7 @@ import { update } from "./FormikFunc";
 import Comment from "./Comment/Comment";
 
 const FullRecommend = (props) => {
+  debugger;
   let status = props.status,
       statusComment=props.statusComment,
       recommendList = props.Recommendation.recommendation,

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { checkMatching } from './Expand/Function';
+import { checkMatching, likePresence, setLike } from './Expand/Function';
 import './style.css'
-import { startImg } from '../img';
+import { Like, dislike, startImg } from '../img';
 import { useTranslation } from 'react-i18next';
 import '../../i18n'
+import { blockRender } from '../withAuthNavigate';
 
 const ButtonComponent = (props) => {
   const [activeButton, setActiveButton] = useState(null);
@@ -22,7 +23,7 @@ const ButtonComponent = (props) => {
   };
 
   return (
-    <div>
+    <div className='mx-5'>
       {[1, 2, 3, 4, 5].map((value) => (
           <svg 
           key={value} disabled={activeButton !== null && activeButton !== value} 
@@ -34,11 +35,12 @@ const ButtonComponent = (props) => {
           <path d={startImg}/>
         </svg>
       ))}
+      {`  ${Math.floor(props.rate * 100) / 100}`}
     </div>
   );
 };
 
-export const Raiting=(/* title,category,date_upload,Amount,id_r,id_user,rate,setRateTC,rateDB,t,i18n */props)=>{
+export const Raiting=(props)=>{
   const { t, i18n } = useTranslation();
   function setRate(){
         const fData=new FormData();
@@ -51,13 +53,38 @@ export const Raiting=(/* title,category,date_upload,Amount,id_r,id_user,rate,set
     const d=new Date((props.date))  
     return(
       <div className="col">
-        <div>{t('RecommendationTitle')}: {props.title}</div>
-        <div>{t('category')}: {props.category}</div>
-        <div>{t('Date')}: {d.getDay()}/{d.getMonth()}/{d.getFullYear()}</div>
-        <div>Likes:  {props.Amount}</div>
+        <div className='col mx-5'><h4>{props.title}</h4></div>
+        <div className='col mx-5'>{props.category}</div>
+        <div className='col mx-5'>{d.getDay()}/{d.getMonth()}/{d.getFullYear()}</div>
+        <div>        
+           {blockRender(props.auth,
+          <div className="row mx-4 d-flex align-items-start justify-content-start">
+            <div className='w-25'>
+              {(likePresence(props.score, props.id_r, props.id_user_el)===true)?
+                        <div>
+                          <button 
+                          className='btn btn-outline-danger border-0' 
+                          onClick={()=>{props.setLike(0,props.id_r,props.id_user_el,props.getLikeTC)}}>
+                          {dislike(20)} 
+                        </button>
+                        {props.Amount}
+                        </div>:
+                      <div>
+                        <button 
+                          className='btn btn-outline-success border-0' 
+                          onClick={()=>{setLike(1,props.id_r,props.id_user_el,props.getLikeTC)}}>
+                          {Like(20)} 
+                        </button>
+                        {props.Amount}
+                        </div>
+                }
+            </div>
+          </div>          
+          )
+          } 
+        </div>
         <div>
           <ButtonComponent id_r={props.id_r} id_user={props.id_user} rate={props.rate} setRate={setRate} RateDB={props.RateDB}/>
-          {`  ${Math.floor(props.rate * 100) / 100}`}
          </div>
          </div>
     )

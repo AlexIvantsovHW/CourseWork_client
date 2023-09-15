@@ -5,11 +5,14 @@ import { setTheme } from "../CommonFunc";
 import { useTranslation } from 'react-i18next';
 import '../../i18n'
 import { searchLink } from "../CommonFunc";
+import { AdminImg, EnterImg, LogoutImg, MoonImg, ProfileImg, RecommendationImg, SunImg, UsersImg } from "../img";
+import Admin from './../Admin/Admin';
 
-function formBar(name,link) {
+function formBar(name,link,func) {
  
   return (
     <li className="nav-item mt-1">
+      {func}
     <NavLink to={link} className='mt-1'>
       <i className="fs-4 bi-house mt-1"></i>{" "}
       <span className="ms-1 d-none d-sm-inline">{name}</span>
@@ -32,15 +35,16 @@ const filteredData=searchLink(search,Recommendation);
         </a>
 
         <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-          {formBar(t('home'),'/main')}
-          {(props.Login.auth?formBar(t('profile'),`/profile/${id}`):null)}
-          {(props.Login.auth?formBar(t('users'),`/users`):null)}
-         {((props.Login.auth===true)&&(props.Login.name==='Admin')?formBar(t('admin'),'/admin'):null)}
-         {(!props.Login.auth? formBar(t('login'),'/login'):
+        {formBar(t('home'),'/main',RecommendationImg(20))}  
+         {(props.Login.auth?formBar(t('profile'),`/profile/${id}`,ProfileImg(20)):null)}
+          {(props.Login.auth?formBar(t('users'),`/users`,UsersImg(20)):null)}
+         {((props.Login.auth===true)&&(props.Login.name==='Admin')?formBar(t('admin'),'/admin',AdminImg(20)):null)}
+         {(!props.Login.auth?formBar(t('login'),'/login',EnterImg(20)):
           (
             <li className="nav-item mt-1">
             <NavLink to={'/'} className='mt-1'>
               <i className="fs-4 bi-house mt-1"></i>{" "}
+              {LogoutImg(20)}
               <span onClick={()=>{props.loginAC({auth:false,id:null,name:null,password:null})}} 
               className="ms-1 d-none d-sm-inline">{t('logout')}</span>
             </NavLink>
@@ -52,11 +56,13 @@ const filteredData=searchLink(search,Recommendation);
           <option value="en">English</option>
         </select>
           </div>
-          <button onClick={()=>{setTheme(t('dark'),props.themeAC)}} >{t('Dark')}</button>
-          <button onClick={()=>{setTheme(t('light'),props.themeAC)}}>{t('Light')}</button>
+          <div className="row  d-flex justify-content-center align-items-center w-100">
+          <button className="col btn btn-outline-light border-0" onClick={()=>{setTheme(t('dark'),props.themeAC)}} >{MoonImg(30)}</button>
+          <button className="col btn btn-outline-warning border-0" onClick={()=>{setTheme(t('light'),props.themeAC)}}>{SunImg(30)}</button>
+          </div>
           <div className="">
            <div className="d-flex justify-content-center align-items-center w-100"> 
-           <input type="text" placeholder="Search..." onChange={(e)=>setSearch(e.target.value)}/> 
+           <input type="text" placeholder={t('Search')} onChange={(e)=>setSearch(e.target.value)}/> 
            </div>
            <div className="col w-100 border overflow-auto" style={{ height: "100px" }}>
             {(search?filteredData.map((el)=><div><Link to={"/expand/"+el.id_r}>{el.title}</Link></div>):<div></div>)}

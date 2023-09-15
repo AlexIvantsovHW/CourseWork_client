@@ -9,6 +9,7 @@ import {
 
 
 const Comment = (props) => {
+  debugger;
   let filteredComments=filterComments(props.comments,props.targetId)
 
   if(props.statusView===false){return(
@@ -33,7 +34,7 @@ const Comment = (props) => {
                 props.setCommentsTC,
                 props.id_user,
                 props.targetId,
-                props.setCommentStatusAC,
+/*                 props.setCommentStatusAC, */
                 props.setViewAC
               )}
               

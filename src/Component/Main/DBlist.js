@@ -1,7 +1,7 @@
 
 import { NavLink } from 'react-router-dom';
 import { blockRender } from '../withAuthNavigate';
-import { Camera, img_return } from './../img';
+import { Camera, ExpandImg, Like, dislike, img_return } from './../img';
 import { likePresence, setLike } from './Expand/Function';
 import { Raiting } from './Raiting';
 import { useTranslation } from 'react-i18next';
@@ -17,7 +17,7 @@ export function DBlist(
     return(
         arr.map((el) => {
             return (
-              <div className="row border">
+              <div className="row mt-5 bg-dark bg-gradient rounded-pill border-bottom border-danger border-opacity-50">
                   <Raiting
                     title={el.title} category={el.category}
                     date={el.date_upload} Amount={el.Amount}
@@ -25,18 +25,17 @@ export function DBlist(
                     setRateTC={setRateTC}
                     averageRecommendationRate={averageRecommendationRate}
                     RateDB={rate}
+                    score={score}
+                    id_user_el= {el.id_user}
+                    getLikeTC={getLikeTC}
+                    setLike={setLike}
+                    auth={auth}
                     />
-                <div className="col">
+                <div className="col-2 d-flex justify-content-center align-items-center h-100">
                 {((el.image===null)||(el.image==='null')?Camera:img_return(el.image))}
                 </div>
-                <div className="col-3 border">
-                <NavLink to={"/expand/"+el.id_r}><button>{t('Read')}</button></NavLink>
-                {blockRender(auth,<div className="row d-flex align-items-end justify-content-end">
-                  <div className="col">{
-                  ((likePresence(score, el.id_r, el.id_user)===true)?<button onClick={()=>{setLike(0,el.id_r,id_user,getLikeTC)}}>dis</button>:
-                  <button onClick={()=>{setLike(1,el.id_r,id_user,getLikeTC)}}>Like</button>)}</div>
-                  </div>          
-                  )}  
+                <div className="col-1 me-4">
+                <NavLink to={"/expand/"+el.id_r}><button className='btn btn-outline-primary border-0'>{ExpandImg(20)}</button></NavLink>
                 </div>
               </div>
             );

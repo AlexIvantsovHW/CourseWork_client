@@ -6,7 +6,10 @@ import { getTags } from "../Profile/Catalog";
 import { DBlist } from "./DBlist";
 import { useTranslation } from 'react-i18next';
 import '../../i18n'
+import { BookImg, DateSort, FilmImg, SortBy, SortDown, SortRateDown, SortRateUp, SortUp } from "../img";
+import { MusicImg } from './../img';
 const Main = (props) => {
+  const [asc,setASC]=useState(true)
   const { t, i18n } = useTranslation();
   const [category,setCategory]=useState(''),
          theme=props.Theme.theme;
@@ -18,8 +21,8 @@ let averageRecommendationRate=calculateAverageRate(props.Recommendation.rate),
     filteredList = categoryFilteredData.filter((o) => x.includes(o.tag)),
     recommendList =x.length > 1? filteredList: categoryFilteredData;    
   return (
-    <div class="col">
-      <div className="row border h-100 d-flex align-items-center text-white bg-success-subtle bg-gradient">
+    <div class="col container-fluid">
+      <div className="row h-100 d-flex align-items-center text-white bg-success-subtle bg-gradient">
       <MainTagList
                 Theme={theme} 
                 themeAC={props.themeAC}
@@ -27,28 +30,22 @@ let averageRecommendationRate=calculateAverageRate(props.Recommendation.rate),
                 tagsAC={props.tagsAC}
                 DB={props.Recommendation.recommendation}
             />
-        <div className={`mx-auto w-50 h-auto bg-${theme}  bg-gradient rounded-4`}>
+        <div className={`mx-auto w-50 h-auto bg-${theme}   rounded-4`}>
           <div className="mb-2">
             <h1 className="text-center">{t('RecommendationHeader')}</h1>
-            <div className="row w-100 mx-auto" style={{ height: "30px" }}>
-              <div className="col"><button onClick={()=>chooseCategory('Book',category,setCategory)}>{t('Book')}</button></div>
-              <div className="col"><button  onClick={()=>chooseCategory('Film',category,setCategory)}>{t('Film')}</button></div>
-              <div className="col"><button  onClick={()=>chooseCategory('Music',category,setCategory)}>{t('Music')}</button></div>
-            </div>
-            <div className="row w-100 mx-auto" style={{ height: "30px" }}>
-                <div className="col-2">{t('Sort')}:</div>
-                <div className="col-4">
-                  {t('Date')}
-                  <button onClick={() => {sort("ASC", "date_upload",props.getSortTC);}}>{'<'}</button>
-                  <button onClick={() => {sort("DESC", "date_upload",props.getSortTC);}}>{'>'}</button>
-                </div>
-                <div className="col-4">
-                  {t('Score')}
-                  <button onClick={() => {sort("ASC", "score",props.getSortTC);}}>{'<'}</button>
-                  <button onClick={() => {sort("DESC", "score",props.getSortTC);}}>{'>'}</button>
-                </div>
+            <div className="row w-100 mx-auto border-bottom border-danger border-3" style={{ height: "50px" }}>
+              <div className="w-100 d-flex justify-content-around">
+              <button className="btn btn-dark" onClick={()=>chooseCategory('Book',category,setCategory)}>{BookImg(20)}</button>
+              <button className="btn btn-dark" onClick={()=>chooseCategory('Film',category,setCategory)}>{FilmImg(20)}</button>
+              <button  className="btn btn-dark" onClick={()=>chooseCategory('Music',category,setCategory)}>{MusicImg(20)}</button>
+              <button className="btn btn-dark" onClick={() => {sort( "date_upload",props.getSortTC,asc,setASC);}}>{DateSort(20)}</button>
+              <button className="btn btn-dark" onClick={() => {sort( "score",props.getSortTC,asc,setASC);}}>{(asc?SortRateDown(20):SortRateUp(20))}</button>
               </div>
-            <div className="w-100 mx-auto mb-2 overflow-auto" style={{ height: "500px" }}>
+            </div>
+            
+            <div 
+              className="w-100 mx-auto mb-2 overflow-x-hidden overflow-y-auto" 
+              style={{ height: "500px" }}>
               {DBlist(
                 recommendList,props.id_user,
                 props.setRateTC,

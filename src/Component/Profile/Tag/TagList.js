@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { handleSelectAll, liGenerator, transformData } from "../../CommonFunc";
-import { addSVG } from "../../img";
+import { DisplayImg, addSVG } from "../../img";
 import { Checkbox} from "../Function";
 import { useTranslation } from 'react-i18next';
 import '../../../i18n'
@@ -56,7 +56,7 @@ if(transformArrData.length===0){transformArrData=[{id:null,value:null}]}else{
         <div>
           <h4 className="text-center">{t('TagList')}</h4>
         </div>
-      <div className="border-bottom">
+      <div className="border-bottom border-danger border-3">
       <Checkbox
         type="checkbox"
         name="selectAll"
@@ -71,7 +71,7 @@ if(transformArrData.length===0){transformArrData=[{id:null,value:null}]}else{
       </div>
       
       <div className="w-100 d-flex justify-content-center align-items-center">
-        <button className='btn btn-success w-50 h-75' onClick={sendFiltedArray}>Display</button>
+        <button className='btn btn-dark' onClick={sendFiltedArray}>{DisplayImg(20)}</button>
       </div>
 
       </div>

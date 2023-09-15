@@ -1,8 +1,11 @@
-export function sort(sort, data,getSortTC) {
+export function sort( data,getSortTC,asc,setASC) {
+  let sort;
+  (asc?sort="DESC":sort="ASC")
   const fData = new FormData();
   fData.append("sort", sort);
   fData.append("field", data);
   getSortTC(fData);
+  setASC(!asc)
 }
 export function calculateAverageRate(rates) {
     const rateSum = {};

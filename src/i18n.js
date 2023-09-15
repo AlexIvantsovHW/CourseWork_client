@@ -51,10 +51,14 @@ i18n
                     SelectAll:'Выбрать все',
                     Display:'Отобразить',
 
+                    //User Page
+                    Users:'ПОЛЬЗОВАТЕЛИ',
+
                     //COMMON
                     viewComment:'Показать комментарии',
                     Comments:'Комментарии',
                     AddComment:'Добавить комментарий',
+                    Search:'Поиск...',
                 }
             },
             en: {
@@ -96,12 +100,15 @@ i18n
                     TagList:'Tag list',
                     SelectAll:'Select All',
                     Display:'Display',
-                    
+
+                    //User Page
+                    Users:'USERS',                    
 
                     //COMMON
                     viewComment:'View comments',
                     Comments:'Comments',
                     AddComment:'Add comment',
+                    Search:'Search...'
                 }
             }
 
