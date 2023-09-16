@@ -9,12 +9,12 @@ import {
 
 
 const Comment = (props) => {
+  debugger;
   let filteredComments=filterComments(props.comments,props.targetId)
-
   if(props.statusView===false){return(
   <a 
   className="text-center fst-italic text-decoration-none" 
-  onClick={()=>{openForm(props.setViewAC)}}>View comments</a>)}
+  onClick={()=>{debugger;openForm(props.setViewAC)}}>View comments</a>)}
   else{
   return (
     <>

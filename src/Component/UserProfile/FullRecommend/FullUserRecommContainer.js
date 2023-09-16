@@ -1,32 +1,29 @@
 import React from 'react'
-import FullRecommend from './FullRecommend';
+import FullUserRecommend from './FullUserRecommend';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { setUpdateAC,getUpdateTC,
-        setCommentStatusAC,setViewAC,
-        getCommentsTC,setCommentsTC } from '../../../Redux/RecommendationReducer';
+import {setCommentStatusAC,setViewAC,
+        getCommentsTC,setCommentsTC,getRecomendTC } from '../../../Redux/RecommendationReducer';
 import { withAuthNavigate } from '../../withAuthNavigate';
 import { withRouter } from '../../CommonFunc';
 
-class FullRecommContainer extends React.Component{
+class FullUserRecommContainer extends React.Component{
   componentDidMount(){
+    debugger;
     this.props.getCommentsTC();
+
   }
     componentDidUpdate(prevProps,prevState){
         if (this.props.Recommendation!== prevProps.Recommendation) {
           this.setState(this.props.Recommendation);
         }
       }
-      
-
     render(){
       return(
-      <FullRecommend 
+      <FullUserRecommend 
         Recommendation={this.props.Recommendation} 
         id_r={this.props.router.params.id} 
         status={this.props.Recommendation.setUpdate} 
-        setUpdateAC={this.props.setUpdateAC}
-        getUpdateTC={this.props.getUpdateTC}
         Login={this.props.Login}
         setCommentStatusAC={this.props.setCommentStatusAC}
         statusComment={this.props.Recommendation.setCommentStatus} 
@@ -40,7 +37,6 @@ class FullRecommContainer extends React.Component{
 const mapStateToProps=(state)=>{return{Recommendation:state.Recommendation,Login:state.Login}}
 export default compose(
     withRouter,
-    connect (mapStateToProps,{setUpdateAC,getUpdateTC,
-      setCommentStatusAC,setViewAC,getCommentsTC,setCommentsTC}),
+    connect (mapStateToProps,{setCommentStatusAC,setViewAC,getCommentsTC,setCommentsTC,getRecomendTC}),
     withAuthNavigate
-)((FullRecommContainer))
+)((FullUserRecommContainer))

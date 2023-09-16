@@ -1,5 +1,5 @@
 import { Field } from "formik";
-import { Camera, img_return } from "../img";
+import { Camera, DateSort, TrashImg, img_return } from "../img";
 import React, { useState } from "react";
 import { sort } from "../Main/Expand/Function";
 
@@ -76,7 +76,7 @@ export const Checkbox = ({ id, type, name, handleClick, isChecked }) => {
     />
   );
 };
-export function Recommendations(id, name, handleClick, isCheck) {
+export function Recommendations(id, name, handleClick, isCheck){
   return (
     <div className="row border">
       <div className="col-1 border d-flex justify-content-center align-items-center">
@@ -117,6 +117,7 @@ export function Recommendations(id, name, handleClick, isCheck) {
 }
 export const Toolbar = (props) => {
   const [isASC,setisASC]=useState(true)
+  const [asc,setASC]=useState(true)
   const deleteReview=()=>{
     const dataToDelete={data: props.isCheck.map((el)=>parseInt(el))}
     props.deleteRecommendationTC(dataToDelete)
@@ -137,9 +138,10 @@ export const Toolbar = (props) => {
  
   return (
     <>
-      <div className="col-1">id</div>
-      <div className="col-1"><button onClick={deleteReview}>delete</button></div>
-      <div className="col-1"><button onClick={() => {sort("ASC", "date_upload",props.sortProfileTC);}}>{'<'}</button></div>
+      <div className="col">id</div>
+      <div className="col"><button className={`btn btn-${props.theme}`}onClick={deleteReview}>{TrashImg(20)}</button></div>
+      <div className="col"><button className="btn btn-dark" onClick={() => {sort( "date_upload",props.getSortTC,asc,setASC);}}>{DateSort(20)}</button></div>
+      {/* <div className="col-1"><button onClick={() => {sort("ASC", "date_upload",props.sortProfileTC);}}>{'<'}</button></div> */}
       <div className="col-1">
       <button onClick={() => {sort("DESC", "date_upload",props.sortProfileTC);}}>{'>'}</button>
       </div>

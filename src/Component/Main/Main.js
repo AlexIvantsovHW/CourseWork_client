@@ -30,7 +30,7 @@ let averageRecommendationRate=calculateAverageRate(props.Recommendation.rate),
                 tagsAC={props.tagsAC}
                 DB={props.Recommendation.recommendation}
             />
-        <div className={`mx-auto w-50 h-auto bg-${theme}   rounded-4`}>
+        <div className={`mx-auto w-50 h-auto bg-${theme} border-danger border-1 border-opacity-25 rounded-4`}>
           <div className="mb-2">
             <h1 className="text-center">{t('RecommendationHeader')}</h1>
             <div className="row w-100 mx-auto border-bottom border-danger border-3" style={{ height: "50px" }}>

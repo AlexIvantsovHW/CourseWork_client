@@ -39,7 +39,7 @@ const Profile = (props) => {
   function onSuccess(files) {setImgLink(files);}
   return (
     <div class="col">
-      <div className="row border h-100 d-flex flex-row align-items-center text-white bg-success-subtle bg-gradient">
+      <div className="row h-100 d-flex flex-row align-items-center text-white bg-dark bg-gradient">
       <TagList
                 Theme={props.Theme.theme} 
                 themeAC={props.themeAC}
@@ -47,13 +47,13 @@ const Profile = (props) => {
                 tagsAC={props.tagsAC}
                 DB={Recommendation}
             />
-        <div className={`col-4 mx-auto w-75 h-auto bg-${theme}  bg-gradient rounded-4`}>
+        <div className={`col-4 mx-auto w-75 h-auto bg-${theme}  border-danger border rounded-4  border-opacity-50`}>
           <UserInformation score={score} id_user={props.id_user} name={pageName[0].name}/>
-          <div className="row border mt-2">
+          <div className="row mt-2 border-danger border-1">
             <div className="text-center mb-2">
               <h4>{t('RecommendationTitle')}</h4>
             </div>
-            <div className="row border w-75 mx-auto" style={{ height: "20px" }}>
+            <div className="row border-bottom border-danger border-3 w-75 mx-auto" style={{ height: "40px" }}>
               <div className="col-1">
                 <Checkbox 
                   type="checkbox" 
@@ -68,12 +68,11 @@ const Profile = (props) => {
                 list={list}
                 setList={setList}
                 sortProfileTC={props.sortProfileTC}
-                
-                
+                theme={theme}
                 />
             </div>
             {catalog(list, isCheck, handleClick,Filter,props.Recommendation.rate,props.Recommendation.totalScore,props.id_user)}
-            <div className="mx-auto border">
+            <div className="mx-auto">
               {blockUser(
                 ProfileId,
                 props.id_user,

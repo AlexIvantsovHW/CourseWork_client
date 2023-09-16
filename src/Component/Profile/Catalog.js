@@ -21,10 +21,10 @@ let RecommendData = array,
     recommendList =x.length > 1? filteredList: RecommendData;
 
     return(
-    <div className="border w-75 mx-auto mb-2 overflow-auto" style={{ height: "300px" }}>
+    <div className="w-75 mx-auto mb-2 overflow-auto border border-danger  border-opacity-25" style={{ height: "300px" }}>
       {recommendList.map((el) => {
   return (
-    <div className="row bg-white text-black border-bottom">
+    <div className="row mt-3 text-white bg-dark bg-gradient rounded-pill border-bottom border-danger border-opacity-50">
       <div className="col-1 d-flex justify-content-center align-items-center">
         <Checkbox
           key={el.id_r}
@@ -38,7 +38,7 @@ let RecommendData = array,
       <div className="col-1  d-flex justify-content-center align-items-center">{el.id_r}</div>
       <div className="col-3  mx-auto"><ImgReview  img={el.image} score={el.score} date={el.date}/>
       </div>
-      <div className="col   text-black">
+      <div className="col   text-white">
         <div className="row text-center"><h5 className="col">{el.title}</h5><div className="col">
     <NavLink to={"/fullrecommend/"+el.id_r}><button>Read</button></NavLink>
           </div></div>

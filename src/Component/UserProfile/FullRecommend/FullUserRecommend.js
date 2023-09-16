@@ -1,8 +1,8 @@
 import React from "react";
-import { update } from "./FormikFunc";
 import Comment from "./Comment/Comment";
 
-const FullRecommend = (props) => {
+const FullUserRecommend = (props) => {
+  debugger;
   let status = props.status,
       statusComment=props.statusComment,
       recommendList = props.Recommendation.recommendation,
@@ -28,15 +28,6 @@ const FullRecommend = (props) => {
                 comments={props.Recommendation.comments}
                 setCommentsTC={props.setCommentsTC}
               />
-            <div className="mx-auto border">
-              {update(
-                status, 
-                props.getUpdateTC,
-                targetRecommendation[0].id_user,
-                targetId,
-                props.setUpdateAC
-              )}
-            </div>
           </div>
         </div>
       </div>
@@ -44,4 +35,4 @@ const FullRecommend = (props) => {
   );
 };
 
-export default FullRecommend;
+export default FullUserRecommend;
