@@ -34,7 +34,6 @@ const Comment = (props) => {
                 props.setCommentsTC,
                 props.id_user,
                 props.targetId,
-/*                 props.setCommentStatusAC, */
                 props.setViewAC
               )}
               

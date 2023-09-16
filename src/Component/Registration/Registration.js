@@ -20,14 +20,13 @@ const validate=values => {
   }
   return errors;
 }
-   const submit = (values) => {
+   const onSubmit = (values) => {
+    debugger;
     let fData = new FormData();
     fData.append("name", values.name);
     fData.append("email", values.email);
     fData.append("pass", values.password);
     props.getRegistrationTC(fData);
-    console.log(values)
-    alert('Registration complete')
   };
   return (
     <div class="col">
@@ -37,13 +36,15 @@ const validate=values => {
     <Formik
       initialValues={initialValues}
       validate={validate}
-      onSubmit={submit}
-    >
+      onSubmit={async (values, { resetForm }) => {
+        await onSubmit(values);
+        resetForm();}}>
+
       {({ isSubmitting }) => (
         <Form className="">
-          {Regform(t('name'),t('name'))}
-          {Regform(t('email'),t('email'))}
-          {Regform(t('password'),t('password'))}
+          {Regform('name',t('name'))}
+          {Regform('email',t('email'))}
+          {Regform('password',t('password'))}
           <div className="d-flex justify-content-ceter align-items-center w-100 mb-3">
           <button type="submit" disabled={isSubmitting} className="btn btn-success mx-auto">{t('submit')}</button>
           </div>

@@ -15,8 +15,14 @@ const RegistrationReducer = (state = initialState, action) => {
 export const registerAC=(data)=>{{return{type:SET_REGISTR,data}}}
 export const getRegistrationTC=(data)=>{
   return async (dispatch)=>{
-    let Registration=await API.getRegistration(data);
-    dispatch(registerAC(Registration))
+    let result=await API.getRegistration(data);
+    {if(result.data===200){
+      alert('Registration complete');
+    }else if(result.data==='dublicate')
+    {alert('User is always registered! ')}
+  }
+    debugger;
+    
   }
 }
 export default RegistrationReducer;
