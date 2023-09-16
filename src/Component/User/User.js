@@ -19,7 +19,7 @@ let theme=props.Theme.theme,
         <div className="w-25 bg-dark rounded-4 border">
         <div className="w-100 mt-2 d-flex justify-content-center align-items-center">{UserImg(60)}</div>
         <div className="w-100 d-flex justify-content-center align-items-center">
-        <NavLink to={"/profile/"+el.id}><p>{el.name}</p></NavLink><p> / id- {el.id}</p></div>
+        <NavLink to={"/userprofile/"+el.id}><p>{el.name}</p></NavLink><p> / id- {el.id}</p></div>
         </div>
       </div>
   )

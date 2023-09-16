@@ -12,7 +12,6 @@ import '../../../i18n'
 import { useTranslation } from 'react-i18next';
 
 const Expand = (props) => {
-  debugger;
   const recommendList = props.DB.recommendation,
         { t, i18n } = useTranslation(),
         averageRecommendationRate=calculateAverageRate(props.DB.rate),

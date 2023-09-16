@@ -5,6 +5,7 @@ import { Regform, initialValues} from "./RegForm";
 import { NavLink } from "react-router-dom";
 import '../../i18n'
 import { useTranslation } from 'react-i18next';
+import { SendImg } from "../img";
 
 const Registration = (props) => {
   const { t, i18n } = useTranslation()
@@ -21,7 +22,6 @@ const validate=values => {
   return errors;
 }
    const onSubmit = (values) => {
-    debugger;
     let fData = new FormData();
     fData.append("name", values.name);
     fData.append("email", values.email);
@@ -46,7 +46,7 @@ const validate=values => {
           {Regform('email',t('email'))}
           {Regform('password',t('password'))}
           <div className="d-flex justify-content-ceter align-items-center w-100 mb-3">
-          <button type="submit" disabled={isSubmitting} className="btn btn-success mx-auto">{t('submit')}</button>
+          <button type="submit" disabled={isSubmitting} className="btn btn-success mx-auto">{SendImg(20)} {t('submit')}</button>
           </div>
           <div className="row text-center">
           <p>{t('textLog')}<NavLink to='/login'>{t('signin')}</NavLink> </p>

@@ -7,15 +7,14 @@ let initialState = {
 }
 const CommentReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_USERS:debugger;return{...state,users:action.users};
+    case SET_USERS:return{...state,users:action.users};
     default:return { ...state };
   }
 };
-export const userAC=(users)=>{{debugger;return{type:SET_USERS,users}}}
+export const userAC=(users)=>{{return{type:SET_USERS,users}}}
 
 export const getUserTC=()=>{
   return async (dispatch)=>{
-    debugger;
     let result=await API.getUsers();
     dispatch(userAC(result.data))
   }

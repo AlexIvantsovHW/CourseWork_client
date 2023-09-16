@@ -19,7 +19,7 @@ const API = {
   getScore(){return instance.get('score')},
   getUpdate(data){return instance.post('update',data)},
   getUsers() {return instance.get('users')},
-  getRegistration(data) {debugger; return instance.post('registration',data)},
+  getRegistration(data) {return instance.post('registration',data)},
   getRecommendation(data) {return instance.post('recommendation',data)},
   getAddRecommend(data){return instance.post('addRecommendation',data)},
   postRate(data){return instance.post('rate',data)},
@@ -28,6 +28,6 @@ const API = {
   setComments(data){return instance.post('setComment',data)},
   deleteRecommends(data){return instance.post('deleteRecommend',data)},
   //========================ADMIN PAGE
-  deleteUsers(data){debugger; return instance.post('deleteUser',data)}
+  deleteUsers(data){return instance.post('deleteUser',data)}
 };
 export default API;

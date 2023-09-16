@@ -8,7 +8,7 @@ import { handleSelectAll, transformData } from "../CommonFunc";
 import { useTranslation } from 'react-i18next';
 import '../../i18n'
 
-const Profile = (props) => {
+const UserProfile = (props) => {
   debugger;
   const [search,setSearch]=useState('');
   const { t, i18n } = useTranslation();
@@ -94,4 +94,4 @@ const Profile = (props) => {
   );
 };
 
-export default Profile;
+export default UserProfile;

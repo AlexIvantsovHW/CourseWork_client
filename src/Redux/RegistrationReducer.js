@@ -20,9 +20,7 @@ export const getRegistrationTC=(data)=>{
       alert('Registration complete');
     }else if(result.data==='dublicate')
     {alert('User is always registered! ')}
-  }
-    debugger;
-    
+  }; 
   }
 }
 export default RegistrationReducer;

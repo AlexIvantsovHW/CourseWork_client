@@ -1,6 +1,5 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Profile from "./Profile";
 import { connect } from "react-redux";
 import { getLoginTC } from "../../Redux/LoginReducer";
 import { getAddRecomendTC, getRecomendTC, getUserLikesTC,getLikeTC, getCommentsTC, getRateDataTC, sortProfileTC} from "../../Redux/RecommendationReducer";
@@ -9,10 +8,11 @@ import { compose } from "redux";
 import { setPublishAC,filterAC, tagsAC,deleteRecommendationTC} from "../../Redux/RecommendationReducer";
 import { withRouter } from "../CommonFunc";
 import { getUserTC } from "../../Redux/UserReducer";
-import { themeAC } from './../../Redux/ThemeReducer';
+import { themeAC } from '../../Redux/ThemeReducer';
+import UserProfile from './UserProfile';
 
 
-class ProfileContainer extends React.Component{
+class UserProfileContainer extends React.Component{
   componentDidMount(){  
     debugger;
     let id=this.props.router.params.id;
@@ -31,7 +31,7 @@ class ProfileContainer extends React.Component{
   }
   
   render(){return ( 
-    <Profile 
+    <UserProfile 
           getLoginTC={this.props.getLoginTC} 
           getRecomendTC={this.props.getRecomendTC}
           Recommendation={this.props.Recommendation} 
@@ -67,5 +67,5 @@ export default compose (
     deleteRecommendationTC,sortProfileTC
   }),
   withAuthNavigate
-  )(ProfileContainer);
+  )(UserProfileContainer);
   
