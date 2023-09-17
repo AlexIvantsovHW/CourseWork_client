@@ -51,6 +51,11 @@ i18n
                     SelectAll:'Выбрать все',
                     Display:'Отобразить',
 
+                    // Profile page
+                    UserName:'Имя пользователя:',
+                    Tag:'Тэги:',
+                    ImgDowloadHeader:'Загрузите или выберите изображение из DropBox',
+                    AddRecommend:'Добавить рекомендацию',
                     //User Page
                     Users:'ПОЛЬЗОВАТЕЛИ',
 
@@ -59,6 +64,15 @@ i18n
                     Comments:'Комментарии',
                     AddComment:'Добавить комментарий',
                     Search:'Поиск...',
+                    Send:'Отправить',
+                    UpdateReview:'Обновить рекомендацию',
+                    inputTitle:'Напишите заголовок',
+                    inputName:'Напишите название',
+                    inputGroup:'Напишите вид/жанр',
+                    inputCategory:'Выберите категорию',
+                    inputTag:'Напишите тэг',
+                    inputText:'Напишите Вашу рекомендацию',
+                    inputComment:'Напишите новый комментарий',
                 }
             },
             en: {
@@ -101,6 +115,12 @@ i18n
                     SelectAll:'Select All',
                     Display:'Display',
 
+                    // Profile page
+                    UserName:'User name:',
+                    Tag:'Tag:',        
+                    ImgDowloadHeader:'Upload or choose image from DropBox', 
+                    AddRecommend:'Add Recommendation',           
+
                     //User Page
                     Users:'USERS',                    
 
@@ -108,7 +128,16 @@ i18n
                     viewComment:'View comments',
                     Comments:'Comments',
                     AddComment:'Add comment',
-                    Search:'Search...'
+                    Search:'Search...',
+                    Send:'Send',
+                    UpdateReview:'Update Review',
+                    inputTitle:'Type title',
+                    inputName:'Type name',
+                    inputGroup:'Type janre',
+                    inputCategory:'Type category',
+                    inputTag:'Type tag',
+                    inputText:'Type your recommendation',
+                    inputComment:'Type new comment',
                 }
             }
 

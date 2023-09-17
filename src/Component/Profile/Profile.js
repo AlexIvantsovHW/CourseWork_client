@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Checkbox, Toolbar, UserInformation, blockUser } from "./Function";
-import { catalog } from "./Catalog";
-import { publish } from "./FormikFunc";
+import { Catalog, catalog } from "./Catalog";
+import FormikFunc, { publish } from "./FormikFunc";
 import TagList from './Tag/TagList';
 import { handleSelectAll, transformData } from "../CommonFunc";
 import { useTranslation } from 'react-i18next';
 import '../../i18n'
 
 const Profile = (props) => {
-  debugger;
   const [search,setSearch]=useState('');
   const { t, i18n } = useTranslation();
   let pageName= (props.Users[0].name===null?props.Users:props.Users.filter(function (el) {return el.id ===(+props.id_user);})),
@@ -41,19 +40,19 @@ const Profile = (props) => {
     <div class="col">
       <div className="row h-100 d-flex flex-row align-items-center text-white bg-dark bg-gradient">
       <TagList
-                Theme={props.Theme.theme} 
+                Theme={theme} 
                 themeAC={props.themeAC}
                 filterAC={props.filterAC}
                 tagsAC={props.tagsAC}
                 DB={Recommendation}
             />
-        <div className={`col-4 mx-auto w-75 h-auto bg-${theme}  border-danger border rounded-4  border-opacity-50`}>
-          <UserInformation score={score} id_user={props.id_user} name={pageName[0].name}/>
+        <div className={`col-4 mx-auto w-75 h-auto bg-${theme.bg}  border-${theme.border} border rounded-4  border-opacity-50`}>
+          <UserInformation t={t} score={score} id_user={props.id_user} name={pageName[0].name}/>
           <div className="row mt-2 border-danger border-1">
-            <div className="text-center mb-2">
-              <h4>{t('RecommendationTitle')}</h4>
+            <div className={`text-center mb-2 text-${theme.font}`}>
+              <h4>{t('RecommendationHeader')}</h4>
             </div>
-            <div className="row border-bottom border-danger border-3 w-75 mx-auto" style={{ height: "40px" }}>
+            <div className={`row border-bottom border-${theme.border} border-3 w-75 mx-auto`} style={{ height: "40px" }}>
               <div className="col-1">
                 <Checkbox 
                   type="checkbox" 
@@ -68,23 +67,35 @@ const Profile = (props) => {
                 list={list}
                 setList={setList}
                 sortProfileTC={props.sortProfileTC}
+                getSortTC={props.getSortTC}
                 theme={theme}
                 />
             </div>
-            {catalog(list, isCheck, handleClick,Filter,props.Recommendation.rate,props.Recommendation.totalScore,props.id_user)}
+            <Catalog
+              list={list}
+              isCheck={isCheck}
+              handleClick={handleClick}
+              Filter={Filter}
+              rate={props.Recommendation.rate}
+              totalScore={props.Recommendation.totalScore}
+              t={t}
+              theme={theme}
+            />
             <div className="mx-auto">
               {blockUser(
                 ProfileId,
                 props.id_user,
                 ProfileName,
-                publish(
-                status,
-                props.setPublishAC,
-                props.id_user,
-                props.getAddRecomendTC,
-                onSuccess,
-                imgLink
-              ))}
+                <FormikFunc
+                  status={status}
+                  setPublishAC={props.setPublishAC}
+                  id_user={props.id_user}
+                  getAddRecomendTC={props.getAddRecomendTC}
+                  onSuccess={onSuccess}
+                  imgLink={imgLink}
+                  theme={theme}
+                />
+                )}
             </div>
           </div>
         </div>

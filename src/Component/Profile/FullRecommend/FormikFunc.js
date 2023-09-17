@@ -1,6 +1,8 @@
 import { Form, Formik } from "formik";
 import { UserForm } from "../Function";
 import { closeForm, date, initialValues, openForm, validate } from "../../CommonFunc";
+import { useTranslation } from 'react-i18next';
+import { SendImg, ToolsImg } from "../../img";
 
 const onSubmit = (values,id_user,id_r,TC) => {
     let fData = new FormData();
@@ -16,11 +18,12 @@ const onSubmit = (values,id_user,id_r,TC) => {
     fData.append("date_upload",date);
     TC(fData);
   };
-export const update=(status,TC,id_user,id_r,AC)=>{
+export const update=(status,TC,id_user,id_r,AC,Theme, t, i18n)=>{
+  
   if(status===false){
     return(
       <div className="d-flex justify-content-center align-items-center w-100 mb-1 mt-1">
-        <button className="btn btn-warning mx-auto" onClick={()=>{openForm(AC)}}>Update review</button>
+        <button className={`btn btn-${Theme.btn} mx-auto`} onClick={()=>{openForm(AC)}}>{ToolsImg(20)} {t('UpdateReview')}</button>
       </div>
     )}else{
   return(
@@ -29,12 +32,13 @@ export const update=(status,TC,id_user,id_r,AC)=>{
             await onSubmit(values,id_user,id_r,TC);
             resetForm();}}>
                   {({ isSubmitting }) => (
-                    <Form className="mx-auto">{UserForm()}
+                    <Form className="mx-auto">{UserForm(t, i18n)}
                       <div className="d-flex justify-content-ceter align-items-center w-100 mb-3">
                         <button type="submit" disabled={isSubmitting}
-                          className="btn btn-success mx-auto ">
-                          Update</button> 
-                          <button className="btn btn-danger" onClick={()=>{closeForm(AC)}}>X</button>
+                          className="btn btn-dark mx-auto ">
+                          {SendImg(20)} {t('Send')}
+                          </button> 
+                          <button className="btn-close btn-close-white" onClick={()=>{closeForm(AC)}}/>
                       </div>
                     </Form>
                   )}

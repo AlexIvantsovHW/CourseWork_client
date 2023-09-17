@@ -14,7 +14,6 @@ import UserProfile from './UserProfile';
 
 class UserProfileContainer extends React.Component{
   componentDidMount(){  
-    debugger;
     let id=this.props.router.params.id;
     const fData=new FormData(); 
     fData.append("id",id);

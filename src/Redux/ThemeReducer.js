@@ -1,7 +1,7 @@
 const SET_THEME='SET_THEME'
 
 let initialState = {
-  theme:'dark'
+  theme:{bg:'dark',font:'white',border:'danger',btn:'dark'}
 }
 const ThemeReducer = (state = initialState, action) => {
   switch (action.type) {

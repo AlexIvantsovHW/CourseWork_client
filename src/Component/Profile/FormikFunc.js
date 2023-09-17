@@ -3,6 +3,9 @@ import moment from "moment";
 import DropboxChooser from "../Dropbox-chooser";
 import { UserForm } from "./Function";
 import { closeForm, openForm } from "../CommonFunc";
+import { useTranslation } from 'react-i18next';
+import '../../i18n'
+import { CloudImg, SendImg } from "../img";
 const date = moment().format("YYYY-MM-DD HH:mm:ss");
 
 export const initialValues = { text: "" };
@@ -23,26 +26,38 @@ let tag='#'+values.tag;
 };
 
 
-export const publish=(status,AC,id_user,TC,onSuccess,imgLink)=>{
-    if(status===false){return(<button onClick={()=>{openForm(AC)}}>Add recommendation</button>)}
+ const FormikFunc=(props)=>{
+    
+    const { t, i18n } = useTranslation();
+    if(props.status===false){return(
+        <div className="d-flex justify-content-center align-items-center w-100">
+            <button 
+                className={`btn btn-${props.theme.btn} mx-auto`}
+                onClick={()=>{openForm(props.setPublishAC)}}>
+                {CloudImg(20)} {t('AddRecommend')}
+    </button>
+        </div>
+    )}
     else{
         return(
             <Formik initialValues={initialValues} validate={validate}
                 onSubmit={async (values, { resetForm }) => {
-                await onSubmit(values,id_user,imgLink,TC);
+                await onSubmit(values,props.id_user,props.imgLink,props.getAddRecomendTC);
                 resetForm();}}>
                         {({ isSubmitting }) => (
                         <>
-                        <h5 style={{textAlign:'center'}}>Upload or choose image from DropBox</h5>
-                        <div><DropboxChooser  onSuccess={onSuccess}/></div>
-                        <Form className="mx-auto">{UserForm()}
+                        <h5 style={{textAlign:'center'}}>{t('ImgDowloadHeader')}</h5>
+                        <div><DropboxChooser  onSuccess={props.onSuccess}/></div>
+                        <Form className="mx-auto">{UserForm(t)}
                             <div className="d-flex justify-content-ceter align-items-center w-100 mb-3">
                             <button type="submit" disabled={isSubmitting}
-                                className="btn btn-success mx-auto ">
-                                Publish</button> 
-                                <button onClick={()=>{closeForm(AC)}}>X</button>
+                                className={`btn btn-${props.theme.btn} mx-auto`}>
+                                {SendImg(20)} {t('Send')}</button> 
+                                <button onClick={()=>{closeForm(props.setPublishAC)}}>X</button>
                             </div>
                         </Form></> 
                         )}
                     </Formik>)
   }};
+
+  export default FormikFunc;

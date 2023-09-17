@@ -8,11 +8,7 @@ import { withAuthNavigate } from '../../withAuthNavigate';
 import { withRouter } from '../../CommonFunc';
 
 class FullUserRecommContainer extends React.Component{
-  componentDidMount(){
-    debugger;
-    this.props.getCommentsTC();
-
-  }
+  componentDidMount(){this.props.getCommentsTC();}
     componentDidUpdate(prevProps,prevState){
         if (this.props.Recommendation!== prevProps.Recommendation) {
           this.setState(this.props.Recommendation);

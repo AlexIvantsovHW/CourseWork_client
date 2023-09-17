@@ -7,6 +7,7 @@ import { setUpdateAC,getUpdateTC,
         getCommentsTC,setCommentsTC } from '../../../Redux/RecommendationReducer';
 import { withAuthNavigate } from '../../withAuthNavigate';
 import { withRouter } from '../../CommonFunc';
+import { themeAC } from '../../../Redux/ThemeReducer';
 
 class FullRecommContainer extends React.Component{
   componentDidMount(){
@@ -33,14 +34,16 @@ class FullRecommContainer extends React.Component{
         statusView={this.props.Recommendation.setView}
         setViewAC={this.props.setViewAC}
         setCommentsTC={this.props.setCommentsTC}
+        Theme={this.props.Theme} 
+        themeAC={this.props.themeAC}
         />
         )}
 }
 
-const mapStateToProps=(state)=>{return{Recommendation:state.Recommendation,Login:state.Login}}
+const mapStateToProps=(state)=>{return{Recommendation:state.Recommendation,Login:state.Login,Theme:state.Theme}}
 export default compose(
     withRouter,
     connect (mapStateToProps,{setUpdateAC,getUpdateTC,
-      setCommentStatusAC,setViewAC,getCommentsTC,setCommentsTC}),
+      setCommentStatusAC,setViewAC,getCommentsTC,setCommentsTC,themeAC}),
     withAuthNavigate
 )((FullRecommContainer))

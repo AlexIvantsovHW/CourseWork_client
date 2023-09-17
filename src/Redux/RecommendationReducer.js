@@ -99,7 +99,6 @@ export const getRecomendTC=(data)=>{
   return async (dispatch)=>{
     let req1=await API.getRecommendation(data);
     let req2=await API.getComments();
-    debugger;
     let result=modifyRecommendation(req1.data,req2.data)
     dispatch(recommendationAC(result))
   }

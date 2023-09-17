@@ -1,21 +1,19 @@
 import { Field } from "formik";
-import { Camera, DateSort, TrashImg, img_return } from "../img";
+import { Camera, DateSort, Like, ProfileImg, TrashImg, UsersImg, img_return } from "../img";
 import React, { useState } from "react";
 import { sort } from "../Main/Expand/Function";
 
-export function UserForm(data) {
-  function basicForm(label,name,type){
+export function UserForm(t, i18n) {
+  debugger;
+  function basicForm(name,type,plholder){
     return(
       <div className="row d-flex justify-content-end">
-      <div className="col-2  d-flex align-items-center  justify-content-end">
-        <h6 className="text-center">{label}</h6>
-      </div>
       <div className="col ">
         <Field
           className="form-control form-control-sm mx-auto w-75 mt-1 mb-2"
           component="input"
           name={name}
-          placeholder={`Type ${name}`}
+          placeholder={`${plholder}`}
           type={type}
         />
       </div>
@@ -23,36 +21,36 @@ export function UserForm(data) {
     )
   }
   return (
-    <div className="row mb-2 border">
-      <div className="col ml-4 border" >
+    <div className="row mb-2">
+      <div className="col ml-4" >
         <div className="row">
-          {basicForm('Title','title','text')}
-          {basicForm('Name','name','text')}
-          {basicForm('Group','group','text')}
-          {basicForm('Category','category','text')}
-          {basicForm('Tag','tag','text')}
+          {basicForm('title','text',t('inputTitle'))}
+          {basicForm('name','text',t('inputName'))}
+          {basicForm('group','text',t('inputGroup'))}
+          {basicForm('category','text',t('inputCategory'))}
+          {basicForm('tag','text',t('inputTag'))}
         </div>
       </div>
-       <div className="col mr-4 border">
+       <div className="col mr-4">
         <Field
           className="form-control form-control-sm mx-0 w-75 h-100 mt-1 mb-1"
           component="input"
           name={"text"}
-          placeholder={"Type recommendation"}
+          placeholder={t('inputText')}
           type={"input"}
         />
       </div>
     </div>
   );
 }
-export function commentForm(data) {
+export function commentForm(Theme,t,i18n) {
   return (
-       <div className="col mr-4 border">
+       <div className="col mr-4 w-100">
         <Field
-          className="form-control form-control-sm mx-0 w-100 h-100 mt-1 mb-1"
+          className={`form-control form-control-sm mx-0 w-100 h-100 mt-1 mb-1 `}
           component="input"
           name={"comment"}
-          placeholder={"Type recommendation"}
+          placeholder={t('inputComment')}
           type={"input"}
         />
       </div>
@@ -139,9 +137,8 @@ export const Toolbar = (props) => {
   return (
     <>
       <div className="col">id</div>
-      <div className="col"><button className={`btn btn-${props.theme}`}onClick={deleteReview}>{TrashImg(20)}</button></div>
-      <div className="col"><button className="btn btn-dark" onClick={() => {sort( "date_upload",props.getSortTC,asc,setASC);}}>{DateSort(20)}</button></div>
-      {/* <div className="col-1"><button onClick={() => {sort("ASC", "date_upload",props.sortProfileTC);}}>{'<'}</button></div> */}
+      <div className="col"><button className={`btn btn-${props.theme.btn}`}onClick={deleteReview}>{TrashImg(20)}</button></div>
+      <div className="col"><button className={`btn btn-${props.theme.btn}`} onClick={() => {sort( "date_upload",props.getSortTC,asc,setASC);}}>{DateSort(20)}</button></div>
       <div className="col-1">
       <button onClick={() => {sort("DESC", "date_upload",props.sortProfileTC);}}>{'>'}</button>
       </div>
@@ -149,15 +146,16 @@ export const Toolbar = (props) => {
   );
 };
 export const UserInformation = (props) => {
+
   return (
     <div className="row ">
-      <div className="col-4 ">User Ava</div>
+      <div className="col-4 d-flex justify-content-center align-items-center">{ProfileImg(100)}</div>
       <div className="col ">
       <div>
-        User name: {props.name} 
+        {props.t('UserName')} {props.name} 
       </div>
       <div>
-        Total user's like: {setUserLike(props.score,props.id_user)} 
+        {Like(20)} {setUserLike(props.score,props.id_user)} 
       </div>
 
       </div>

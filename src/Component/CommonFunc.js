@@ -3,6 +3,7 @@ import { SendImg, UserImg, deleteSVG } from "./img";
 import { Form, Formik } from "formik";
 import moment from "moment";
 import { commentForm } from "./Profile/Function";
+import { useState } from "react";
 
 // CONTAINER
 export var withRouter=function (Component) {
@@ -40,9 +41,9 @@ export function searchLink(substring, arr) {
   return matchingObjects;
 }
 //______________________Comment page____________________
-export const userElement = (name,comment,date) => {
+export const userElement = (name,comment,date,Theme) => {
   return (
-    <div className="row border bg-white">
+    <div className={`row  bg-${Theme.bg} bg-gradient border-${Theme.border} border border-opacity-50`}>
       <div className="col-1 ">
           {UserImg(70)}
       </div>
@@ -56,7 +57,7 @@ export const userElement = (name,comment,date) => {
     </div>
   );
 };
-export function openForm(AC){debugger;return AC(true)}
+export function openForm(AC){return AC(true)}
 export function closeForm(AC){return AC(false)}
 export function filterComments(arr,id_r){return arr.filter(item=>item.id_r===id_r)}
 export const date = moment().format("YYYY-MM-DD HH:mm:ss");
@@ -71,7 +72,6 @@ export const validate = (values) => {const errors = {};return errors;};
     TC(fData);
   };
 export  const addComment=(statusComment,TC,id_user,id_r,AC)=>{
-debugger;
   if(statusComment===false){
     return(
       <div className="d-flex justify-content-center">
