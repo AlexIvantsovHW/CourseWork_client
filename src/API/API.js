@@ -15,7 +15,7 @@ const API = {
   getAuth(data) {return instance.post('login',data)},
   getLike(data){return instance.post('like',data)},
   getUserLikes(){return instance.get('score_user')},
-  getSort(sort){return instance.post('sort',sort)},
+  getSort(sort){debugger;return instance.post('sort',sort)},
   getScore(){return instance.get('score')},
   getUpdate(data){return instance.post('update',data)},
   getUsers() {return instance.get('users')},

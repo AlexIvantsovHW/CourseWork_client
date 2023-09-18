@@ -7,18 +7,35 @@ import '../../i18n'
 import { blockRender } from '../withAuthNavigate';
 
 const ButtonComponent = (props) => {
+  debugger;
   const [activeButton, setActiveButton] = useState(null);
   const handleButtonClick = (value) => {
     if (activeButton === value) {
       setActiveButton(null);
-      props.setRate(props.id_r,props.id_user,value,0)
+      const fData=new FormData();
+        fData.append('id_r',props.id_r);
+        fData.append('id_user',props.id_user);
+        fData.append('rate',value);
+        fData.append('action',0);
+        props.setRateTC(fData);
     } else {
       setActiveButton(value);
       if(checkMatching(props.RateDB, props.id_r, props.id_user, value)){
-        props.setRate(props.id_r,props.id_user,value,0)
+        const fData=new FormData();
+        fData.append('id_r',props.id_r);
+        fData.append('id_user',props.id_user);
+        fData.append('rate',value);
+        fData.append('action',0);
+        props.setRateTC(fData);
         setActiveButton(null);
       }else{
-      props.setRate(props.id_r,props.id_user,value,1)
+        const fData=new FormData();
+        fData.append('id_r',props.id_r);
+        fData.append('id_user',props.id_user);
+        fData.append('rate',value);
+        fData.append('action',1);
+        props.setRateTC(fData);
+      
 }    }
   };
 
@@ -41,15 +58,19 @@ const ButtonComponent = (props) => {
 };
 
 export const Raiting=(props)=>{
+  const [action,setAction]=useState(0)
+
+  debugger;
   const { t, i18n } = useTranslation();
-  function setRate(){
+/*   function setRate(){
+    debugger;
         const fData=new FormData();
         fData.append('id_r',props.id_r);
         fData.append('id_user',props.id_user);
         fData.append('rate',props.rate);
         fData.append('action',props.action);
         props.setRateTC(fData);
-      } 
+      }  */
     const d=new Date((props.date))  
     return(
       <div className="col">
@@ -60,23 +81,25 @@ export const Raiting=(props)=>{
            {blockRender(props.auth,
           <div className="row mx-4 d-flex align-items-start justify-content-start">
             <div className='w-25'>
-              {(likePresence(props.score, props.id_r, props.id_user_el)===true)?
-                        <div>
-                          <button 
-                          className='btn btn-outline-danger border-0' 
-                          onClick={()=>{props.setLike(0,props.id_r,props.id_user_el,props.getLikeTC)}}>
-                          {dislike(20)} 
-                        </button>
-                        {props.Amount}
-                        </div>:
-                      <div>
-                        <button 
-                          className='btn btn-outline-success border-0' 
-                          onClick={()=>{setLike(1,props.id_r,props.id_user_el,props.getLikeTC)}}>
-                          {Like(20)} 
-                        </button>
-                        {props.Amount}
-                        </div>
+              {(props.id_user!=null?
+              (likePresence(props.score, props.id_r, props.id_user_el)===true)?
+              <div>
+                <button 
+                className='btn btn-outline-danger border-0' 
+                onClick={()=>{props.setLike(0,props.id_r,props.id_user_el,props.getLikeTC)}}>
+                {dislike(20)} 
+              </button>
+              {props.Amount}
+              </div>:
+            <div>
+              <button 
+                className='btn btn-outline-success border-0' 
+                onClick={()=>{setLike(1,props.id_r,props.id_user_el,props.getLikeTC)}}>
+                {Like(20)} 
+              </button>
+              {props.Amount}
+              </div>:<div>{Like(20)} {props.Amount}</div>)
+
                 }
             </div>
           </div>          
@@ -84,7 +107,16 @@ export const Raiting=(props)=>{
           } 
         </div>
         <div>
-          <ButtonComponent id_r={props.id_r} id_user={props.id_user} rate={props.rate} setRate={setRate} RateDB={props.RateDB}/>
+        {(props.id_user!=null?
+        <ButtonComponent 
+          id_r={props.id_r} 
+          id_user={props.id_user} 
+          rate={props.rate} 
+          RateDB={props.RateDB}
+          setRateTC={props.setRateTC}/>
+          :
+          <div>{Like(20)}{props.Amount}</div>
+          )}
          </div>
          </div>
     )

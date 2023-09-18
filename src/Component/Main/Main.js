@@ -22,7 +22,7 @@ let averageRecommendationRate=calculateAverageRate(props.Recommendation.rate),
     recommendList =x.length > 1? filteredList: categoryFilteredData;    
   return (
     <div class="col container-fluid">
-      <div className="row h-100 d-flex align-items-center text-white bg-success-subtle bg-gradient">
+      <div className={`row h-100 d-flex align-items-center text-${theme.font} bg-${theme.bg} bg-gradient`}>
       <MainTagList
                 Theme={theme} 
                 themeAC={props.themeAC}
@@ -30,16 +30,16 @@ let averageRecommendationRate=calculateAverageRate(props.Recommendation.rate),
                 tagsAC={props.tagsAC}
                 DB={props.Recommendation.recommendation}
             />
-        <div className={`mx-auto w-50 h-auto bg-${theme} border-danger border-1 border-opacity-25 rounded-4`}>
+        <div className={`mx-auto w-50 h-auto bg-${theme.bg} border-${theme.border} border border-opacity-50 rounded-4`}>
           <div className="mb-2">
             <h1 className="text-center">{t('RecommendationHeader')}</h1>
-            <div className="row w-100 mx-auto border-bottom border-danger border-3" style={{ height: "50px" }}>
+            <div className={`row w-100 mx-auto border-bottom border-${theme.border} border-3`} style={{ height: "50px" }}>
               <div className="w-100 d-flex justify-content-around">
-              <button className="btn btn-dark" onClick={()=>chooseCategory('Book',category,setCategory)}>{BookImg(20)}</button>
-              <button className="btn btn-dark" onClick={()=>chooseCategory('Film',category,setCategory)}>{FilmImg(20)}</button>
-              <button  className="btn btn-dark" onClick={()=>chooseCategory('Music',category,setCategory)}>{MusicImg(20)}</button>
-              <button className="btn btn-dark" onClick={() => {sort( "date_upload",props.getSortTC,asc,setASC);}}>{DateSort(20)}</button>
-              <button className="btn btn-dark" onClick={() => {sort( "score",props.getSortTC,asc,setASC);}}>{(asc?SortRateDown(20):SortRateUp(20))}</button>
+              <button className={`btn btn-${theme.btn}`} onClick={()=>chooseCategory('Book',category,setCategory)}>{BookImg(20)}</button>
+              <button className={`btn btn-${theme.btn}`} onClick={()=>chooseCategory('Film',category,setCategory)}>{FilmImg(20)}</button>
+              <button  className={`btn btn-${theme.btn}`} onClick={()=>chooseCategory('Music',category,setCategory)}>{MusicImg(20)}</button>
+              <button className={`btn btn-${theme.btn}`} onClick={() => {sort( "date_upload",props.getSortTC,asc,setASC);}}>{DateSort(20)}</button>
+              <button className={`btn btn-${theme.btn}`} onClick={() => {sort( "score",props.getSortTC,asc,setASC);}}>{(asc?SortRateDown(20):SortRateUp(20))}</button>
               </div>
             </div>
             

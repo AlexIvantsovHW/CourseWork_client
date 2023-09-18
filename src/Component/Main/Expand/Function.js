@@ -1,4 +1,5 @@
 export function sort( data,getSortTC,asc,setASC) {
+  debugger;
   let sort;
   (asc?sort="DESC":sort="ASC")
   const fData = new FormData();

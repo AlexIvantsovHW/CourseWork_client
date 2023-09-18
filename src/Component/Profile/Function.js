@@ -1,6 +1,6 @@
 import { Field } from "formik";
 import { Camera, DateSort, Like, ProfileImg, TrashImg, UsersImg, img_return } from "../img";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { sort } from "../Main/Expand/Function";
 
 export function UserForm(t, i18n) {
@@ -119,26 +119,30 @@ export const Toolbar = (props) => {
   const deleteReview=()=>{
     const dataToDelete={data: props.isCheck.map((el)=>parseInt(el))}
     props.deleteRecommendationTC(dataToDelete)
-  } 
-  function dateSortedData(){
-    let data=props.list,
-        sortedData=data;
-    if(isASC===true){
-      sortedData=data.sort((x, y) => new Date(x.date_upload) - new Date(y.date_upload))
-      props.setList(sortedData)
-      setisASC(false)
-    }else{
-      sortedData=data.sort((x, y) =>new Date(y.date_upload) - new Date(x.date_upload))
-      props.setList(sortedData)
-      setisASC(true)
-    }
   }
- 
+  const [isAscending, setIsAscending] = useState(true);
+
+  const sortBy = () => {
+    debugger;
+    const sortedArray = [...props.list].sort((a, b) => {
+      if (a.id_r < b.id_r) return -1;
+      if (a.id_r > b.id_r) return 1;
+      return 0;
+    });
+
+    if (!isAscending) {
+      sortedArray.reverse();
+    }
+
+    props.setList(sortedArray);
+    setIsAscending(!isAscending);
+  };
+
   return (
     <>
       <div className="col">id</div>
       <div className="col"><button className={`btn btn-${props.theme.btn}`}onClick={deleteReview}>{TrashImg(20)}</button></div>
-      <div className="col"><button className={`btn btn-${props.theme.btn}`} onClick={() => {sort( "date_upload",props.getSortTC,asc,setASC);}}>{DateSort(20)}</button></div>
+      <div className="col"><button className={`btn btn-${props.theme.btn}`} onClick={sortBy /* () => {sort( "date_upload",props.getSortTC,asc,setASC); } */}>{DateSort(20)}</button></div>
       <div className="col-1">
       <button onClick={() => {sort("DESC", "date_upload",props.sortProfileTC);}}>{'>'}</button>
       </div>

@@ -20,16 +20,16 @@ class MainContainer extends React.Component{
         }
       }
     render(){return(
-    <Main DB={this.props.DB} getSortTC={this.props.getSortTC} 
-    score={this.props.score} getScoreTC={this.props.getScoreTC}
-    getLikeTC={this.props.getLikeTC} Login={this.props.Login}
-    id_user={this.props.Login.auth.id} totalScore={this.props.Recommendation.totalScore}
-    userScore={this.props.Recommendation.userScore} setRateTC={this.props.setRateTC}
-    Recommendation={this.props.Recommendation}
-    Theme={this.props.Theme} themeAC={this.props.themeAC}
-    tagsAC={this.props.tagsAC}
-    filterAC={this.props.filterAC}
-
+    <Main 
+        DB={this.props.DB} getSortTC={this.props.getSortTC} 
+        score={this.props.score} getScoreTC={this.props.getScoreTC}
+        getLikeTC={this.props.getLikeTC} Login={this.props.Login}
+        id_user={this.props.Login.auth.id} totalScore={this.props.Recommendation.totalScore}
+        userScore={this.props.Recommendation.userScore} setRateTC={this.props.setRateTC}
+        Recommendation={this.props.Recommendation}
+        Theme={this.props.Theme} themeAC={this.props.themeAC}
+        tagsAC={this.props.tagsAC}
+        filterAC={this.props.filterAC}
     />)}
 } 
 
