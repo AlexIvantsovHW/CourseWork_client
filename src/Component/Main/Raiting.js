@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { checkMatching, likePresence, setLike } from './Expand/Function';
 import './style.css'
-import { Like, dislike, startImg } from '../img';
+import { Like, dislike, star, startImg } from '../img';
 import { useTranslation } from 'react-i18next';
 import '../../i18n'
 import { blockRender } from '../withAuthNavigate';
@@ -89,7 +89,7 @@ export const Raiting=(props)=>{
                 {Like(20)} 
               </button>
               {props.Amount}
-              </div>:<div className='col mx-5'>{Like(20)} {props.Amount}</div>)
+              </div>:<div className='col '>{star(20)}</div>)
 
                 }
             </div>
@@ -106,7 +106,10 @@ export const Raiting=(props)=>{
           RateDB={props.RateDB}
           setRateTC={props.setRateTC}/>
           :
+          <>
+          <div className='col mx-5'>{star(20)} {`${Math.floor(props.rate * 100) / 100}`}</div>
           <div className='col mx-5'>{Like(20)} {props.Amount}</div>
+          </>
           )}
          </div>
          </div>

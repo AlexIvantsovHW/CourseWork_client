@@ -30,8 +30,8 @@ const validate=values => {
   };
   return (
     <div class="col">
-     <div className="row border h-100 d-flex align-items-center text-white bg-success-subtle bg-gradient">
-        <div className={`mx-auto w-50 h-auto bg-${theme}  bg-gradient rounded-4`}>
+     <div className={`row h-100 d-flex align-items-center text-white bg-${theme.bg} bg-gradient `}>
+        <div className={`mx-auto w-50 h-auto bg-${theme.bg} rounded-4 border border-${theme.border} border-opacity-50`}>
         <div className="mb-2"><h1 className="text-center">{t('registration')}</h1></div>
     <Formik
       initialValues={initialValues}
@@ -46,7 +46,7 @@ const validate=values => {
           {Regform('email',t('email'))}
           {Regform('password',t('password'))}
           <div className="d-flex justify-content-ceter align-items-center w-100 mb-3">
-          <button type="submit" disabled={isSubmitting} className="btn btn-success mx-auto">{SendImg(20)} {t('submit')}</button>
+          <button type="submit" disabled={isSubmitting} className={`btn btn-${theme.btn} mx-auto`}>{SendImg(20)} {t('submit')}</button>
           </div>
           <div className="row text-center">
           <p>{t('textLog')}<NavLink to='/login'>{t('signin')}</NavLink> </p>

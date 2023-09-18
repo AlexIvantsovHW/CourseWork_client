@@ -53,7 +53,6 @@ const Comment = (props) => {
       </p>
     );
   } else {
-    debugger;
     return (
       <>
         <div className="d-flex justify-content-end">

@@ -16,10 +16,10 @@ let theme=props.Theme.theme,
     UserData=usersExceptAdmin.map((el)=>{
   return(
     <div className="mt-2 w-100 d-flex justify-content-center align-items-center">
-        <div className="w-25 bg-dark rounded-4 border">
+        <div className={`w-25 bg-${theme.bg} rounded-4 border border-${theme.border}`}>
         <div className="w-100 mt-2 d-flex justify-content-center align-items-center">{UserImg(60)}</div>
         <div className="w-100 d-flex justify-content-center align-items-center">
-        <NavLink to={"/userprofile/"+el.id}><p>{el.name}</p></NavLink><p> / id- {el.id}</p></div>
+        <NavLink className='text-decoration-none' to={"/userprofile/"+el.id}><p className={`text-${theme.font} fw-bold`}>{el.name}</p></NavLink><p> / id- {el.id}</p></div>
         </div>
       </div>
   )
@@ -27,15 +27,15 @@ let theme=props.Theme.theme,
 
   return (
     <div class="col">
-     <div className="row border h-100 d-flex align-items-center text-white bg-success-subtle bg-gradient">
-        <div className={`mx-auto w-50 h-auto bg-${theme} overflow-auto rounded-4`} >
+     <div className={`row h-100 d-flex align-items-center text-white bg-${theme.bg} bg-gradient`}>
+        <div className={`mx-auto w-50 h-auto bg-${theme.bg} overflow-auto rounded-4 border border-${theme.border} border-opacity-50`} >
         <div className="mb-2">
-          <h1 className="text-center">{t('Users')}</h1>
+          <h1 className={`text-center text-${theme.font}`}>{t('Users')}</h1>
         <div>
           <div className="d-flex justify-content-center align-items-center w-100 mt-2 mb-2" >
-            <input className={`bg-${theme} bg-gradient text-info`} type="text" placeholder={t('Search')} onChange={(e)=>setSearch(e.target.value)}/> 
+            <input className={`bg-${theme.bg} bg-gradient text-${theme.font}`} type="text" placeholder={t('Search')} onChange={(e)=>setSearch(e.target.value)}/> 
           </div>
-          <div className={`w-100 d-flex flex-column align-items-center bg-${theme} bg-gradient overflow-auto`} style={{ height: "500px" }}>
+          <div className={`w-100 d-flex flex-column align-items-center bg-${theme.bg} bg-gradient overflow-auto`} style={{ height: "500px" }}>
           {UserData}
           </div>
         </div>

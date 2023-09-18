@@ -103,7 +103,7 @@ const SideBar = (props) => {
               <button
                 className=" btn btn-outline-light border-0 rounded-circle"
                 onClick={() => {
-                  setTheme(t("dark"), props.themeAC);
+                  setTheme({bg:'dark',font:'white',border:'danger',btn:'dark'}, props.themeAC);
                 }}
               >
                 {MoonImg(30)}
@@ -113,7 +113,7 @@ const SideBar = (props) => {
               <button
                 className="btn btn-outline-warning border-0 rounded-circle"
                 onClick={() => {
-                  setTheme(t("light"), props.themeAC);
+                  setTheme({bg:'info',font:'white',border:'dark',btn:'info'}, props.themeAC);
                 }}
               >
                 {SunImg(30)}
@@ -123,14 +123,14 @@ const SideBar = (props) => {
           <div className="">
             <div className="d-flex justify-content-center align-items-center w-100">
               <input
-                className="bg-dark bg-gradient"
+                className={`bg-${theme.bg} bg-gradient text-${theme.font}`}
                 type="text"
                 placeholder={t("Search")}
                 onChange={(e) => setSearch(e.target.value)}
               />
             </div>
             <div
-              className="col w-100 border bg-danger bg-opacity-25 border-danger border-opacity-25 overflow-auto"
+              className={`col w-100 border bg-${theme.border} bg-opacity-25 border-${theme.border} border-opacity-25 overflow-auto`}
               style={{ height: "100px" }}
             >
               {search ? (
