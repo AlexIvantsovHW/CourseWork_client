@@ -63,8 +63,9 @@ export const Raiting=(props)=>{
   const { t, i18n } = useTranslation();
     const d=new Date((props.date))  
     return(
-      <div className="col">
-        <div className='col mx-5'><h4>{props.title}</h4></div>
+      <div className={`col text-${props.theme.font}`}>
+        <div className='col mx-5 text-center'><h4>{props.title}</h4></div>
+        <div className='col mx-5'>{props.name}</div>
         <div className='col mx-5'>{props.category}</div>
         <div className='col mx-5'>{d.getDay()}/{d.getMonth()}/{d.getFullYear()}</div>
         <div>        
@@ -73,22 +74,22 @@ export const Raiting=(props)=>{
             <div className='w-25'>
               {(props.id_user!=null?
               (likePresence(props.score, props.id_r, props.id_user)===true)?
-              <div>
+              <div className='col'>
                 <button 
-                className='btn btn-outline-danger border-0' 
+                className={` btn btn-outline-${props.theme.border} border-0`} 
                 onClick={()=>{debugger;props.setLike(0,props.id_r,props.id_user,props.getLikeTC)}}>
                 {dislike(20)} 
               </button>
               {props.Amount}
               </div>:
-            <div>
+            <div className='col'>
               <button 
-                className='btn btn-outline-success border-0' 
+                className=' btn btn-outline-success border-0' 
                 onClick={()=>{debugger;setLike(1,props.id_r,props.id_user,props.getLikeTC)}}>
                 {Like(20)} 
               </button>
               {props.Amount}
-              </div>:<div>{Like(20)} {props.Amount}</div>)
+              </div>:<div className='col mx-5'>{Like(20)} {props.Amount}</div>)
 
                 }
             </div>
@@ -105,7 +106,7 @@ export const Raiting=(props)=>{
           RateDB={props.RateDB}
           setRateTC={props.setRateTC}/>
           :
-          <div>{Like(20)}{props.Amount}</div>
+          <div className='col mx-5'>{Like(20)} {props.Amount}</div>
           )}
          </div>
          </div>

@@ -11,7 +11,7 @@ export function DBlist(
     arr,id_user,setRateTC,
     averageRecommendationRate,
     rate,auth,score,
-    getLikeTC)
+    getLikeTC,theme)
     {
       const { t, i18n } = useTranslation();
     return(
@@ -20,7 +20,9 @@ export function DBlist(
               <div className="row mt-5 bg-dark bg-gradient rounded-pill border-bottom border-danger border-opacity-50">
                   <Raiting
                     title={el.title} category={el.category}
-                    date={el.date_upload} Amount={el.Amount}
+                    name={el.name}
+                    date={el.date_upload} 
+                    Amount={el.Amount}
                     id_r={el.id_r} id_user={id_user} rate={el.rate}
                     setRateTC={setRateTC}
                     averageRecommendationRate={averageRecommendationRate}
@@ -30,12 +32,15 @@ export function DBlist(
                     getLikeTC={getLikeTC}
                     setLike={setLike}
                     auth={auth}
+                    theme={theme}
                     />
-                <div className="col-2 d-flex justify-content-center align-items-center h-100">
+                <div className="col-2 ">
+                <div className='h-100  d-flex justify-content-center align-items-center'>
                 {((el.image===null)||(el.image==='null')?Camera:img_return(el.image))}
                 </div>
-                <div className="col-1 me-4">
-                <NavLink to={"/expand/"+el.id_r}><button className='btn btn-outline-primary border-0'>{ExpandImg(20)}</button></NavLink>
+                </div>
+                <div className="col-1 d-flex justify-content-center align-items-center">
+                <NavLink to={"/expand/"+el.id_r}><button className='btn btn-outline-primary border-0 d-flex justify-content-center align-items-center'>{ExpandImg(20)}</button></NavLink>
                 </div>
               </div>
             );

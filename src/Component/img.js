@@ -75,7 +75,7 @@ export function SendImg(size){
 }
 export const img_return=(link,size=80)=>{
     return(
-        <img src={link} width={size} height={size} />
+        <img src={link} width={size} height={size} className="img-fluid img-thumbnail"/>
     )
 }
 export const star=(size)=>{

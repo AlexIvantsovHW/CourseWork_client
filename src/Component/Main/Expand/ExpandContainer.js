@@ -30,6 +30,7 @@ class ExpandContainer extends React.Component{
         setCommentsTC={this.props.setCommentsTC}
         setCommentStatusAC={this.props.setCommentStatusAC}
         score={this.props.score}
+        Theme={this.props.Theme} 
         />
         
         )}
@@ -40,7 +41,8 @@ const mapStateToProps=(state)=>{return{
   DB:state.Recommendation,
   Login:state.Login,
   comment:state.Recommendation.comments,
-  score:state.Recommendation.score
+  score:state.Recommendation.score,
+  Theme:state.Theme,
 }}
 export default compose(
     withRouter,

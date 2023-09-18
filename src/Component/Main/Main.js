@@ -41,8 +41,7 @@ let averageRecommendationRate=calculateAverageRate(props.Recommendation.rate),
               <button className={`btn btn-${theme.btn}`} onClick={() => {sort( "date_upload",props.getSortTC,asc,setASC);}}>{DateSort(20)}</button>
               <button className={`btn btn-${theme.btn}`} onClick={() => {sort( "score",props.getSortTC,asc,setASC);}}>{(asc?SortRateDown(20):SortRateUp(20))}</button>
               </div>
-            </div>
-            
+            </div>           
             <div 
               className="w-100 mx-auto mb-2 overflow-x-hidden overflow-y-auto" 
               style={{ height: "500px" }}>
@@ -53,6 +52,7 @@ let averageRecommendationRate=calculateAverageRate(props.Recommendation.rate),
                 props.Recommendation.rate,
                 props.Login.auth.auth,props.score,
                 props.getLikeTC,
+                theme
       )}
           <div>
           </div>
