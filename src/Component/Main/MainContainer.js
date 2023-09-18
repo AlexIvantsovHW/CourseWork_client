@@ -15,6 +15,7 @@ class MainContainer extends React.Component{
       this.props.getRateDataTC();
       }
       componentDidUpdate(prevProps,prevState){
+        debugger;
         if (this.props.Recommendation!== prevProps.Recommendation) {
           this.setState(this.props.Recommendation);
         }

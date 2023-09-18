@@ -29,7 +29,6 @@ const Comment = (props) => {
     fData.append("id_user", props.id_user);
     fData.append("comment", values.comment);
     fData.append("date_upload", date);
-    debugger;
     props.setCommentsTC(fData);
   };
 

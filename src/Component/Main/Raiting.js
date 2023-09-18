@@ -7,7 +7,6 @@ import '../../i18n'
 import { blockRender } from '../withAuthNavigate';
 
 const ButtonComponent = (props) => {
-  debugger;
   const [activeButton, setActiveButton] = useState(null);
   const handleButtonClick = (value) => {
     if (activeButton === value) {
@@ -62,15 +61,6 @@ export const Raiting=(props)=>{
 
   debugger;
   const { t, i18n } = useTranslation();
-/*   function setRate(){
-    debugger;
-        const fData=new FormData();
-        fData.append('id_r',props.id_r);
-        fData.append('id_user',props.id_user);
-        fData.append('rate',props.rate);
-        fData.append('action',props.action);
-        props.setRateTC(fData);
-      }  */
     const d=new Date((props.date))  
     return(
       <div className="col">
@@ -82,11 +72,11 @@ export const Raiting=(props)=>{
           <div className="row mx-4 d-flex align-items-start justify-content-start">
             <div className='w-25'>
               {(props.id_user!=null?
-              (likePresence(props.score, props.id_r, props.id_user_el)===true)?
+              (likePresence(props.score, props.id_r, props.id_user)===true)?
               <div>
                 <button 
                 className='btn btn-outline-danger border-0' 
-                onClick={()=>{props.setLike(0,props.id_r,props.id_user_el,props.getLikeTC)}}>
+                onClick={()=>{debugger;props.setLike(0,props.id_r,props.id_user,props.getLikeTC)}}>
                 {dislike(20)} 
               </button>
               {props.Amount}
@@ -94,7 +84,7 @@ export const Raiting=(props)=>{
             <div>
               <button 
                 className='btn btn-outline-success border-0' 
-                onClick={()=>{setLike(1,props.id_r,props.id_user_el,props.getLikeTC)}}>
+                onClick={()=>{debugger;setLike(1,props.id_r,props.id_user,props.getLikeTC)}}>
                 {Like(20)} 
               </button>
               {props.Amount}

@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import { sort } from "../Main/Expand/Function";
 
 export function UserForm(t, i18n) {
-  debugger;
   function basicForm(name,type,plholder){
     return(
       <div className="row d-flex justify-content-end">

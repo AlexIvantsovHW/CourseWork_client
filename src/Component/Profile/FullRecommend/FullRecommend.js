@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next';
 import '../../../i18n'
 
 const FullRecommend = (props) => {
-  debugger;
   const { t, i18n } = useTranslation();
   let status = props.status,
       Theme=props.Theme.theme,
