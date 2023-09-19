@@ -5,8 +5,10 @@ import { useTranslation } from 'react-i18next';
 import '../../../i18n'
 import RangeSlider from "react-bootstrap-range-slider";
 import { useState } from "react";
+import { useEffect } from "react";
 
 const FullRecommend = (props) => {
+  debugger;
   const [ value, setValue ] = useState(0); 
   const { t, i18n } = useTranslation();
   let status = props.status,
@@ -14,7 +16,14 @@ const FullRecommend = (props) => {
       statusComment=props.statusComment,
       recommendList = props.Recommendation.recommendation,
       targetId = props.id_r,
-      targetRecommendation = recommendList.filter((rec) => rec.id_r === targetId);
+      targetRecommendation = recommendList.filter((rec) => parseInt(rec.id_r) === parseInt(targetId));
+  const onAuthorScoreSubmit=() => {
+       const fData=new FormData();
+        fData.append('id_r',(+targetId));
+        fData.append('id_user',(+targetRecommendation[0].id_user));
+        fData.append('AuthorScore',+value)
+        props.setAuthorScoreTC(fData);
+      };
   return (
     <div class="col">
       <div className={`row h-100 d-flex align-items-center text-${Theme.font} bg-${Theme.bg} bg-gradient`}>
@@ -28,7 +37,7 @@ const FullRecommend = (props) => {
             <div>
             <div className="row d-flex flex-column justify-content-center align-items-center">
             <div className={`w-25 text-center text-${Theme.font}`}>
-            {t('AuthorScore')} {value}
+            {t('AuthorScore')} {targetRecommendation[0].AuthorScore}
             </div>
             <div className="w-25">
             <RangeSlider
@@ -39,6 +48,7 @@ const FullRecommend = (props) => {
               max={10}
               onChange={changeEvent => setValue(changeEvent.target.value)}
              />
+             <button onClick={onAuthorScoreSubmit}>Send</button>
              </div>
             </div>
             </div>

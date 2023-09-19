@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { calculateAverageRate, replaceAmountValues, replaceRateValues,sort,chooseCategory } from "./Expand/Function";
 import MainTagList from './MainTag/MainTagList';
@@ -12,8 +12,7 @@ import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css'
 import RangeSlider from "react-bootstrap-range-slider";
 
 
-const Main = (props) => {
-  const [ value, setValue ] = useState(0); 
+const Main = (props) => { 
   const [asc,setASC]=useState(true)
   const { t, i18n } = useTranslation();
   const [category,setCategory]=useState(''),
@@ -24,8 +23,9 @@ let averageRecommendationRate=calculateAverageRate(props.Recommendation.rate),
     tagFilter =getTags(props.Recommendation.Filter),
     x=[''].concat(tagFilter),
     filteredList = categoryFilteredData.filter((o) => x.includes(o.tag)),
-    recommendList =x.length > 1? filteredList: categoryFilteredData,
-    RangeRecommendList=recommendList.slice(0,value)    
+    recommendList =x.length > 1? filteredList: categoryFilteredData;
+const [ value, setValue ] = useState(recommendList.length);
+let   RangeRecommendList=recommendList.slice(0,value);    
   return (
     <div class="col container-fluid">
       <div className={`row h-100 d-flex align-items-center text-${theme.font} bg-${theme.bg} bg-gradient`}>

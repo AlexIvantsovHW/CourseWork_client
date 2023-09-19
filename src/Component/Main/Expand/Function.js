@@ -39,7 +39,7 @@ export  function replaceRateValues(DB, averageRate) {
       if (matchingScore) {return { ...item, rate: matchingScore.rate };} 
       else {return item;}});
   }
-export function likePresence(arr2, id_r, id_user) {debugger; return arr2.some(element => element.id_r === id_r && element.id_user === id_user);}
+export function likePresence(arr2, id_r, id_user) {return arr2.some(element => element.id_r === id_r && element.id_user === id_user);}
 export function setLike(status,id_r,id_user,getLikeTC){
   let fData=new FormData();
   fData.append('like',status)

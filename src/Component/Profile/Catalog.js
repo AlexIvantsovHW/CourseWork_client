@@ -42,6 +42,7 @@ let RecommendData = props.list,
     <NavLink to={"/fullrecommend/"+el.id_r}>{ExpandImg(20)}</NavLink>
           </div></div>
         <div className="text-start font-weight-bold"><p>{el.name}/{el.category}/{el.group}</p></div>
+        <div className="text-start font-weight-bold"><p>{props.t('AuthorScore')} {el.AuthorScore}</p></div>
         <div className="row"><div className="col-9">{props.t('Tag')}{el.tag}</div> <div className="col">{Like}</div></div>
       </div>
     </div>

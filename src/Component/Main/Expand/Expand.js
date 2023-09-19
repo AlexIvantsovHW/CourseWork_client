@@ -42,6 +42,7 @@ const Expand = (props) => {
           </div>
           <div className="row d-flex justify-content-end align-items-center w-100">
             <p className={`text-${Theme.font}`}>{t('Date')}: {d.getDay()}/{d.getMonth()}/{d.getFullYear()}</p>
+            <p className={`text-${Theme.font}`}>{t('AuthorScore')} {targetRecommendation[0].AuthorScore}</p>
           </div>
           <div>
           <Comment

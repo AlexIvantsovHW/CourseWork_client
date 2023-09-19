@@ -58,8 +58,6 @@ const ButtonComponent = (props) => {
 
 export const Raiting=(props)=>{
   const [action,setAction]=useState(0)
-
-  debugger;
   const { t, i18n } = useTranslation();
     const d=new Date((props.date))  
     return(
@@ -77,7 +75,7 @@ export const Raiting=(props)=>{
               <div className='col'>
                 <button 
                 className={` btn btn-outline-${props.theme.border} border-0`} 
-                onClick={()=>{debugger;props.setLike(0,props.id_r,props.id_user,props.getLikeTC)}}>
+                onClick={()=>{props.setLike(0,props.id_r,props.id_user,props.getLikeTC)}}>
                 {dislike(20)} 
               </button>
               {props.Amount}
@@ -85,7 +83,7 @@ export const Raiting=(props)=>{
             <div className='col'>
               <button 
                 className=' btn btn-outline-success border-0' 
-                onClick={()=>{debugger;setLike(1,props.id_r,props.id_user,props.getLikeTC)}}>
+                onClick={()=>{setLike(1,props.id_r,props.id_user,props.getLikeTC)}}>
                 {Like(20)} 
               </button>
               {props.Amount}

@@ -7,7 +7,6 @@ import "../../../../i18n";
 import { PencilImg, SendImg } from "../../../img";
 
 const Comment = (props) => {
-  debugger;
   const { t, i18n } = useTranslation();
   const Theme = props.Theme;
   const [commentWindow, setCommentWindow] = useState(false);
@@ -19,7 +18,6 @@ const Comment = (props) => {
     return errors;
   };
   const onSubmit = (values) => {
-    debugger;
     let fData = new FormData();
     fData.append("id_r", props.targetId);
     fData.append("id_user", props.id_user);

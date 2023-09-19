@@ -30,7 +30,8 @@ let initialState = {
     tag:null,
     score:null,
     date_upload:null,
-    Amount:null
+    Amount:null,
+    AuthorScore:null,
   },],
   DB:[{
     id_r:null,
@@ -45,7 +46,8 @@ let initialState = {
     tag:null,
     date_upload:null,
     Amount:null,
-    rate:null
+    rate:null,
+    AuthorScore:null,
   },],
   setPublish:false,
   setUpdate:false,
@@ -69,7 +71,7 @@ const RecommendationReducer = (state = initialState, action) => {
     case SET_COMMENT_STATUS:return{...state,setCommentStatus:action.status};
     case SET_COMMENT:return{...state,comments:action.comment};
     case SET_SORT:return{...state,DB:action.data}
-    case SET_SCORE:debugger; return{...state,score:action.score};
+    case SET_SCORE:return{...state,score:action.score};
     case SET_TOTAL_SCORE:return {...state,totalScore:action.totalScore};
     case SET_USER_SCORE: return{...state,userScore:action.data};
     case SET_RATE:return{...state,rate:action.rate}
@@ -87,7 +89,7 @@ export const setViewAC=(status)=>{{return{type:SET_VIEW_STATUS,status}}}
 export const sortAC=(data)=>{{ return{type:SET_SORT,data}}}
 export const scoreUserAC=(data)=>{{ return{type:SET_USER_SCORE,data}}}
 export const scoreTotalAC=(totalScore)=>{{return{type:SET_TOTAL_SCORE,totalScore}}}
-export const scoreAC=(score)=>{{debugger;return{type:SET_SCORE,score}}}
+export const scoreAC=(score)=>{{return{type:SET_SCORE,score}}}
 export const RateAC=(rate)=>{{return{type:SET_RATE,rate}}}
 export const setCommentStatusAC=(status)=>{{return{type:SET_COMMENT_STATUS,status}}}
 export const commentsAC=(comment)=>{{return{type:SET_COMMENT,comment}}}
@@ -142,14 +144,12 @@ export const getScoreTC=(data)=>{
   }
 }
 export const getLikeTC=(data)=>{
-  debugger;
   return async (dispatch)=>{
     let result=await API.getLike(data);
     dispatch(scoreAC(result.data))
   }
 }
 export const getLikeListTC=()=>{
-  debugger;
   return async(dispatch)=>{
     let result=await API.getLikeList();
     dispatch(scoreAC(result.data))
@@ -191,6 +191,11 @@ export const sortProfileTC=(sort)=>{
     let result=await API.getSort(sort);
     dispatch(recommendationAC(result.data))
   }}
-
+export const setAuthorScoreTC=(value)=>{
+  return async(dispatch)=>{
+    let result= await API.setAuthorScore(value);
+    dispatch(recommendationAC(result.data))
+  }
+}
 export default RecommendationReducer;
 

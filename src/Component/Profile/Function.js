@@ -123,7 +123,6 @@ export const Toolbar = (props) => {
   const [isAscending, setIsAscending] = useState(true);
 
   const sortBy = () => {
-    debugger;
     const sortedArray = [...props.list].sort((a, b) => {
       if (a.id_r < b.id_r) return -1;
       if (a.id_r > b.id_r) return 1;

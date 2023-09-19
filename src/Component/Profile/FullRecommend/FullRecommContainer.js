@@ -4,14 +4,18 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { setUpdateAC,getUpdateTC,
         setCommentStatusAC,setViewAC,
-        getCommentsTC,setCommentsTC } from '../../../Redux/RecommendationReducer';
+        getCommentsTC,setCommentsTC, setAuthorScoreTC, getDataTC, getDbTC } from '../../../Redux/RecommendationReducer';
 import { withAuthNavigate } from '../../withAuthNavigate';
 import { withRouter } from '../../CommonFunc';
 import { themeAC } from '../../../Redux/ThemeReducer';
 
+
 class FullRecommContainer extends React.Component{
   componentDidMount(){
     this.props.getCommentsTC();
+    this.props.getDbTC();
+    this.props.getDataTC();
+
   }
     componentDidUpdate(prevProps,prevState){
         if (this.props.Recommendation!== prevProps.Recommendation) {
@@ -36,6 +40,7 @@ class FullRecommContainer extends React.Component{
         setCommentsTC={this.props.setCommentsTC}
         Theme={this.props.Theme} 
         themeAC={this.props.themeAC}
+        setAuthorScoreTC={this.props.setAuthorScoreTC}
         />
         )}
 }
@@ -44,6 +49,6 @@ const mapStateToProps=(state)=>{return{Recommendation:state.Recommendation,Login
 export default compose(
     withRouter,
     connect (mapStateToProps,{setUpdateAC,getUpdateTC,
-      setCommentStatusAC,setViewAC,getCommentsTC,setCommentsTC,themeAC}),
+      setCommentStatusAC,setViewAC,getCommentsTC,setCommentsTC,themeAC,setAuthorScoreTC,getDataTC, getDbTC}),
     withAuthNavigate
 )((FullRecommContainer))

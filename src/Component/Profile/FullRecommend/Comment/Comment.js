@@ -14,7 +14,6 @@ import { useTranslation } from 'react-i18next';
 import '../../../../i18n'
 
 const Comment = (props) => {
-  debugger;
   const { t, i18n } = useTranslation();
   const Theme=props.Theme;
   const [commentWindow, setCommentWindow] = useState(false);
