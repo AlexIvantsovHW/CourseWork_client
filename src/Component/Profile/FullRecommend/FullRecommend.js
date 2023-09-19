@@ -3,8 +3,11 @@ import { update } from "./FormikFunc";
 import Comment from "./Comment/Comment";
 import { useTranslation } from 'react-i18next';
 import '../../../i18n'
+import RangeSlider from "react-bootstrap-range-slider";
+import { useState } from "react";
 
 const FullRecommend = (props) => {
+  const [ value, setValue ] = useState(0); 
   const { t, i18n } = useTranslation();
   let status = props.status,
       Theme=props.Theme.theme,
@@ -21,6 +24,23 @@ const FullRecommend = (props) => {
             <div className="col-3">Img</div>
             <div className={`col-8 bg-${Theme.bg} bg-gradient text-${Theme.font} overflow-auto`} style={{ height: "200px" }}>
               <p>{targetRecommendation[0].text}</p>
+            </div>
+            <div>
+            <div className="row d-flex flex-column justify-content-center align-items-center">
+            <div className={`w-25 text-center text-${Theme.font}`}>
+            {t('AuthorScore')} {value}
+            </div>
+            <div className="w-25">
+            <RangeSlider
+              variant={`${Theme.border}`}
+              size='sm'
+              value={value}
+              min={1}
+              max={10}
+              onChange={changeEvent => setValue(changeEvent.target.value)}
+             />
+             </div>
+            </div>
             </div>
           <Comment 
                 statusComment={statusComment} getUpdateTC={props.getUpdateTC}

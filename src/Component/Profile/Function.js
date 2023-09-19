@@ -2,6 +2,7 @@ import { Field } from "formik";
 import { Camera, DateSort, Like, ProfileImg, TrashImg, UsersImg, img_return } from "../img";
 import React, { useEffect, useState } from "react";
 import { sort } from "../Main/Expand/Function";
+import RangeSlider from "react-bootstrap-range-slider";
 
 export function UserForm(t, i18n) {
   function basicForm(name,type,plholder){
@@ -160,7 +161,10 @@ export const UserInformation = (props) => {
       <div>
         {Like(20)} {setUserLike(props.score,props.id_user)} 
       </div>
-
+      <div>
+      <div>
+      </div>              
+      </div>
       </div>
     </div>
   );

@@ -47,7 +47,7 @@ const Profile = (props) => {
                 DB={Recommendation}
             />
         <div className={`col-4 mx-auto w-75 h-auto bg-${theme.bg}  border-${theme.border} border rounded-4  border-opacity-50`}>
-          <UserInformation t={t} score={score} id_user={props.id_user} name={pageName[0].name}/>
+          <UserInformation theme={theme} t={t} score={score} id_user={props.id_user} name={pageName[0].name}/>
           <div className="row mt-2 border-danger border-1">
             <div className={`text-center mb-2 text-${theme.font}`}>
               <h4>{t('RecommendationHeader')}</h4>

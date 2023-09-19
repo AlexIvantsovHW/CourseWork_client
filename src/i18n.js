@@ -56,6 +56,7 @@ i18n
                     Tag:'Тэги:',
                     ImgDowloadHeader:'Загрузите или выберите изображение из DropBox',
                     AddRecommend:'Добавить рекомендацию',
+                    AuthorScore:'Оценка автора: ',
                     //User Page
                     Users:'ПОЛЬЗОВАТЕЛИ',
 
@@ -73,6 +74,7 @@ i18n
                     inputTag:'Напишите тэг',
                     inputText:'Напишите Вашу рекомендацию',
                     inputComment:'Напишите новый комментарий',
+                    RecommendRange:'Количество рекомендаций',
                 }
             },
             en: {
@@ -114,12 +116,14 @@ i18n
                     TagList:'Tag list',
                     SelectAll:'Select All',
                     Display:'Display',
+                    RecommendRange:'Recommendation number',
 
                     // Profile page
                     UserName:'User name:',
                     Tag:'Tag:',        
                     ImgDowloadHeader:'Upload or choose image from DropBox', 
-                    AddRecommend:'Add Recommendation',           
+                    AddRecommend:'Add Recommendation', 
+                    AuthorScore:'Author score: ',         
 
                     //User Page
                     Users:'USERS',                    
