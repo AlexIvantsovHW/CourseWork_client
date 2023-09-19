@@ -18,18 +18,24 @@ import {
 } from "../img";
 import Admin from "./../Admin/Admin";
 
-function formBar(name, link, func) {
+function formBar(name, link,theme,img) {
   return (
-    <li className="nav-item mt-1">
-      {func}
-      <NavLink
+      
+      <div className="row">
+<div className="col d-flex justify-content-center align-items-center" style={{width:`30px`}}>
+            <NavLink to={link} className={`text-decoration-none text-${theme.font}`}>
+            {img}
+            </NavLink></div>
+            <div className="col d-flex justify-content-center align-items-center">
+        <NavLink
         to={link}
-        className="mt-1 d-none d-sm-inline text-white text-decoration-none"
+        className={`mt-1 d-none d-sm-inline text-${theme.font} text-decoration-none`}
       >
-        <i className="fs-4 bi-house mt-1"></i>{" "}
-        <span className="ms-1 d-none d-sm-inline text-white">{name}</span>
+        {name}
       </NavLink>
-    </li>
+      </div>
+      </div>
+    
   );
 }
 const SideBar = (props) => {
@@ -52,29 +58,45 @@ const SideBar = (props) => {
       >
         {LogoImg(100)}
       </NavLink>
-          
-        
-
         <ul
           className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
           id="menu"
         >
-          {formBar(t("home"), "/main", RecommendationImg(20))}
+          
+          {formBar(t("home"), "/main",theme,RecommendationImg(20))}
+        
           {props.Login.auth
-            ? formBar(t("profile"), `/profile/${id}`, ProfileImg(20))
+            ? 
+            <>
+            {formBar(t("profile"), `/profile/${id}`,theme,ProfileImg(20))}
+            </>
             : null}
           {props.Login.auth
-            ? formBar(t("users"), `/users`, UsersImg(20))
+            ? <>
+            {formBar(t("users"), `/users`,theme,UsersImg(20))}
+            </>
             : null}
           {props.Login.auth === true && props.Login.name === "Admin"
-            ? formBar(t("admin"), "/admin", AdminImg(20))
+            ? 
+            <>
+            {formBar(t("admin"), "/admin", theme,AdminImg(20))}
+            </>
             : null}
           {!props.Login.auth ? (
-            formBar(t("login"), "/login", EnterImg(20))
+            <>
+            {formBar(t("login"), "/login", theme,EnterImg(20))}
+            </>
+            
           ) : (
-            <li className="nav-item mt-1">
+         
+            <div className="row">
+              <div className="col d-flex justify-content-center align-items-center" style={{width:`30px`}}>
+              <NavLink to={"/"} className={`text-decoration-none text-${theme.font}`}>
               {LogoutImg(20)}
-              <NavLink to={"/"} className="mt-1 text-decoration-none">
+              </NavLink>
+              </div>
+              <div className="col d-flex justify-content-center align-items-center">
+              <NavLink to={"/"} className={`mt-1 text-decoration-none text-${theme.font}`}>
                 <i className="fs-4 bi-house mt-1"></i>{" "}
                 <span
                   onClick={() => {
@@ -90,7 +112,8 @@ const SideBar = (props) => {
                   {t("logout")}
                 </span>
               </NavLink>
-            </li>
+              </div>
+            </div> 
           )}
           <div className="mt-3">
             <select

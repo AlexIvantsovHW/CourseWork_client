@@ -57,6 +57,10 @@ i18n
                     ImgDowloadHeader:'Загрузите или выберите изображение из DropBox',
                     AddRecommend:'Добавить рекомендацию',
                     AuthorScore:'Оценка автора: ',
+                    Book:'Книга',
+                    Film:'Фильм',
+                    Music:'Музыка',
+                    Option:'Выберите категорию',
                     //User Page
                     Users:'ПОЛЬЗОВАТЕЛИ',
 
@@ -123,7 +127,11 @@ i18n
                     Tag:'Tag:',        
                     ImgDowloadHeader:'Upload or choose image from DropBox', 
                     AddRecommend:'Add Recommendation', 
-                    AuthorScore:'Author score: ',         
+                    AuthorScore:'Author score: ',
+                    Book:'Book',
+                    Film:'Film',
+                    Music:'Music',
+                    Option:'Choose the category',         
 
                     //User Page
                     Users:'USERS',                    
