@@ -24,8 +24,8 @@ const Login = (props) => {
   return (
     <div class="col">
      <div className={`row h-100 d-flex align-items-center text-${theme.font} bg-${theme.bg} bg-gradient`}>
-        <div className={`mx-auto w-50 h-auto bg-${theme.bg} border border-${theme.border} border-opacity-50 rounded-4`}>
-        <div className="mb-2"><h1 className={`text-center text-${theme.font}`}>{t('login')}</h1></div>
+        <div className={`col-md-6  col-10 mx-auto  h-auto bg-${theme.bg} border border-${theme.border} border-opacity-50 rounded-4`}>
+        <div className="mb-2"><h3 className={`text-center text-${theme.font}`} >{t('login')}</h3></div>
     <Formik
       initialValues={initialValues}
      onSubmit={async (values, { resetForm }) => {
@@ -38,7 +38,7 @@ const Login = (props) => {
           {Logform('name',t('name'),nameValidation)}
           {Logform('password',t('password'),passwordValidation)}
           <div className="d-flex justify-content-ceter align-items-center w-100 mb-3">
-          <button type="submit" disabled={isSubmitting} className={`btn btn-${theme.btn} border-0 mx-auto fw-bold`}>{EnterImg(40)} {t('signin')}</button>
+          <button type="submit" disabled={isSubmitting} className={`btn btn-${theme.btn} border-0 mx-auto fw-bold`}>{EnterImg(20)} {t('signin')}</button>
           </div>
           <div className="row text-center">
           <p>{t('textReg')}<NavLink to='/'> {t('registration')}</NavLink> </p>

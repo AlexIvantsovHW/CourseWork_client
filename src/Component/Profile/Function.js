@@ -1,5 +1,5 @@
 import { Field } from "formik";
-import { Camera, DateSort, Like, ProfileImg, TrashImg, UsersImg, img_return } from "../img";
+import { DateSort, Like, PhotoImg, ProfileImg, TrashImg, UsersImg, img_return } from "../img";
 import React, { useEffect, useState } from "react";
 import { sort } from "../Main/Expand/Function";
 import RangeSlider from "react-bootstrap-range-slider";
@@ -100,7 +100,7 @@ export function Recommendations(id, name, handleClick, isCheck){
           className="row border mx-auto"
           style={{ maxHeight: "150px", maxWidth: "150px" }}
         >
-          {Camera}
+          {PhotoImg(75)}
         </div>
         <div className="row border d-flex justify-content-center align-items-center">
           Score
@@ -185,7 +185,7 @@ export const ImgReview = (props) => {
         className="row  mx-auto"
         style={{ maxHeight: "150px", maxWidth: "150px" }}
       >
-        {((props.img===null)||(props.img==='null')?Camera:img_return(props.img))}
+        {((props.img===null)||(props.img==='null')?PhotoImg(20):img_return(props.img))}
       </div>
       <div className="row  d-flex justify-content-center align-items-center">
         {props.score}

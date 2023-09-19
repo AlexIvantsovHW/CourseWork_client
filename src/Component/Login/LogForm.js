@@ -26,10 +26,11 @@ export function nameValidation(name){
 
 export function Logform(name,label,validate) {
   return (
-    <div className="col-5 mb-3 mt-2  text-center mx-auto">
-      <label><h5>{label}</h5></label>
+    <div className="col col-lg-5 col-md-8 col-sm-10  mb-3 mt-2  text-center mx-auto">
+      <label><h6>{label}</h6></label>
       <Field
-      className="form-control form-control-lg w-100" component='input'
+      className="form-control  w-100 placeholder-glow text form-control-md" 
+      component='input'
         name={name}
         validate={validate}
         placeholder={label}

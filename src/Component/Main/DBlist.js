@@ -1,11 +1,11 @@
 
 import { NavLink } from 'react-router-dom';
-import { blockRender } from '../withAuthNavigate';
-import { Camera, ExpandImg, Like, dislike, img_return } from './../img';
-import { likePresence, setLike } from './Expand/Function';
+import { PhotoImg, img_return } from './../img';
+import { setLike } from './Expand/Function';
 import { Raiting } from './Raiting';
 import { useTranslation } from 'react-i18next';
 import '../../i18n'
+import LikeComponent from '../LikeComponent';
 
 export function DBlist(
     arr,id_user,setRateTC,
@@ -17,7 +17,10 @@ export function DBlist(
     return(
         arr.map((el) => {
             return (
-              <div className="row mt-5 bg-dark bg-gradient rounded-pill border-bottom border-danger border-opacity-50">
+              <div className={`w-75 mt-5 bg-${theme.bg} mx-auto bg-gradient rounded-pill border-bottom border-${theme.border} border-opacity-50`}>
+                <div className='row'>
+                <div className='col mx-auto'>
+                  <div className='text-center'>
                   <Raiting
                     title={el.title} category={el.category}
                     name={el.name}
@@ -34,15 +37,30 @@ export function DBlist(
                     auth={auth}
                     theme={theme}
                     />
-                <div className="col-2 ">
-                <div className='h-100  d-flex justify-content-center align-items-center'>
-                {((el.image===null)||(el.image==='null')?Camera:img_return(el.image))}
+                  </div>
+                </div>
+                <div className='col d-flex justify-content-center align-items-center'>
+                <div>
+                {((el.image===null)||(el.image==='null')||(el.image==='')?PhotoImg(75):img_return(el.image,50))}
+                <div>
+                  <LikeComponent
+                  score={score} 
+                  id_user={el.id_user}
+                  id_r={el.id_r}
+                  getLikeTC={getLikeTC}
+                  Amount={el.Amount}
+                  theme={theme}
+                  />  
+                  </div>                  
+                <NavLink className={'text-decoration-none'} to={"/expand/"+el.id_r}>
+                    <p className={`text-center text-${theme.font} fw-bold`}>
+                    {t('Read')}
+                    </p>
+                </NavLink>
                 </div>
                 </div>
-                <div className="col-1 d-flex justify-content-center align-items-center">
-                <NavLink to={"/expand/"+el.id_r}><button className='btn btn-outline-primary border-0 d-flex justify-content-center align-items-center'>{ExpandImg(20)}</button></NavLink>
                 </div>
-              </div>
+           </div>
             );
           })
     )

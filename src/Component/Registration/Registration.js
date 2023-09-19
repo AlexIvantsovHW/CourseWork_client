@@ -31,8 +31,8 @@ const validate=values => {
   return (
     <div class="col">
      <div className={`row h-100 d-flex align-items-center text-white bg-${theme.bg} bg-gradient `}>
-        <div className={`mx-auto w-50 h-auto bg-${theme.bg} rounded-4 border border-${theme.border} border-opacity-50`}>
-        <div className="mb-2"><h1 className="text-center">{t('registration')}</h1></div>
+        <div className={`col-md-6 col-10 mx-auto  h-auto bg-${theme.bg} rounded-4 border border-${theme.border} border-opacity-50`}>
+        <div className="mb-2"><h3 className="text-center">{t('registration')}</h3></div>
     <Formik
       initialValues={initialValues}
       validate={validate}

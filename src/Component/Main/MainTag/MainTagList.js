@@ -33,8 +33,9 @@ import { DisplayImg } from "../../img";
   };
   const catalog = list.map(({ id_r, tag }) => {
     return (
-      <div >
+      <div className="w-50 mx-auto">
         <Checkbox
+        className="mx-auto"
           type="checkbox"
           name={tag}
           id={id_r}
@@ -56,12 +57,12 @@ if(transformArrData.length===0){transformArrData=[{id:null,value:null}]}else{
     props.filterAC(transformArrData)
   }
   return (
-    <div className="col-2 ms-5 bg-dark">
+    <div className="mx-auto w-100 bg-dark">
       <div className="row">
-        <div>
+        <div className="">
           <h4 className="text-center">{t('TagList')}</h4>
         </div>
-      <div className="border-bottom border-danger border-3">
+      <div className="mx-auto w-50 border-bottom border-danger border-1">
       <Checkbox
         type="checkbox"
         name="selectAll"
@@ -71,7 +72,7 @@ if(transformArrData.length===0){transformArrData=[{id:null,value:null}]}else{
       />
       {t('SelectAll')}
       </div>
-            <div className="bg-gradient overflow-auto" style={{ maxHeight: "380px" }}>
+            <div className="overflow-auto" style={{ maxHeight: "120px" }}>
       {catalog}
       </div>
       <div className="w-100 d-flex justify-content-center align-items-center">

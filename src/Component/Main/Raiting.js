@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { checkMatching, likePresence, setLike } from './Expand/Function';
+import { checkMatching } from './Expand/Function';
 import './style.css'
-import { Like, dislike, star, startImg } from '../img';
+import { Like, star, startImg } from '../img';
 import { useTranslation } from 'react-i18next';
 import '../../i18n'
-import { blockRender } from '../withAuthNavigate';
 
 const ButtonComponent = (props) => {
   const [activeButton, setActiveButton] = useState(null);
@@ -34,7 +33,6 @@ const ButtonComponent = (props) => {
         fData.append('rate',value);
         fData.append('action',1);
         props.setRateTC(fData);
-      
 }    }
   };
 
@@ -62,39 +60,10 @@ export const Raiting=(props)=>{
     const d=new Date((props.date))  
     return(
       <div className={`col text-${props.theme.font}`}>
-        <div className='col mx-5 text-center'><h4>{props.title}</h4></div>
-        <div className='col mx-5'>{props.name}</div>
-        <div className='col mx-5'>{props.category}</div>
-        <div className='col mx-5'>{d.getDay()}/{d.getMonth()}/{d.getFullYear()}</div>
-        <div>        
-           {blockRender(props.auth,
-          <div className="row mx-4 d-flex align-items-start justify-content-start">
-            <div className='w-25'>
-              {(props.id_user!=null?
-              (likePresence(props.score, props.id_r, props.id_user)===true)?
-              <div className='col'>
-                <button 
-                className={` btn btn-outline-${props.theme.border} border-0`} 
-                onClick={()=>{props.setLike(0,props.id_r,props.id_user,props.getLikeTC)}}>
-                {dislike(20)} 
-              </button>
-              {props.Amount}
-              </div>:
-            <div className='col'>
-              <button 
-                className=' btn btn-outline-success border-0' 
-                onClick={()=>{setLike(1,props.id_r,props.id_user,props.getLikeTC)}}>
-                {Like(20)} 
-              </button>
-              {props.Amount}
-              </div>:<div className='col '>{star(20)}</div>)
-
-                }
-            </div>
-          </div>          
-          )
-          } 
-        </div>
+        <div className='col d-flex justify-content-center mx-5 mt-1'><h5>{props.title}</h5></div>
+        <div className='col d-flex justify-content-center mx-5'>{props.name}</div>
+        <div className='col d-flex justify-content-center mx-5'>{props.category}</div>
+        <div className='col d-flex justify-content-center mx-5'>{d.getDay()}/{d.getMonth()}/{d.getFullYear()}</div>
         <div>
         {(props.id_user!=null?
         <ButtonComponent 
