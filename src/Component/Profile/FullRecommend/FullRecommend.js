@@ -6,6 +6,7 @@ import '../../../i18n'
 import RangeSlider from "react-bootstrap-range-slider";
 import { useState } from "react";
 import { useEffect } from "react";
+import { SendImg } from "../../img";
 
 const FullRecommend = (props) => {
   debugger;
@@ -37,7 +38,7 @@ const FullRecommend = (props) => {
             <div>
             <div className="row d-flex flex-column justify-content-center align-items-center">
             <div className={`w-25 text-center text-${Theme.font}`}>
-            {t('AuthorScore')} {targetRecommendation[0].AuthorScore}
+            {t('AuthorScore')} {targetRecommendation[0].AuthorScore} <button className={`btn btn-${Theme.btn}`} onClick={onAuthorScoreSubmit}>{SendImg(20)}</button>
             </div>
             <div className="w-25">
             <RangeSlider
@@ -48,7 +49,6 @@ const FullRecommend = (props) => {
               max={10}
               onChange={changeEvent => setValue(changeEvent.target.value)}
              />
-             <button onClick={onAuthorScoreSubmit}>Send</button>
              </div>
             </div>
             </div>

@@ -6,6 +6,7 @@ import { closeForm, openForm } from "../CommonFunc";
 import { useTranslation } from 'react-i18next';
 import '../../i18n'
 import { CloudImg, SendImg } from "../img";
+import { DropBoxImg } from './../img';
 const date = moment().format("YYYY-MM-DD HH:mm:ss");
 
 export const initialValues = { text: "" };
@@ -46,14 +47,16 @@ let tag='#'+values.tag;
                 resetForm();}}>
                         {({ isSubmitting }) => (
                         <>
-                        <h5 style={{textAlign:'center'}}>{t('ImgDowloadHeader')}</h5>
-                        <div><DropboxChooser  onSuccess={props.onSuccess}/></div>
+                        <div className="row w-100">
+                            <h5 style={{textAlign:'center'}}>{t('ImgDowloadHeader')}<DropboxChooser  onSuccess={props.onSuccess}/></h5>
+                        </div>
                         <Form className="mx-auto">{UserForm(t)}
                             <div className="d-flex justify-content-ceter align-items-center w-100 mb-3">
                             <button type="submit" disabled={isSubmitting}
                                 className={`btn btn-${props.theme.btn} mx-auto`}>
-                                {SendImg(20)} {t('Send')}</button> 
-                                <button onClick={()=>{closeForm(props.setPublishAC)}}>X</button>
+                                {SendImg(20)} {t('Send')} 
+                            </button> 
+                                <button className={`btn btn-close btn-close-${props.theme.font}`} onClick={()=>{closeForm(props.setPublishAC)}}/>
                             </div>
                         </Form></> 
                         )}

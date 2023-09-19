@@ -1,5 +1,6 @@
 import React, { useEffect, useCallback, useMemo } from 'react';
 import loadScript from 'load-script';
+import { DropBoxImg } from './img';
 
 const DROPBOX_APP_KEY = '5u54zczp8yipou6'; // App key
 const DROPBOX_SDK_URL = 'https://www.dropbox.com/static/api/2/dropins.js';
@@ -54,7 +55,7 @@ export default function DropboxChooser({ children, onSuccess, onCancel }) {
 
   return (
     <div onClick={handleChoose}>
-      {children || <button>dropbox chooser</button>}
+      {children || <button className={`btn btn-dark`}>{DropBoxImg(20)}</button>}
     </div>
   );
 }

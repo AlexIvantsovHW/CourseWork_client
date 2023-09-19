@@ -152,13 +152,19 @@ export const UserInformation = (props) => {
 
   return (
     <div className="row ">
-      <div className="col-4 d-flex justify-content-center align-items-center">{ProfileImg(100)}</div>
+      <div className="col-4 d-flex justify-content-center align-items-center">
+        <div className="row d-flex flex-column">
+        <div className="col mx-auto">{ProfileImg(100)}</div>
+        <div className="col d-flex justify-content-center align-items-center">{Like(20)} {setUserLike(props.score,props.id_user)}</div>
+        </div>
+         
+      </div>
       <div className="col ">
       <div>
         {props.t('UserName')} {props.name} 
       </div>
       <div>
-        {Like(20)} {setUserLike(props.score,props.id_user)} 
+        
       </div>
       <div>
       <div>

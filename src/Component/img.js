@@ -57,6 +57,13 @@ export function dislike(size){
 </svg>
     )
 }
+export function DropBoxImg(size){
+  return(
+    <svg xmlns="http://www.w3.org/2000/svg"  width={size} height={size} fill="currentColor" class="bi bi-dropbox" viewBox="0 0 16 16">
+  <path d="M8.01 4.555 4.005 7.11 8.01 9.665 4.005 12.22 0 9.651l4.005-2.555L0 4.555 4.005 2 8.01 4.555Zm-4.026 8.487 4.006-2.555 4.005 2.555-4.005 2.555-4.006-2.555Zm4.026-3.39 4.005-2.556L8.01 4.555 11.995 2 16 4.555 11.995 7.11 16 9.665l-4.005 2.555L8.01 9.651Z"/>
+</svg>
+  )
+}
 
 export function TrashImg(size){
   return(
@@ -70,6 +77,13 @@ export function SendImg(size){
   return(
     <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16">
   <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
+</svg>
+  )
+}
+export function LogoImg(size){
+  return(
+    <svg xmlns="http://www.w3.org/2000/svg"  width={size} height={size} fill="currentColor" class="bi bi-hurricane" viewBox="0 0 16 16">
+  <path d="M6.999 2.6A5.5 5.5 0 0 1 15 7.5a.5.5 0 0 0 1 0 6.5 6.5 0 1 0-13 0 5 5 0 0 0 6.001 4.9A5.5 5.5 0 0 1 1 7.5a.5.5 0 0 0-1 0 6.5 6.5 0 1 0 13 0 5 5 0 0 0-6.001-4.9zM10 7.5a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/>
 </svg>
   )
 }
