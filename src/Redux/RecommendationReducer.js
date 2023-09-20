@@ -197,5 +197,13 @@ export const setAuthorScoreTC=(value)=>{
     dispatch(recommendationAC(result.data))
   }
 }
+export const setReviewImageTC=(value)=>{
+  return async(dispatch)=>{
+    let result= await API.postReviewImage(value);
+    console.log(result.data)
+    /* dispatch(recommendationAC(result.data)) */
+  }
+}
+
 export default RecommendationReducer;
 

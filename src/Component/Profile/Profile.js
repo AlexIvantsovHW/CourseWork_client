@@ -92,6 +92,7 @@ const Profile = (props) => {
                   onSuccess={onSuccess}
                   imgLink={imgLink}
                   theme={theme}
+                  setReviewImageTC={props.setReviewImageTC}
                 />
                 /* publish(
                 status,

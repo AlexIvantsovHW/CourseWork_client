@@ -36,9 +36,6 @@ export function UserForm(t, i18n) {
           </Field>
         </div>
       </div>
-      {/* <div className="dropzone">
-
-      </div> */}
        <div className="col mr-4">
         <Field
           className="form-control form-control-sm mx-0 w-75 h-100 mt-1 mb-1"

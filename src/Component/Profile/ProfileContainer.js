@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Profile from "./Profile";
 import { connect } from "react-redux";
 import { getLoginTC } from "../../Redux/LoginReducer";
-import { getAddRecomendTC, getRecomendTC, getUserLikesTC,getLikeTC, getCommentsTC, getRateDataTC, sortProfileTC, getSortTC} from "../../Redux/RecommendationReducer";
+import { getAddRecomendTC, getRecomendTC, getUserLikesTC,getLikeTC, getCommentsTC, getRateDataTC, sortProfileTC, getSortTC, setReviewImageTC} from "../../Redux/RecommendationReducer";
 import { withAuthNavigate } from "../withAuthNavigate";
 import { compose } from "redux";
 import { setPublishAC,filterAC, tagsAC,deleteRecommendationTC} from "../../Redux/RecommendationReducer";
@@ -47,6 +47,7 @@ class ProfileContainer extends React.Component{
           deleteRecommendationTC={this.props.deleteRecommendationTC}
           sortProfileTC={this.props.sortProfileTC}
           getSortTC={this.props.getSortTC}
+          setReviewImageTC={this.props.setReviewImageTC}
           />);}
 };
 
@@ -64,7 +65,8 @@ export default compose (
     setPublishAC,getUserLikesTC,getLikeTC,
     getUserTC,themeAC,filterAC,tagsAC,
     getCommentsTC,getRateDataTC,
-    deleteRecommendationTC,sortProfileTC,getSortTC
+    deleteRecommendationTC,sortProfileTC,getSortTC,
+    setReviewImageTC
   }),
   withAuthNavigate
   )(ProfileContainer);

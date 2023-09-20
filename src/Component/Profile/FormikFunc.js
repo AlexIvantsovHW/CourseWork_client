@@ -1,4 +1,4 @@
-import { Form, Formik } from "formik";
+import { Field, Form, Formik } from "formik";
 import moment from "moment";
 import DropboxChooser from "../Dropbox-chooser";
 import { UserForm } from "./Function";
@@ -7,6 +7,13 @@ import { useTranslation } from 'react-i18next';
 import '../../i18n'
 import { CloudImg, SendImg } from "../img";
 import { DropBoxImg } from './../img';
+import style from'./style.module.css'
+import { useDropzone } from "react-dropzone";
+import { useCallback } from "react";
+import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
+
 const date = moment().format("YYYY-MM-DD HH:mm:ss");
 
 export const initialValues = { text: "" };
@@ -28,7 +35,35 @@ let tag='#'+values.tag;
 
 
  const FormikFunc=(props)=>{
-    
+    const [images,setImages]=useState([])
+    function handleUpload(){
+        console.log('Uploading files....')
+        /* axios.post('http://localhost:3001/upload',{images}).then(response=>{
+            console.log(response.data)
+        })
+        .catch(error=>{
+            console.log(error.message)
+            https://console.cloudinary.com/console/c-ecbf272216b928e0735664ab618fe3/getting-started
+            https://www.youtube.com/watch?v=TBOkDQEBPIU
+        }) */
+        props.setReviewImageTC(images)
+    }
+    const onDrop=useCallback(
+    (acceptedFiles,rejectFiles)=>{
+        const reader=new FileReader();
+        acceptedFiles.forEach(file=>{
+            reader.onload=()=>{
+            setImages(prevState=>[...prevState,reader.result])
+        }
+        reader.readAsDataURL(file)
+        })
+        console.log('acceptedFiles',acceptedFiles)
+        console.log('rejectedFiles',rejectFiles)
+    },[])
+    useEffect(()=>{
+        console.log(images)
+    },[images])
+    const {getRootProps,getInputProps,isDragActive}=useDropzone({onDrop,accept:'image/png , image/jpeg, image/jpg'});
     const { t, i18n } = useTranslation();
     if(props.status===false){return(
         <div className="d-flex justify-content-center align-items-center w-100">
@@ -47,10 +82,19 @@ let tag='#'+values.tag;
                 resetForm();}}>
                         {({ isSubmitting }) => (
                         <>
-                        <div className="row w-100">
-                            <h5 style={{textAlign:'center'}}>{t('ImgDowloadHeader')}<DropboxChooser  onSuccess={props.onSuccess}/></h5>
+                        {images.length>0&&
+                        <div>
+                            {images.map((image,index)=><img src={image} key={index} width={50} height={50}/>)}
+                        </div>}
+                        {images.length>0&&
+                        <button onClick={handleUpload}>Upload</button>}
+                        <Form className="mx-auto">
+                        <div className={style.dropzone} {...getRootProps()}>
+                            <input {...getInputProps()}/>
+                            {isDragActive?"Drag Active":"You can drop your image here"}
+
                         </div>
-                        <Form className="mx-auto">{UserForm(t)}
+                            {UserForm(t)}
                             <div className="d-flex justify-content-ceter align-items-center w-100 mb-3">
                             <button type="submit" disabled={isSubmitting}
                                 className={`btn btn-${props.theme.btn} mx-auto`}>
