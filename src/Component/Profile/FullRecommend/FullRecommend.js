@@ -6,10 +6,9 @@ import '../../../i18n'
 import RangeSlider from "react-bootstrap-range-slider";
 import { useState } from "react";
 import { useEffect } from "react";
-import { SendImg } from "../../img";
+import { PhotoImg, SendImg, img_return } from "../../img";
 
 const FullRecommend = (props) => {
-  debugger;
   const [ value, setValue ] = useState(0); 
   const { t, i18n } = useTranslation();
   let status = props.status,
@@ -17,7 +16,8 @@ const FullRecommend = (props) => {
       statusComment=props.statusComment,
       recommendList = props.Recommendation.recommendation,
       targetId = props.id_r,
-      targetRecommendation = recommendList.filter((rec) => parseInt(rec.id_r) === parseInt(targetId));
+      targetRecommendation = recommendList.filter((rec) => parseInt(rec.id_r) === parseInt(targetId)),
+      IMG=targetRecommendation[0].image;
   const onAuthorScoreSubmit=() => {
        const fData=new FormData();
         fData.append('id_r',(+targetId));
@@ -30,25 +30,31 @@ const FullRecommend = (props) => {
       <div className={`row h-100 d-flex align-items-center text-${Theme.font} bg-${Theme.bg} bg-gradient`}>
         <div className={`mx-auto w-75 h-auto bg-${Theme.bg} border-${Theme.border} border rounded-4  border-opacity-50`}>
           <div className="row mb-2">
-            <h1 className="text-center">{targetRecommendation[0].title}</h1>
-            <div className="col-3">Img</div>
-            <div className={`col-8 bg-${Theme.bg} bg-gradient text-${Theme.font} overflow-auto`} style={{ height: "200px" }}>
+            <h3 className="text-center">{targetRecommendation[0].title}</h3>
+            {((IMG===null)||(IMG==='null')||(IMG==='')?PhotoImg(150):img_return(IMG,150))}
+            <div className={`mx-auto bg-${Theme.bg} bg-gradient text-${Theme.font} overflow-auto`} style={{ height: "200px", width:'90%'}}>
               <p>{targetRecommendation[0].text}</p>
             </div>
             <div>
             <div className="row d-flex flex-column justify-content-center align-items-center">
             <div className={`w-25 text-center text-${Theme.font}`}>
-            {t('AuthorScore')} {targetRecommendation[0].AuthorScore} <button className={`btn btn-${Theme.btn}`} onClick={onAuthorScoreSubmit}>{SendImg(20)}</button>
+              {t('AuthorScore')} {targetRecommendation[0].AuthorScore} 
             </div>
-            <div className="w-25">
+            <div className="row w-50 d-flex flex-row align-items-center justify-content-center">
             <RangeSlider
-              variant={`${Theme.border}`}
+              className="col"
+            variant={`${Theme.border}`}
               size='sm'
               value={value}
               min={1}
               max={10}
               onChange={changeEvent => setValue(changeEvent.target.value)}
              />
+              <div className="w-25 d-flex justify-content-center align-items-center">
+              <button className={`btn btn-${Theme.btn}`} onClick={onAuthorScoreSubmit}>
+                {SendImg(20)} {t('Send')}
+              </button>
+              </div>
              </div>
             </div>
             </div>

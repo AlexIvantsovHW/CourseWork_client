@@ -42,17 +42,18 @@ export function searchLink(substring, arr) {
 }
 //______________________Comment page____________________
 export const userElement = (name,comment,date,Theme) => {
+  const d=new Date(date)
   return (
-    <div className={`row  bg-${Theme.bg} bg-gradient border-${Theme.border} border border-opacity-50`}>
-      <div className="col-1 ">
-          {UserImg(70)}
+    <div className={`bg-${Theme.bg} bg-gradient border-${Theme.border} border border-opacity-50`} style={{width:'95%'}}>
+      <div className="row w-100">
+      <div className="col-3 d-flex justify-content-center align-items-center">
+          {UserImg(60)}
       </div>
-      <div className="col ml-1">
-        <div className="">
-          <h6>{name}</h6>
-        </div>
-        <div className="">{comment}</div>
-        <div className="">{date}</div>
+      <div className="col ml-3">
+        <p className={`text-${Theme.font} fw-bold`}>{name}</p>
+        <div className={`text-${Theme.font}`}>{comment}</div>
+        <div className={`text-${Theme.font}`}>{d.getDay()}/{d.getMonth()}/{d.getFullYear()}</div>
+      </div>
       </div>
     </div>
   );

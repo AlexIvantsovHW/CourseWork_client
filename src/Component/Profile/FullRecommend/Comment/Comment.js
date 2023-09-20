@@ -54,11 +54,12 @@ const Comment = (props) => {
           </div>
         <div><h4 className={`text-center text-${Theme.font}`} >{t('Comments')}</h4></div>
         <div
-          className={`container ml-2 d-grid gap-2 bg-${Theme.bg} text-${Theme.font}  overflow-x-hidden overflow-y-auto`}
-          style={{ height: "120px", width: "95%", margin: "1.5%" }}
+          className={`container ml-4 d-grid gap-2 bg-${Theme.bg} text-${Theme.font}  overflow-x-hidden overflow-y-auto`}
+          style={{ height: "100px", width: "95%", margin: "1.5%" }}
         >
           {filteredComments.map((user) => {
-            return userElement(user.name, user.comment, user.date_upload,Theme);
+            const d=new Date(user.date_upload)
+            return userElement(user.name, user.comment, d,Theme);
           })}
         </div>
         <div className="d-flex justify-content-center align-items-center">

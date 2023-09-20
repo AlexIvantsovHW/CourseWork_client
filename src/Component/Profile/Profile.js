@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Checkbox, Toolbar, UserInformation, blockUser } from "./Function";
-import { Catalog, catalog } from "./Catalog";
-import FormikFunc, { publish } from "./FormikFunc";
+import { Checkbox, Toolbar, UserInformation } from "./Function";
+import { Catalog } from "./Catalog";
 import TagList from './Tag/TagList';
 import { handleSelectAll, transformData } from "../CommonFunc";
 import { useTranslation } from 'react-i18next';
@@ -78,32 +77,6 @@ const Profile = (props) => {
                   theme={theme}
                />
             </div>
-{/*             <Catalog
-              list={list}
-              isCheck={isCheck}
-              handleClick={handleClick}
-              Filter={Filter}
-              rate={props.Recommendation.rate}
-              totalScore={props.Recommendation.totalScore}
-              t={t}
-              theme={theme}
-            />
-            <div className="mx-auto">
-              {blockUser(
-                ProfileId,
-                props.id_user,
-                ProfileName,
-                <FormikFunc
-                  status={status}
-                  setPublishAC={props.setPublishAC}
-                  id_user={props.id_user}
-                  getAddRecomendTC={props.getAddRecomendTC}
-                  onSuccess={onSuccess}
-                  imgLink={imgLink}
-                  theme={theme}
-                />
-                )}
-            </div> */}
             <TagList
                 Theme={theme} 
                 themeAC={props.themeAC}

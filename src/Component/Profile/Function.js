@@ -167,7 +167,7 @@ export const ImgReview = (props) => {
         className="row  mx-auto"
         style={{ maxHeight: "150px", maxWidth: "150px" }}
       >
-        {((props.img===null)||(props.img==='null')?PhotoImg(20):img_return(props.img))}
+        {((props.img===null)||(props.img==='null')||(props.img==='')?PhotoImg(70):img_return(props.img))}
       </div>
       <div className="row  d-flex justify-content-center align-items-center">
         {props.score}
