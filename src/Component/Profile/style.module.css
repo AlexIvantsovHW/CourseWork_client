@@ -1,0 +1,7 @@
+.dropzone{
+    border:2px dotted gray;
+    background-color:rgba(128, 128, 128, 0.278) ;
+    height: 100px;
+    width: 150px;
+    margin: auto;
+}

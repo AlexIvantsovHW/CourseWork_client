@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Checkbox, Toolbar, UserInformation } from "./Function";
+import { Checkbox, Toolbar, UserInformation, blockUser } from "./Function";
 import { Catalog } from "./Catalog";
 import TagList from './Tag/TagList';
 import { handleSelectAll, transformData } from "../CommonFunc";
 import { useTranslation } from 'react-i18next';
 import '../../i18n'
+import FormikFunc from "./FormikFunc";
 
 const Profile = (props) => {
   const [search,setSearch]=useState('');
@@ -76,6 +77,32 @@ const Profile = (props) => {
                   t={t}
                   theme={theme}
                />
+            </div>
+            <div>
+            <div className="mx-auto">
+              {blockUser(
+                ProfileId,
+                props.id_user,
+                ProfileName,
+                <FormikFunc
+                  status={status}
+                  setPublishAC={props.setPublishAC}
+                  id_user={props.id_user}
+                  getAddRecomendTC={props.getAddRecomendTC}
+                  onSuccess={onSuccess}
+                  imgLink={imgLink}
+                  theme={theme}
+                />
+                /* publish(
+                status,
+                props.setPublishAC,
+                props.id_user,
+                props.getAddRecomendTC,
+                onSuccess,
+                imgLink
+              ) */)}
+                
+            </div>
             </div>
             <TagList
                 Theme={theme} 
