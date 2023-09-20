@@ -57,12 +57,12 @@ if(transformArrData.length===0){transformArrData=[{id:null,value:null}]}else{
     props.filterAC(transformArrData)
   }
   return (
-    <div className="mx-auto w-100 bg-dark">
+    <div className={`mx-auto w-100 bg-${props.Theme.bg}`}>
       <div className="row">
-        <div className="">
+        <div>
           <h4 className="text-center">{t('TagList')}</h4>
         </div>
-      <div className="mx-auto w-50 border-bottom border-danger border-1">
+      <div className={`mx-auto w-50 border-bottom border-${props.Theme.border} border-1`}>
       <Checkbox
         type="checkbox"
         name="selectAll"
@@ -76,7 +76,7 @@ if(transformArrData.length===0){transformArrData=[{id:null,value:null}]}else{
       {catalog}
       </div>
       <div className="w-100 d-flex justify-content-center align-items-center">
-        <button className='btn btn-dark' onClick={sendFiltedArray}>{DisplayImg(20)}</button>
+        <button className={`btn btn-${props.Theme.btn}`} onClick={sendFiltedArray}>{DisplayImg(20)}</button>
       </div>
       </div>
     </div>

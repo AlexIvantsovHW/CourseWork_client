@@ -47,7 +47,7 @@ const SideBar = (props) => {
   const id = props.Login.id;
   return (
     <div
-      className={`col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-${theme.bg} border-end border-${theme.border} border-1 border-opacity-25`}
+      className={`col-1 col-sm-1 col-md-2 col-lg-2 px-sm-2 px-0 bg-${theme.bg} border-end border-${theme.border} border-1 border-opacity-25`}
     >
       <div
         className={`d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-${theme.font} min-vh-100`}

@@ -144,11 +144,9 @@ export const Toolbar = (props) => {
 
   return (
     <>
-      <div className="col">id</div>
-      <div className="col"><button className={`btn btn-${props.theme.btn}`}onClick={deleteReview}>{TrashImg(20)}</button></div>
-      <div className="col"><button className={`btn btn-${props.theme.btn}`} onClick={sortBy /* () => {sort( "date_upload",props.getSortTC,asc,setASC); } */}>{DateSort(20)}</button></div>
-      <div className="col-1">
-      <button onClick={() => {sort("DESC", "date_upload",props.sortProfileTC);}}>{'>'}</button>
+      <div className="col">
+        <button className={`btn btn-${props.theme.btn}`}onClick={deleteReview}>{TrashImg(20)}</button>
+        <button className={`btn btn-${props.theme.btn}`} onClick={sortBy}>{DateSort(20)}</button>
       </div>
     </>
   );
@@ -157,24 +155,8 @@ export const UserInformation = (props) => {
 
   return (
     <div className="row ">
-      <div className="col-4 d-flex justify-content-center align-items-center">
-        <div className="row d-flex flex-column">
-        <div className="col mx-auto">{ProfileImg(100)}</div>
-        <div className="col d-flex justify-content-center align-items-center">{Like(20)} {setUserLike(props.score,props.id_user)}</div>
-        </div>
-      </div>
-      <div className="col ">
-      <div>
-        {props.t('UserName')} {props.name} 
-      </div>
-      <div>
-        
-      </div>
-      <div>
-      <div>
-      </div>              
-      </div>
-      </div>
+      <div className="row d-flex justify-content-center align-items-center">{ProfileImg(100)}</div>
+      <div className="row "><h4 className={`text-${props.theme.font} text-center`}>{props.name} {Like(20)} {setUserLike(props.score,props.id_user)}</h4></div>
     </div>
   );
 };

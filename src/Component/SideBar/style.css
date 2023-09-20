@@ -1,3 +1,7 @@
 #sidebar{
     background-image: linear-gradient(to right,rgb(1, 76, 1) white);
 }
+
+.sidebar{
+    background-color: red;
+}

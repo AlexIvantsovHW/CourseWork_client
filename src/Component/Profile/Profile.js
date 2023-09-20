@@ -38,22 +38,15 @@ const Profile = (props) => {
   function onSuccess(files) {setImgLink(files);}
   return (
     <div class="col">
-      <div className="row h-100 d-flex flex-row align-items-center text-white bg-dark bg-gradient">
-      <TagList
-                Theme={theme} 
-                themeAC={props.themeAC}
-                filterAC={props.filterAC}
-                tagsAC={props.tagsAC}
-                DB={Recommendation}
-            />
-        <div className={`col-4 mx-auto w-75 h-auto bg-${theme.bg}  border-${theme.border} border rounded-4  border-opacity-50`}>
+      <div className={`row h-100 d-flex flex-row align-items-center text-${theme.font} bg-${theme.bg} bg-gradient`}>
+         <div className={`col-4 mx-auto w-75 h-auto bg-${theme.bg}  border-${theme.border} border rounded-4  border-opacity-50`}>
           <UserInformation theme={theme} t={t} score={score} id_user={props.id_user} name={pageName[0].name}/>
           <div className="row mt-2 border-danger border-1">
             <div className={`text-center mb-2 text-${theme.font}`}>
-              <h4>{t('RecommendationHeader')}</h4>
+              <h4 className="text-center">{t('RecommendationHeader')}</h4>
             </div>
-            <div className={`row border-bottom border-${theme.border} border-3 w-75 mx-auto`} style={{ height: "40px" }}>
-              <div className="col-1">
+            <div className={`row border-bottom border-${theme.border} border-3 w-75 mx-auto`} style={{ height: "50px" }}>
+              <div className="col-1 d-flex justify-content-center align-items-center">
                 <Checkbox 
                   type="checkbox" 
                   name="selectAll" 
@@ -71,7 +64,21 @@ const Profile = (props) => {
                 theme={theme}
                 />
             </div>
-            <Catalog
+            <div 
+              className="w-100 mx-auto mb-2 overflow-x-hidden overflow-y-auto" 
+              style={{ maxHeight: "300px" }}>
+               <Catalog
+                  list={list}
+                  isCheck={isCheck}
+                  handleClick={handleClick}
+                  Filter={Filter}
+                  rate={props.Recommendation.rate}
+                  totalScore={props.Recommendation.totalScore}
+                  t={t}
+                  theme={theme}
+               />
+            </div>
+{/*             <Catalog
               list={list}
               isCheck={isCheck}
               handleClick={handleClick}
@@ -96,7 +103,14 @@ const Profile = (props) => {
                   theme={theme}
                 />
                 )}
-            </div>
+            </div> */}
+            <TagList
+                Theme={theme} 
+                themeAC={props.themeAC}
+                filterAC={props.filterAC}
+                tagsAC={props.tagsAC}
+                DB={Recommendation}
+            />
           </div>
         </div>
       </div>

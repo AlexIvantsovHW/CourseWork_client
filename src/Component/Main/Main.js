@@ -29,7 +29,7 @@ let   RangeRecommendList=recommendList.slice(0,value);
   return (
     <div class="col  container-fluid">
       <div className={`row h-100 d-flex align-items-center text-${theme.font} bg-${theme.bg} bg-gradient`}>
-        <div className={`col-sm-10 col-md-8 col-lg-6 mx-auto h-auto bg-${theme.bg} border-${theme.border} border border-opacity-50 rounded-4`}>
+        <div className={`col-10 col-sm-8 col-md-8 col-lg-6 mx-auto h-auto bg-${theme.bg} border-${theme.border} border border-opacity-50 rounded-4`}>
           <div className="mb-2">
             <h4 className="text-center">{t('RecommendationHeader')}</h4>
             <div className={`row w-50 mx-auto text-center text-${theme.font}`} style={{ maxHeight: "60px" }}>
@@ -43,13 +43,13 @@ let   RangeRecommendList=recommendList.slice(0,value);
               onChange={changeEvent => setValue(changeEvent.target.value)}
              />
             </div>
-            <div className={`row w-100 mx-auto border-bottom border-${theme.border} border-3`} style={{ maxHeight: "40px" }}>
-              <div className="w-100 d-flex justify-content-around">
-              <button className={`btn btn-${theme.btn}`} onClick={()=>chooseCategory('Book',category,setCategory)}>{BookImg(20)}</button>
-              <button className={`btn btn-${theme.btn}`} onClick={()=>chooseCategory('Film',category,setCategory)}>{FilmImg(20)}</button>
-              <button  className={`btn btn-${theme.btn}`} onClick={()=>chooseCategory('Music',category,setCategory)}>{MusicImg(20)}</button>
-              <button className={`btn btn-${theme.btn}`} onClick={() => {sort( "date_upload",props.getSortTC,asc,setASC);}}>{DateSort(20)}</button>
-              <button className={`btn btn-${theme.btn}`} onClick={() => {sort( "score",props.getSortTC,asc,setASC);}}>{(asc?SortRateDown(20):SortRateUp(20))}</button>
+            <div className={`row w-100 mx-auto border-bottom border-${theme.border} border-3`} style={{ maxHeight: "50px" }}>
+              <div className="mb-1 w-100 d-flex justify-content-around">
+              <button className={`btn btn-${theme.btn} mb-1`} onClick={()=>chooseCategory('Book',category,setCategory)}>{BookImg(20)}</button>
+              <button className={`btn btn-${theme.btn} mb-1`} onClick={()=>chooseCategory('Film',category,setCategory)}>{FilmImg(20)}</button>
+              <button  className={`btn btn-${theme.btn} mb-1`} onClick={()=>chooseCategory('Music',category,setCategory)}>{MusicImg(20)}</button>
+              <button className={`btn btn-${theme.btn} mb-1`} onClick={() => {sort( "date_upload",props.getSortTC,asc,setASC);}}>{DateSort(20)}</button>
+              <button className={`btn btn-${theme.btn} mb-1`} onClick={() => {sort( "score",props.getSortTC,asc,setASC);}}>{(asc?SortRateDown(20):SortRateUp(20))}</button>
               </div>
             </div>           
             <div 
