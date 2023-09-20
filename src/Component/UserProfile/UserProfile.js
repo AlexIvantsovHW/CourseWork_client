@@ -37,23 +37,26 @@ const UserProfile = (props) => {
   function onSuccess(files) {setImgLink(files);}
   return (
     <div class="col">
-      <div className="row border h-100 d-flex flex-row align-items-center text-white bg-success-subtle bg-gradient">
-      <TagList
-                Theme={props.Theme.theme} 
+      <div className={`row h-100 d-flex flex-row align-items-center text-${theme.font} bg-${theme.bg} bg-gradient`}>
+      <div className={`col-4 mx-auto w-75 h-auto bg-${theme.bg}  border-${theme.border} border rounded-4  border-opacity-50`}>
+          <UserInformation theme={theme}  score={score} id_user={props.id_user} name={pageName[0].name}/>
+          <div className={`row mt-2 border-${theme.border} border-1`}>
+          <div className={`mx-auto w-75 text-center mb-2 text-${theme.font}  border-${theme.border} border-bottom border-3`}>
+              <h4>{t('RecommendationHeader')}</h4>
+            </div>
+            {catalog(list, isCheck, handleClick,
+              Filter,props.Recommendation.rate,
+              props.Recommendation.totalScore,
+              props.id_user,theme,t)}
+            <div className="mx-auto">
+            </div>
+            <TagList
+                Theme={theme} 
                 themeAC={props.themeAC}
                 filterAC={props.filterAC}
                 tagsAC={props.tagsAC}
                 DB={Recommendation}
             />
-        <div className={`col-4 mx-auto w-75 h-auto bg-${theme}  bg-gradient rounded-4`}>
-          <UserInformation score={score} id_user={props.id_user} name={pageName[0].name}/>
-          <div className="row border mt-2">
-            <div className="text-center mb-2">
-              <h4>{t('RecommendationTitle')}</h4>
-            </div>
-            {catalog(list, isCheck, handleClick,Filter,props.Recommendation.rate,props.Recommendation.totalScore,props.id_user)}
-            <div className="mx-auto border">
-            </div>
           </div>
         </div>
       </div>

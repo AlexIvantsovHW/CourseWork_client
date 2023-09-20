@@ -155,8 +155,14 @@ export const UserInformation = (props) => {
 
   return (
     <div className="row ">
-      <div className="row d-flex justify-content-center align-items-center">{ProfileImg(100)}</div>
-      <div className="row "><h4 className={`text-${props.theme.font} text-center`}>{props.name} {Like(20)} {setUserLike(props.score,props.id_user)}</h4></div>
+      <div className="row d-flex justify-content-center align-items-center">
+        {ProfileImg(100)}
+      </div>
+      <div className="row ">
+        <h4 className={`text-${props.theme.font} text-center`}>
+          {props.name} {Like(20)} {setUserLike(props.score,props.id_user)}
+        </h4>
+      </div>
     </div>
   );
 };

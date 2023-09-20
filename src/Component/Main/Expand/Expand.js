@@ -22,7 +22,7 @@ const Expand = (props) => {
   return (
     <div class="col">
       <div className={`row h-100 d-flex align-items-center text-${Theme.font} bg-${Theme.bg} bg-gradient`}>
-        <div className={`row mx-auto w-75 mr-1 h-auto bg-${Theme.bg} rounded-4`}>
+        <div className={`row mx-auto w-75 mr-1 h-auto bg-${Theme.bg} rounded-4  border-${Theme.border} border border-opacity-50`}>
           <div className="row mb-2">
             <h1 className=" text-center">{targetRecommendation[0].title}</h1>
             <div className="w-100 text-center mb-2">

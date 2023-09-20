@@ -27,7 +27,7 @@ import '../../../i18n'
   };
   const catalog = list.map(({ id_r, tag }) => {
     return (
-      <div >
+      <div className="w-50 mx-auto">
         <Checkbox
           type="checkbox"
           name={tag}
@@ -51,12 +51,12 @@ if(transformArrData.length===0){transformArrData=[{id:null,value:null}]}else{
     props.filterAC(transformArrData)
   }
   return (
-    <div className="col-2 bg-dark">
+    <div className={`mx-auto w-100 bg-${props.Theme.bg}`}>
       <div className="row">
         <div>
           <h4 className="text-center">{t('TagList')}</h4>
         </div>
-      <div className="border-bottom border-danger border-3">
+      <div className={`mx-auto w-50 border-bottom border-${props.Theme.border} border-1`}>
       <Checkbox
         type="checkbox"
         name="selectAll"
@@ -66,12 +66,15 @@ if(transformArrData.length===0){transformArrData=[{id:null,value:null}]}else{
       />
       {t('SelectAll')}
       </div>
-            <div className="bg-gradient overflow-auto" style={{ maxHeight: "380px" }}>
+            <div className="overflow-auto" style={{ maxHeight: "380px" }}>
       {catalog}
       </div>
-      
       <div className="w-100 d-flex justify-content-center align-items-center">
-        <button className='btn btn-dark' onClick={sendFiltedArray}>{DisplayImg(20)}</button>
+        <button 
+          className={`btn btn-${props.Theme.btn}`} 
+          onClick={sendFiltedArray}>
+            {DisplayImg(20)}
+        </button>
       </div>
 
       </div>

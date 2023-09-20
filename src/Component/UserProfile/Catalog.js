@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-import {  Like } from "../img";
 import { ImgReview } from "./Function";
 import { calculateAverageRate, replaceAmountValues, replaceRateValues } from "../Main/Expand/Function";
 
@@ -9,7 +8,7 @@ export function getTags(data){
   for (let i=0;i<data.length;i++){x.push(data[i].value)}
   return Array.from(new Set(x)).filter(Boolean);
 }
-export function catalog (array,isCheck,handleClick,Filter,rate,totalScore){
+export function catalog (array,isCheck,handleClick,Filter,rate,totalScore,id_user,theme,t){
 let RecommendData = array,
     tagFilter =getTags(Filter),
     x=[''].concat(tagFilter),
@@ -19,19 +18,38 @@ let RecommendData = array,
     recommendList =x.length > 1? filteredList: RecommendData;
 
     return(
-    <div className="border w-75 mx-auto mb-2 overflow-auto" style={{ height: "300px" }}>
+      <div 
+      className="w-100 mx-auto mb-2 overflow-x-hidden overflow-y-auto" 
+      style={{ maxHeight: "300px" }}>
       {recommendList.map((el) => {
+        const d=new Date((el.date_upload));  
   return (
-    <div className="row bg-white text-black border-bottom">
-      <div className="col-1  d-flex justify-content-center align-items-center">{el.id_r}</div>
-      <div className="col-3  mx-auto"><ImgReview  img={el.image} score={el.score} date={el.date}/>
-      </div>
-      <div className="col   text-black">
-        <div className="row text-center"><h5 className="col">{el.title}</h5><div className="col">
-    <NavLink to={"/fulluserRecommend/"+el.id_r}><button>Read</button></NavLink>
-          </div></div>
-        <div className="text-start font-weight-bold"><p>{el.name}/{el.category}/{el.group}</p></div>
-        <div className="row"><div className="col-9">Tags:{el.tag}</div> <div className="col">{Like}</div></div>
+    <div 
+      className={`mt-3 bg-${theme.bg} mx-auto bg-gradient rounded-pill border-bottom border-${theme.border} border-opacity-50`}
+      style={{width:'90%'}}
+      >
+      <div className="row">
+        <div className="text-center">
+          <div className="row">
+          <div className="col">
+            <p className={`col text-${theme.font} fw-bold`}>{el.title}</p>
+            <p className={`col text-${theme.font}`}>{el.name}</p>
+            <p className={`col text-${theme.font}`}>{el.category}</p>
+            <p className={`col text-${theme.font}`}>{d.getDay()}/{d.getMonth()}/{d.getFullYear()}</p>
+            <p className={`col text-${theme.font}`}> {t('Tag')}{el.tag}</p>
+          </div>
+          <div 
+            className="col-5 d-flex align-items-center justify-content-center flex-column">
+            <ImgReview  img={el.image} score={el.score} date={el.date}/>
+            <p>{t('AuthorScore')} {el.AuthorScore}</p>
+            <NavLink className={'text-decoration-none'} to={"/expand/"+el.id_r}>
+              <p className={`text-center text-${theme.font} fw-bold`}>
+              {t('Read')}
+              </p>
+            </NavLink>
+          </div>
+          </div>
+        </div>
       </div>
     </div>
   );
