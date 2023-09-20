@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next';
 import '../../../i18n'
 import RangeSlider from "react-bootstrap-range-slider";
 import { useState } from "react";
-import { useEffect } from "react";
 import { PhotoImg, SendImg, img_return } from "../../img";
 
 const FullRecommend = (props) => {

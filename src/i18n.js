@@ -83,7 +83,7 @@ i18n
             },
             en: {
                 translation: {
-                    home: "Recommendation list",
+                    home: "Recommendations",
                     login: "Login",
                     logout:"Logout",
                     admin:"Admin",

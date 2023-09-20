@@ -27,9 +27,9 @@ const Comment = (props) => {
   };
   function commentForm(Theme, t, i18n) {
     return (
-      <div className="col mr-4 w-100">
+      <div className="col col-lg-8 col-md-8 col-sm-10 mt-2  text-center mx-auto">
         <Field
-          className={`form-control form-control-sm mx-0 w-100 h-100 mt-1 mb-1 `}
+          className={`form-control form-control-md w-100`}
           component="input"
           name={"comment"}
           placeholder={t("inputComment")}
