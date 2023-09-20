@@ -20,10 +20,16 @@ class AdminContainer extends React.Component{
     <Admin 
       Users={this.props.Users}
       deleteUserTC={this.props.deleteUserTC}
+      Theme={this.props.Theme} 
       />)}
 }
 
-const mapStateToProps=(state)=>{return{Users:state.Users,Login:state.login}}
+const mapStateToProps=(state)=>{
+  return{
+    Users:state.Users,
+    Login:state.login,
+    Theme:state.Theme,
+  }}
 export default compose (
   connect(mapStateToProps,{getUserTC,deleteUserTC}),
   )(AdminContainer);
