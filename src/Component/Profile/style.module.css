@@ -1,7 +1,11 @@
 .dropzone{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border:2px dotted gray;
     background-color:rgba(128, 128, 128, 0.278) ;
     height: 100px;
-    width: 150px;
+    width: 400px;
     margin: auto;
+    text-align: center;
 }

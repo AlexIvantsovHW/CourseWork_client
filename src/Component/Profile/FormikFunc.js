@@ -5,7 +5,7 @@ import { UserForm } from "./Function";
 import { closeForm, openForm } from "../CommonFunc";
 import { useTranslation } from 'react-i18next';
 import '../../i18n'
-import { CloudImg, SendImg } from "../img";
+import { CloudImg, SendImg, UploadImg } from "../img";
 import { DropBoxImg } from './../img';
 import style from'./style.module.css'
 import { useDropzone } from "react-dropzone";
@@ -38,15 +38,7 @@ let tag='#'+values.tag;
     const [images,setImages]=useState([])
     function handleUpload(){
         console.log('Uploading files....')
-        /* axios.post('http://localhost:3001/upload',{images}).then(response=>{
-            console.log(response.data)
-        })
-        .catch(error=>{
-            console.log(error.message)
-            https://console.cloudinary.com/console/c-ecbf272216b928e0735664ab618fe3/getting-started
-            https://www.youtube.com/watch?v=TBOkDQEBPIU
-        }) */
-        props.setReviewImageTC(images)
+        props.setReviewImageTC({images})
     }
     const onDrop=useCallback(
     (acceptedFiles,rejectFiles)=>{
@@ -76,35 +68,51 @@ let tag='#'+values.tag;
     )}
     else{
         return(
+            <>
             <Formik initialValues={initialValues} validate={validate}
                 onSubmit={async (values, { resetForm }) => {
                 await onSubmit(values,props.id_user,props.imgLink,props.getAddRecomendTC);
                 resetForm();}}>
                         {({ isSubmitting }) => (
-                        <>
-                        {images.length>0&&
-                        <div>
-                            {images.map((image,index)=><img src={image} key={index} width={50} height={50}/>)}
-                        </div>}
-                        {images.length>0&&
-                        <button onClick={handleUpload}>Upload</button>}
+                        <div className="w-75 mx-auto d-flex justify-content-center align-items-center border-top border-bottom border-danger border-opacity-50">
                         <Form className="mx-auto">
-                        <div className={style.dropzone} {...getRootProps()}>
-                            <input {...getInputProps()}/>
-                            {isDragActive?"Drag Active":"You can drop your image here"}
-
-                        </div>
+                            <div 
+                                className="w-100 d-flex justify-content-end">
+                                <button 
+                                    className={`btn btn-close btn-close-${props.theme.font} `} 
+                                    onClick={()=>{closeForm(props.setPublishAC)}}/>
+                            </div>
+                        <h4 className="text-center">{t('Step1')}</h4>
                             {UserForm(t)}
                             <div className="d-flex justify-content-ceter align-items-center w-100 mb-3">
                             <button type="submit" disabled={isSubmitting}
                                 className={`btn btn-${props.theme.btn} mx-auto`}>
                                 {SendImg(20)} {t('Send')} 
                             </button> 
-                                <button className={`btn btn-close btn-close-${props.theme.font}`} onClick={()=>{closeForm(props.setPublishAC)}}/>
                             </div>
-                        </Form></> 
+                        </Form>
+          
+                        </div> 
                         )}
-                    </Formik>)
+                    </Formik>
+                                  <div className="w-75 mx-auto border-bottom border-danger border-opacity-50">
+                                  <h4 className="text-center">{t('Step2')}</h4>
+                              <div className={style.dropzone} {...getRootProps()}>
+                                  <input {...getInputProps()}/>
+                                  {isDragActive?"Drag Active":"You can drop your image here"}
+                              </div>
+                              {images.length>0&&
+                              <div className="w-100 d-flex align-items-center justify-content-center">
+                            <button 
+                                className="btn btn-dark" 
+                                onClick={handleUpload}>
+                                    {UploadImg(20)} {t('Upload')}
+                            </button>
+                              </div>}
+                             
+                              </div>
+                              </>
+                              )
   }};
 
   export default FormikFunc;

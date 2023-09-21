@@ -29,6 +29,7 @@ const API = {
   deleteRecommends(data){return instance.post('deleteRecommend',data)},
   setAuthorScore(data){return instance.post('setAuthorScore',data)},
   postReviewImage(data){return instance.post('upload',data)},
+  setIMG(data){debugger;return instance.post('setImg',data) },
   //========================ADMIN PAGE
   deleteUsers(data){return instance.post('deleteUser',data)}
 };

@@ -154,7 +154,7 @@ export const Toolbar = (props) => {
 export const UserInformation = (props) => {
 
   return (
-    <div className="row ">
+    <div className="col d-flex justify-content-center align-items-center flex-row">
       <div className="row d-flex justify-content-center align-items-center">
         {ProfileImg(100)}
       </div>

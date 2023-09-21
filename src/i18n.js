@@ -61,6 +61,9 @@ i18n
                     Film:'Фильм',
                     Music:'Музыка',
                     Option:'Выберите категорию',
+                    Step1:'Шаг 1',
+                    Step2:'Шаг 2',
+                    Upload:'Загрузить',
                     //User Page
                     Users:'ПОЛЬЗОВАТЕЛИ',
 
@@ -131,7 +134,10 @@ i18n
                     Book:'Book',
                     Film:'Film',
                     Music:'Music',
-                    Option:'Choose the category',         
+                    Option:'Choose the category', 
+                    Step1:'Step 1', 
+                    Step2:'Step 2',    
+                    Upload:'Upload',     
 
                     //User Page
                     Users:'USERS',                    

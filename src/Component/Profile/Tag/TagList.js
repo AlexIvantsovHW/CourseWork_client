@@ -51,7 +51,7 @@ if(transformArrData.length===0){transformArrData=[{id:null,value:null}]}else{
     props.filterAC(transformArrData)
   }
   return (
-    <div className={`mx-auto w-100 bg-${props.Theme.bg}`}>
+    <div className={`col  mx-auto w-100 bg-${props.Theme.bg}`}>
       <div className="row">
         <div>
           <h4 className="text-center">{t('TagList')}</h4>

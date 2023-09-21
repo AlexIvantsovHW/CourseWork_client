@@ -40,7 +40,15 @@ const Profile = (props) => {
     <div class="col">
       <div className={`row h-100 d-flex flex-row align-items-center text-${theme.font} bg-${theme.bg} bg-gradient`}>
          <div className={`col-4 mx-auto w-75 h-auto bg-${theme.bg}  border-${theme.border} border rounded-4  border-opacity-50`}>
+        <div className="row">          
           <UserInformation theme={theme} t={t} score={score} id_user={props.id_user} name={pageName[0].name}/>
+          <TagList
+                Theme={theme} 
+                themeAC={props.themeAC}
+                filterAC={props.filterAC}
+                tagsAC={props.tagsAC}
+                DB={Recommendation}
+            /></div>
           <div className={`row mt-2 border-${theme.border} border-1`}>
             <div className={`text-center mb-2 text-${theme.font}`}>
               <h4 className="text-center">{t('RecommendationHeader')}</h4>
@@ -94,24 +102,9 @@ const Profile = (props) => {
                   theme={theme}
                   setReviewImageTC={props.setReviewImageTC}
                 />
-                /* publish(
-                status,
-                props.setPublishAC,
-                props.id_user,
-                props.getAddRecomendTC,
-                onSuccess,
-                imgLink
-              ) */)}
-                
+              )}
             </div>
             </div>
-            <TagList
-                Theme={theme} 
-                themeAC={props.themeAC}
-                filterAC={props.filterAC}
-                tagsAC={props.tagsAC}
-                DB={Recommendation}
-            />
           </div>
         </div>
       </div>

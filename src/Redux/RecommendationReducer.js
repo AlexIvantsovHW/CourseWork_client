@@ -14,7 +14,8 @@ const SET_USER_RECOMMENDATIONS='SET_USER_RECOMMENDATIONS',
       SET_VIEW_STATUS='SET_VIEW_STATUS',
       SET_COMMENT='SET_COMMENT',
       SET_FILTER='SET_FILTER',
-      SET_INIT_TAGS='SET_INIT_TAGS'
+      SET_INIT_TAGS='SET_INIT_TAGS',
+      SET_IMG="SET_IMG"
       ;
 
 let initialState = {
@@ -59,7 +60,9 @@ let initialState = {
   setView:false,
   comments:[{id_r:null,id_user:null,comment:null,date_upload:null,name:null}],
   initTags:[],
-  Filter:[]
+  Filter:[],
+  UploadImg:null,
+
 }
 const RecommendationReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -77,6 +80,7 @@ const RecommendationReducer = (state = initialState, action) => {
     case SET_RATE:return{...state,rate:action.rate}
     case SET_FILTER:return { ...state, Filter: [...action.filter] };
     case SET_INIT_TAGS: return { ...state, initTags:action.tags };
+    case SET_IMG:return{...state,UploadImg:action.img};
     default:return { ...state };
   }
 };
@@ -95,6 +99,7 @@ export const setCommentStatusAC=(status)=>{{return{type:SET_COMMENT_STATUS,statu
 export const commentsAC=(comment)=>{{return{type:SET_COMMENT,comment}}}
 export const filterAC=(filter)=>{{ return{type:SET_FILTER,filter}}}
 export const tagsAC=(tags)=>{{return{type:SET_INIT_TAGS,tags}}}
+export const imgAC=(img)=>{{return{type:SET_IMG,img}}}
 
 //THUNC CREATOR
 export const getRecomendTC=(data)=>{
@@ -199,11 +204,16 @@ export const setAuthorScoreTC=(value)=>{
 }
 export const setReviewImageTC=(value)=>{
   return async(dispatch)=>{
+    const fData=new FormData();
     let result= await API.postReviewImage(value);
-    console.log(result.data)
-    /* dispatch(recommendationAC(result.data)) */
+    await fData.append('image',result.data.secure_url)
+    let req2=await API.setIMG(fData)
+    
+    debugger;
+    dispatch(recommendationAC(req2.data))
   }
 }
+
 
 export default RecommendationReducer;
 
