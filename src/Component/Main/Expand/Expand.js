@@ -37,7 +37,7 @@ const Expand = (props) => {
               {((IMG===null)||(IMG==='null')||(IMG==='')?PhotoImg(200):img_return(IMG,200))}
               </div>
             <div
-              className={`col mx-auto bg-${Theme.bg} bg-gradient text-${Theme.font} overflow-auto`}
+              className={`col mx-auto bg-${Theme.bg} bg-gradient text-${Theme.font} overflow-auto border-${Theme.border} border border-opacity-50`}
               style={{ height: "200px", width:'90%'}}
             >
               <p>{targetRecommendation[0].text}</p>

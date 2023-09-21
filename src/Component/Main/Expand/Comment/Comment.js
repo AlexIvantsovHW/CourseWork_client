@@ -42,7 +42,7 @@ const Comment = (props) => {
   if (commentWindow === false) {
     return (
       <p
-        className="text-center fst-italic text-decoration-none text-info"
+        className="text-center fst-italic text-decoration-none text-white"
         onClick={() => {
           setCommentWindow(true);
         }}
@@ -96,6 +96,13 @@ const Comment = (props) => {
             >
               {({ isSubmitting }) => (
                 <Form className="mx-auto">
+                  <div className="col d-flex justify-content-end">
+                  <button
+                      className={`btn-close btn-close-white`}
+                      onClick={() => setInputWindow(false)}
+                    />
+                  </div>
+                        
                   {commentForm(Theme, t, i18n)}
                   <div className="d-flex justify-content-center align-items-center w-100 mb-3">
                     <button
@@ -105,10 +112,7 @@ const Comment = (props) => {
                     >
                       {SendImg(20)} {t("Send")}
                     </button>
-                    <button
-                      className={`btn-close btn-close-white`}
-                      onClick={() => setInputWindow(false)}
-                    />
+              
                   </div>
                 </Form>
               )}

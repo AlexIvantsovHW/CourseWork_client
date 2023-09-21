@@ -40,8 +40,8 @@ const Login = (props) => {
           <div className="d-flex justify-content-ceter align-items-center w-100 mb-3">
           <button type="submit" disabled={isSubmitting} className={`btn btn-${theme.btn} border-0 mx-auto fw-bold`}>{EnterImg(20)} {t('signin')}</button>
           </div>
-          <div className="row text-center">
-          <p>{t('textReg')}<NavLink to='/'> {t('registration')}</NavLink> </p>
+          <div className="row text-center text-white">
+          <p className=" text-decoration-none">{t('textReg')}<NavLink classname='text-white fw-bold text-decoration-none ' to='/'> {t('registration')}</NavLink> </p>
           </div>
         </Form>
       )}

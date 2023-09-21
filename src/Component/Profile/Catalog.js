@@ -21,7 +21,7 @@ let RecommendData = props.list,
       recommendList.map((el) => {
         const d=new Date((el.date_upload));  
   return (
-    <div className={`w-75 mt-3 bg-${props.theme.bg} mx-auto bg-gradient rounded-pill border-bottom border-${props.theme.border} border-opacity-50`}>
+    <div className={`w-75 mt-3 bg-dark mx-auto bg-gradient rounded-pill border-bottom border-${props.theme.border} border-opacity-50`}>
     <div className={`row`}>
       <div className="text-center">
         <div className="row">

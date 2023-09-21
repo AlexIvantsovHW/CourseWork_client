@@ -41,18 +41,18 @@ const Admin = (props) => {
       setIsCheck(isCheck.filter((item) => item !== id));
     }
   };
-  function tD (el,id,isCheck){
+  function tD (el,id,isCheck,font){
     return (
-    (id? (<td className={`bg-${Theme.bg} bg-gradient text-center`}>
+    (id? (<td className={`bg-secondary bg-gradient text-center`}>
       <NavLink className='text-decoration-none text-center' to={"/profile/"+el}>
-       <p className={`fw-bold text-center text-${Theme.font}`}>{el}</p>
+       <p className={`fw-bold text-center text-${font}`}>{el}</p>
        </NavLink>
        </td>):
-  (<td className={`bg-${Theme.bg} text-${Theme.font} bg-gradient text-center`}>{el}</td>)))};
+  (<td className={`bg-secondary text-${font} bg-gradient text-center`}>{el}</td>)))};
 let filteredData=searchLink(search,props.Users.users),
      UserData=filteredData.map((el, index) => (
             <tr key={index} >
-              <td className={`bg-${Theme.bg} bg-gradient text-center`}>        
+              <td className={`bg-dark bg-gradient bg-opacity-50 text-center`}>        
                 <Checkbox
                   key={el.id}
                   type="checkbox"
@@ -62,10 +62,10 @@ let filteredData=searchLink(search,props.Users.users),
                   isChecked={isCheck.includes(el.id)}
                 />
             </td>
-              {tD(el.id,el.id,isCheck)}
-              {tD(el.name,null,isCheck)}
-              {tD(el.email,null,isCheck)}
-              {tD(el.password,null,isCheck)}
+              {tD(el.id,el.id,isCheck,'info')}
+              {tD(el.name,null,isCheck,'white')}
+              {tD(el.email,null,isCheck,'white')}
+              {tD(el.password,null,isCheck,'white')}
             </tr>
           ))
   return (
@@ -75,7 +75,11 @@ let filteredData=searchLink(search,props.Users.users),
         <div className="mb-2">
           <h3 className="text-center">{t('Admin')}</h3>
           <div className="d-flex justify-content-center align-items-center w-100">
-            <input className={`bg-${Theme.bg} bg-gradient text-${Theme.font}`} type="text" placeholder={t('Search')} onChange={(e)=>setSearch(e.target.value)}/> 
+            <input 
+              className={`bg-dark bg-gradient text-${Theme.font} `} 
+              type="text" 
+              placeholder={t('Search')} 
+              onChange={(e)=>setSearch(e.target.value)}/> 
           </div>
           <div className="w-100">
             <div>
@@ -88,18 +92,18 @@ let filteredData=searchLink(search,props.Users.users),
           </div>
         <div className="w-100 mx-auto mb-2 overflow-auto" style={{ height: "500px" }}>
         <table className="table">
-        <thead className={`border-bottom-3 border-${Theme.border}`}>
+        <thead className={``}>
           <tr>
-            <th className={`bg-${Theme.border} bg-gradient text-center`} scope="col">
+            <th className={`bg-dark bg-gradient text-center`} scope="col">
             <Checkbox 
                   type="checkbox" name="selectAll" 
                   id="selectAll" handleClick={handleSelectAll} 
                   isChecked={isCheckAll}/>
             </th>
-            <th className={`bg-${Theme.border} bg-gradient text-center`} scope="col">{t('id')}</th>
-            <th className={`bg-${Theme.border} bg-gradient text-center`} scope="col">{t('name')}</th>
-            <th className={`bg-${Theme.border} bg-gradient text-center`} scope="col">{t('email')}</th>
-            <th className={`bg-${Theme.border} bg-gradient text-center`} scope="col">{t('password')}</th>
+            <th className={`bg-dark bg-gradient text-center text-white`} scope="col">{t('id')}</th>
+            <th className={`bg-dark bg-gradient text-center text-white`} scope="col">{t('name')}</th>
+            <th className={`bg-dark bg-gradient text-center text-white`} scope="col">{t('email')}</th>
+            <th className={`bg-dark bg-gradient text-center text-white`} scope="col">{t('password')}</th>
           </tr>
         </thead>
         <tbody >

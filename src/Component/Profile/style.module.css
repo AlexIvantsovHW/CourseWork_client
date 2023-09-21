@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border:2px dotted gray;
+    border:2px dotted rgb(249, 247, 247);
     background-color:rgba(128, 128, 128, 0.278) ;
     height: 100px;
     width: 400px;

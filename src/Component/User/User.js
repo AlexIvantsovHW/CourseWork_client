@@ -16,7 +16,7 @@ let theme=props.Theme.theme,
     UserData=usersExceptAdmin.map((el)=>{
   return(
     <div className="mt-2 w-100 d-flex justify-content-center align-items-center">
-        <div className={`w-75 bg-${theme.bg} bg-gradient rounded-4 border border-${theme.border} border-bottom`}>
+        <div className={`w-75 bg-dark bg-gradient rounded-4 border border-${theme.border} border-bottom`}>
         <div className="w-100 mt-2 d-flex justify-content-center align-items-center">{UserImg(50)}</div>
         <div className="w-100 d-flex justify-content-center align-items-center">
         <NavLink className='text-decoration-none' to={"/userprofile/"+el.id}><p className={`text-${theme.font} fw-bold`}>{el.name}</p></NavLink><p> / id- {el.id}</p></div>
@@ -35,7 +35,7 @@ let theme=props.Theme.theme,
         <div>
           <div className="d-flex justify-content-center align-items-center w-100 mt-2 mb-2" >
             <input 
-              className={`bg-${theme.bg} bg-gradient text-${theme.font}`} 
+              className={`bg-dark bg-gradient text-black border-0`} 
               type="text" 
               placeholder={t('Search')} 
               onChange={(e)=>setSearch(e.target.value)}/> 

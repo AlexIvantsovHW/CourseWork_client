@@ -25,7 +25,7 @@ let RecommendData = array,
         const d=new Date((el.date_upload));  
   return (
     <div 
-      className={`mt-3 bg-${theme.bg} mx-auto bg-gradient rounded-pill border-bottom border-${theme.border} border-opacity-50`}
+      className={`mt-3 bg-dark mx-auto bg-gradient rounded-pill border-bottom border-${theme.border} border-opacity-50`}
       style={{width:'90%'}}
       >
       <div className="row">

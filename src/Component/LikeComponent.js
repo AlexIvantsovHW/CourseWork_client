@@ -13,7 +13,7 @@ const LikeComponent = (props) => {
             likePresence(props.score, props.id_r, props.id_user) === true ? (
               <div className="col">
                 <button
-                  className={`btn btn-outline-${props.theme.border} border-0`}
+                  className={`btn btn-outline-danger border-0`}
                   onClick={() => {
                     setLike(0, props.id_r, props.id_user, props.getLikeTC);
                   }}

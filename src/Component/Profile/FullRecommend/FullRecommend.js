@@ -34,7 +34,7 @@ const FullRecommend = (props) => {
             {((IMG===null)||(IMG==='null')||(IMG==='')?PhotoImg(200):img_return(IMG,200))}
             </div>
             <div 
-              className={`col d-flex align-items-center justify-content-center me-2 ms-2 bg-${Theme.bg} bg-gradient text-${Theme.font} overflow-auto`} 
+              className={`col d-flex align-items-center justify-content-center me-2 ms-2 bg-${Theme.bg} bg-gradient text-${Theme.font} border-${Theme.border} border-opacity-50 border overflow-auto`} 
               style={{ height: "200px"}}>
               <p className="mt-2">{targetRecommendation[0].text}</p>
             </div>

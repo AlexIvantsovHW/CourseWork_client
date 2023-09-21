@@ -72,7 +72,7 @@ if(transformArrData.length===0){transformArrData=[{id:null,value:null}]}else{
         isChecked={isCheckAll}
       />
         {t('SelectAll')}
-        <button className={`btn btn-${props.Theme.btn} `} onClick={sendFiltedArray}>{DisplayImg(20)}</button>
+        <button className={`btn btn-${props.Theme.btn}`} onClick={sendFiltedArray}>{DisplayImg(20)}</button>
  
       </div>
             <div className="overflow-auto" style={{ maxHeight: "120px" }}>

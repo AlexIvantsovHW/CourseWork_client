@@ -72,7 +72,7 @@ let tag='#'+values.tag;
                 await onSubmit(values,props.id_user,props.imgLink,props.getAddRecomendTC);
                 resetForm();}}>
                         {({ isSubmitting }) => (
-                        <div className="w-75 mx-auto d-flex justify-content-center align-items-center border-top border-bottom border-danger border-opacity-50">
+                        <div className={`w-75 mx-auto d-flex justify-content-center align-items-center border-top border-bottom border-${props.theme.border} border-opacity-50`}>
                         <Form className="mx-auto">
                             <div 
                                 className="w-100 d-flex justify-content-end">
@@ -93,7 +93,7 @@ let tag='#'+values.tag;
                         </div> 
                         )}
                     </Formik>
-                                  <div className="w-75 mx-auto border-bottom border-danger border-opacity-50">
+                                  <div className={`w-75 mx-auto border-bottom border-${props.theme.border} border-opacity-50`}>
                                   <h4 className="text-center">{t('Step2')}</h4>
                               <div className={style.dropzone} {...getRootProps()}>
                                   <input {...getInputProps()}/>

@@ -36,7 +36,7 @@ const Comment = (props) => {
   if (props.statusView === false) {
     return (
       <p
-        className="text-center fst-italic text-decoration-none text-info"
+        className="text-center fst-italic text-decoration-none text-white"
         onClick={() => {openForm(props.setViewAC);}}
       >
         {t('viewComment')}

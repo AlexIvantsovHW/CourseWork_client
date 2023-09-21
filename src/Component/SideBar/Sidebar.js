@@ -107,7 +107,7 @@ const SideBar = (props) => {
                       password: null,
                     });
                   }}
-                  className="ms-1 d-none d-sm-inline text-white"
+                  className={`ms-1 d-none d-sm-inline text-${theme.font}`}
                 >
                   {t("logout")}
                 </span>
@@ -139,7 +139,7 @@ const SideBar = (props) => {
               <button
                 className="btn btn-outline-warning border-0 rounded-circle"
                 onClick={() => {
-                  setTheme({bg:'info',font:'white',border:'dark',btn:'info'}, props.themeAC);
+                  setTheme({bg:'secondary',font:'white',border:'dark',btn:'black'}, props.themeAC);
                 }}
               >
                 {SunImg(30)}
@@ -147,16 +147,16 @@ const SideBar = (props) => {
             </div>
           </div>
           <div className="">
-            <div className="d-flex justify-content-center align-items-center w-100">
+            <div className="d-flex text-black justify-content-center align-items-center w-100">
               <input
-                className={`bg-${theme.bg} bg-gradient text-${theme.font}`}
+                className={`bg-dark bg-gradient text-black border-0`}
                 type="text"
                 placeholder={t("Search")}
                 onChange={(e) => setSearch(e.target.value)}
               />
             </div>
             <div
-              className={`col w-100 border bg-${theme.border} bg-opacity-25 border-${theme.border} border-opacity-25 overflow-auto`}
+              className={`col w-100 border bg-${theme.border} bg-opacity-25 border-${theme.border} border-opacity-0 overflow-auto`}
               style={{ height: "100px" }}
             >
               {search ? (

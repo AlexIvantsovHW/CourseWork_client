@@ -17,7 +17,7 @@ export function DBlist(
     return(
         arr.map((el) => {
             return (
-              <div className={`w-75 mt-5 bg-${theme.bg} mx-auto bg-gradient rounded-pill border-bottom border-${theme.border} border-opacity-50`}>
+              <div className={`w-75 mt-5 bg-dark mx-auto bg-gradient rounded-pill border-bottom border-${theme.border} border-opacity-50`}>
                 <div className='row'>
                 <div className='col mx-auto'>
                   <div className='text-center'>
