@@ -1,18 +1,16 @@
 import { Field, Form, Formik } from "formik";
 import moment from "moment";
-import DropboxChooser from "../Dropbox-chooser";
 import { UserForm } from "./Function";
 import { closeForm, openForm } from "../CommonFunc";
 import { useTranslation } from 'react-i18next';
 import '../../i18n'
 import { CloudImg, SendImg, UploadImg } from "../img";
-import { DropBoxImg } from './../img';
 import style from'./style.module.css'
 import { useDropzone } from "react-dropzone";
 import { useCallback } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import axios from "axios";
+
 
 const date = moment().format("YYYY-MM-DD HH:mm:ss");
 
@@ -99,7 +97,7 @@ let tag='#'+values.tag;
                                   <h4 className="text-center">{t('Step2')}</h4>
                               <div className={style.dropzone} {...getRootProps()}>
                                   <input {...getInputProps()}/>
-                                  {isDragActive?"Drag Active":"You can drop your image here"}
+                                  {isDragActive?"Drag Active":t('dragDrop')}
                               </div>
                               {images.length>0&&
                               <div className="w-100 d-flex align-items-center justify-content-center">

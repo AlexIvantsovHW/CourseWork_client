@@ -30,9 +30,13 @@ const FullRecommend = (props) => {
         <div className={`mx-auto w-75 h-auto bg-${Theme.bg} border-${Theme.border} border rounded-4  border-opacity-50`}>
           <div className="row mb-2">
             <h3 className="text-center">{targetRecommendation[0].title}</h3>
-            {((IMG===null)||(IMG==='null')||(IMG==='')?PhotoImg(150):img_return(IMG,150))}
-            <div className={`mx-auto bg-${Theme.bg} bg-gradient text-${Theme.font} overflow-auto`} style={{ height: "200px", width:'90%'}}>
-              <p>{targetRecommendation[0].text}</p>
+            <div className="col-3 mt-2 d-flex justify-content-center align-items-center">
+            {((IMG===null)||(IMG==='null')||(IMG==='')?PhotoImg(200):img_return(IMG,200))}
+            </div>
+            <div 
+              className={`col d-flex align-items-center justify-content-center me-2 ms-2 bg-${Theme.bg} bg-gradient text-${Theme.font} overflow-auto`} 
+              style={{ height: "200px"}}>
+              <p className="mt-2">{targetRecommendation[0].text}</p>
             </div>
             <div>
             <div className="row d-flex flex-column justify-content-center align-items-center">
@@ -42,16 +46,16 @@ const FullRecommend = (props) => {
             <div className="row w-50 d-flex flex-row align-items-center justify-content-center">
             <RangeSlider
               className="col"
-            variant={`${Theme.border}`}
+              variant={`${Theme.border}`}
               size='sm'
               value={value}
               min={1}
               max={10}
               onChange={changeEvent => setValue(changeEvent.target.value)}
              />
-              <div className="w-25 d-flex justify-content-center align-items-center">
+              <div className="w-75 d-flex justify-content-center align-items-center">
               <button className={`btn btn-${Theme.btn}`} onClick={onAuthorScoreSubmit}>
-                {SendImg(20)} {t('Send')}
+                {SendImg(20)} {t('Assess')}
               </button>
               </div>
              </div>

@@ -43,21 +43,10 @@ const Login = (props) => {
           <div className="row text-center">
           <p>{t('textReg')}<NavLink to='/'> {t('registration')}</NavLink> </p>
           </div>
-          <div className="row text-center">
-            <div className="col">
-              <button className="btn btn-success" onClick={GoogleAuth}>Google</button>
-            </div>
-            <div  className="col">
-            <div className="col">
-              <button className="btn btn-success" onClick={()=>{alert('Twitter Sign In')}}>Twitter</button>
-            </div>
-            </div>
-          </div>
         </Form>
       )}
     </Formik>
         </div>
-        
       </div>
 </div>
 

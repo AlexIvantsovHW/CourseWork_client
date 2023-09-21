@@ -50,10 +50,11 @@ i18n
                     TagList:'ЛИСТ ТЕГОВ',
                     SelectAll:'Выбрать все',
                     Display:'Отобразить',
+                    Assess:'Оценить рекомендацию',
 
                     // Profile page
                     UserName:'Имя пользователя:',
-                    Tag:'Тэги:',
+                    Tag:'Теги:',
                     ImgDowloadHeader:'Загрузите или выберите изображение из DropBox',
                     AddRecommend:'Добавить рекомендацию',
                     AuthorScore:'Оценка автора: ',
@@ -64,6 +65,7 @@ i18n
                     Step1:'Шаг 1',
                     Step2:'Шаг 2',
                     Upload:'Загрузить',
+                    dragDrop:'Вы можете скинуть сюда свое изображение',
                     //User Page
                     Users:'ПОЛЬЗОВАТЕЛИ',
 
@@ -107,6 +109,8 @@ i18n
 
                     // Admin page
                     Admin:'Admin page',
+                    //Admin table
+                    id:'id',
 
                     // Recommendation list
                     RecommendationHeader:'RECOMMENDATION LIST',
@@ -137,7 +141,9 @@ i18n
                     Option:'Choose the category', 
                     Step1:'Step 1', 
                     Step2:'Step 2',    
-                    Upload:'Upload',     
+                    Upload:'Upload',
+                    dragDrop:'You can drop your image here',
+                    Assess:'Assess review ',     
 
                     //User Page
                     Users:'USERS',                    
@@ -151,7 +157,7 @@ i18n
                     UpdateReview:'Update Review',
                     inputTitle:'Type title',
                     inputName:'Type name',
-                    inputGroup:'Type janre',
+                    inputGroup:'Type genre',
                     inputCategory:'Type category',
                     inputTag:'Type tag',
                     inputText:'Type your recommendation',

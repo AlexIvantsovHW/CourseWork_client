@@ -96,10 +96,10 @@ let filteredData=searchLink(search,props.Users.users),
                   id="selectAll" handleClick={handleSelectAll} 
                   isChecked={isCheckAll}/>
             </th>
-            <th className={`bg-${Theme.border} bg-gradient text-center`} scope="col">id</th>
-            <th className={`bg-${Theme.border} bg-gradient text-center`} scope="col">Name</th>
-            <th className={`bg-${Theme.border} bg-gradient text-center`} scope="col">Email</th>
-            <th className={`bg-${Theme.border} bg-gradient text-center`} scope="col">Password</th>
+            <th className={`bg-${Theme.border} bg-gradient text-center`} scope="col">{t('id')}</th>
+            <th className={`bg-${Theme.border} bg-gradient text-center`} scope="col">{t('name')}</th>
+            <th className={`bg-${Theme.border} bg-gradient text-center`} scope="col">{t('email')}</th>
+            <th className={`bg-${Theme.border} bg-gradient text-center`} scope="col">{t('password')}</th>
           </tr>
         </thead>
         <tbody >

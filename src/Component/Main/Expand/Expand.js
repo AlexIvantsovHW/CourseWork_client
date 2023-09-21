@@ -31,13 +31,17 @@ const Expand = (props) => {
                 {targetRecommendation[0].category} / 
                 {t('Score')} : {targetRecommendation[0].rate}
               </h4>
-              {((IMG===null)||(IMG==='null')||(IMG==='')?PhotoImg(150):img_return(IMG,150))}
+              </div>
+            <div className="row w-100">
+            <div className="col-4 d-flex justify-content-center align-items-center">
+              {((IMG===null)||(IMG==='null')||(IMG==='')?PhotoImg(200):img_return(IMG,200))}
               </div>
             <div
-              className={`mx-auto bg-${Theme.bg} bg-gradient text-${Theme.font} overflow-auto`}
+              className={`col mx-auto bg-${Theme.bg} bg-gradient text-${Theme.font} overflow-auto`}
               style={{ height: "200px", width:'90%'}}
             >
               <p>{targetRecommendation[0].text}</p>
+            </div>
             </div>
           </div>
           <div className="row d-flex justify-content-end align-items-center w-100">
