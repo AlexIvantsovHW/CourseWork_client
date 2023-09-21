@@ -9,9 +9,10 @@ import '../../i18n'
 import FormikFunc from "./FormikFunc";
 
 const Profile = (props) => {
+  debugger;
   const [search,setSearch]=useState('');
   const { t, i18n } = useTranslation();
-  let pageName= (props.Users[0].name===null?props.Users:props.Users.filter(function (el) {return el.id ===(+props.id_user);})),
+  let pageName= (props.Users[0].name===null?props.Users:props.Users.filter(function (el) {return +(el.id) ===(+props.id_user);})),
      ProfileName=props.Login.name,
      ProfileId=props.Login.id,
      Recommendation = props.Recommendation.recommendation.filter((el)=>el.id_user===(+props.id_user)),

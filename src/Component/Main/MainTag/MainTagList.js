@@ -62,7 +62,8 @@ if(transformArrData.length===0){transformArrData=[{id:null,value:null}]}else{
         <div>
           <h4 className="text-center">{t('TagList')}</h4>
         </div>
-      <div className={`mx-auto w-50 border-bottom border-${props.Theme.border} border-1`}>
+      <div className={` mx-auto w-50 border-bottom border-${props.Theme.border} border-1`}>
+     
       <Checkbox
         type="checkbox"
         name="selectAll"
@@ -70,13 +71,12 @@ if(transformArrData.length===0){transformArrData=[{id:null,value:null}]}else{
         handleClick={handleSelectAll}
         isChecked={isCheckAll}
       />
-      {t('SelectAll')}
+        {t('SelectAll')}
+        <button className={`btn btn-${props.Theme.btn} `} onClick={sendFiltedArray}>{DisplayImg(20)}</button>
+ 
       </div>
             <div className="overflow-auto" style={{ maxHeight: "120px" }}>
       {catalog}
-      </div>
-      <div className="w-100 d-flex justify-content-center align-items-center">
-        <button className={`btn btn-${props.Theme.btn}`} onClick={sendFiltedArray}>{DisplayImg(20)}</button>
       </div>
       </div>
     </div>
