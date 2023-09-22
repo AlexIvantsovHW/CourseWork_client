@@ -12,14 +12,11 @@ export const Catalog=(props)=>{
 let RecommendData = props.list,
     tagFilter =getTags(props.Filter),
     x=[''].concat(tagFilter),
-     averageRecommendationRate=calculateAverageRate(props.rate),
+    averageRecommendationRate=calculateAverageRate(props.rate),
     arrayWithAvRate=replaceRateValues(replaceAmountValues(RecommendData,props.totalScore),averageRecommendationRate), 
     filteredList = RecommendData.filter((o) => x.includes(o.tag)),
     recommendList =x.length > 1? filteredList: RecommendData;
-
-    return(
-      recommendList.map((el) => {
-        const d=new Date((el.date_upload));  
+    return(recommendList.map((el) => {const d=new Date((el.date_upload));  
   return (
     <div className={`w-75 mt-3 bg-dark mx-auto bg-gradient rounded-pill border-bottom border-${props.theme.border} border-opacity-50`}>
     <div className={`row`}>
@@ -56,7 +53,6 @@ let RecommendData = props.list,
     </div>
     </div>
   );
-})
-   
+})   
 )
 ;}

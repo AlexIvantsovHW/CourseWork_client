@@ -11,7 +11,6 @@ import { getUserTC } from "../../Redux/UserReducer";
 import { themeAC } from '../../Redux/ThemeReducer';
 import UserProfile from './UserProfile';
 
-
 class UserProfileContainer extends React.Component{
   componentDidMount(){  
     let id=this.props.router.params.id;
@@ -28,7 +27,6 @@ class UserProfileContainer extends React.Component{
       this.setState(this.props.Recommendation);
     }
   }
-  
   render(){return ( 
     <UserProfile 
           getLoginTC={this.props.getLoginTC} 
@@ -48,7 +46,6 @@ class UserProfileContainer extends React.Component{
           sortProfileTC={this.props.sortProfileTC}
           />);}
 };
-
 const mapStateToProps=(state)=>{
   return{
     Login:state.Login,

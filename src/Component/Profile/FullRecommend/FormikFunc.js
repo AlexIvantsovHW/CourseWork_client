@@ -34,11 +34,15 @@ export const update=(status,TC,id_user,id_r,AC,Theme, t, i18n)=>{
                   {({ isSubmitting }) => (
                     <Form className="mx-auto">{UserForm(t, i18n)}
                       <div className="d-flex justify-content-ceter align-items-center w-100 mb-3">
-                        <button type="submit" disabled={isSubmitting}
+                        <button 
+                          type="submit"
+                          disabled={isSubmitting}
                           className={`btn btn-${Theme.btn} mx-auto`}>
                           {SendImg(20)} {t('Send')}
-                          </button> 
-                          <button className="btn-close btn-close-white" onClick={()=>{closeForm(AC)}}/>
+                        </button> 
+                          <button 
+                            className="btn-close btn-close-white" 
+                            onClick={()=>{closeForm(AC)}}/>
                       </div>
                     </Form>
                   )}

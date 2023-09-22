@@ -1,10 +1,7 @@
 import API from "../API/API"
 
 const SET_USERS='SET_USERS'
-
-let initialState = {
-  users:[{name:null,id:null}]
-}
+let initialState = {users:[{name:null,id:null}]}
 const UserReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USERS:return{...state,users:action.users};
@@ -12,7 +9,7 @@ const UserReducer = (state = initialState, action) => {
   }
 };
 export const userAC=(users)=>{{return{type:SET_USERS,users}}}
-
+// Thunc Creator
 export const getUserTC=()=>{
   return async (dispatch)=>{
     let result=await API.getUsers();
@@ -25,5 +22,4 @@ export const deleteUserTC=(data)=>{
     dispatch(userAC(result.data))
   }
 }
-
 export default UserReducer;

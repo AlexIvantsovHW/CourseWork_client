@@ -64,7 +64,6 @@ function setUserLike(arr,id_user){
   if (targetObj===undefined){return 0}
   else{return targetObj.userLikes}
 }
-
 export const Checkbox = ({ id, type, name, handleClick, isChecked }) => {
   return (
     <input
@@ -185,7 +184,6 @@ export function blockUser(ProfileId,id_user,ProfileName,Component){
     return Component
   }else {return null}
 }
-
 //__________________ CLOUD OF TAG_________________
 export function tagArrCreator(arr){
   let tagList=[];

@@ -9,13 +9,11 @@ import { withAuthNavigate } from '../../withAuthNavigate';
 import { withRouter } from '../../CommonFunc';
 import { themeAC } from '../../../Redux/ThemeReducer';
 
-
 class FullRecommContainer extends React.Component{
   componentDidMount(){
     this.props.getCommentsTC();
     this.props.getDbTC();
     this.props.getDataTC();
-
   }
     componentDidUpdate(prevProps,prevState){
         if (this.props.Recommendation!== prevProps.Recommendation) {
@@ -23,7 +21,6 @@ class FullRecommContainer extends React.Component{
         }
       }
       
-
     render(){
       return(
       <FullRecommend 
@@ -44,7 +41,6 @@ class FullRecommContainer extends React.Component{
         />
         )}
 }
-
 const mapStateToProps=(state)=>{return{Recommendation:state.Recommendation,Login:state.Login,Theme:state.Theme}}
 export default compose(
     withRouter,

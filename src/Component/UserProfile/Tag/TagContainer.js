@@ -4,14 +4,7 @@ import { connect } from 'react-redux';
 import { themeAC } from "../../../Redux/ThemeReducer";
 import { filterAC, tagsAC } from './../../../Redux/RecommendationReducer';
 
-
 class TagContainer extends React.Component{
-    componentDidMount(){
-
-    }
-    componentDidUpdate(){
-        
-    }
     render(){
         return(
             <TagList
@@ -24,7 +17,6 @@ class TagContainer extends React.Component{
         )
     }
 }
-
 const mapStateToProps=(state)=>{
     return{
         Theme:state.Theme,

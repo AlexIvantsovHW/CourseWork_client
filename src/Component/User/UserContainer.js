@@ -7,8 +7,6 @@ import { getUserTC } from '../../Redux/UserReducer';
 import { themeAC } from './../../Redux/ThemeReducer';
 import { getDbTC, getScoreTC, getLikeListTC, getCommentsTC } from './../../Redux/RecommendationReducer';
 
-
-
 class UserContainer extends React.Component{
     componentDidMount(){
         this.props.getUserTC();
@@ -22,10 +20,8 @@ class UserContainer extends React.Component{
           this.setState(this.props.Recommendation);
         }
       }
-    render(){return(<User 
-      Users={this.props.Users} Theme={this.props.Theme} themeAC={this.props.themeAC}/>)}
+    render(){return(<User  Users={this.props.Users} Theme={this.props.Theme} themeAC={this.props.themeAC}/>)}
 }
-
 const mapStateToProps=(state)=>{
   return{
     Users:state.Users,
@@ -34,5 +30,4 @@ const mapStateToProps=(state)=>{
   }
 export default compose (
   connect(mapStateToProps,{getUserTC,themeAC,getLikeListTC,getScoreTC,getDbTC,getCommentsTC}),
-/*   withAuthNavigate */
   )(UserContainer);

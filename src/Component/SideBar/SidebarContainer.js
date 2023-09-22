@@ -9,7 +9,6 @@ class SidebarContainer extends React.Component{
   componentDidMount(){
     this.props.getDataTC();
   }
-  
   render(){
     return (  
       <Sidebar 

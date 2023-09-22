@@ -1,5 +1,4 @@
 import API from "../API/API"
-
 const SET_USERS='SET_USERS'
 
 let initialState = {
@@ -12,7 +11,6 @@ const CommentReducer = (state = initialState, action) => {
   }
 };
 export const userAC=(users)=>{{return{type:SET_USERS,users}}}
-
 export const getUserTC=()=>{
   return async (dispatch)=>{
     let result=await API.getUsers();

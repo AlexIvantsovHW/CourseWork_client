@@ -242,7 +242,5 @@ const SideBar = (props) => {
     </div>
   );
 };
-
 export default SideBar;
 
-/* https://www.codeply.com/p/WGCqYEiPBg code of sidebar*/

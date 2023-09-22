@@ -29,7 +29,6 @@ class FullUserRecommContainer extends React.Component{
         />
         )}
 }
-
 const mapStateToProps=(state)=>{return{Recommendation:state.Recommendation,Login:state.Login}}
 export default compose(
     withRouter,

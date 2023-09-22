@@ -12,11 +12,9 @@ import '../../../i18n'
   const [isCheckAll, setIsCheckAll] = useState(false);
   const [isCheck, setIsCheck] = useState([]);
   const [list, setList] = useState([]);
-
   useEffect(() => {
     setList(tagArr);
   }, [list]);
-
   const handleClick = e => {
     const { id, checked } = e.target;
     setIsCheck([...isCheck, id]);
@@ -39,16 +37,14 @@ import '../../../i18n'
       </div>
     );
   });
-
   function sendFiltedArray(){
-    
     function filterDBById(DB, check) {return DB.filter(item => check.includes(item.id_r));}
     let filteredData=filterDBById(tagArr,isCheck),
         transformArrData=filteredData.map(item => ({ id: item.id_r, value: item.tag }));
 if(transformArrData.length===0){transformArrData=[{id:null,value:null}]}else{
   transformArrData=filteredData.map(item => ({ id: item.id_r, value: item.tag }));
 }
-    props.filterAC(transformArrData)
+  props.filterAC(transformArrData)
   }
   return (
     <div className={`col  mx-auto w-100 bg-${props.Theme.bg}`}>

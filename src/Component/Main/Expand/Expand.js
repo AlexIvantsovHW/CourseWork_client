@@ -7,7 +7,6 @@ import { useTranslation } from 'react-i18next';
 import Comment from "./Comment/Comment";
 
 const Expand = (props) => {
-  
   const recommendList = props.DB.recommendation,
         Theme=props.Theme.theme,
         { t, i18n } = useTranslation(),

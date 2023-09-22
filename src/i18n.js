@@ -3,12 +3,8 @@ import { initReactI18next } from "react-i18next";
 import Backend from "i18next-http-backend";
 
 i18n
-    /* .use(Backend) */
-    .use(initReactI18next) // passes i18n down to react-i18next
+    .use(initReactI18next) 
     .init({
-        // the translations
-        // (tip move them in a JSON file and import them,
-        // or even better, manage them via a UI: https://react.i18next.com/guides/multiple-translation-files#manage-your-translations-with-a-management-gui)
         resources: {
             ru: {
                 translation: {
@@ -21,7 +17,6 @@ i18n
                     users:"Пользователи",
                     Dark:'Темная',
                     Light:'Светлая',
-
                     // Login Page
                     name:"Имя пользователя",
                     password:"Пароль",
@@ -31,10 +26,8 @@ i18n
                     email:"почтовый адрес",
                     textLog:"Есть аккаунт?",
                     signin:"Войти",
-                    
                     // Admin page
                     Admin:'Страница администратора',
-                    
                     // Recommendation list
                     RecommendationHeader:'СПИСОК РЕКОМЕНДАЦИЙ',
                     Book:'Книги',
@@ -51,7 +44,6 @@ i18n
                     SelectAll:'Выбрать все',
                     Display:'Отобразить',
                     Assess:'Оценить рекомендацию',
-
                     // Profile page
                     UserName:'Имя пользователя:',
                     Tag:'Теги:',
@@ -68,7 +60,6 @@ i18n
                     dragDrop:'Вы можете скинуть сюда свое изображение',
                     //User Page
                     Users:'ПОЛЬЗОВАТЕЛИ',
-
                     //COMMON
                     viewComment:'Показать комментарии',
                     Comments:'Комментарии',
@@ -96,7 +87,6 @@ i18n
                     users:"Users",
                     Dark:'Dark',
                     Light:'Light',
-
                     // Login and Registration pages
                     name:"Name",
                     password:"Password",
@@ -106,12 +96,10 @@ i18n
                     email:"e-mail",
                     textLog:"Already have an account?",
                     signin:"Sign In",
-
                     // Admin page
                     Admin:'Admin page',
                     //Admin table
                     id:'id',
-
                     // Recommendation list
                     RecommendationHeader:'RECOMMENDATION LIST',
                     Book:'Book',
@@ -128,7 +116,6 @@ i18n
                     SelectAll:'Select All',
                     Display:'Display',
                     RecommendRange:'Recommendation number',
-
                     // Profile page
                     UserName:'User name:',
                     Tag:'Tag:',        
@@ -144,10 +131,8 @@ i18n
                     Upload:'Upload',
                     dragDrop:'You can drop your image here',
                     Assess:'Assess review ',     
-
                     //User Page
                     Users:'USERS',                    
-
                     //COMMON
                     viewComment:'View comments',
                     Comments:'Comments',
@@ -164,12 +149,10 @@ i18n
                     inputComment:'Type new comment',
                 }
             }
-
         },
-        lng: "ru", // change here
+        lng: "ru", 
         fallbackLng: "en",
-
         interpolation: {
-            escapeValue: false // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape
+            escapeValue: false
         }
     });

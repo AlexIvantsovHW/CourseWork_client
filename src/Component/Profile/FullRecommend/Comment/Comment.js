@@ -31,7 +31,6 @@ const Comment = (props) => {
     fData.append("date_upload", date);
     props.setCommentsTC(fData);
   };
-
   let filteredComments = filterComments(props.comments, (+props.targetId));
   if (props.statusView === false) {
     return (
@@ -52,7 +51,9 @@ const Comment = (props) => {
             closeForm(props.setViewAC);
             }}/>        
           </div>
-        <div><h4 className={`text-center text-${Theme.font}`} >{t('Comments')}</h4></div>
+        <div>
+          <h4 className={`text-center text-${Theme.font}`} >{t('Comments')}</h4>
+        </div>
         <div
           className={`container ml-4 d-grid gap-2 bg-${Theme.bg} text-${Theme.font}  overflow-x-hidden overflow-y-auto`}
           style={{ height: "100px", width: "95%", margin: "1.5%" }}

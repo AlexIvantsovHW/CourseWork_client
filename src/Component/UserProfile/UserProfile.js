@@ -41,7 +41,12 @@ const UserProfile = (props) => {
       <div className={`col-4 mx-auto w-75 h-auto bg-${theme.bg}  border-${theme.border} border rounded-4  border-opacity-50`}>
         <div className="row">
           <div className="col d-flex justify-content-center align-content-center">
-          <UserInformation theme={theme}  score={score} id_user={props.id_user} name={pageName[0].name}/>
+          <UserInformation 
+            theme={theme}  
+            score={score} 
+            id_user={props.id_user} 
+            name={pageName[0].name}
+            />
           </div>
           <div className="col">
           <TagList
@@ -52,11 +57,9 @@ const UserProfile = (props) => {
                 DB={Recommendation}
             />
           </div>
-        </div>
-      
-          
+        </div>   
           <div className={`row mt-2 border-${theme.border} border-1`}>
-          <div className={`mx-auto w-75 text-center mb-2 text-${theme.font}  border-${theme.border} border-bottom border-3`}>
+          <div className={`mx-auto w-75 text-center mb-2 text-${theme.font} border-${theme.border} border-bottom border-3`}>
               <h4>{t('RecommendationHeader')}</h4>
             </div>
             {catalog(list, isCheck, handleClick,
@@ -65,7 +68,6 @@ const UserProfile = (props) => {
               props.id_user,theme,t)}
             <div className="mx-auto">
             </div>
-
           </div>
         </div>
       </div>

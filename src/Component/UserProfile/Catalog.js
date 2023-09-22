@@ -2,7 +2,6 @@ import { NavLink } from "react-router-dom";
 import { ImgReview } from "./Function";
 import { calculateAverageRate, replaceAmountValues, replaceRateValues } from "../Main/Expand/Function";
 
-
 export function getTags(data){
   let x=[];
   for (let i=0;i<data.length;i++){x.push(data[i].value)}

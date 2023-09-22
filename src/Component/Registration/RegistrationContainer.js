@@ -8,10 +8,11 @@ import { getDbTC } from "../../Redux/RecommendationReducer";
 
 class RegistrationContainer extends React.Component{
   componentDidMount(){this.props.getDbTC()}
-  render(){return ( <Registration 
+  render(){return ( 
+  <Registration 
     getRegistrationTC={this.props.getRegistrationTC}
-    Theme={this.props.Theme} themeAC={this.props.themeAC}
-    
+    Theme={this.props.Theme} 
+    themeAC={this.props.themeAC}
     />);}
 };
 

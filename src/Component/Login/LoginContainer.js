@@ -8,9 +8,11 @@ import { getDbTC } from "../../Redux/RecommendationReducer";
 
 class LoginContainer extends React.Component{
   componentDidMount(){this.props.getDbTC()}
-  render(){return ( <Login 
+  render(){return ( 
+  <Login 
     getLoginTC={this.props.getLoginTC}
-    Theme={this.props.Theme} themeAC={this.props.themeAC}
+    Theme={this.props.Theme} 
+    themeAC={this.props.themeAC}
     />);}
 };
 

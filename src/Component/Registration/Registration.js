@@ -39,27 +39,32 @@ const validate=values => {
       onSubmit={async (values, { resetForm }) => {
         await onSubmit(values);
         resetForm();}}>
-
       {({ isSubmitting }) => (
         <Form className="">
           {Regform('name',t('name'))}
           {Regform('email',t('email'))}
           {Regform('password',t('password'))}
           <div className="d-flex justify-content-ceter align-items-center w-100 mb-3">
-          <button type="submit" disabled={isSubmitting} className={`btn btn-${theme.btn} mx-auto`}>{SendImg(20)} {t('submit')}</button>
+          <button 
+            type="submit" 
+            disabled={isSubmitting} 
+            className={`btn btn-${theme.btn} mx-auto`}>
+              {SendImg(20)} {t('submit')}
+          </button>
           </div>
           <div className="row text-center">
-          <p>{t('textLog')}<NavLink to='/login'>{t('signin')}</NavLink> </p>
+            <p>{t('textLog')}
+            <NavLink to='/login'>
+              {t('signin')}
+            </NavLink>
+          </p>
           </div>
         </Form>
       )}
     </Formik>
         </div>
-        
       </div>
 </div>
-
-    
   );
 };
 

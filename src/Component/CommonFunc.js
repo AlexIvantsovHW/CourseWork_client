@@ -14,8 +14,7 @@ export var withRouter=function (Component) {
       return <Component {...props} router={{ location, navigate, params }} />;
     }
     return ComponentWithRouterProp;
-  }
-  ;
+  };
 export function setTheme(item,AC){AC(item)}  
 export function searchLink(substring, arr) {
   let matchingObjects = [];

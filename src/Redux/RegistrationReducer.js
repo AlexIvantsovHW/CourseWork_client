@@ -2,7 +2,7 @@ import API from "../API/API"
 
 const SET_REGISTR='SET_REGISTR'
 let initialState = {
-    password:null,
+  password:null,
   name:null,
   email:null,
 }

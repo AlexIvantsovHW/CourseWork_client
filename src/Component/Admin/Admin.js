@@ -112,13 +112,9 @@ let filteredData=searchLink(search,props.Users.users),
       </table>
         </div>
         </div>
-
         </div>
-        
       </div>
 </div>
-
-    
   );
 };
 

@@ -30,8 +30,6 @@ let tag='#'+values.tag;
   fData.append("date_upload",date);
   TC(fData);
 };
-
-
  const FormikFunc=(props)=>{
     const [images,setImages]=useState([])
     function handleUpload(){
@@ -88,8 +86,7 @@ let tag='#'+values.tag;
                                 {SendImg(20)} {t('Send')} 
                             </button> 
                             </div>
-                        </Form>
-          
+                        </Form>        
                         </div> 
                         )}
                     </Formik>

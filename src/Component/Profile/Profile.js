@@ -28,7 +28,6 @@ const Profile = (props) => {
   useEffect(() => {
     setList(Recommendation);
   }, [list]);
-
   const handleClick = (e) => {
     const { id, checked } = e.target;
     setIsCheck([...isCheck, id]);
@@ -49,7 +48,8 @@ const Profile = (props) => {
                 filterAC={props.filterAC}
                 tagsAC={props.tagsAC}
                 DB={Recommendation}
-            /></div>
+            />
+        </div>
           <div className={`row mt-2 border-${theme.border} border-1`}>
             <div className={`text-center mb-2 text-${theme.font}`}>
               <h4 className="text-center">{t('RecommendationHeader')}</h4>

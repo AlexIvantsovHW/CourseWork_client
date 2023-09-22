@@ -12,7 +12,6 @@ import { DisplayImg } from "../../img";
   const [isCheckAll, setIsCheckAll] = useState(false);
   const [isCheck, setIsCheck] = useState([]);
   const [list, setList] = useState([]);
-
   useEffect(() => {
     setList(tagArr);
   }, [list]);
@@ -46,7 +45,6 @@ import { DisplayImg } from "../../img";
       </div>
     );
   });
-
   function sendFiltedArray(){    
     function filterDBById(DB, check) {return DB.filter(item => check.includes(item.id_r));}
     let filteredData=filterDBById(tagArr,isCheck),
@@ -62,8 +60,7 @@ if(transformArrData.length===0){transformArrData=[{id:null,value:null}]}else{
         <div>
           <h4 className="text-center">{t('TagList')}</h4>
         </div>
-      <div className={` mx-auto w-50 border-bottom border-${props.Theme.border} border-1`}>
-     
+      <div className={` mx-auto w-50 border-bottom border-${props.Theme.border} border-1`}> 
       <Checkbox
         type="checkbox"
         name="selectAll"
@@ -72,12 +69,17 @@ if(transformArrData.length===0){transformArrData=[{id:null,value:null}]}else{
         isChecked={isCheckAll}
       />
         {t('SelectAll')}
-        <button className={`btn btn-${props.Theme.btn}`} onClick={sendFiltedArray}>{DisplayImg(20)}</button>
- 
+        <button 
+          className={`btn btn-${props.Theme.btn}`} 
+          onClick={sendFiltedArray}>
+            {DisplayImg(20)}
+        </button>
       </div>
-            <div className="overflow-auto" style={{ maxHeight: "120px" }}>
-      {catalog}
-      </div>
+            <div 
+              className="overflow-auto" 
+              style={{ maxHeight: "120px" }}>
+              {catalog}
+            </div>
       </div>
     </div>
   );

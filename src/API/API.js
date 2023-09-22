@@ -8,7 +8,6 @@ const instance = axios.create({
 });
 
 const API = {
-  // Common API
   getDB() {return instance.get('db')},
   getData(){ return instance.get('data')},
   getLikeList(){return instance.get('likeList')},
@@ -30,7 +29,6 @@ const API = {
   setAuthorScore(data){return instance.post('setAuthorScore',data)},
   postReviewImage(data){return instance.post('upload',data)},
   setIMG(data){debugger;return instance.post('setImg',data) },
-  //========================ADMIN PAGE
   deleteUsers(data){return instance.post('deleteUser',data)}
 };
 export default API;

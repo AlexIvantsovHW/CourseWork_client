@@ -40,9 +40,11 @@ const ButtonComponent = (props) => {
     <div className='mx-5'>
       {[1, 2, 3, 4, 5].map((value) => (
           <svg 
-          key={value} disabled={activeButton !== null && activeButton !== value} 
+          key={value} 
+          disabled={activeButton !== null && activeButton !== value} 
           xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
-          fill={activeButton === value ? 'green' : 'white'} className={`bi bi-star`}
+          fill={activeButton === value ? 'green' : 'white'} 
+          className={`bi bi-star`}
           viewBox="0 0 16 16"
           onClick={() => handleButtonClick(value)}
           >

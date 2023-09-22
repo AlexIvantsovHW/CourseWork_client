@@ -54,7 +54,9 @@ const FullRecommend = (props) => {
               onChange={changeEvent => setValue(changeEvent.target.value)}
              />
               <div className="w-75 d-flex justify-content-center align-items-center">
-              <button className={`btn btn-${Theme.btn}`} onClick={onAuthorScoreSubmit}>
+              <button 
+                className={`btn btn-${Theme.btn}`} 
+                onClick={onAuthorScoreSubmit}>
                 {SendImg(20)} {t('Assess')}
               </button>
               </div>

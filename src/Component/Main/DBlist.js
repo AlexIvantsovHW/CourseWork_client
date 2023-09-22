@@ -22,7 +22,8 @@ export function DBlist(
                 <div className='col mx-auto'>
                   <div className='text-center'>
                   <Raiting
-                    title={el.title} category={el.category}
+                    title={el.title} 
+                    category={el.category}
                     name={el.name}
                     date={el.date_upload} 
                     Amount={el.Amount}
@@ -43,14 +44,14 @@ export function DBlist(
                 <div>
                 {((el.image===null)||(el.image==='null')||(el.image==='')?PhotoImg(75):img_return(el.image,50))}
                 <div>
-                  <LikeComponent
+                  {auth?<LikeComponent
                   score={score} 
                   id_user={el.id_user}
                   id_r={el.id_r}
                   getLikeTC={getLikeTC}
                   Amount={el.Amount}
                   theme={theme}
-                  />  
+                  />:null}
                   </div>                  
                 <NavLink className={'text-decoration-none'} to={"/expand/"+el.id_r}>
                     <p className={`text-center text-${theme.font} fw-bold`}>

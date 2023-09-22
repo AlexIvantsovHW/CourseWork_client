@@ -3,14 +3,23 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Profile from "./Profile";
 import { connect } from "react-redux";
 import { getLoginTC } from "../../Redux/LoginReducer";
-import { getAddRecomendTC, getRecomendTC, getUserLikesTC,getLikeTC, getCommentsTC, getRateDataTC, sortProfileTC, getSortTC, setReviewImageTC} from "../../Redux/RecommendationReducer";
+import { 
+  getAddRecomendTC, 
+  getRecomendTC, 
+  getUserLikesTC,
+  getLikeTC, 
+  getCommentsTC, 
+  getRateDataTC, 
+  sortProfileTC, 
+  getSortTC, 
+  setReviewImageTC
+} from "../../Redux/RecommendationReducer";
 import { withAuthNavigate } from "../withAuthNavigate";
 import { compose } from "redux";
 import { setPublishAC,filterAC, tagsAC,deleteRecommendationTC} from "../../Redux/RecommendationReducer";
 import { withRouter } from "../CommonFunc";
 import { getUserTC } from "../../Redux/UserReducer";
 import { themeAC } from './../../Redux/ThemeReducer';
-
 
 class ProfileContainer extends React.Component{
   componentDidMount(){  
@@ -27,8 +36,7 @@ class ProfileContainer extends React.Component{
     if (this.props.Recommendation!== prevProps.Recommendation) {
       this.setState(this.props.Recommendation);
     }
-  }
-  
+  } 
   render(){return ( 
     <Profile 
           getLoginTC={this.props.getLoginTC} 
@@ -50,7 +58,6 @@ class ProfileContainer extends React.Component{
           setReviewImageTC={this.props.setReviewImageTC}
           />);}
 };
-
 const mapStateToProps=(state)=>{
   return{
     Login:state.Login,

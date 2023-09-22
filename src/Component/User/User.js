@@ -6,7 +6,6 @@ import '../../i18n'
 import { useTranslation } from 'react-i18next';
 import { UserImg } from './../img';
 
-
 const User = (props) => {
 const [search,setSearch]=useState('');
 let theme=props.Theme.theme,
@@ -19,12 +18,19 @@ let theme=props.Theme.theme,
         <div className={`w-75 bg-dark bg-gradient rounded-4 border border-${theme.border} border-bottom`}>
         <div className="w-100 mt-2 d-flex justify-content-center align-items-center">{UserImg(50)}</div>
         <div className="w-100 d-flex justify-content-center align-items-center">
-        <NavLink className='text-decoration-none' to={"/userprofile/"+el.id}><p className={`text-${theme.font} fw-bold`}>{el.name}</p></NavLink><p> / id- {el.id}</p></div>
+        <NavLink 
+          className='text-decoration-none' 
+          to={"/userprofile/"+el.id}>
+          <p className={`text-${theme.font} fw-bold`}>
+            {el.name}
+          </p>
+        </NavLink>
+          <p> / id- {el.id}</p>
+        </div>
         </div>
       </div>
   )
 })
-
   return (
     <div class="col ">
      <div className={`row h-100 d-flex align-items-center text-white bg-${theme.bg} bg-gradient`}>
@@ -47,13 +53,9 @@ let theme=props.Theme.theme,
           </div>
         </div>
         </div>
-
         </div>
-        
       </div>
 </div>
-
-    
   );
 };
 

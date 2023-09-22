@@ -31,7 +31,6 @@ function App() {
             <Route path="/fulluserRecommend/:id" element={<FullUserRecommContainer/>} />
             <Route path="/expand/:id" element={<ExpandContainer/>} />
             <Route path="/admin" element={<AdminContainer/>} />
-
         </Routes>
       </div>
     </div>

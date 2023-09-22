@@ -18,9 +18,7 @@ const Login = (props) => {
     await props.getLoginTC(fData);
     <NavLink to={'/main'} />
   };
-  const GoogleAuth=()=>{
-    window.open(BaseURL+'auth/google/callback',"_self")
-  }
+  const GoogleAuth=()=>{window.open(BaseURL+'auth/google/callback',"_self")}
   return (
     <div class="col">
      <div className={`row h-100 d-flex align-items-center text-${theme.font} bg-${theme.bg} bg-gradient`}>
@@ -28,7 +26,7 @@ const Login = (props) => {
         <div className="mb-2"><h3 className={`text-center text-${theme.font}`} >{t('login')}</h3></div>
     <Formik
       initialValues={initialValues}
-     onSubmit={async (values, { resetForm }) => {
+      onSubmit={async (values, { resetForm }) => {
       await onSubmit(values);
       resetForm();
     }}
@@ -49,8 +47,6 @@ const Login = (props) => {
         </div>
       </div>
 </div>
-
-    
   );
 };
 

@@ -3,8 +3,6 @@ import { Field, ErrorMessage } from "formik";
 import moment from"moment";
 
 const date = moment().format('YYYY-MM-DD HH:mm:ss');
-
-
 export function TextError(props) {return <div className="error">{props.children}</div>;}
 export function passwordValidation(password){
   if(!password) {return 'Required'} 
@@ -23,7 +21,6 @@ export function nameValidation(name){
   else if(name[0]!=name[0].toUpperCase())
     {return 'Name should be started with capital letter'}
 }
-
 export function Logform(name,label,validate) {
   return (
     <div className="col col-lg-5 col-md-8 col-sm-10  mb-3 mt-2  text-center mx-auto">
@@ -39,6 +36,4 @@ export function Logform(name,label,validate) {
       <ErrorMessage name={name} component={TextError} className="Error" />
     </div>
   );}
-
-
 export const initialValues = { name: "", email: "", password: "" };

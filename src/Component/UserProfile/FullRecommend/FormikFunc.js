@@ -20,7 +20,11 @@ export const update=(status,TC,id_user,id_r,AC)=>{
   if(status===false){
     return(
       <div className="d-flex justify-content-center align-items-center w-100 mb-1 mt-1">
-        <button className="btn btn-warning mx-auto" onClick={()=>{openForm(AC)}}>Update review</button>
+        <button 
+          className="btn btn-warning mx-auto" 
+          onClick={()=>{openForm(AC)}}>
+          Update review
+        </button>
       </div>
     )}else{
   return(
@@ -31,10 +35,16 @@ export const update=(status,TC,id_user,id_r,AC)=>{
                   {({ isSubmitting }) => (
                     <Form className="mx-auto">{UserForm()}
                       <div className="d-flex justify-content-ceter align-items-center w-100 mb-3">
-                        <button type="submit" disabled={isSubmitting}
+                        <button 
+                          type="submit" 
+                          disabled={isSubmitting}
                           className="btn btn-success mx-auto ">
-                          Update</button> 
-                          <button className="btn btn-danger" onClick={()=>{closeForm(AC)}}>X</button>
+                          Update
+                        </button> 
+                          <button 
+                            className="btn btn-danger" 
+                            onClick={()=>{closeForm(AC)}}>X
+                          </button>
                       </div>
                     </Form>
                   )}

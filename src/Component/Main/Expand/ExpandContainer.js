@@ -18,8 +18,8 @@ class ExpandContainer extends React.Component{
           this.setState(this.props.Recommendation);
         }
       }
-
-    render(){return(<Expand 
+    render(){return(
+    <Expand 
         DB={this.props.DB} 
         id_r={this.props.router.params.id}  
         setUpdateAC={this.props.setUpdateAC}
@@ -35,8 +35,6 @@ class ExpandContainer extends React.Component{
         
         )}
 }
-
-
 const mapStateToProps=(state)=>{return{
   DB:state.Recommendation,
   Login:state.Login,

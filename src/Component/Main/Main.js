@@ -32,7 +32,9 @@ let   RangeRecommendList=recommendList.slice(0,value);
         <div className={`col-10 col-sm-8 col-md-8 col-lg-6 mx-auto h-auto bg-${theme.bg} border-${theme.border} border border-opacity-50 rounded-4`}>
           <div className="mb-2">
             <h4 className="text-center">{t('RecommendationHeader')}</h4>
-            <div className={`row w-50 mx-auto text-center text-${theme.font}`} style={{ maxHeight: "60px" }}>
+            <div 
+              className={`row w-50 mx-auto text-center text-${theme.font}`} 
+              style={{ maxHeight: "60px" }}>
             <div>{t('RecommendRange')}</div>
             <RangeSlider
               variant={`${theme.border}`}
@@ -43,7 +45,9 @@ let   RangeRecommendList=recommendList.slice(0,value);
               onChange={changeEvent => setValue(changeEvent.target.value)}
              />
             </div>
-            <div className={`row w-100 mx-auto border-bottom border-${theme.border} border-3`} style={{ maxHeight: "50px" }}>
+            <div 
+              className={`row w-100 mx-auto border-bottom border-${theme.border} border-3`} 
+              style={{ maxHeight: "50px" }}>
               <div className="mb-1 w-100 d-flex justify-content-around">
               <button className={`btn btn-${theme.btn} mb-1`} onClick={()=>chooseCategory('Book',category,setCategory)}>{BookImg(20)}</button>
               <button className={`btn btn-${theme.btn} mb-1`} onClick={()=>chooseCategory('Film',category,setCategory)}>{FilmImg(20)}</button>
