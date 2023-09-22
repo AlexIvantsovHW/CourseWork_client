@@ -88,7 +88,7 @@ i18n
             },
             en: {
                 translation: {
-                    home: "Recommendations",
+                    home: "Reviews",
                     login: "Login",
                     logout:"Logout",
                     admin:"Admin",
