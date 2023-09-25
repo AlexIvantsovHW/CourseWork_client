@@ -45,11 +45,8 @@ let tag='#'+values.tag;
         }
         reader.readAsDataURL(file)
         })
-        console.log('acceptedFiles',acceptedFiles)
-        console.log('rejectedFiles',rejectFiles)
     },[])
     useEffect(()=>{
-        console.log(images)
     },[images])
     const {getRootProps,getInputProps,isDragActive}=useDropzone({onDrop,accept:'image/png , image/jpeg, image/jpg'});
     const { t, i18n } = useTranslation();

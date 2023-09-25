@@ -13,7 +13,7 @@ const API = {
   getDB() {return instance.get('db')},
   getData(){ return instance.get('data')},
   getLikeList(){return instance.get('likeList')},
-  getAuth(data) {debugger; return instance.post('login',data)},
+  getAuth(data) { return instance.post('login',data)},
   getLike(data){return instance.post('like',data)},
   getUserLikes(){return instance.get('score_user')},
   getSort(sort){return instance.post('sort',sort)},
@@ -30,8 +30,8 @@ const API = {
   deleteRecommends(data){return instance.post('deleteRecommend',data)},
   setAuthorScore(data){return instance.post('setAuthorScore',data)},
   postReviewImage(data){return instance.post('upload',data)},
-  setIMG(data){debugger;return instance.post('setImg',data) },
+  setIMG(data){return instance.post('setImg',data) },
   deleteUsers(data){return instance.post('deleteUser',data)},
-  checkGitUser(data){debugger;return instance.post('checkGitUser',data)}
+  checkGitUser(data){return instance.post('checkGitUser',data)}
 };
 export default API;

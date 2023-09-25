@@ -68,7 +68,6 @@ const SideBar = (props) => {
   const { t, i18n } = useTranslation();
   const filteredData = searchLink(search, Recommendation);
   const id = props.Login.id;
-  console.log(windowInnerWidth)
   return (
     <div
       className={`col-2  bg-${theme.bg} border-end border-${theme.border} border-1 border-opacity-25`}

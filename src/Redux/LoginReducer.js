@@ -21,7 +21,6 @@ export const getLoginTC=(data)=>{
 export const getGitLoginTC=(data)=>{
   return async (dispatch)=>{
     const githubData=data;
-    console.log(githubData)
     const githubUserId=data.id;
     const githubUserName=data.displayName
     const githubUserProfileURL=data.profileUrl;
@@ -38,12 +37,10 @@ export const getGitLoginTC=(data)=>{
         if(result.data[0].user===0){
           let req1=await API.getRegistration(fData);
           if(req1.data===200){
-            console.log(req1)
             req2=await API.getAuth(fData2)
           }else{alert('Error in login of github user')}
           
         }else{
-          console.log(fData2)
             req2=await API.getAuth(fData2)
         }
         dispatch(loginAC(req2.data))

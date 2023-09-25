@@ -209,37 +209,7 @@ export const setReviewImageTC=(value)=>{
     let result= await API.postReviewImage(value);
     await fData.append('image',result.data.secure_url)
     let req2=await API.setIMG(fData)
-    
-    debugger;
     dispatch(recommendationAC(req2.data))
-  }
-}
-/* export const getGitLoginTC=(data)=>{
-  return async (dispatch)=>{
-    const githubData=data;
-    console.log(githubData)
-    const githubUserId=data.id;
-    const githubUserName=data.displayName
-    const githubUserProfileURL=data.profileUrl;
-    const fData=new FormData();
-    fData.append('email',githubUserProfileURL);
-    fData.append('name',githubUserName);
-    fData.append('pass',githubUserId);
-    let result=await API.checkGitUser(fData);
-        console.log(result.data[0].user)
-        if(result.data[0].user===0){
-          let req1=await API.getRegistration(fData);
-          {if(result.data===200){
-            alert('Registration complete');
-          }else if(result.data==='dublicate')
-          {alert('User is always registered! ')}
-        }; 
-        }else{
-          
-        }
-
-  }
-} */
+  }}
 
 export default RecommendationReducer;
-

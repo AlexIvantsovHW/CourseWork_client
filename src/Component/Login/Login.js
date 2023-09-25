@@ -22,7 +22,7 @@ const Login = (props) => {
 
   const githubLogin=()=>{
     const popup = window.open(
-      `${BaseURL}/auth/github`,
+      'https://coursework-server.onrender.com/auth/github',
       "targetWindow",
       `toolbar=no,
       location=no,
@@ -35,7 +35,7 @@ const Login = (props) => {
     );
 
     window.addEventListener("message", (event) => {
-      if (event.origin === BaseURL) {
+      if (event.origin === 'https://coursework-server.onrender.com') {
         if (event.data) {
           props.getGitLoginTC(event.data)
           popup?.close();

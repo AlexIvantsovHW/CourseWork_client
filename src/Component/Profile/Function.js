@@ -28,12 +28,7 @@ export function UserForm(t, i18n) {
           {basicForm('name','text',t('inputName'))}
           {basicForm('group','text',t('inputGroup'))}
           {basicForm('tag','text',t('inputTag'))}
-          <Field className='form-control form-control-sm mx-auto w-75 mt-1 mb-2' name="color" as="select">
-            <option value="">{t('Option')}</option>
-            <option value="Book">{t('Book')}</option>
-            <option value="Film">{t('Film')}</option>
-            <option value="Music">{t('Music')}</option>
-          </Field>
+          {basicForm('category','text',t('inputCategory'))}
         </div>
       </div>
        <div className="col mr-4">
@@ -152,7 +147,6 @@ export const Toolbar = (props) => {
   );
 };
 export const UserInformation = (props) => {
-debugger;
   return (
     <div className="col d-flex justify-content-center align-items-center flex-row">
       <div className="row d-flex justify-content-center align-items-center">
