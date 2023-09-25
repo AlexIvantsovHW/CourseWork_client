@@ -6,7 +6,7 @@ import { NavLink, Navigate } from "react-router-dom";
 import '../../i18n'
 import { useTranslation } from 'react-i18next';
 import { BaseURL } from './../../API/API';
-import { EnterImg } from "../img";
+import { EnterImg, GitLogo } from "../img";
 
 
 const Login = (props) => {
@@ -22,7 +22,7 @@ const Login = (props) => {
 
   const githubLogin=()=>{
     const popup = window.open(
-      "http://localhost:3001/auth/github",
+      `${BaseURL}/auth/github`,
       "targetWindow",
       `toolbar=no,
       location=no,
@@ -35,7 +35,7 @@ const Login = (props) => {
     );
 
     window.addEventListener("message", (event) => {
-      if (event.origin === "http://localhost:3001") {
+      if (event.origin === BaseURL) {
         if (event.data) {
           props.getGitLoginTC(event.data)
           popup?.close();
@@ -68,7 +68,13 @@ const Login = (props) => {
         </Form>
       )}
     </Formik>
-    <button  onClick={githubLogin}>Войти с помощью GitHub</button>
+    <div className="w-100 d-flex justify-content-center align-items-center">
+      <button 
+      className={`btn btn-${theme.btn}`} 
+      onClick={githubLogin}>
+      {t(`logIn`)} {GitLogo(20)}
+      </button>
+    </div>
         </div>
       </div>
 </div>

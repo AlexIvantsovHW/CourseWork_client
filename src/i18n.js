@@ -75,6 +75,7 @@ i18n
                     inputText:'Напишите Вашу рекомендацию',
                     inputComment:'Напишите новый комментарий',
                     RecommendRange:'Количество рекомендаций',
+                    logIn:'Зайти с помощью',
                 }
             },
             en: {
@@ -147,6 +148,7 @@ i18n
                     inputTag:'Type tag',
                     inputText:'Type your recommendation',
                     inputComment:'Type new comment',
+                    logIn:'Log in with',
                 }
             }
         },

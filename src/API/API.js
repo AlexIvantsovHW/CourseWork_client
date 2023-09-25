@@ -1,6 +1,6 @@
 import axios from "axios";
-/* export  const BaseURL='https://coursework-server.onrender.com/'; */
-export const BaseURL='http://localhost:3001/';
+export  const BaseURL='https://coursework-server.onrender.com/';
+/* export const BaseURL='http://localhost:3001/'; */
 
 const instance = axios.create({
   baseURL: BaseURL,
