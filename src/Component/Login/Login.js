@@ -8,36 +8,8 @@ import { useTranslation } from 'react-i18next';
 import { BaseURL } from './../../API/API';
 import { EnterImg } from "../img";
 
+
 const Login = (props) => {
-  const [user, setUser] = useState(null);
-  useEffect(() => {
-    fetch('http://localhost:3001/api/user', {
-      method: 'GET',
-      credentials: 'include',
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setUser(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-  const handleLogin = () => {
-    window.location.href = 'http://localhost:3001/auth/google'; // Редирект на маршрут авторизации Google
-  };
-  const handleLogout = () => {
-    fetch('http://localhost:3001/auth/logout', {
-      method: 'GET',
-      credentials: 'include',
-    })
-      .then(() => {
-        setUser(null); // Обновляем состояние пользователя
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
   const { t, i18n } = useTranslation()
   const theme=props.Theme.theme;
   async  function onSubmit (values) {
@@ -47,7 +19,30 @@ const Login = (props) => {
     await props.getLoginTC(fData);
     <NavLink to={'/main'} />
   };
-  const GoogleAuth=()=>{window.open(BaseURL+'auth/google/callback',"_self")}
+
+  const githubLogin=()=>{
+    const popup = window.open(
+      "http://localhost:3001/auth/github",
+      "targetWindow",
+      `toolbar=no,
+      location=no,
+      status=no,
+      menubar=no,
+      scrollbars=yes,
+      resizable=yes,
+      width=620,
+      height=700`
+    );
+
+    window.addEventListener("message", (event) => {
+      if (event.origin === "http://localhost:3001") {
+        if (event.data) {
+          props.getGitLoginTC(event.data)
+          popup?.close();
+        }
+      }
+    });
+  }
   return (
     <div class="col">
      <div className={`row h-100 d-flex align-items-center text-${theme.font} bg-${theme.bg} bg-gradient`}>
@@ -73,17 +68,7 @@ const Login = (props) => {
         </Form>
       )}
     </Formik>
-    {user ? (
-        <div>
-          <h1>Привет, {user.displayName}</h1>
-          <button onClick={handleLogout}>Выйти</button>
-        </div>
-      ) : (
-        <div>
-          <h1>Добро пожаловать!</h1>
-          <button onClick={handleLogin}>Войти через Google</button>
-        </div>
-      )}
+    <button  onClick={githubLogin}>Войти с помощью GitHub</button>
         </div>
       </div>
 </div>
