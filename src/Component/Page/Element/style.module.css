@@ -1,0 +1,30 @@
+.elContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 5%;
+    width: 200px;
+    height: 250px;
+    border-radius: 20px;
+    box-shadow: 0 0 0 3px rgba(128, 128, 128, 0.488);
+    background-color: rgb(193, 193, 193);
+    gap: 3px;
+}
+.elContainer:hover{box-shadow: 0 0 0 10px rgba(128, 128, 128, 0.488);}
+.elImg{
+    border-radius: 10px;
+    background-color: white;
+    height: 100px;
+    width: 100px;
+}
+.elArticle{text-align: center;}
+.elArticle:hover{
+    color: red;
+    font-size: 30px;
+    font-weight: bold;
+}
+.elShortDescription{
+    height: 50px;
+    border: 0.5px solid red;
+}

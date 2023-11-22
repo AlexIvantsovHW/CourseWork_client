@@ -1,0 +1,105 @@
+.main-container{
+    background-color: aqua;
+    display: grid;
+    grid-template-rows: 2fr 3fr;
+    height: 100vh;
+    width: 100vw;
+}
+.top{
+    background-color: red;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 5fr 0.5fr;
+}
+.body{
+    background-color: green;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around
+
+}
+.top-container{
+    display: grid;
+    grid-template-columns: 0.8fr 1fr;
+    align-items: center;
+    border: 0.5px solid black;
+}
+.avatar-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 0.5px solid gray;
+    text-align: center;
+    }
+
+.avatar{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ava{
+    width: 200px;
+    height: 200px; 
+    background-color: blue;
+    border: solid;
+    border-radius: 50%;
+}
+.summary{
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+    width: 100%;
+    height: 100%;
+    border: 0.5px solid gray;
+}
+.experience{
+    width: 100%;
+    height: 100%;
+    border: 0.5px solid gray;
+}
+.education{
+    width: 100%;
+    height: 100%;
+    border: 0.5px solid gray;
+}
+.summary{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.changeTop{
+    display: flex;
+    justify-content: space-between;
+    border: 0.5px solid gray;
+}
+
+@media (max-width: 425px) {
+    .main-container{
+        background-color: aqua;
+        display: grid;
+        grid-template-rows: 1fr 3fr;
+        height: 100vh;
+        width: 100vw;
+    }
+    .top-container{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        align-items: center;
+        border: 0.5px solid black;
+    }
+    .body{
+        justify-content: center;
+        flex-direction: row;
+        background-color: green;
+        width: 100%;
+        
+    }
+  }
